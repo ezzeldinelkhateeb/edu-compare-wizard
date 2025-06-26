@@ -2,7 +2,7 @@
 import React, { useState, useCallback } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Upload, FileText, FolderOpen, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { Upload, FileText, FolderOpen, AlertCircle, CheckCircle2, Zap } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 interface UploadSectionProps {
