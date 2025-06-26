@@ -2,7 +2,7 @@
 import React, { useState, useCallback } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Upload, FileText, FolderOpen, AlertCircle, CheckCircle2, Zap } from 'lucide-react';
+import { Upload, FileText, FolderOpen, AlertCircle, CheckCircle2, Zap, Folder } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 interface UploadSectionProps {
@@ -57,6 +57,32 @@ const UploadSection: React.FC<UploadSectionProps> = ({ onFilesUploaded }) => {
     } else {
       setNewFiles(prev => [...prev, ...files]);
     }
+  };
+
+  const handleFolderInput = (e: React.ChangeEvent<HTMLInputElement>, type: 'old' | 'new') => {
+    const files = e.target.files ? Array.from(e.target.files) : [];
+    const validFiles = files.filter(file => 
+      file.type.startsWith('image/') || file.type === 'application/pdf'
+    );
+    
+    if (validFiles.length !== files.length) {
+      toast({
+        title: "تحذير",
+        description: "بعض الملفات في المجلد غير مدعومة. يُقبل فقط الصور وملفات PDF",
+        variant: "destructive"
+      });
+    }
+
+    if (type === 'old') {
+      setOldFiles(prev => [...prev, ...validFiles]);
+    } else {
+      setNewFiles(prev => [...prev, ...validFiles]);
+    }
+
+    toast({
+      title: "تم رفع المجلد",
+      description: `تم رفع ${validFiles.length} ملف من المجلد بنجاح`
+    });
   };
 
   const removeFile = (index: number, type: 'old' | 'new') => {
@@ -115,25 +141,48 @@ const UploadSection: React.FC<UploadSectionProps> = ({ onFilesUploaded }) => {
           <p className="text-lg font-medium text-gray-700 mb-2">
             اسحب الملفات هنا أو انقر للتحديد
           </p>
-          <p className="text-sm text-gray-500 mb-4">
+          <p className="text-sm text-gray-500 mb-6">
             PDF, JPG, PNG (حتى 100 ملف)
           </p>
           
-          <input
-            type="file"
-            multiple
-            accept="image/*,.pdf"
-            onChange={(e) => handleFileInput(e, type)}
-            className="hidden"
-            id={`file-input-${type}`}
-          />
-          <Button 
-            variant="outline" 
-            onClick={() => document.getElementById(`file-input-${type}`)?.click()}
-            className="mb-4"
-          >
-            اختر الملفات
-          </Button>
+          {/* أزرار اختيار الملفات والمجلدات */}
+          <div className="flex gap-3 mb-4">
+            <input
+              type="file"
+              multiple
+              accept="image/*,.pdf"
+              onChange={(e) => handleFileInput(e, type)}
+              className="hidden"
+              id={`file-input-${type}`}
+            />
+            <Button 
+              variant="outline" 
+              onClick={() => document.getElementById(`file-input-${type}`)?.click()}
+              className="flex items-center gap-2"
+            >
+              <FileText className="w-4 h-4" />
+              اختر ملفات
+            </Button>
+
+            <input
+              type="file"
+              multiple
+              // @ts-ignore - webkitdirectory is not in standard HTML input types
+              webkitdirectory=""
+              directory=""
+              onChange={(e) => handleFolderInput(e, type)}
+              className="hidden"
+              id={`folder-input-${type}`}
+            />
+            <Button 
+              variant="outline" 
+              onClick={() => document.getElementById(`folder-input-${type}`)?.click()}
+              className="flex items-center gap-2"
+            >
+              <Folder className="w-4 h-4" />
+              اختر مجلد
+            </Button>
+          </div>
 
           {files.length > 0 && (
             <div className="w-full max-h-32 overflow-y-auto">
@@ -215,6 +264,17 @@ const UploadSection: React.FC<UploadSectionProps> = ({ onFilesUploaded }) => {
           </p>
         </div>
       )}
+
+      {/* معلومات اختيار المجلد */}
+      <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+        <div className="flex items-center gap-2 text-blue-700">
+          <Folder className="w-5 h-5" />
+          <span className="font-medium">نصيحة:</span>
+        </div>
+        <p className="text-blue-600 mt-1">
+          يمكنك اختيار مجلد كامل بدلاً من الملفات الفردية. سيتم رفع جميع الصور وملفات PDF الموجودة في المجلد تلقائياً.
+        </p>
+      </div>
 
       <div className="text-center">
         <Button 
