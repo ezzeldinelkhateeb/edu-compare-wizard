@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -8,22 +7,24 @@ import ComparisonDashboard from '@/components/ComparisonDashboard';
 import { useToast } from '@/hooks/use-toast';
 
 const Index = () => {
-  const [currentStep, setCurrentStep] = useState<'upload' | 'processing' | 'results'>('upload');
+  const [currentStep, setCurrentStep] = useState<'upload' | 'results'>('upload');
   const [uploadedFiles, setUploadedFiles] = useState<{old: File[], new: File[]} | null>(null);
   const { toast } = useToast();
 
   const handleFilesUploaded = (files: {old: File[], new: File[]}) => {
-    setUploadedFiles(files);
-    setCurrentStep('processing');
+    console.log('📁 تم رفع الملفات:', {
+      oldFiles: files.old.map(f => f.name),
+      newFiles: files.new.map(f => f.name)
+    });
     
-    // محاكاة المعالجة
-    setTimeout(() => {
-      setCurrentStep('results');
-      toast({
-        title: "تم الانتهاء من المقارنة",
-        description: "تم تحليل الملفات بنجاح وإنشاء التقرير",
-      });
-    }, 3000);
+    setUploadedFiles(files);
+    setCurrentStep('results');
+    
+    toast({
+      title: "تم رفع الملفات",
+      description: "جاري بدء عملية المقارنة والتحليل...",
+      duration: 3000
+    });
   };
 
   const features = [
@@ -171,37 +172,6 @@ const Index = () => {
             </div>
           </section>
         </>
-      )}
-
-      {currentStep === 'processing' && (
-        <section className="container mx-auto px-6 py-16">
-          <div className="max-w-2xl mx-auto text-center">
-            <div className="mb-8">
-              <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
-                <Zap className="w-12 h-12 text-white" />
-              </div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">جاري المعالجة...</h2>
-              <p className="text-lg text-gray-600 mb-8">
-                يتم الآن تحليل الملفات باستخدام خوارزميات الذكاء الاصطناعي المتطورة
-              </p>
-            </div>
-            
-            <div className="space-y-4">
-              <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow">
-                <span className="text-gray-700">استخراج النصوص من الصور</span>
-                <div className="w-6 h-6 border-2 border-green-500 border-t-transparent rounded-full animate-spin"></div>
-              </div>
-              <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow">
-                <span className="text-gray-700">المقارنة البصرية المتقدمة</span>
-                <div className="w-6 h-6 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-              </div>
-              <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow">
-                <span className="text-gray-700">تحليل المحتوى النصي</span>
-                <div className="w-6 h-6 border-2 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
-              </div>
-            </div>
-          </div>
-        </section>
       )}
 
       {currentStep === 'results' && uploadedFiles && (
