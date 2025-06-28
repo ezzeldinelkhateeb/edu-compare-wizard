@@ -9,7 +9,139 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      comparison_sessions: {
+        Row: {
+          created_at: string
+          id: string
+          processed_files: number
+          session_name: string
+          status: string
+          total_files: number
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          processed_files?: number
+          session_name: string
+          status?: string
+          total_files?: number
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          processed_files?: number
+          session_name?: string
+          status?: string
+          total_files?: number
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      exported_reports: {
+        Row: {
+          created_at: string
+          file_path: string | null
+          id: string
+          report_data: Json
+          report_type: string
+          session_id: string
+        }
+        Insert: {
+          created_at?: string
+          file_path?: string | null
+          id?: string
+          report_data: Json
+          report_type: string
+          session_id: string
+        }
+        Update: {
+          created_at?: string
+          file_path?: string | null
+          id?: string
+          report_data?: Json
+          report_type?: string
+          session_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "exported_reports_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "comparison_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      file_comparisons: {
+        Row: {
+          changes_detected: Json | null
+          created_at: string
+          error_message: string | null
+          extracted_text_new: string | null
+          extracted_text_old: string | null
+          id: string
+          new_file_name: string
+          new_file_url: string | null
+          old_file_name: string
+          old_file_url: string | null
+          processing_time: number
+          session_id: string
+          status: string
+          text_similarity: number
+          updated_at: string
+          visual_similarity: number
+        }
+        Insert: {
+          changes_detected?: Json | null
+          created_at?: string
+          error_message?: string | null
+          extracted_text_new?: string | null
+          extracted_text_old?: string | null
+          id?: string
+          new_file_name: string
+          new_file_url?: string | null
+          old_file_name: string
+          old_file_url?: string | null
+          processing_time?: number
+          session_id: string
+          status?: string
+          text_similarity?: number
+          updated_at?: string
+          visual_similarity?: number
+        }
+        Update: {
+          changes_detected?: Json | null
+          created_at?: string
+          error_message?: string | null
+          extracted_text_new?: string | null
+          extracted_text_old?: string | null
+          id?: string
+          new_file_name?: string
+          new_file_url?: string | null
+          old_file_name?: string
+          old_file_url?: string | null
+          processing_time?: number
+          session_id?: string
+          status?: string
+          text_similarity?: number
+          updated_at?: string
+          visual_similarity?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "file_comparisons_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "comparison_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
