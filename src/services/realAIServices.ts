@@ -1,4 +1,3 @@
-
 import { supabase } from '@/integrations/supabase/client';
 
 export interface ProcessingResult {
@@ -192,15 +191,30 @@ class RealAIServices {
 
     if (error) throw error;
 
-    return data.map(item => ({
-      id: item.id,
-      oldFileName: item.old_file_name,
-      newFileName: item.new_file_name,
-      similarity: item.text_similarity,
-      analysis: JSON.parse(item.changes_detected || '{}'),
-      detailedReport: '',
-      status: 'completed'
-    }));
+    return data.map(item => {
+      // Fix the JSON parsing issue by checking the type
+      let changesDetected = {};
+      if (typeof item.changes_detected === 'string') {
+        try {
+          changesDetected = JSON.parse(item.changes_detected);
+        } catch (e) {
+          console.error('Error parsing changes_detected:', e);
+          changesDetected = {};
+        }
+      } else if (item.changes_detected && typeof item.changes_detected === 'object') {
+        changesDetected = item.changes_detected;
+      }
+
+      return {
+        id: item.id,
+        oldFileName: item.old_file_name,
+        newFileName: item.new_file_name,
+        similarity: item.text_similarity,
+        analysis: changesDetected,
+        detailedReport: '',
+        status: 'completed'
+      };
+    });
   }
 
   // تصدير تقرير HTML
