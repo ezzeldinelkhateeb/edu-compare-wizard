@@ -31,6 +31,8 @@ export const useRealComparison = () => {
   const { toast } = useToast();
 
   const startComparison = useCallback(async (oldFiles: File[], newFiles: File[], sessionName: string) => {
+    console.log('بدء عملية المقارنة:', { oldFiles: oldFiles.length, newFiles: newFiles.length, sessionName });
+    
     setState(prev => ({
       ...prev,
       isProcessing: true,
@@ -42,143 +44,188 @@ export const useRealComparison = () => {
     }));
 
     try {
-      // إنشاء جلسة جديدة
-      const sessionId = await realAIServices.createComparisonSession(sessionName);
-      setState(prev => ({ ...prev, sessionId }));
+      // التحقق من وجود الملفات
+      if (oldFiles.length === 0 || newFiles.length === 0) {
+        throw new Error('يجب رفع ملفات من كلا الكتابين');
+      }
 
       toast({
         title: "بدء المعالجة",
-        description: "تم إنشاء جلسة مقارنة جديدة"
+        description: "جاري إنشاء جلسة مقارنة جديدة..."
       });
 
-      // معالجة الملفات
+      // إنشاء جلسة جديدة
+      const sessionId = await realAIServices.createComparisonSession(sessionName);
+      console.log('تم إنشاء الجلسة:', sessionId);
+      
+      setState(prev => ({ ...prev, sessionId, progress: 5 }));
+
+      toast({
+        title: "تم إنشاء الجلسة",
+        description: "بدء معالجة الملفات باستخدام Landing.AI"
+      });
+
+      // معالجة الملفات باستخدام Landing.AI
       const { oldResults, newResults } = await realAIServices.processMultipleFiles(
         oldFiles,
         newFiles,
         sessionId,
         (progress, currentFile, fileType) => {
+          console.log(`التقدم: ${progress}% - ${fileType}: ${currentFile}`);
           setState(prev => ({
             ...prev,
-            progress,
+            progress: Math.min(progress, 70), // حجز 70% لمعالجة الملفات
             currentFile,
             currentFileType: fileType
           }));
         }
       );
 
+      console.log('انتهت معالجة الملفات:', { oldResults: oldResults.length, newResults: newResults.length });
+
       setState(prev => ({
         ...prev,
         oldResults,
         newResults,
-        progress: 75
+        progress: 75,
+        currentFile: '',
+        currentFileType: 'جاري المقارنة باستخدام Gemini AI...'
       }));
 
-      // إجراء المقارنات باستخدام Gemini
-      const comparisons: ComparisonResult[] = [];
-      const maxComparisons = Math.min(oldResults.length, newResults.length);
+      toast({
+        title: "انتهت معالجة الملفات",
+        description: "بدء المقارنة الذكية باستخدام Gemini AI"
+      });
 
-      for (let i = 0; i < maxComparisons; i++) {
-        try {
-          // جلب معرف المقارنة من قاعدة البيانات
-          const comparisonResults = await realAIServices.getComparisonResults(sessionId);
-          if (comparisonResults[i]) {
-            const comparison = await realAIServices.compareTexts(sessionId, comparisonResults[i].id);
-            comparisons.push(comparison);
-          }
-        } catch (error) {
-          console.error(`خطأ في مقارنة الملف ${i + 1}:`, error);
-        }
-      }
+      // إجراء المقارنة باستخدام Gemini
+      const comparisons = await realAIServices.compareTexts(sessionId);
+      console.log('انتهت المقارنة:', comparisons.length);
 
       setState(prev => ({
         ...prev,
         comparisons,
         isProcessing: false,
-        progress: 100
+        progress: 100,
+        currentFile: '',
+        currentFileType: ''
       }));
 
       toast({
-        title: "اكتملت المقارنة",
-        description: `تم مقارنة ${comparisons.length} ملف بنجاح باستخدام الذكاء الاصطناعي`
+        title: "اكتملت المقارنة!",
+        description: `تم تحليل ${comparisons.length} مقارنة بنجاح باستخدام الذكاء الاصطناعي`,
+        duration: 5000
       });
 
     } catch (error) {
+      console.error('خطأ في عملية المقارنة:', error);
+      
+      const errorMessage = error instanceof Error ? error.message : 'خطأ غير معروف في المعالجة';
+      
       setState(prev => ({
         ...prev,
-        error: error instanceof Error ? error.message : 'خطأ غير معروف',
-        isProcessing: false
+        error: errorMessage,
+        isProcessing: false,
+        progress: 0,
+        currentFile: '',
+        currentFileType: ''
       }));
 
       toast({
-        title: "خطأ في المعالجة",
-        description: "حدث خطأ أثناء معالجة الملفات",
-        variant: "destructive"
+        title: "فشل في المعالجة",
+        description: errorMessage,
+        variant: "destructive",
+        duration: 8000
       });
     }
   }, [toast]);
 
   const exportHTMLReport = useCallback(async () => {
-    if (!state.sessionId) return;
+    if (!state.sessionId) {
+      toast({
+        title: "خطأ",
+        description: "لا توجد جلسة نشطة للتصدير",
+        variant: "destructive"
+      });
+      return;
+    }
 
     try {
-      const htmlContent = await realAIServices.exportHTMLReport(state.sessionId);
-      const blob = new Blob([htmlContent], { type: 'text/html' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `تقرير_المقارنة_${new Date().toISOString().split('T')[0]}.html`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+      toast({
+        title: "جاري التصدير...",
+        description: "تحضير تقرير HTML"
+      });
+
+      await realAIServices.exportHTMLReport(state.sessionId);
       
       toast({
-        title: "تم تصدير التقرير",
-        description: "تم تحميل تقرير HTML بنجاح"
+        title: "تم تصدير التقرير بنجاح!",
+        description: "تم تحميل تقرير HTML التفاعلي",
+        duration: 5000
       });
 
     } catch (error) {
+      console.error('فشل في تصدير HTML:', error);
       toast({
-        title: "خطأ في التصدير",
-        description: "فشل في تصدير التقرير",
+        title: "فشل في التصدير",
+        description: error instanceof Error ? error.message : "خطأ في تصدير التقرير",
         variant: "destructive"
       });
     }
   }, [state.sessionId, toast]);
 
   const exportMarkdownReport = useCallback(async () => {
-    if (!state.sessionId) return;
+    if (!state.sessionId) {
+      toast({
+        title: "خطأ",
+        description: "لا توجد جلسة نشطة للتصدير",
+        variant: "destructive"
+      });
+      return;
+    }
 
     try {
-      const mdContent = await realAIServices.exportMarkdownReport(state.sessionId);
-      const blob = new Blob([mdContent], { type: 'text/markdown' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `تقرير_المقارنة_الشامل_${new Date().toISOString().split('T')[0]}.md`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+      toast({
+        title: "جاري التصدير...",
+        description: "تحضير التقرير الشامل"
+      });
+
+      await realAIServices.exportMarkdownReport(state.sessionId);
       
       toast({
-        title: "تم تصدير التقرير الشامل",
-        description: "تم تحميل تقرير Markdown بنجاح"
+        title: "تم تصدير التقرير الشامل!",
+        description: "تم تحميل تقرير Markdown المفصل",
+        duration: 5000
       });
 
     } catch (error) {
+      console.error('فشل في تصدير Markdown:', error);
       toast({
-        title: "خطأ في التصدير",
-        description: "فشل في تصدير التقرير الشامل",
+        title: "فشل في التصدير",
+        description: error instanceof Error ? error.message : "خطأ في تصدير التقرير",
         variant: "destructive"
       });
     }
   }, [state.sessionId, toast]);
 
+  const resetState = useCallback(() => {
+    setState({
+      isProcessing: false,
+      progress: 0,
+      currentFile: '',
+      currentFileType: '',
+      sessionId: null,
+      oldResults: [],
+      newResults: [],
+      comparisons: [],
+      error: null
+    });
+  }, []);
+
   return {
     ...state,
     startComparison,
     exportHTMLReport,
-    exportMarkdownReport
+    exportMarkdownReport,
+    resetState
   };
 };
