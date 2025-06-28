@@ -1,3 +1,4 @@
+
 import { supabase } from '@/integrations/supabase/client';
 
 export interface ProcessingResult {
@@ -192,17 +193,28 @@ class RealAIServices {
     if (error) throw error;
 
     return data.map(item => {
-      // Fix the JSON parsing issue by checking the type
-      let changesDetected = {};
+      // Create default analysis structure
+      const defaultAnalysis = {
+        similarity_percentage: item.text_similarity || 0,
+        content_changes: [],
+        questions_changes: [],
+        examples_changes: [],
+        major_differences: [],
+        summary: '',
+        recommendation: ''
+      };
+
+      // Parse changes_detected safely
+      let parsedAnalysis = defaultAnalysis;
       if (typeof item.changes_detected === 'string') {
         try {
-          changesDetected = JSON.parse(item.changes_detected);
+          const parsed = JSON.parse(item.changes_detected);
+          parsedAnalysis = { ...defaultAnalysis, ...parsed };
         } catch (e) {
           console.error('Error parsing changes_detected:', e);
-          changesDetected = {};
         }
       } else if (item.changes_detected && typeof item.changes_detected === 'object') {
-        changesDetected = item.changes_detected;
+        parsedAnalysis = { ...defaultAnalysis, ...item.changes_detected };
       }
 
       return {
@@ -210,9 +222,9 @@ class RealAIServices {
         oldFileName: item.old_file_name,
         newFileName: item.new_file_name,
         similarity: item.text_similarity,
-        analysis: changesDetected,
+        analysis: parsedAnalysis,
         detailedReport: '',
-        status: 'completed'
+        status: 'completed' as const
       };
     });
   }
