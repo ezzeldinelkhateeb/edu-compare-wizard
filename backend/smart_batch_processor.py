@@ -94,6 +94,14 @@ class SmartBatchProcessor:
         print(f"📊 تحديث الحالة: {message} ({self.progress}%)")
         print(f"📊 تفاصيل التحديث: {json.dumps(status_update, ensure_ascii=False, indent=2)}")
         
+        # طباعة تفاصيل الإحصائيات
+        print(f"📈 الإحصائيات الحالية:")
+        print(f"   - إجمالي الأزواج: {self.stats['total_pairs']}")
+        print(f"   - تطابق بصري عالي: {self.stats['visually_identical']}")
+        print(f"   - تحليل كامل: {self.stats['fully_analyzed']}")
+        print(f"   - فشل: {self.stats['failed']}")
+        print(f"   - النتائج المكتملة: {len(self.results)}")
+        
         # إرسال التحديث للفرونت إند إذا كانت الدالة متوفرة
         if self.status_callback:
             try:

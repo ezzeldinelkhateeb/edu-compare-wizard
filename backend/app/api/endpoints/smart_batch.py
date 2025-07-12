@@ -100,6 +100,12 @@ async def start_batch_process_files(
 ):
     """بدء المعالجة الجماعية الذكية بملفات مرفوعة"""
     
+    print(f"🚀 بدء معالجة ملفات مرفوعة:")
+    print(f"   - ملفات قديمة: {len(old_files)}")
+    print(f"   - ملفات جديدة: {len(new_files)}")
+    print(f"   - عدد المعالجات: {max_workers}")
+    print(f"   - عتبة التشابه: {visual_threshold}")
+    
     # التحقق من وجود ملفات
     if not old_files or not new_files:
         raise HTTPException(
@@ -119,6 +125,11 @@ async def start_batch_process_files(
         os.makedirs(old_dir, exist_ok=True)
         os.makedirs(new_dir, exist_ok=True)
         
+        print(f"📁 إنشاء مجلدات مؤقتة:")
+        print(f"   - المجلد الرئيسي: {temp_dir}")
+        print(f"   - مجلد الملفات القديمة: {old_dir}")
+        print(f"   - مجلد الملفات الجديدة: {new_dir}")
+        
         # حفظ الملفات القديمة
         for i, file in enumerate(old_files):
             if file.filename:
@@ -126,6 +137,7 @@ async def start_batch_process_files(
                 with open(file_path, "wb") as f:
                     content = await file.read()
                     f.write(content)
+                print(f"   💾 حفظ ملف قديم {i+1}: {file.filename} -> {file_path} ({len(content)} bytes)")
         
         # حفظ الملفات الجديدة
         for i, file in enumerate(new_files):
@@ -134,6 +146,7 @@ async def start_batch_process_files(
                 with open(file_path, "wb") as f:
                     content = await file.read()
                     f.write(content)
+                print(f"   💾 حفظ ملف جديد {i+1}: {file.filename} -> {file_path} ({len(content)} bytes)")
         
         # تسجيل الجلسة
         batch_sessions[session_id] = {
@@ -143,6 +156,8 @@ async def start_batch_process_files(
             "created_at": Path(__file__).stat().st_mtime,
             "temp_dir": temp_dir  # لحذفه لاحقاً
         }
+        
+        print(f"📝 تسجيل الجلسة: {session_id}")
         
         # إنشاء طلب معالجة
         request = BatchProcessRequest(
@@ -160,6 +175,8 @@ async def start_batch_process_files(
             temp_dir
         )
         
+        print(f"✅ تم بدء المعالجة في الخلفية للجلسة: {session_id}")
+        
         return BatchProcessResponse(
             session_id=session_id,
             status="تم البدء",
@@ -167,6 +184,7 @@ async def start_batch_process_files(
         )
         
     except Exception as e:
+        print(f"❌ خطأ في معالجة الملفات: {str(e)}")
         # تنظيف المجلد المؤقت في حالة الخطأ
         if 'temp_dir' in locals():
             shutil.rmtree(temp_dir, ignore_errors=True)

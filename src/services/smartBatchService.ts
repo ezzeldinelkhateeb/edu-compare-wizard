@@ -136,16 +136,24 @@ class SmartBatchService {
     } = {}
   ): Promise<SmartBatchResponse> {
     try {
+      console.log('🚀 بدء المعالجة الذكية للملفات:', {
+        oldFilesCount: oldFiles.length,
+        newFilesCount: newFiles.length,
+        options
+      });
+
       // إنشاء FormData لرفع الملفات
       const formData = new FormData();
       
       // إضافة الملفات القديمة
       oldFiles.forEach((file, index) => {
+        console.log(`📁 إضافة ملف قديم ${index + 1}: ${file.name} (${file.size} bytes)`);
         formData.append('old_files', file);
       });
       
       // إضافة الملفات الجديدة
       newFiles.forEach((file, index) => {
+        console.log(`📁 إضافة ملف جديد ${index + 1}: ${file.name} (${file.size} bytes)`);
         formData.append('new_files', file);
       });
       
@@ -153,17 +161,26 @@ class SmartBatchService {
       formData.append('max_workers', (options.max_workers || 4).toString());
       formData.append('visual_threshold', (options.visual_threshold || 0.95).toString());
 
+      console.log('📤 إرسال الطلب للباك إند...');
       const response = await fetch(`${this.baseUrl}/start-batch-process-files`, {
         method: 'POST',
         body: formData,
       });
 
+      console.log('📥 استلام الرد من الباك إند:', {
+        status: response.status,
+        statusText: response.statusText,
+        ok: response.ok
+      });
+
       if (!response.ok) {
         const errorData = await response.json();
+        console.error('❌ خطأ في الباك إند:', errorData);
         throw new Error(`فشل في بدء المعالجة: ${errorData.detail || response.statusText}`);
       }
 
       const result = await response.json();
+      console.log('✅ تم بدء المعالجة بنجاح:', result);
       
       toast.success(`تم بدء المعالجة الذكية للملفات! 🧠`, {
         description: `${oldFiles.length + newFiles.length} ملف - رقم الجلسة: ${result.session_id}`,
@@ -172,6 +189,7 @@ class SmartBatchService {
       return result;
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'خطأ غير معروف';
+      console.error('❌ فشل في بدء المعالجة الذكية:', error);
       toast.error(`فشل في بدء المعالجة الذكية: ${errorMessage}`);
       throw error;
     }
@@ -183,16 +201,35 @@ class SmartBatchService {
    */
   async getBatchStatus(sessionId: string): Promise<SmartBatchResult> {
     try {
+      console.log(`🔍 فحص حالة الجلسة: ${sessionId}`);
+      
       const response = await fetch(`${this.baseUrl}/batch-status/${sessionId}`);
+
+      console.log('📥 استلام حالة الجلسة:', {
+        status: response.status,
+        statusText: response.statusText,
+        ok: response.ok
+      });
 
       if (!response.ok) {
         const errorData = await response.json();
+        console.error('❌ خطأ في فحص الحالة:', errorData);
         throw new Error(`فشل في فحص الحالة: ${errorData.detail || response.statusText}`);
       }
 
-      return await response.json();
+      const result = await response.json();
+      console.log('✅ حالة الجلسة:', {
+        sessionId: result.session_id,
+        status: result.status,
+        message: result.message,
+        stats: result.stats,
+        resultsCount: result.results?.length || 0
+      });
+
+      return result;
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'خطأ غير معروف';
+      console.error('❌ خطأ في فحص الحالة:', error);
       throw new Error(`خطأ في فحص الحالة: ${errorMessage}`);
     }
   }
@@ -282,6 +319,8 @@ class SmartBatchService {
     callback: (result: SmartBatchResult) => void,
     intervalMs: number = 3000
   ): void {
+    console.log(`🚀 بدء مراقبة الحالة للجلسة: ${sessionId} (كل ${intervalMs}ms)`);
+    
     const pollStatus = async () => {
       try {
         const status = await this.getBatchStatus(sessionId);
@@ -292,8 +331,31 @@ class SmartBatchService {
           status: status.status,
           message: status.message,
           stats: status.stats,
-          resultsCount: status.results?.length || 0
+          resultsCount: status.results?.length || 0,
+          timestamp: new Date().toISOString()
         });
+        
+        // طباعة تفاصيل الإحصائيات
+        if (status.stats) {
+          console.log('📈 تفاصيل الإحصائيات:', {
+            total_pairs: status.stats.total_pairs,
+            stage_1_filtered: status.stats.stage_1_filtered,
+            stage_2_processed: status.stats.stage_2_processed,
+            stage_3_analyzed: status.stats.stage_3_analyzed,
+            total_processing_time: status.stats.total_processing_time
+          });
+        }
+        
+        // طباعة آخر النتائج
+        if (status.results && status.results.length > 0) {
+          const lastResult = status.results[status.results.length - 1];
+          console.log('🔄 آخر نتيجة معالجة:', {
+            filename: lastResult.old_file || lastResult.new_file,
+            status: lastResult.status,
+            stage_reached: lastResult.stage_reached,
+            overall_similarity: lastResult.overall_similarity
+          });
+        }
         
         callback(status);
         
