@@ -1,0 +1,232 @@
+{
+  "markdown": "اختر الإجابة الصحيحة من بين الإجابات المعطاة:\n\nإذا كانت النسبة بين نصفي قطري المكبسين في المكبس الهيدروليكي ١/٥ ، فإن النسبة بين الضغط أسفل المكبس الصغير مباشرة إلى الضغط أسفل المكبس الكبير مباشرة عند اتزان المكبسين في مستوى أفقي واحد تساوي ................\n\n(بني ميزان / المنهاج ٣٢)\n\n١/١        ١/٢٥        ٥/١        ١/٥ <!-- text, from page 0 (l=0.077,t=0.071,r=0.933,b=0.259), with ID 7eef2dc1-63df-4285-8019-218beaf3104a -->\n\nالفائدة الآلية للمكبس الهيدروليكي ١٦ <!-- text, from page 0 (l=0.560,t=0.276,r=0.933,b=0.311), with ID 85bd09c8-02e3-44ba-8b94-9b713c4d4599 -->\n\n* يمكن الاستفادة من القوة المؤثرة على البكر الكبير (F) في كثير من الآلات، وتعين الفائدة الآلية (ن) عند استقرار البكرين من العلاقة : <!-- text, from page 0 (l=0.077,t=0.318,r=0.934,b=0.374), with ID 4eb78c20-7b9f-4bc1-8339-682a435102fc -->\n\n$\\eta = \\frac{A}{a} = \\frac{R^2}{r^2} = \\frac{y_1}{y_2}$ <!-- text, from page 0 (l=0.078,t=0.360,r=0.269,b=0.418), with ID c2b84552-9a24-4ea1-9270-fe0504494106 -->\n\nحيث :\n(A) مساحة مقطع المكبس الكبير، (a) مساحة مقطع المكبس الصغير، (R) نصف قطر المكبس الكبير، (r) نصف قطر المكبس الصغير، (y₁) إزاحة المكبس الصغير لأسفل، (y₂) إزاحة المكبس الكبير لأعلى. <!-- text, from page 0 (l=0.143,t=0.428,r=0.920,b=0.515), with ID 564cfd34-54c5-4a44-8e18-378e0f73837d -->\n\n* إذا كان المكبسان في مستوى أفقي أقصى واحد عند الاتزان، تكون : <!-- text, from page 0 (l=0.472,t=0.532,r=0.933,b=0.559), with ID b74f4ac9-756e-47c8-a629-d611209b48e6 -->\n\n$\\eta = \\frac{F}{f}$ <!-- text, from page 0 (l=0.076,t=0.562,r=0.192,b=0.610), with ID 43bd8a90-bdb7-40c5-a20f-dda3099bb96e -->\n\nخط التمثيل البياني للعلاقة بين القوتين F ، f عندما يكون المكبسين في حالة اتزان\nوفي مستوى أفقي واحد. علما بأن تمثيل الكميتين على المحورين بنفس مقياس\nالرسم :\n\n$ \\text{slope} = \\frac{\\Delta F}{\\Delta f} = \\eta $\n\nline graph: A line graph with F on the vertical axis and f on the horizontal axis. The graph shows a straight line with a positive slope, and a segment is marked as ΔF on the vertical and Δf on the horizontal. <!-- text, from page 0 (l=0.088,t=0.636,r=0.909,b=0.767), with ID cf6b66a8-15b1-4100-a2eb-8433563ed673 -->\n\n* التمثيل البياني للعلاقة بين مقدار ازاحة المكبس الكبير $y_2$ لأعلى ومقدار ازاحة المكبس الصغير $y_1$ لأسفل، علماً بأن تمثيل الكميتين على المحورين بنفس مقياس الرسم :\n\n$slope = \\frac{\\Delta y_2}{\\Delta y_1} = \\frac{1}{n}$ <!-- text, from page 0 (l=0.287,t=0.773,r=0.916,b=0.878), with ID 9f4cbf44-cfb7-4fb3-a07c-32647e9438dd -->\n\nSummary : This is a two-dimensional coordinate system diagram showing axes labeled y₁ and y₂, with a single red line segment extending from the origin into the first quadrant.\n\ncoordinate axes diagram:\nTitle & Axes :\n  • No explicit title is shown.\n  • X-axis labeled as y₁, Y-axis labeled as y₂.\n  • Both axes originate from the lower left corner (origin) and extend right (y₁) and up (y₂).\n  • No tick marks or numeric values are present.\n\nGraphical Elements :\n  • A single red line segment starts at the origin and extends diagonally into the first quadrant.\n  • Axes are drawn in blue with arrowheads indicating positive directions.\n\nDesign Encodings :\n  • Axes: blue color, arrowheads.\n  • Line segment: red color, straight, no markers.\n\nAnalysis :\n  • The diagram illustrates a vector or line in the y₁–y₂ plane, emphasizing direction from the origin into the first quadrant. No quantitative data or scale is provided. <!-- figure, from page 0 (l=0.073,t=0.771,r=0.273,b=0.908), with ID 80133d13-d90c-4335-b03e-d6b82dedeca4 -->\n\nالامتحان فيزياء - ٢ ث - ترم ٢ - (١٤ / ٤) <!-- marginalia, from page 0 (l=0.139,t=0.938,r=0.413,b=0.959), with ID 22ea93e1-8957-4681-ad1c-290db6c91c2d -->\n\n$1 \\cdot 0$ <!-- marginalia, from page 0 (l=0.087,t=0.940,r=0.120,b=0.955), with ID 0b29ece4-e5b8-4aa4-8541-90c2e9d895dc -->\n\ncerti\nficati <!-- marginalia, from page 0 (l=0.043,t=0.041,r=0.072,b=0.120), with ID fed8f463-3b37-4255-8a7d-b65f11ac28be -->",
+  "chunks": [
+    {
+      "text": "اختر الإجابة الصحيحة من بين الإجابات المعطاة:\n\nإذا كانت النسبة بين نصفي قطري المكبسين في المكبس الهيدروليكي ١/٥ ، فإن النسبة بين الضغط أسفل المكبس الصغير مباشرة إلى الضغط أسفل المكبس الكبير مباشرة عند اتزان المكبسين في مستوى أفقي واحد تساوي ................\n\n(بني ميزان / المنهاج ٣٢)\n\n١/١        ١/٢٥        ٥/١        ١/٥",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.07680642604827881,
+            "t": 0.07077281177043915,
+            "r": 0.9327023029327393,
+            "b": 0.2594631314277649
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "7eef2dc1-63df-4285-8019-218beaf3104a"
+    },
+    {
+      "text": "الفائدة الآلية للمكبس الهيدروليكي ١٦",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.559578001499176,
+            "t": 0.27558207511901855,
+            "r": 0.9325006604194641,
+            "b": 0.3109310269355774
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "85bd09c8-02e3-44ba-8b94-9b713c4d4599"
+    },
+    {
+      "text": "* يمكن الاستفادة من القوة المؤثرة على البكر الكبير (F) في كثير من الآلات، وتعين الفائدة الآلية (ن) عند استقرار البكرين من العلاقة :",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.07667195796966553,
+            "t": 0.31821683049201965,
+            "r": 0.933794379234314,
+            "b": 0.37393543124198914
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "4eb78c20-7b9f-4bc1-8339-682a435102fc"
+    },
+    {
+      "text": "$\\eta = \\frac{A}{a} = \\frac{R^2}{r^2} = \\frac{y_1}{y_2}$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.07805321365594864,
+            "t": 0.3599641025066376,
+            "r": 0.2691768705844879,
+            "b": 0.4178473651409149
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "c2b84552-9a24-4ea1-9270-fe0504494106"
+    },
+    {
+      "text": "حيث :\n(A) مساحة مقطع المكبس الكبير، (a) مساحة مقطع المكبس الصغير، (R) نصف قطر المكبس الكبير، (r) نصف قطر المكبس الصغير، (y₁) إزاحة المكبس الصغير لأسفل، (y₂) إزاحة المكبس الكبير لأعلى.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.14252811670303345,
+            "t": 0.42777612805366516,
+            "r": 0.9196791052818298,
+            "b": 0.5154610872268677
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "564cfd34-54c5-4a44-8e18-378e0f73837d"
+    },
+    {
+      "text": "* إذا كان المكبسان في مستوى أفقي أقصى واحد عند الاتزان، تكون :",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.47231948375701904,
+            "t": 0.531948447227478,
+            "r": 0.9331979751586914,
+            "b": 0.5592824220657349
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "b74f4ac9-756e-47c8-a629-d611209b48e6"
+    },
+    {
+      "text": "$\\eta = \\frac{F}{f}$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.07620438188314438,
+            "t": 0.5618296265602112,
+            "r": 0.191788911819458,
+            "b": 0.60997074842453
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "43bd8a90-bdb7-40c5-a20f-dda3099bb96e"
+    },
+    {
+      "text": "خط التمثيل البياني للعلاقة بين القوتين F ، f عندما يكون المكبسين في حالة اتزان\nوفي مستوى أفقي واحد. علما بأن تمثيل الكميتين على المحورين بنفس مقياس\nالرسم :\n\n$ \\text{slope} = \\frac{\\Delta F}{\\Delta f} = \\eta $\n\nline graph: A line graph with F on the vertical axis and f on the horizontal axis. The graph shows a straight line with a positive slope, and a segment is marked as ΔF on the vertical and Δf on the horizontal.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.08830955624580383,
+            "t": 0.636104941368103,
+            "r": 0.9089837074279785,
+            "b": 0.7673568725585938
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "cf6b66a8-15b1-4100-a2eb-8433563ed673"
+    },
+    {
+      "text": "* التمثيل البياني للعلاقة بين مقدار ازاحة المكبس الكبير $y_2$ لأعلى ومقدار ازاحة المكبس الصغير $y_1$ لأسفل، علماً بأن تمثيل الكميتين على المحورين بنفس مقياس الرسم :\n\n$slope = \\frac{\\Delta y_2}{\\Delta y_1} = \\frac{1}{n}$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.2873183488845825,
+            "t": 0.7734724283218384,
+            "r": 0.916008472442627,
+            "b": 0.8778373003005981
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "9f4cbf44-cfb7-4fb3-a07c-32647e9438dd"
+    },
+    {
+      "text": "Summary : This is a two-dimensional coordinate system diagram showing axes labeled y₁ and y₂, with a single red line segment extending from the origin into the first quadrant.\n\ncoordinate axes diagram:\nTitle & Axes :\n  • No explicit title is shown.\n  • X-axis labeled as y₁, Y-axis labeled as y₂.\n  • Both axes originate from the lower left corner (origin) and extend right (y₁) and up (y₂).\n  • No tick marks or numeric values are present.\n\nGraphical Elements :\n  • A single red line segment starts at the origin and extends diagonally into the first quadrant.\n  • Axes are drawn in blue with arrowheads indicating positive directions.\n\nDesign Encodings :\n  • Axes: blue color, arrowheads.\n  • Line segment: red color, straight, no markers.\n\nAnalysis :\n  • The diagram illustrates a vector or line in the y₁–y₂ plane, emphasizing direction from the origin into the first quadrant. No quantitative data or scale is provided.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.0728260949254036,
+            "t": 0.7712752819061279,
+            "r": 0.2725697457790375,
+            "b": 0.9075709581375122
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "80133d13-d90c-4335-b03e-d6b82dedeca4"
+    },
+    {
+      "text": "الامتحان فيزياء - ٢ ث - ترم ٢ - (١٤ / ٤)",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.13892827928066254,
+            "t": 0.9382643103599548,
+            "r": 0.41316598653793335,
+            "b": 0.9589424729347229
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "marginalia",
+      "chunk_id": "22ea93e1-8957-4681-ad1c-290db6c91c2d"
+    },
+    {
+      "text": "$1 \\cdot 0$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.0872718021273613,
+            "t": 0.939980685710907,
+            "r": 0.1200174018740654,
+            "b": 0.9551147818565369
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "marginalia",
+      "chunk_id": "0b29ece4-e5b8-4aa4-8541-90c2e9d895dc"
+    },
+    {
+      "text": "certi\nficati",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.04301944747567177,
+            "t": 0.041440147906541824,
+            "r": 0.0719614252448082,
+            "b": 0.11997385323047638
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "marginalia",
+      "chunk_id": "fed8f463-3b37-4255-8a7d-b65f11ac28be"
+    }
+  ],
+  "result_path": null,
+  "image_was_downscaled": true,
+  "processed_image_size": {
+    "width": 710,
+    "height": 1024
+  }
+}

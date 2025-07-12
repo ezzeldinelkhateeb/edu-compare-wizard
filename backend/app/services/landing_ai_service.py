@@ -790,6 +790,17 @@ class LandingAIService:
             logger.info(f"📝 محتوى مستخرج: {markdown_content[:200]}..." if len(markdown_content) > 200 else f"📝 محتوى مستخرج: {markdown_content}")
             logger.info(f"📊 تفاصيل الأجزاء: نص={text_elements}, جداول={table_elements}, صور={image_elements}, عناوين={title_elements}")
             
+            # إضافة console.log للفرونت إند
+            print("🔍 FRONTEND_LOG: LANDINGAI_EXTRACTION_SUCCESS")
+            print("🔍 FRONTEND_LOG: " + json.dumps({
+                "file_name": file_name,
+                "total_chars": total_text_length,
+                "chunks_count": len(serializable_chunks),
+                "confidence": avg_confidence,
+                "content_preview": markdown_content[:500] if len(markdown_content) > 500 else markdown_content
+            }, ensure_ascii=False))
+            print("🔍 FRONTEND_LOG: LANDINGAI_EXTRACTION_END")
+            
             return LandingAIExtractionResult(
                 file_path=file_path,
                 file_name=file_name,
@@ -815,6 +826,15 @@ class LandingAIService:
         except Exception as e:
             processing_time = (datetime.now() - start_time).total_seconds()
             logger.error(f"❌ خطأ في agentic_doc.parse: {e}")
+            
+            # إضافة console.log للفرونت إند في حالة الفشل
+            print("🔍 FRONTEND_LOG: LANDINGAI_EXTRACTION_FAILED")
+            print("🔍 FRONTEND_LOG: " + json.dumps({
+                "file_name": file_name,
+                "error": str(e),
+                "processing_time": processing_time
+            }, ensure_ascii=False))
+            print("🔍 FRONTEND_LOG: LANDINGAI_EXTRACTION_END")
             
             # إنشاء نتيجة فاشلة مع إشارة إلى إمكانية استخدام fallback
             return LandingAIExtractionResult(

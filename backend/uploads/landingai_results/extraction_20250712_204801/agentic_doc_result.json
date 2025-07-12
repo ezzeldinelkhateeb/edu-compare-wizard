@@ -1,0 +1,181 @@
+{
+  "markdown": "Summary : This image displays the Arabic word \"الفصل\" (meaning \"chapter\" or \"section\") written vertically next to a large green number \"3\", indicating \"Chapter 3\".\n\nlogo:\nText & Numerals :\n  • Large green number \"3\" on the left.\n  • Arabic word \"الفصل\" written vertically to the right of the number.\n  • No additional symbols, icons, or decorative elements.\n\nDesign & Placement :\n  • Number \"3\" is in a bold, light green font.\n  • \"الفصل\" is in a thinner, gray font, vertically aligned.\n  • White background, minimalistic style.\n\nAnalysis :\n  • The design clearly marks the beginning of Chapter 3 in a document, using both Arabic text and a prominent numeral for clarity. <!-- figure, from page 0 (l=0.850,t=0.046,r=0.929,b=0.090), with ID 8c920747-05b9-4fae-adb7-822c4eb55b6a -->\n\nاختبر نفسك؟ 18 <!-- text, from page 0 (l=0.329,t=0.092,r=0.661,b=0.141), with ID d04aa146-5343-4c20-b902-ab5d29fcec3e -->\n\nlogo:  \nSummary : This is a rectangular red logo or badge with white Arabic text reading \"مجاب عنها\".\n\nScene Overview : \n  • Main subject: A red, rounded rectangle with white Arabic text.\n  • Text: \"مجاب عنها\" (translates to \"Answered\" or \"Answered for it\" in English).\n  • Background: Slight off-white or light yellow, with the logo slightly tilted.\n\nTechnical Details : \n  • No additional graphic elements, icons, or company names visible.\n  • No scale bar or UI elements present.\n\nSpatial Relationships : \n  • The text is centered within the red rectangle.\n  • The logo is slightly rotated counterclockwise.\n\nAnalysis : \n  • The use of red and white creates a strong visual contrast, drawing attention to the text, likely indicating a status or label (e.g., \"answered\" or \"resolved\"). <!-- figure, from page 0 (l=0.067,t=0.103,r=0.168,b=0.142), with ID 2af734ed-c695-4aa8-968b-e895f97db204 -->\n\nاختر الإجابة الصحيحة من بين البدائل المعطاة :\n\nإذا كانت النسبة بين نصفي قطري المكبسين في المكبس الهيدروليكي  $\\frac{1}{5}$ ، فإن النسبة بين الضغط أسفل المكبس الصغير مباشرة إلى الضغط أسفل المكبس الكبير مباشرة عند اتزان المكبسين في مستوى أفقي واحد تساوي ...............\n\n(بين مزا / المعطى)\n\n$\\frac{1}{1}$      $\\frac{1}{25}$      $\\frac{5}{1}$      $\\frac{1}{5}$ <!-- text, from page 0 (l=0.063,t=0.140,r=0.944,b=0.279), with ID 907ef5a2-ff64-42e6-bf8d-badc34c30fca -->\n\nالفائدة الآلية للمكبس الهيدروليكي ٦ <!-- text, from page 0 (l=0.561,t=0.302,r=0.932,b=0.339), with ID 3bd2ef60-76a0-401a-a250-d6a94b83f5b9 -->\n\n* يمكن الاستفادة من القوة المؤثرة على المكبس الكبير (F) في كثير من الآلات، وتعين الفائدة الآلية (η) عند استقرار المكبسين من العلاقة : <!-- text, from page 0 (l=0.065,t=0.344,r=0.934,b=0.398), with ID ce8cca7c-bf59-49c8-bb3c-46094b4ee49e -->\n\n$\\eta = \\frac{A}{a} = \\frac{R^2}{r^2} = \\frac{y_1}{y_2}$ <!-- text, from page 0 (l=0.069,t=0.383,r=0.261,b=0.440), with ID 28bece95-7252-4ee4-950e-d891dceead93 -->\n\nحيث : (A) مساحة مقطع المكبس الكبير، (a) مساحة مقطع المكبس الصغير، (R) نصف قطر المكبس الكبير، (r) نصف قطر المكبس الصغير، (y₁) إزاحة المكبس الصغير لأسفل، (y₂) إزاحة المكبس الكبير لأعلى.\n\n* إذا كان المكبسان في مستوى أفقي واحد عند الاتزان، تكون : <!-- text, from page 0 (l=0.090,t=0.447,r=0.936,b=0.547), with ID 3b8c8b5e-226e-4297-a005-55abb079e98b -->\n\nSummary : This figure presents two graphical representations related to the relationship between two forces (F and f) and the corresponding displacements (y₂ and y₁) in a system at equilibrium, with mathematical expressions for the slope in each case.\n\nline plots:\n# First Graph : Relationship between Forces F and f\n  • Depicts a line plot with F on the vertical axis and f on the horizontal axis.\n  • The line is straight and positively sloped, indicating a direct proportionality.\n  • The slope is defined as slope = ΔF / Δf = η, where η is a constant.\n\n# Second Graph : Relationship between Displacements y₂ and y₁\n  • Depicts a line plot with y₂ on the vertical axis and y₁ on the horizontal axis.\n  • The line is straight and positively sloped.\n  • The slope is defined as slope = Δy₂ / Δy₁ = 1/η.\n\n# Mathematical Expressions :\n  • η = F / f is shown in a box at the top.\n  • Slope expressions for both graphs are provided, relating the physical quantities to η.\n\n# Design Encodings :\n  • Both graphs use simple line plots with axes labeled generically (F, f, y₂, y₁).\n  • No specific units or tick labels are shown.\n  • The lines are red and straight, indicating linear relationships.\n\n# Analysis :\n  • Both plots illustrate linear relationships: one between two forces, the other between two displacements.\n  • The slopes of the lines are reciprocals in the two cases (η and 1/η), highlighting the inverse relationship between the two representations.\n  • The figure visually and mathematically reinforces the concept of proportionality and the significance of the constant η in these physical relationships. <!-- figure, from page 0 (l=0.060,t=0.550,r=0.934,b=0.881), with ID daaaa354-0ecc-4060-a05a-3b8495a26b95 -->\n\n$6 \\cdot 10$ <!-- marginalia, from page 0 (l=0.870,t=0.935,r=0.927,b=0.964), with ID 13fb6b56-35d2-4abc-bb5f-f7e3f53da905 -->",
+  "chunks": [
+    {
+      "text": "Summary : This image displays the Arabic word \"الفصل\" (meaning \"chapter\" or \"section\") written vertically next to a large green number \"3\", indicating \"Chapter 3\".\n\nlogo:\nText & Numerals :\n  • Large green number \"3\" on the left.\n  • Arabic word \"الفصل\" written vertically to the right of the number.\n  • No additional symbols, icons, or decorative elements.\n\nDesign & Placement :\n  • Number \"3\" is in a bold, light green font.\n  • \"الفصل\" is in a thinner, gray font, vertically aligned.\n  • White background, minimalistic style.\n\nAnalysis :\n  • The design clearly marks the beginning of Chapter 3 in a document, using both Arabic text and a prominent numeral for clarity.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.849736213684082,
+            "t": 0.045819178223609924,
+            "r": 0.9290122985839844,
+            "b": 0.08988207578659058
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "8c920747-05b9-4fae-adb7-822c4eb55b6a"
+    },
+    {
+      "text": "اختبر نفسك؟ 18",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.32925766706466675,
+            "t": 0.09248032420873642,
+            "r": 0.6612550020217896,
+            "b": 0.1408112645149231
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "d04aa146-5343-4c20-b902-ab5d29fcec3e"
+    },
+    {
+      "text": "logo:  \nSummary : This is a rectangular red logo or badge with white Arabic text reading \"مجاب عنها\".\n\nScene Overview : \n  • Main subject: A red, rounded rectangle with white Arabic text.\n  • Text: \"مجاب عنها\" (translates to \"Answered\" or \"Answered for it\" in English).\n  • Background: Slight off-white or light yellow, with the logo slightly tilted.\n\nTechnical Details : \n  • No additional graphic elements, icons, or company names visible.\n  • No scale bar or UI elements present.\n\nSpatial Relationships : \n  • The text is centered within the red rectangle.\n  • The logo is slightly rotated counterclockwise.\n\nAnalysis : \n  • The use of red and white creates a strong visual contrast, drawing attention to the text, likely indicating a status or label (e.g., \"answered\" or \"resolved\").",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.06652150303125381,
+            "t": 0.10289113223552704,
+            "r": 0.16789114475250244,
+            "b": 0.1420460045337677
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "2af734ed-c695-4aa8-968b-e895f97db204"
+    },
+    {
+      "text": "اختر الإجابة الصحيحة من بين البدائل المعطاة :\n\nإذا كانت النسبة بين نصفي قطري المكبسين في المكبس الهيدروليكي  $\\frac{1}{5}$ ، فإن النسبة بين الضغط أسفل المكبس الصغير مباشرة إلى الضغط أسفل المكبس الكبير مباشرة عند اتزان المكبسين في مستوى أفقي واحد تساوي ...............\n\n(بين مزا / المعطى)\n\n$\\frac{1}{1}$      $\\frac{1}{25}$      $\\frac{5}{1}$      $\\frac{1}{5}$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.06267639994621277,
+            "t": 0.1400061696767807,
+            "r": 0.9438618421554565,
+            "b": 0.27899855375289917
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "907ef5a2-ff64-42e6-bf8d-badc34c30fca"
+    },
+    {
+      "text": "الفائدة الآلية للمكبس الهيدروليكي ٦",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.5605813264846802,
+            "t": 0.30164217948913574,
+            "r": 0.9322395324707031,
+            "b": 0.3389131426811218
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "3bd2ef60-76a0-401a-a250-d6a94b83f5b9"
+    },
+    {
+      "text": "* يمكن الاستفادة من القوة المؤثرة على المكبس الكبير (F) في كثير من الآلات، وتعين الفائدة الآلية (η) عند استقرار المكبسين من العلاقة :",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.06536859273910522,
+            "t": 0.3439389169216156,
+            "r": 0.9338740706443787,
+            "b": 0.39818432927131653
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "ce8cca7c-bf59-49c8-bb3c-46094b4ee49e"
+    },
+    {
+      "text": "$\\eta = \\frac{A}{a} = \\frac{R^2}{r^2} = \\frac{y_1}{y_2}$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.0694318562746048,
+            "t": 0.3825998902320862,
+            "r": 0.2611704468727112,
+            "b": 0.4403459429740906
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "28bece95-7252-4ee4-950e-d891dceead93"
+    },
+    {
+      "text": "حيث : (A) مساحة مقطع المكبس الكبير، (a) مساحة مقطع المكبس الصغير، (R) نصف قطر المكبس الكبير، (r) نصف قطر المكبس الصغير، (y₁) إزاحة المكبس الصغير لأسفل، (y₂) إزاحة المكبس الكبير لأعلى.\n\n* إذا كان المكبسان في مستوى أفقي واحد عند الاتزان، تكون :",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.08990433812141418,
+            "t": 0.4472880959510803,
+            "r": 0.935741662979126,
+            "b": 0.5472360253334045
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "3b8c8b5e-226e-4297-a005-55abb079e98b"
+    },
+    {
+      "text": "Summary : This figure presents two graphical representations related to the relationship between two forces (F and f) and the corresponding displacements (y₂ and y₁) in a system at equilibrium, with mathematical expressions for the slope in each case.\n\nline plots:\n# First Graph : Relationship between Forces F and f\n  • Depicts a line plot with F on the vertical axis and f on the horizontal axis.\n  • The line is straight and positively sloped, indicating a direct proportionality.\n  • The slope is defined as slope = ΔF / Δf = η, where η is a constant.\n\n# Second Graph : Relationship between Displacements y₂ and y₁\n  • Depicts a line plot with y₂ on the vertical axis and y₁ on the horizontal axis.\n  • The line is straight and positively sloped.\n  • The slope is defined as slope = Δy₂ / Δy₁ = 1/η.\n\n# Mathematical Expressions :\n  • η = F / f is shown in a box at the top.\n  • Slope expressions for both graphs are provided, relating the physical quantities to η.\n\n# Design Encodings :\n  • Both graphs use simple line plots with axes labeled generically (F, f, y₂, y₁).\n  • No specific units or tick labels are shown.\n  • The lines are red and straight, indicating linear relationships.\n\n# Analysis :\n  • Both plots illustrate linear relationships: one between two forces, the other between two displacements.\n  • The slopes of the lines are reciprocals in the two cases (η and 1/η), highlighting the inverse relationship between the two representations.\n  • The figure visually and mathematically reinforces the concept of proportionality and the significance of the constant η in these physical relationships.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.05973106622695923,
+            "t": 0.5504990220069885,
+            "r": 0.9340279698371887,
+            "b": 0.8810408711433411
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "daaaa354-0ecc-4060-a05a-3b8495a26b95"
+    },
+    {
+      "text": "$6 \\cdot 10$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.8702477812767029,
+            "t": 0.9347381591796875,
+            "r": 0.9268046021461487,
+            "b": 0.9635438919067383
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "marginalia",
+      "chunk_id": "13fb6b56-35d2-4abc-bb5f-f7e3f53da905"
+    }
+  ],
+  "result_path": null,
+  "image_was_downscaled": true,
+  "processed_image_size": {
+    "width": 710,
+    "height": 1024
+  }
+}

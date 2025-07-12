@@ -56,42 +56,57 @@ class TextOptimizer:
     def optimize_for_ai_analysis(self, text: str, max_tokens: int = 1000) -> Dict[str, Any]:
         """تحسين النص للتحليل بالذكاء الاصطناعي"""
         
-        if not text or not text.strip():
+        try:
+            if not text or not isinstance(text, str) or not text.strip():
+                logger.warning("⚠️ نص فارغ أو غير صالح للتحسين")
+                return {
+                    "optimized_text": "",
+                    "original_length": 0,
+                    "optimized_length": 0,
+                    "reduction_percentage": 0,
+                    "extracted_elements": {}
+                }
+            
+            original_length = len(text)
+            logger.info(f"🔧 بدء تحسين النص: {original_length} حرف")
+            
+            # الخطوة 1: تنظيف أولي
+            cleaned_text = self._remove_noise(text)
+            
+            # الخطوة 2: استخراج العناصر المهمة
+            extracted_elements = self._extract_educational_elements(cleaned_text)
+            
+            # الخطوة 3: بناء النص المحسن
+            optimized_text = self._build_optimized_text(extracted_elements, max_tokens)
+            
+            if optimized_text is None:
+                optimized_text = ""
+            
+            optimized_length = len(optimized_text)
+            reduction_percentage = ((original_length - optimized_length) / original_length * 100) if original_length > 0 else 0
+            
+            logger.info(f"✅ تم التحسين: {original_length} -> {optimized_length} حرف ({reduction_percentage:.1f}% تقليل)")
+            
             return {
-                "optimized_text": "",
-                "original_length": 0,
-                "optimized_length": 0,
-                "reduction_percentage": 0,
-                "extracted_elements": {}
+                "optimized_text": optimized_text,
+                "original_length": original_length,
+                "optimized_length": optimized_length,
+                "reduction_percentage": round(reduction_percentage, 1),
+                "extracted_elements": extracted_elements
             }
-        
-        original_length = len(text)
-        logger.info(f"🔧 بدء تحسين النص: {original_length} حرف")
-        
-        # الخطوة 1: تنظيف أولي
-        cleaned_text = self._remove_noise(text)
-        
-        # الخطوة 2: استخراج العناصر المهمة
-        extracted_elements = self._extract_educational_elements(cleaned_text)
-        
-        # الخطوة 3: بناء النص المحسن
-        optimized_text = self._build_optimized_text(extracted_elements, max_tokens)
-        
-        if optimized_text is None:
-            optimized_text = ""
-        
-        optimized_length = len(optimized_text)
-        reduction_percentage = ((original_length - optimized_length) / original_length * 100) if original_length > 0 else 0
-        
-        logger.info(f"✅ تم التحسين: {original_length} -> {optimized_length} حرف ({reduction_percentage:.1f}% تقليل)")
-        
-        return {
-            "optimized_text": optimized_text,
-            "original_length": original_length,
-            "optimized_length": optimized_length,
-            "reduction_percentage": round(reduction_percentage, 1),
-            "extracted_elements": extracted_elements
-        }
+            
+        except Exception as e:
+            logger.error(f"❌ خطأ في تحسين النص: {e}")
+            # إرجاع النص الأصلي في حالة الخطأ
+            original_length = len(text) if text else 0
+            return {
+                "optimized_text": text if text else "",
+                "original_length": original_length,
+                "optimized_length": original_length,
+                "reduction_percentage": 0,
+                "extracted_elements": {},
+                "error": str(e)
+            }
     
     def _remove_noise(self, text: str) -> str:
         """إزالة النصوص غير المفيدة"""
@@ -200,56 +215,67 @@ class TextOptimizer:
     def _build_optimized_text(self, elements: Dict[str, List[str]], max_tokens: int) -> str:
         """بناء النص المحسن بترتيب الأولوية"""
         
-        # ترتيب الأولوية
-        priority_order = [
-            "laws_and_principles",
-            "definitions", 
-            "explanations",
-            "examples",
-            "applications",
-            "questions",
-            "notes",
-            "other_important"
-        ]
-        
-        optimized_parts = []
-        current_length = 0
-        max_chars = max_tokens * 4  # تقدير تقريبي: 1 توكن = 4 أحرف عربية
-        
-        for category in priority_order:
-            if category not in elements:
-                continue
+        try:
+            # ترتيب الأولوية
+            priority_order = [
+                "laws_and_principles",
+                "definitions", 
+                "explanations",
+                "examples",
+                "applications",
+                "questions",
+                "notes",
+                "other_important"
+            ]
             
-            category_items = elements[category]
-            if not category_items:
-                continue
+            optimized_parts = []
+            current_length = 0
+            max_chars = max_tokens * 4  # تقدير تقريبي: 1 توكن = 4 أحرف عربية
             
-            # إضافة عنوان القسم إذا لزم الأمر
-            section_header = self._get_section_header(category)
-            if section_header is None:
-                section_header = ""
-            
-            for item in category_items:
-                if item is None or not item:
+            for category in priority_order:
+                if category not in elements:
                     continue
-                estimated_addition = len(item) + len(section_header) + 10  # هامش أمان
                 
-                if current_length + estimated_addition > max_chars:
+                category_items = elements[category]
+                if not category_items or not isinstance(category_items, list):
+                    continue
+                
+                # إضافة عنوان القسم إذا لزم الأمر
+                section_header = self._get_section_header(category)
+                if section_header is None:
+                    section_header = ""
+                
+                for item in category_items:
+                    # فحص شامل للعنصر
+                    if item is None or not isinstance(item, str) or not item.strip():
+                        continue
+                    
+                    item = item.strip()
+                    if not item:
+                        continue
+                    
+                    estimated_addition = len(item) + len(section_header) + 10  # هامش أمان
+                    
+                    if current_length + estimated_addition > max_chars:
+                        break
+                    
+                    if section_header and section_header not in optimized_parts:
+                        optimized_parts.append(section_header)
+                        current_length += len(section_header)
+                        section_header = None  # لا نكررها
+                    
+                    optimized_parts.append(item)
+                    current_length += len(item)
+                
+                if current_length >= max_chars:
                     break
-                
-                if section_header and section_header not in optimized_parts:
-                    optimized_parts.append(section_header)
-                    current_length += len(section_header)
-                    section_header = None  # لا نكررها
-                
-                optimized_parts.append(item)
-                current_length += len(item)
             
-            if current_length >= max_chars:
-                break
-        
-        result = '\n'.join(optimized_parts)
-        return result if result else "لا توجد محتويات مهمة"
+            result = '\n'.join(optimized_parts)
+            return result if result else "لا توجد محتويات مهمة"
+            
+        except Exception as e:
+            logger.error(f"❌ خطأ في بناء النص المحسن: {e}")
+            return "خطأ في تحسين النص"
     
     def _get_section_header(self, category: str) -> str:
         """الحصول على عنوان القسم"""

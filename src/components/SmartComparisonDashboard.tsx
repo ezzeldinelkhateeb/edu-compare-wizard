@@ -57,6 +57,11 @@ interface SmartComparisonDashboardProps {
 }
 
 const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ files, onBack }) => {
+  console.log('🚀 SmartComparisonDashboard تم تحميله:', { 
+    files: files ? `${files.old.length} + ${files.new.length} ملفات` : 'لا توجد ملفات',
+    timestamp: new Date().toISOString()
+  });
+  
   // حالة النظام
   const [isProcessing, setIsProcessing] = useState(false);
   const [currentSession, setCurrentSession] = useState<string | null>(null);
@@ -221,12 +226,18 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
   // بدء المعالجة الذكية
   const handleStartProcessing = async () => {
     try {
+      console.log('🚀 بدء المعالجة الذكية...');
       setIsProcessing(true);
       
       let sessionId: string;
       
       // إذا تم تمرير ملفات من واجهة الرفع، استخدمها
       if (files && files.old.length > 0 && files.new.length > 0) {
+        console.log('📁 استخدام الملفات المرفوعة:', {
+          oldFiles: files.old.map(f => f.name),
+          newFiles: files.new.map(f => f.name)
+        });
+        
         // استخدام الملفات المرفوعة مباشرة
         const response = await smartBatchService.startBatchProcessWithFiles(files.old, files.new, {
           max_workers: maxWorkers,
@@ -234,6 +245,11 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
         });
         sessionId = response.session_id;
         setCurrentSession(sessionId);
+        
+        console.log('✅ تم بدء المعالجة بنجاح:', {
+          sessionId: response.session_id,
+          response
+        });
         
         toast.success(`تم بدء معالجة ${files.old.length + files.new.length} ملف بالنظام الذكي! 🚀`);
       } else {
@@ -251,12 +267,15 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
       }
       
       // بدء مراقبة التقدم
+      console.log('🔍 بدء مراقبة التقدم للجلسة:', sessionId);
+      
       smartBatchService.startStatusPolling(sessionId, (result) => {
         console.log('🔄 تحديث النتائج في SmartComparisonDashboard:', {
           status: result.status,
           message: result.message,
           stats: result.stats,
-          resultsCount: result.results?.length || 0
+          resultsCount: result.results?.length || 0,
+          timestamp: new Date().toISOString()
         });
         
         setResults(result);
@@ -264,14 +283,18 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
         if (result.status === 'مكتمل' || result.status === 'فشل') {
           setIsProcessing(false);
           if (result.status === 'مكتمل') {
+            console.log('✅ اكتملت المعالجة بنجاح!');
             toast.success('اكتملت المعالجة الذكية بنجاح! 🎉');
+          } else {
+            console.log('❌ فشلت المعالجة');
+            toast.error('فشلت المعالجة الذكية');
           }
         }
       });
       
     } catch (error) {
       setIsProcessing(false);
-      console.error('فشل في بدء المعالجة:', error);
+      console.error('❌ فشل في بدء المعالجة:', error);
       toast.error(`فشل في بدء المعالجة: ${error}`);
     }
   };
@@ -287,11 +310,24 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
 
   // إعادة تشغيل
   const handleRestart = () => {
+    // إيقاف المراقبة الحالية قبل إعادة التشغيل
+    if (currentSession) {
+      smartBatchService.stopStatusPolling(currentSession);
+    }
     setResults(null);
     setCurrentSession(null);
     setIsProcessing(false);
     setSelectedFile(null);
   };
+
+  // تنظيف الموارد عند إزالة المكون
+  useEffect(() => {
+    return () => {
+      if (currentSession) {
+        smartBatchService.stopStatusPolling(currentSession);
+      }
+    };
+  }, [currentSession]);
 
   // رندر مرحلة المعالجة
   const renderProcessingStage = () => (

@@ -136,16 +136,24 @@ class SmartBatchService {
     } = {}
   ): Promise<SmartBatchResponse> {
     try {
+      console.log('🚀 بدء المعالجة الذكية للملفات:', {
+        oldFilesCount: oldFiles.length,
+        newFilesCount: newFiles.length,
+        options
+      });
+
       // إنشاء FormData لرفع الملفات
       const formData = new FormData();
       
       // إضافة الملفات القديمة
       oldFiles.forEach((file, index) => {
+        console.log(`📁 إضافة ملف قديم ${index + 1}: ${file.name} (${file.size} bytes)`);
         formData.append('old_files', file);
       });
       
       // إضافة الملفات الجديدة
       newFiles.forEach((file, index) => {
+        console.log(`📁 إضافة ملف جديد ${index + 1}: ${file.name} (${file.size} bytes)`);
         formData.append('new_files', file);
       });
       
@@ -153,17 +161,26 @@ class SmartBatchService {
       formData.append('max_workers', (options.max_workers || 4).toString());
       formData.append('visual_threshold', (options.visual_threshold || 0.95).toString());
 
+      console.log('📤 إرسال الطلب للباك إند...');
       const response = await fetch(`${this.baseUrl}/start-batch-process-files`, {
         method: 'POST',
         body: formData,
       });
 
+      console.log('📥 استلام الرد من الباك إند:', {
+        status: response.status,
+        statusText: response.statusText,
+        ok: response.ok
+      });
+
       if (!response.ok) {
         const errorData = await response.json();
+        console.error('❌ خطأ في الباك إند:', errorData);
         throw new Error(`فشل في بدء المعالجة: ${errorData.detail || response.statusText}`);
       }
 
       const result = await response.json();
+      console.log('✅ تم بدء المعالجة بنجاح:', result);
       
       toast.success(`تم بدء المعالجة الذكية للملفات! 🧠`, {
         description: `${oldFiles.length + newFiles.length} ملف - رقم الجلسة: ${result.session_id}`,
@@ -172,6 +189,7 @@ class SmartBatchService {
       return result;
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'خطأ غير معروف';
+      console.error('❌ فشل في بدء المعالجة الذكية:', error);
       toast.error(`فشل في بدء المعالجة الذكية: ${errorMessage}`);
       throw error;
     }
@@ -183,16 +201,35 @@ class SmartBatchService {
    */
   async getBatchStatus(sessionId: string): Promise<SmartBatchResult> {
     try {
+      console.log(`🔍 فحص حالة الجلسة: ${sessionId}`);
+      
       const response = await fetch(`${this.baseUrl}/batch-status/${sessionId}`);
+
+      console.log('📥 استلام حالة الجلسة:', {
+        status: response.status,
+        statusText: response.statusText,
+        ok: response.ok
+      });
 
       if (!response.ok) {
         const errorData = await response.json();
+        console.error('❌ خطأ في فحص الحالة:', errorData);
         throw new Error(`فشل في فحص الحالة: ${errorData.detail || response.statusText}`);
       }
 
-      return await response.json();
+      const result = await response.json();
+      console.log('✅ حالة الجلسة:', {
+        sessionId: result.session_id,
+        status: result.status,
+        message: result.message,
+        stats: result.stats,
+        resultsCount: result.results?.length || 0
+      });
+
+      return result;
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'خطأ غير معروف';
+      console.error('❌ خطأ في فحص الحالة:', error);
       throw new Error(`خطأ في فحص الحالة: ${errorMessage}`);
     }
   }
@@ -282,18 +319,115 @@ class SmartBatchService {
     callback: (result: SmartBatchResult) => void,
     intervalMs: number = 3000
   ): void {
+    // منع تكرار المراقبة لنفس الجلسة
+    if (this.pollingIntervals.has(sessionId)) {
+      console.log(`⚠️ مراقبة الحالة تعمل بالفعل للجلسة: ${sessionId}`);
+      return;
+    }
+
+    console.log(`🚀 بدء مراقبة الحالة للجلسة: ${sessionId} (كل ${intervalMs}ms)`);
+    
+    let consecutiveErrors = 0;
+    const maxConsecutiveErrors = 3;
+    
     const pollStatus = async () => {
       try {
         const status = await this.getBatchStatus(sessionId);
         
-        // إضافة console.log لتتبع التحديثات
+        // إعادة تعيين عداد الأخطاء عند النجاح
+        consecutiveErrors = 0;
+        
         console.log('📊 تحديث حالة المعالجة:', {
           sessionId,
           status: status.status,
           message: status.message,
           stats: status.stats,
-          resultsCount: status.results?.length || 0
+          resultsCount: status.results?.length || 0,
+          timestamp: new Date().toISOString()
         });
+        
+        // طباعة تفاصيل الإحصائيات
+        if (status.stats) {
+          console.log('📈 تفاصيل الإحصائيات:', {
+            total_pairs: status.stats.total_pairs,
+            stage_1_filtered: status.stats.stage_1_filtered,
+            stage_2_processed: status.stats.stage_2_processed,
+            stage_3_analyzed: status.stats.stage_3_analyzed,
+            total_processing_time: status.stats.total_processing_time
+          });
+        }
+        
+        // طباعة آخر النتائج
+        if (status.results && status.results.length > 0) {
+          const lastResult = status.results[status.results.length - 1];
+          console.log('🔄 آخر نتيجة معالجة:', {
+            filename: lastResult.old_file || lastResult.new_file,
+            status: lastResult.status,
+            stage_reached: lastResult.stage_reached,
+            overall_similarity: lastResult.overall_similarity
+          });
+        }
+        
+        // مراقبة اللوجات الخاصة من الباك إند
+        if (status.message && status.message.includes('FRONTEND_LOG:')) {
+          console.log('🔍 لوج من الباك إند:', status.message);
+          
+          // تحليل اللوجات الخاصة
+          if (status.message.includes('GEMINI_PROMPT_START')) {
+            console.log('📝 بدء نص البرومبت المرسل لـ Gemini...');
+          } else if (status.message.includes('GEMINI_PROMPT_END')) {
+            console.log('📝 انتهاء نص البرومبت المرسل لـ Gemini');
+          } else if (status.message.includes('GEMINI_RESPONSE_START')) {
+            console.log('🤖 بدء رد Gemini...');
+          } else if (status.message.includes('GEMINI_RESPONSE_END')) {
+            console.log('🤖 انتهاء رد Gemini');
+          } else if (status.message.includes('LANDINGAI_OLD_EXTRACTION_START')) {
+            console.log('📄 بدء استخراج النص من الصورة القديمة...');
+          } else if (status.message.includes('LANDINGAI_OLD_EXTRACTION_END')) {
+            console.log('📄 انتهاء استخراج النص من الصورة القديمة');
+          } else if (status.message.includes('LANDINGAI_NEW_EXTRACTION_START')) {
+            console.log('📄 بدء استخراج النص من الصورة الجديدة...');
+          } else if (status.message.includes('LANDINGAI_NEW_EXTRACTION_END')) {
+            console.log('📄 انتهاء استخراج النص من الصورة الجديدة');
+          } else if (status.message.includes('LANDINGAI_EXTRACTION_SUCCESS')) {
+            console.log('✅ نجح استخراج النص من LandingAI');
+          } else if (status.message.includes('LANDINGAI_EXTRACTION_FAILED')) {
+            console.log('❌ فشل استخراج النص من LandingAI');
+          } else if (status.message.includes('GEMINI_ERROR_START')) {
+            console.log('❌ خطأ في Gemini AI');
+          } else if (status.message.includes('GEMINI_ERROR_END')) {
+            console.log('❌ انتهاء خطأ Gemini AI');
+          } else if (status.message.includes('GEMINI_PROMPT_CREATED_START')) {
+            console.log('📝 تم إنشاء البرومبت لـ Gemini...');
+          } else if (status.message.includes('GEMINI_PROMPT_CREATED_END')) {
+            console.log('📝 انتهاء إنشاء البرومبت لـ Gemini');
+          } else if (status.message.includes('GEMINI_RESPONSE_RAW_START')) {
+            console.log('🤖 بدء الرد الخام من Gemini...');
+          } else if (status.message.includes('GEMINI_RESPONSE_RAW_END')) {
+            console.log('🤖 انتهاء الرد الخام من Gemini');
+          }
+        }
+        
+        // عرض النصوص المستخرجة والردود بشكل أوضح
+        if (status.message && status.message.includes('FRONTEND_LOG:') && status.message.includes('GEMINI_PROMPT_START')) {
+          const promptText = status.message.replace('🔍 FRONTEND_LOG: GEMINI_PROMPT_START', '').replace('🔍 FRONTEND_LOG: GEMINI_PROMPT_END', '');
+          console.log('📝 البرومبت المرسل لـ Gemini:', promptText);
+        }
+        
+        if (status.message && status.message.includes('FRONTEND_LOG:') && status.message.includes('GEMINI_RESPONSE_START')) {
+          const responseText = status.message.replace('🔍 FRONTEND_LOG: GEMINI_RESPONSE_START', '').replace('🔍 FRONTEND_LOG: GEMINI_RESPONSE_END', '');
+          console.log('🤖 رد Gemini:', responseText);
+        }
+        
+        if (status.message && status.message.includes('FRONTEND_LOG:') && status.message.includes('LANDINGAI_OLD_EXTRACTION_START')) {
+          const oldText = status.message.replace('🔍 FRONTEND_LOG: LANDINGAI_OLD_EXTRACTION_START', '').replace('🔍 FRONTEND_LOG: LANDINGAI_OLD_EXTRACTION_END', '');
+          console.log('📄 النص المستخرج من الصورة القديمة:', oldText);
+        }
+        
+        if (status.message && status.message.includes('FRONTEND_LOG:') && status.message.includes('LANDINGAI_NEW_EXTRACTION_START')) {
+          const newText = status.message.replace('🔍 FRONTEND_LOG: LANDINGAI_NEW_EXTRACTION_START', '').replace('🔍 FRONTEND_LOG: LANDINGAI_NEW_EXTRACTION_END', '');
+          console.log('📄 النص المستخرج من الصورة الجديدة:', newText);
+        }
         
         callback(status);
         
@@ -303,16 +437,27 @@ class SmartBatchService {
           this.stopStatusPolling(sessionId);
         }
       } catch (error) {
-        console.error('❌ خطأ في مراقبة الحالة:', error);
-        // لا نوقف المراقبة في حالة خطأ مؤقت
+        consecutiveErrors++;
+        console.error(`❌ خطأ في مراقبة الحالة (${consecutiveErrors}/${maxConsecutiveErrors}):`, error);
+        
+        // إيقاف المراقبة في حالة أخطاء متكررة
+        if (consecutiveErrors >= maxConsecutiveErrors) {
+          console.log('🛑 عدد كبير من الأخطاء المتتالية، إيقاف المراقبة');
+          this.stopStatusPolling(sessionId);
+          return;
+        }
+        
+        // إيقاف المراقبة في حالة خطأ متكرر
+        if (error instanceof Error && error.message.includes('Failed to fetch')) {
+          console.log('🔄 محاولة إعادة الاتصال...');
+          // لا نوقف المراقبة فوراً، نعطي فرصة للاتصال
+        }
       }
     };
 
     // بدء المراقبة
     const interval = setInterval(pollStatus, intervalMs);
     this.pollingIntervals.set(sessionId, interval);
-    
-    console.log(`🚀 بدء مراقبة الحالة للجلسة: ${sessionId} (كل ${intervalMs}ms)`);
     
     // تشغيل فوري
     pollStatus();
@@ -327,6 +472,7 @@ class SmartBatchService {
     if (interval) {
       clearInterval(interval);
       this.pollingIntervals.delete(sessionId);
+      console.log(`🛑 تم إيقاف مراقبة الحالة للجلسة: ${sessionId}`);
     }
   }
 

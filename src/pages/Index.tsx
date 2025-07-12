@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Upload, FileText, BarChart3, Download, BookOpen, Zap, Shield, Globe, Brain, Rocket } from 'lucide-react';
 import UploadSection from '@/components/UploadSection';
 import SmartComparisonDashboard from '@/components/SmartComparisonDashboard';
+import GeminiConnectionTest from '@/components/GeminiConnectionTest';
 import { useToast } from '@/hooks/use-toast';
 
 const Index = () => {
@@ -158,6 +159,24 @@ const Index = () => {
                     </CardContent>
                   </Card>
                 ))}
+              </div>
+            </div>
+          </section>
+
+          {/* قسم اختبار الاتصال */}
+          <section className="bg-gradient-to-br from-green-50 to-blue-50 py-16">
+            <div className="container mx-auto px-6">
+              <div className="text-center mb-12">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  اختبار الاتصال
+                </h3>
+                <p className="text-gray-600 max-w-2xl mx-auto">
+                  تحقق من حالة الاتصال بالخادم وخدمات الذكاء الاصطناعي
+                </p>
+              </div>
+              
+              <div className="flex justify-center">
+                <GeminiConnectionTest />
               </div>
             </div>
           </section>

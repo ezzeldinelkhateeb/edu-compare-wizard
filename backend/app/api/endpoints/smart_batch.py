@@ -13,6 +13,7 @@ from pydantic import BaseModel
 import uuid
 import tempfile
 import shutil
+import time
 
 # Import the smart processor
 import sys
@@ -45,6 +46,24 @@ class BatchProcessResult(BaseModel):
 
 # تخزين النتائج في الذاكرة (يمكن تحسينه بقاعدة بيانات)
 batch_sessions = {}
+
+def cleanup_old_sessions():
+    """تنظيف الجلسات القديمة (أكثر من ساعة)"""
+    current_time = time.time()
+    sessions_to_remove = []
+    
+    for session_id, data in batch_sessions.items():
+        created_at = data.get("created_at", 0)
+        # حذف الجلسات الأقدم من ساعة واحدة
+        if current_time - created_at > 3600:  # 3600 ثانية = ساعة واحدة
+            sessions_to_remove.append(session_id)
+    
+    for session_id in sessions_to_remove:
+        del batch_sessions[session_id]
+        print(f"🧹 تم حذف الجلسة القديمة: {session_id}")
+    
+    if sessions_to_remove:
+        print(f"🧹 تم تنظيف {len(sessions_to_remove)} جلسة قديمة")
 
 @router.post("/start-batch-process", response_model=BatchProcessResponse)
 async def start_batch_process(
@@ -100,6 +119,12 @@ async def start_batch_process_files(
 ):
     """بدء المعالجة الجماعية الذكية بملفات مرفوعة"""
     
+    print(f"🚀 بدء معالجة ملفات مرفوعة:")
+    print(f"   - ملفات قديمة: {len(old_files)}")
+    print(f"   - ملفات جديدة: {len(new_files)}")
+    print(f"   - عدد المعالجات: {max_workers}")
+    print(f"   - عتبة التشابه: {visual_threshold}")
+    
     # التحقق من وجود ملفات
     if not old_files or not new_files:
         raise HTTPException(
@@ -119,6 +144,11 @@ async def start_batch_process_files(
         os.makedirs(old_dir, exist_ok=True)
         os.makedirs(new_dir, exist_ok=True)
         
+        print(f"📁 إنشاء مجلدات مؤقتة:")
+        print(f"   - المجلد الرئيسي: {temp_dir}")
+        print(f"   - مجلد الملفات القديمة: {old_dir}")
+        print(f"   - مجلد الملفات الجديدة: {new_dir}")
+        
         # حفظ الملفات القديمة
         for i, file in enumerate(old_files):
             if file.filename:
@@ -126,6 +156,7 @@ async def start_batch_process_files(
                 with open(file_path, "wb") as f:
                     content = await file.read()
                     f.write(content)
+                print(f"   💾 حفظ ملف قديم {i+1}: {file.filename} -> {file_path} ({len(content)} bytes)")
         
         # حفظ الملفات الجديدة
         for i, file in enumerate(new_files):
@@ -134,6 +165,7 @@ async def start_batch_process_files(
                 with open(file_path, "wb") as f:
                     content = await file.read()
                     f.write(content)
+                print(f"   💾 حفظ ملف جديد {i+1}: {file.filename} -> {file_path} ({len(content)} bytes)")
         
         # تسجيل الجلسة
         batch_sessions[session_id] = {
@@ -143,6 +175,8 @@ async def start_batch_process_files(
             "created_at": Path(__file__).stat().st_mtime,
             "temp_dir": temp_dir  # لحذفه لاحقاً
         }
+        
+        print(f"📝 تسجيل الجلسة: {session_id}")
         
         # إنشاء طلب معالجة
         request = BatchProcessRequest(
@@ -160,6 +194,8 @@ async def start_batch_process_files(
             temp_dir
         )
         
+        print(f"✅ تم بدء المعالجة في الخلفية للجلسة: {session_id}")
+        
         return BatchProcessResponse(
             session_id=session_id,
             status="تم البدء",
@@ -167,6 +203,7 @@ async def start_batch_process_files(
         )
         
     except Exception as e:
+        print(f"❌ خطأ في معالجة الملفات: {str(e)}")
         # تنظيف المجلد المؤقت في حالة الخطأ
         if 'temp_dir' in locals():
             shutil.rmtree(temp_dir, ignore_errors=True)
@@ -274,30 +311,36 @@ async def run_batch_processing_with_cleanup(session_id: str, request: BatchProce
 
 @router.get("/batch-status/{session_id}", response_model=BatchProcessResult)
 async def get_batch_status(session_id: str):
-    """الحصول على حالة ونتائج المعالجة الجماعية"""
-    
+    """الحصول على حالة ونتائج المعالجة الجماعية مع توضيح progress و stats"""
+    # تنظيف الجلسات القديمة (كل 10 طلبات تقريباً)
+    if len(batch_sessions) > 10:
+        cleanup_old_sessions()
     if session_id not in batch_sessions:
         raise HTTPException(
             status_code=404,
             detail="جلسة غير موجودة"
         )
-    
     session_data = batch_sessions[session_id]
-    
+    # إرسال كل النتائج المرحلية أثناء التنفيذ
+    results_to_send = session_data.get("results", [])
     # إضافة معلومات التقدم للرسالة
     message = f"حالة المعالجة: {session_data['status']}"
-    if session_data.get("progress"):
+    if session_data.get("progress") is not None:
         message += f" - التقدم: {session_data['progress']}%"
     if session_data.get("current_file"):
         message += f" - الملف الحالي: {session_data['current_file']}"
     if session_data.get("message"):
         message += f" - {session_data['message']}"
-    
+    # إرسال كل الإحصائيات المرحلية
+    stats_to_send = session_data.get("stats", {})
+    # إضافة progress حقيقي في stats
+    if session_data.get("progress") is not None:
+        stats_to_send["progress"] = session_data["progress"]
     return BatchProcessResult(
         session_id=session_id,
         status=session_data["status"],
-        results=session_data.get("results", []),
-        stats=session_data.get("stats", {}),
+        results=results_to_send,
+        stats=stats_to_send,
         message=message
     )
 

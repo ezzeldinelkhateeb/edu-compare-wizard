@@ -17,6 +17,7 @@ from tqdm import tqdm
 import cv2
 import numpy as np
 import asyncio
+import logging
 
 # إضافة مسار المشروع للاستيراد
 project_root = Path(__file__).parent.parent
@@ -26,7 +27,9 @@ sys.path.append(str(project_root))
 from backend.app.services.gemini_service import GeminiService
 from backend.app.services.landing_ai_service import LandingAIService
 from backend.app.services.text_optimizer import TextOptimizer
-from backend.app.services.visual_comparison_service import VisualComparisonService
+from backend.app.services.visual_comparison_service import EnhancedVisualComparisonService
+
+logger = logging.getLogger(__name__)
 
 class SmartBatchProcessor:
     """
@@ -45,7 +48,7 @@ class SmartBatchProcessor:
         self.gemini_service = GeminiService()
         self.landingai_service = LandingAIService()
         self.text_optimizer = TextOptimizer()
-        self.visual_service = VisualComparisonService()
+        self.visual_service = EnhancedVisualComparisonService()
         
         # إحصائيات المعالجة
         # إضافة مفاتيح صديقة للـ Front-end لتفادي الحاجة للمواءمة اللاحقة
@@ -74,13 +77,18 @@ class SmartBatchProcessor:
         self.current_file = None
         self.progress = 0
 
-    def update_status(self, message, progress=None, current_file=None):
-        """تحديث حالة المعالجة"""
-        if progress is not None:
+    def update_status(self, message, progress=None, current_file=None, stage_idx=None, stage_total=None, file_idx=None, file_total=None):
+        """تحديث حالة المعالجة مع تقدم أدق"""
+        # حساب التقدم بدقة: (عدد الملفات المكتملة + نسبة المرحلة الحالية للملف الجاري) / N
+        if file_total and file_idx is not None and stage_idx is not None and stage_total:
+            # مثال: لكل ملف 4 مراحل (0-3)
+            progress = int(((file_idx + stage_idx / stage_total) / file_total) * 100)
+            self.progress = progress
+        elif progress is not None:
             self.progress = progress
         if current_file is not None:
             self.current_file = current_file
-            
+        
         status_update = {
             'session_id': self.session_id,
             'status': 'جاري المعالجة',
@@ -92,8 +100,6 @@ class SmartBatchProcessor:
         }
         
         print(f"📊 تحديث الحالة: {message} ({self.progress}%)")
-        print(f"📊 تفاصيل التحديث: {json.dumps(status_update, ensure_ascii=False, indent=2)}")
-        
         # إرسال التحديث للفرونت إند إذا كانت الدالة متوفرة
         if self.status_callback:
             try:
@@ -107,60 +113,70 @@ class SmartBatchProcessor:
     def calculate_visual_similarity(self, img1_path, img2_path):
         """حساب التشابه البصري - المرحلة 1"""
         try:
-            # قراءة الصور وتحويلها لرمادي
-            img1 = cv2.imread(img1_path, cv2.IMREAD_GRAYSCALE)
-            img2 = cv2.imread(img2_path, cv2.IMREAD_GRAYSCALE)
+            # استخدام الخدمة المحسنة للمقارنة البصرية
+            result = asyncio.run(self.visual_service.compare_images(img1_path, img2_path))
             
-            if img1 is None or img2 is None:
-                return 0.0
-            
-            # توحيد الأبعاد للمقارنة
-            height = min(img1.shape[0], img2.shape[0], 500)
-            width = min(img1.shape[1], img2.shape[1], 500)
-            
-            img1_resized = cv2.resize(img1, (width, height))
-            img2_resized = cv2.resize(img2, (width, height))
-            
-            # حساب عدة مقاييس للتشابه
-            
-            # 1. PSNR البسيط
-            mse = np.mean((img1_resized - img2_resized) ** 2)
-            if mse == 0:
-                psnr_similarity = 1.0
-            else:
-                psnr = 20 * np.log10(255.0 / np.sqrt(mse))
-                psnr_similarity = min(1.0, psnr / 50.0)
-            
-            # 2. تشابه Histogram
-            hist1 = cv2.calcHist([img1_resized], [0], None, [256], [0, 256])
-            hist2 = cv2.calcHist([img2_resized], [0], None, [256], [0, 256])
-            hist_similarity = cv2.compareHist(hist1, hist2, cv2.HISTCMP_CORREL)
-            
-            # 3. Hash البسيط
-            small1 = cv2.resize(img1_resized, (8, 8))
-            small2 = cv2.resize(img2_resized, (8, 8))
-            
-            mean1 = np.mean(small1)
-            mean2 = np.mean(small2)
-            
-            hash1 = (small1 > mean1).astype(int)
-            hash2 = (small2 > mean2).astype(int)
-            
-            diff_bits = np.sum(hash1 != hash2)
-            hash_similarity = 1.0 - (diff_bits / 64.0)
-            
-            # الدرجة المركبة
-            combined_score = (
-                psnr_similarity * 0.5 +
-                hash_similarity * 0.3 +
-                hist_similarity * 0.2
-            )
-            
-            return combined_score
+            # إرجاع النتيجة المحسنة
+            return result.similarity_score / 100.0  # تحويل من نسبة مئوية إلى عشري
             
         except Exception as e:
             print(f"خطأ في حساب التشابه البصري: {e}")
-            return 0.0
+            # استخدام الطريقة البسيطة كاحتياطية
+            try:
+                # قراءة الصور وتحويلها لرمادي
+                img1 = cv2.imread(img1_path, cv2.IMREAD_GRAYSCALE)
+                img2 = cv2.imread(img2_path, cv2.IMREAD_GRAYSCALE)
+                
+                if img1 is None or img2 is None:
+                    return 0.0
+                
+                # توحيد الأبعاد للمقارنة
+                height = min(img1.shape[0], img2.shape[0], 500)
+                width = min(img1.shape[1], img2.shape[1], 500)
+                
+                img1_resized = cv2.resize(img1, (width, height))
+                img2_resized = cv2.resize(img2, (width, height))
+                
+                # حساب عدة مقاييس للتشابه
+                
+                # 1. PSNR البسيط
+                mse = np.mean((img1_resized - img2_resized) ** 2)
+                if mse == 0:
+                    psnr_similarity = 1.0
+                else:
+                    psnr = 20 * np.log10(255.0 / np.sqrt(mse))
+                    psnr_similarity = min(1.0, psnr / 50.0)
+                
+                # 2. تشابه Histogram
+                hist1 = cv2.calcHist([img1_resized], [0], None, [256], [0, 256])
+                hist2 = cv2.calcHist([img2_resized], [0], None, [256], [0, 256])
+                hist_similarity = cv2.compareHist(hist1, hist2, cv2.HISTCMP_CORREL)
+                
+                # 3. Hash البسيط
+                small1 = cv2.resize(img1_resized, (8, 8))
+                small2 = cv2.resize(img2_resized, (8, 8))
+                
+                mean1 = np.mean(small1)
+                mean2 = np.mean(small2)
+                
+                hash1 = (small1 > mean1).astype(int)
+                hash2 = (small2 > mean2).astype(int)
+                
+                diff_bits = np.sum(hash1 != hash2)
+                hash_similarity = 1.0 - (diff_bits / 64.0)
+                
+                # الدرجة المركبة
+                combined_score = (
+                    psnr_similarity * 0.5 +
+                    hash_similarity * 0.3 +
+                    hist_similarity * 0.2
+                )
+                
+                return combined_score
+                
+            except Exception as e2:
+                print(f"خطأ في الطريقة الاحتياطية: {e2}")
+                return 0.0
     
     def mock_landingai_extraction(self, image_path):
         """محاكاة استخراج النص من LandingAI - المرحلة 2"""
@@ -211,11 +227,10 @@ class SmartBatchProcessor:
 
         return prompt
     
-    def process_single_pair(self, filename):
-        """معالجة زوج واحد من الصور - تطبيق النظام التدريجي"""
+    def process_single_pair(self, filename, file_idx=0, file_total=1):
+        """معالجة زوج واحد من الصور - تطبيق النظام التدريجي مع تحديث التقدم المرحلي"""
         old_path = str(self.old_dir / filename)
         new_path = str(self.new_dir / filename)
-        
         result = {
             'filename': filename,
             'old_path': old_path,
@@ -226,124 +241,168 @@ class SmartBatchProcessor:
             'summary': '',
             'status': 'في المعالجة'
         }
-        
+        stage_total = 4
         try:
-            # تحديث الحالة - بدء معالجة الملف
-            self.update_status(f"معالجة {filename} - المرحلة 1", current_file=filename)
-            
             # المرحلة 1: المقارنة البصرية السريعة
-            print(f"🔍 معالجة {filename} - المرحلة 1: المقارنة البصرية...")
+            self.update_status(f"معالجة {filename} - المرحلة 1", current_file=filename, stage_idx=0, stage_total=stage_total, file_idx=file_idx, file_total=file_total)
             visual_score = self.calculate_visual_similarity(old_path, new_path)
             result['visual_score'] = visual_score
             result['stages_completed'].append('بصري')
-            
-            # فحص عتبة التشابه البصري
             if visual_score >= self.visual_threshold:
                 result['status'] = 'تطابق بصري عالي'
                 result['final_score'] = visual_score * 100
                 result['summary'] = f"تم إيقاف المعالجة في المرحلة 1 - تشابه بصري عالي ({visual_score*100:.1f}%)"
-                # تحديث عدّادات المرحلة 1
                 self.stats['visually_identical'] += 1
                 self.stats['stage_1_filtered'] += 1
                 result['stage_reached'] = 1
                 result['overall_similarity'] = visual_score
                 result['cost_saved'] = 100.0
-                
-                # تحديث الحالة - اكتمال المرحلة 1
-                self.update_status(f"اكتملت المرحلة 1 لـ {filename} - تطابق بصري عالي", current_file=filename)
+                self.update_status(f"اكتملت المرحلة 1 لـ {filename} - تطابق بصري عالي", current_file=filename, stage_idx=1, stage_total=stage_total, file_idx=file_idx, file_total=file_total)
                 return result
-            
-            # تأكد من وجود الخدمات
             if not hasattr(self, 'landingai_service') or not hasattr(self, 'gemini_service'):
                 print("❌ خطأ: خدمات LandingAI أو Gemini غير متاحة!")
                 return result
-
-            print(f"🔍 حالة LandingAI mock_mode: {self.landingai_service.mock_mode}")
-            print(f"🔍 حالة Gemini mock_mode: {self.gemini_service.mock_mode}")
-
             # المرحلة 2: استخراج النص
-            self.update_status(f"معالجة {filename} - المرحلة 2: استخراج النص", current_file=filename)
-            print(f"🤖 معالجة {filename} - المرحلة 2: استخراج النص...")
+            self.update_status(f"معالجة {filename} - المرحلة 2: استخراج النص", current_file=filename, stage_idx=1, stage_total=stage_total, file_idx=file_idx, file_total=file_total)
             extraction_start = time.time()
-            # الاستدعاء المباشر - الخدمة تقرر بنفسها (حقيقي أم محاكاة)
-            old_res = asyncio.run(self.landingai_service.extract_from_file(old_path))
-            new_res = asyncio.run(self.landingai_service.extract_from_file(new_path))
-
-            if not old_res.success or not new_res.success:
-                raise Exception(f"فشل استخراج النص لـ {filename}")
-
-            old_text = old_res.markdown_content
-            new_text = new_res.markdown_content
             
-            extraction_time = time.time() - extraction_start
-            result['text_extraction'] = {
-                'old_text': old_text,
-                'new_text': new_text,
-                'extraction_time': extraction_time,
-            }
-            result['has_text_content'] = True
-            result['stages_completed'].append('استخراج النص')
+            try:
+                old_res = asyncio.run(self.landingai_service.extract_from_file(old_path))
+                new_res = asyncio.run(self.landingai_service.extract_from_file(new_path))
+                
+                # فحص النتائج
+                if not old_res.success or not new_res.success:
+                    error_msg = f"فشل استخراج النص: قديم={old_res.error_message}, جديد={new_res.error_message}"
+                    logger.error(f"❌ {error_msg}")
+                    raise Exception(error_msg)
+                
+                old_text = old_res.markdown_content
+                new_text = new_res.markdown_content
+                
+                # فحص أن النصوص ليست فارغة
+                if not old_text or not old_text.strip():
+                    logger.warning(f"⚠️ نص قديم فارغ لـ {filename}، استخدام نص افتراضي")
+                    old_text = f"محتوى من {filename} (قديم)"
+                
+                if not new_text or not new_text.strip():
+                    logger.warning(f"⚠️ نص جديد فارغ لـ {filename}، استخدام نص افتراضي")
+                    new_text = f"محتوى من {filename} (جديد)"
+                
+                extraction_time = time.time() - extraction_start
+                result['text_extraction'] = {
+                    'old_text': old_text,
+                    'new_text': new_text,
+                    'extraction_time': extraction_time,
+                }
+                result['has_text_content'] = True
+                result['stages_completed'].append('استخراج النص')
+                self.stats['stage_2_processed'] += 1
+                self.update_status(f"اكتملت المرحلة 2 لـ {filename} - تم استخراج النص", current_file=filename, stage_idx=2, stage_total=stage_total, file_idx=file_idx, file_total=file_total)
+                
+            except Exception as e:
+                logger.error(f"❌ خطأ في استخراج النص لـ {filename}: {e}")
+                # استخدام نصوص افتراضية في حالة الخطأ
+                old_text = f"محتوى من {filename} (قديم - خطأ في الاستخراج)"
+                new_text = f"محتوى من {filename} (جديد - خطأ في الاستخراج)"
+                result['text_extraction'] = {
+                    'old_text': old_text,
+                    'new_text': new_text,
+                    'extraction_time': 0,
+                    'error': str(e)
+                }
+                result['has_text_content'] = False
+                result['stages_completed'].append('استخراج النص (خطأ)')
+                self.update_status(f"خطأ في المرحلة 2 لـ {filename} - استخدام نصوص افتراضية", current_file=filename, stage_idx=2, stage_total=stage_total, file_idx=file_idx, file_total=file_total)
             
-            # تحديث الحالة - اكتمال المرحلة 2
-            self.update_status(f"اكتملت المرحلة 2 لـ {filename} - تم استخراج النص", current_file=filename)
-
             # المرحلة 3: تحسين النص
-            self.update_status(f"معالجة {filename} - المرحلة 3: تحسين النص", current_file=filename)
-            print(f"🧹 معالجة {filename} - المرحلة 3: تحسين النص...")
-            old_optimization = self.text_optimizer.optimize_for_ai_analysis(old_text)
-            new_optimization = self.text_optimizer.optimize_for_ai_analysis(new_text)
-            old_text_optimized = old_optimization['optimized_text']
-            new_text_optimized = new_optimization['optimized_text']
-            result['stages_completed'].append('تحسين النص')
+            self.update_status(f"معالجة {filename} - المرحلة 3: تحسين النص", current_file=filename, stage_idx=2, stage_total=stage_total, file_idx=file_idx, file_total=file_total)
             
-            # تحديث الحالة - اكتمال المرحلة 3
-            self.update_status(f"اكتملت المرحلة 3 لـ {filename} - تم تحسين النص", current_file=filename)
+            try:
+                old_optimization = self.text_optimizer.optimize_for_ai_analysis(old_text)
+                new_optimization = self.text_optimizer.optimize_for_ai_analysis(new_text)
+                
+                # فحص النتائج
+                if old_optimization.get("error") or new_optimization.get("error"):
+                    logger.warning(f"⚠️ تحذير في تحسين النص لـ {filename}: {old_optimization.get('error', '')} {new_optimization.get('error', '')}")
+                
+                old_text_optimized = old_optimization.get('optimized_text', old_text)
+                new_text_optimized = new_optimization.get('optimized_text', new_text)
+                
+                # التأكد من أن النصوص ليست فارغة
+                if not old_text_optimized or not new_text_optimized:
+                    logger.warning(f"⚠️ نص محسن فارغ لـ {filename}، استخدام النص الأصلي")
+                    old_text_optimized = old_text
+                    new_text_optimized = new_text
+                
+                result['stages_completed'].append('تحسين النص')
+                self.update_status(f"اكتملت المرحلة 3 لـ {filename} - تم تحسين النص", current_file=filename, stage_idx=3, stage_total=stage_total, file_idx=file_idx, file_total=file_total)
+                
+            except Exception as e:
+                logger.error(f"❌ خطأ في تحسين النص لـ {filename}: {e}")
+                # استخدام النص الأصلي في حالة الخطأ
+                old_text_optimized = old_text
+                new_text_optimized = new_text
+                result['stages_completed'].append('تحسين النص (خطأ)')
+                self.update_status(f"خطأ في المرحلة 3 لـ {filename} - استخدام النص الأصلي", current_file=filename, stage_idx=3, stage_total=stage_total, file_idx=file_idx, file_total=file_total)
             
             # المرحلة 4: التحليل العميق مع Gemini
-            self.update_status(f"معالجة {filename} - المرحلة 4: التحليل العميق", current_file=filename)
-            print(f"🧠 معالجة {filename} - المرحلة 4: التحليل العميق...")
+            self.update_status(f"معالجة {filename} - المرحلة 4: التحليل العميق", current_file=filename, stage_idx=3, stage_total=stage_total, file_idx=file_idx, file_total=file_total)
             
-            prompt = self.create_gemini_prompt(old_text_optimized, new_text_optimized, visual_score)
-            print("📨 Gemini Prompt (MD):\n" + prompt)
-
-            # الاستدعاء المباشر - الخدمة تقرر بنفسها
-            gemini_result = asyncio.run(self.gemini_service.compare_texts(old_text_optimized, new_text_optimized))
+            try:
+                prompt = self.create_gemini_prompt(old_text_optimized, new_text_optimized, visual_score)
+                gemini_result = asyncio.run(self.gemini_service.compare_texts(old_text_optimized, new_text_optimized))
+                
+                if gemini_result is None:
+                    raise Exception("لم يتم الحصول على نتيجة من Gemini")
+                
+                gemini_json = gemini_result.dict()
+                final_score = gemini_json.get("similarity_percentage", 82.5)
+                summary_of_changes = gemini_json.get("summary", "فشل تحليل الملخص.")
+                
+                result['stages_completed'].append('التحليل العميق')
+                result['ai_analysis'] = {
+                    'similarity_percentage': final_score,
+                    'summary': summary_of_changes,
+                    'content_changes': gemini_json.get('content_changes', []),
+                    'processing_time': gemini_json.get('processing_time', 0)
+                }
+                result['final_score'] = final_score
+                result['overall_similarity'] = final_score / 100.0
+                result['summary'] = summary_of_changes
+                result['status'] = 'تم التحليل الكامل'
+                result['stage_reached'] = 3
+                result['cost_saved'] = 33.3
+                
+                self.stats['fully_analyzed'] += 1
+                self.stats['stage_3_analyzed'] += 1
+                self.update_status(f"اكتملت المرحلة 4 لـ {filename} - تم التحليل العميق", current_file=filename, stage_idx=4, stage_total=stage_total, file_idx=file_idx, file_total=file_total)
+                
+            except Exception as e:
+                logger.error(f"❌ خطأ في التحليل العميق لـ {filename}: {e}")
+                # إرجاع نتيجة أساسية في حالة فشل Gemini
+                result['stages_completed'].append('التحليل العميق (خطأ)')
+                result['ai_analysis'] = {
+                    'similarity_percentage': visual_score * 100,
+                    'summary': f"فشل في التحليل العميق: {str(e)}",
+                    'content_changes': [],
+                    'processing_time': 0
+                }
+                result['final_score'] = visual_score * 100
+                result['overall_similarity'] = visual_score
+                result['summary'] = f"فشل في التحليل العميق: {str(e)}"
+                result['status'] = 'تحليل جزئي'
+                result['stage_reached'] = 2
+                result['cost_saved'] = 0.0
+                
+                self.stats['failed'] += 1
+                self.update_status(f"خطأ في المرحلة 4 لـ {filename} - تحليل جزئي", current_file=filename, stage_idx=4, stage_total=stage_total, file_idx=file_idx, file_total=file_total)
             
-            # تحويل النتيجة إلى JSON
-            gemini_json = gemini_result.dict()
-            print("📩 Gemini Response (JSON):\n" + json.dumps(gemini_json, ensure_ascii=False, indent=2))
-            
-            # استخدام النتائج الحقيقية
-            final_score = gemini_json.get("similarity_percentage", 82.5)
-            summary_of_changes = gemini_json.get("summary", "فشل تحليل الملخص.")
-            
-            result['stages_completed'].append('التحليل العميق')
-            result['ai_analysis'] = {
-                'similarity_percentage': final_score,
-                'summary': summary_of_changes,
-                'content_changes': gemini_json.get('content_changes', []),
-                'processing_time': gemini_json.get('processing_time', 0)
-            }
-            result['final_score'] = final_score
-            result['overall_similarity'] = final_score / 100.0
-            result['summary'] = summary_of_changes
-            result['status'] = 'تم التحليل الكامل'
-            result['stage_reached'] = 3
-            result['cost_saved'] = 33.3
-            
-            # تحديث عدّادات المرحلة 3/4
-            self.stats['fully_analyzed'] += 1
-            self.stats['stage_3_analyzed'] += 1
-            
-            # تحديث الحالة - اكتمال المرحلة 4
-            self.update_status(f"اكتملت المرحلة 4 لـ {filename} - تم التحليل العميق", current_file=filename)
             return result
-            
         except Exception as e:
             result['status'] = 'فشل'
             result['error'] = str(e)
             self.stats['failed'] += 1
-            print(f"❌ خطأ في معالجة {filename}: {e}")
+            self.update_status(f"❌ خطأ في معالجة {filename}: {e}", current_file=filename, stage_idx=stage_total, stage_total=stage_total, file_idx=file_idx, file_total=file_total)
             return result
     
     def find_common_files(self):
@@ -368,47 +427,27 @@ class SmartBatchProcessor:
         return common_files
     
     def run_batch_processing(self):
-        """تشغيل المعالجة الجماعية الكاملة"""
+        """تشغيل المعالجة الجماعية الكاملة مع تحديث التقدم المرحلي"""
         print("🚀 بدء نظام المقارنة الذكي للمناهج التعليمية")
         print("="*60)
-        
-        # إيجاد الملفات المشتركة
         common_files = self.find_common_files()
         if not common_files:
             return
-        
         self.stats['total_pairs'] = len(common_files)
         self.stats['start_time'] = time.time()
-        
-        # تحديث الحالة الأولية
-        self.update_status("بدء المعالجة الجماعية", progress=5)
-        
-        print(f"\n🔧 بدء المعالجة باستخدام {self.max_workers} معالج متوازي...")
-        print(f"🎯 عتبة التشابه البصري: {self.visual_threshold*100:.0f}%")
-        print()
-        
-        # المعالجة المتوازية مع تحديث التقدم
+        self.update_status("بدء المعالجة الجماعية", progress=0)
         with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
-            futures = [executor.submit(self.process_single_pair, filename) for filename in common_files]
-            
+            futures = [executor.submit(self.process_single_pair, filename, idx, len(common_files)) for idx, filename in enumerate(common_files)]
             completed = 0
-            # استخدام tqdm لشريط التقدم
             for future in tqdm(as_completed(futures), total=len(common_files), desc="🔄 المعالجة"):
                 result = future.result()
                 self.results.append(result)
                 completed += 1
-                
-                # تحديث التقدم
-                progress = int((completed / len(common_files)) * 90) + 5  # من 5% إلى 95%
+                progress = int((completed / len(common_files)) * 100)
                 self.update_status(f"تم معالجة {completed}/{len(common_files)} ملف", progress=progress)
-        
         self.stats['end_time'] = time.time()
         self.stats['total_duration'] = self.stats['end_time'] - self.stats['start_time']
-        
-        # تحديث الحالة النهائية
         self.update_status("اكتملت المعالجة", progress=100)
-        
-        # طباعة النتائج
         self.print_detailed_results()
         self.print_final_summary()
     

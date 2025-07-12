@@ -55,7 +55,7 @@ class GeminiService:
     def __init__(self):
         # استخدام المفتاح المُقدم من الإعدادات
         self.api_key = settings.GEMINI_API_KEY
-        self.model_name = os.getenv("GEMINI_MODEL", "gemini-1.5-flash")
+        self.model_name = os.getenv("GEMINI_MODEL", "gemini-2.0-flash")
         self.temperature = float(os.getenv("GEMINI_TEMPERATURE", "0.3"))
         self.max_output_tokens = int(os.getenv("GEMINI_MAX_OUTPUT_TOKENS", "8192"))
         self.top_p = float(os.getenv("GEMINI_TOP_P", "0.8"))
@@ -153,8 +153,12 @@ class GeminiService:
         
         logger.info("🤖 بدء التحليل باستخدام Gemini AI...")
         
-        # إعداد البرومبت المخصص للمناهج التعليمية
-        prompt = self._create_comparison_prompt(old_text, new_text, context)
+        # إعداد البرومبت المخصص للمناهج التعليمية باستخدام Gemini 2.0
+        try:
+            prompt = self._create_comparison_prompt_v2(old_text, new_text, context)
+        except Exception as e:
+            logger.warning(f"فشل في إنشاء البرومبت الجديد، استخدام البرومبت القديم: {e}")
+            prompt = self._create_comparison_prompt(old_text, new_text, context)
         
         try:
             # استدعاء Gemini
@@ -167,6 +171,11 @@ class GeminiService:
                 raise Exception("لم يتم الحصول على استجابة من Gemini")
             
             logger.info("✅ تم الحصول على استجابة من Gemini")
+            
+            # إضافة console.log للفرونت إند
+            print("🔍 FRONTEND_LOG: GEMINI_RESPONSE_RAW_START")
+            print("🔍 FRONTEND_LOG: " + response.text.replace('\n', '\\n'))
+            print("🔍 FRONTEND_LOG: GEMINI_RESPONSE_RAW_END")
             
             # تحليل الاستجابة
             logger.debug("🔍 تحليل استجابة Gemini...")
@@ -218,6 +227,15 @@ class GeminiService:
             error_msg = str(e)
             logger.error(f"❌ خطأ في استدعاء Gemini: {error_msg}")
             
+            # إضافة console.log للفرونت إند في حالة الفشل
+            print("🔍 FRONTEND_LOG: GEMINI_ERROR_START")
+            print("🔍 FRONTEND_LOG: " + json.dumps({
+                "error": error_msg,
+                "old_text_length": len(old_text),
+                "new_text_length": len(new_text)
+            }, ensure_ascii=False))
+            print("🔍 FRONTEND_LOG: GEMINI_ERROR_END")
+            
             # إذا كانت المشكلة في انتهاء quota، استخدم وضع المحاكاة المحسن
             if "429" in error_msg or "quota" in error_msg.lower() or "exceeded" in error_msg.lower():
                 logger.warning("⚠️ تم الوصول للحد الأقصى من Gemini API - سيتم استخدام الوضع المحسن")
@@ -225,6 +243,80 @@ class GeminiService:
             
             # في حالة أخطاء أخرى، استخدم النظام الاحتياطي
             raise e
+    
+    def _create_comparison_prompt_v2(
+        self, 
+        old_text: str, 
+        new_text: str,
+        context: Optional[Dict[str, Any]] = None
+    ) -> str:
+        """
+        إنشاء برومبت محسن لـ Gemini 2.0 Flash
+        Enhanced prompt for Gemini 2.0 Flash
+        """
+        context_info = ""
+        if context:
+            context_info = f"""
+            سياق المقارنة:
+            - المجال: {context.get('domain', 'education')}
+            - نوع المحتوى: {context.get('content_type', 'curriculum')}
+            - اللغة: {context.get('language', 'arabic')}
+            - نوع التحليل: {context.get('analysis_type', 'educational_content_comparison')}
+            """
+        
+        return f"""أنت محلل محترف للمناهج التعليمية باستخدام Gemini 2.0 Flash. مهمتك هي مقارنة نصين تعليميين بدقة عالية.
+
+{context_info}
+
+**النص القديم:**
+{old_text}
+
+**النص الجديد:**
+{new_text}
+
+**المطلوب:**
+قم بتحليل شامل ومفصل للمقارنة بين النصين وأعطني النتيجة بالتنسيق التالي:
+
+```json
+{{
+  "similarity_percentage": <نسبة التشابه من 0 إلى 100>,
+  "has_significant_changes": <true/false>,
+  "confidence_score": <معدل الثقة من 0 إلى 1>,
+  "content_changes": [
+    "قائمة بالتغييرات في المحتوى الرئيسي"
+  ],
+  "questions_changes": [
+    "قائمة بالتغييرات في الأسئلة"
+  ],
+  "examples_changes": [
+    "قائمة بالتغييرات في الأمثلة"
+  ],
+  "major_differences": [
+    "قائمة بالفروق الجوهرية المهمة"
+  ],
+  "added_content": [
+    "قائمة بالمحتوى المضاف"
+  ],
+  "removed_content": [
+    "قائمة بالمحتوى المحذوف"
+  ],
+  "modified_content": [
+    "قائمة بالمحتوى المعدل"
+  ],
+  "summary": "ملخص شامل للمقارنة باللغة العربية",
+  "recommendation": "توصيات للمراجعة أو القبول"
+}}
+```
+
+**تعليمات مهمة:**
+1. استخدم Gemini 2.0 Flash لتحليل دقيق ومفصل
+2. ركز على الفروق الجوهرية في المحتوى التعليمي
+3. تجاهل التغييرات الطفيفة في التنسيق أو الأخطاء الإملائية
+4. أعطِ نسبة تشابه دقيقة بناءً على المحتوى الفعلي
+5. اكتب الملخص والتوصيات باللغة العربية
+6. تأكد من أن النتيجة صالحة JSON
+
+        **ملاحظة:** استخدم قدرات Gemini 2.0 Flash المتقدمة في فهم السياق والتحليل اللغوي للحصول على أفضل النتائج."""
     
     def _create_comparison_prompt(
         self, 
@@ -298,6 +390,12 @@ class GeminiService:
 }}
 ```
 """
+        
+        # إضافة console.log للفرونت إند
+        print("🔍 FRONTEND_LOG: GEMINI_PROMPT_CREATED_START")
+        print("🔍 FRONTEND_LOG: " + prompt.replace('\n', '\\n'))
+        print("🔍 FRONTEND_LOG: GEMINI_PROMPT_CREATED_END")
+        
         return prompt
     
     def _parse_gemini_response(self, response_text: str) -> Dict[str, Any]:
@@ -542,7 +640,8 @@ class GeminiService:
                     "status": "healthy",
                     "mode": "mock", 
                     "message": "Gemini Service في وضع المحاكاة",
-                    "api_key_configured": False
+                    "api_key_configured": False,
+                    "model": "mock-model"
                 }
             
             # اختبار بسيط للـ API
@@ -554,10 +653,17 @@ class GeminiService:
             return {
                 "status": "healthy",
                 "mode": "production",
-                "message": "Gemini Service جاهز",
+                "message": "Gemini 2.0 Flash Service جاهز",
                 "api_key_configured": True,
                 "model": self.model_name,
-                "test_response_length": len(test_response.text) if test_response.text else 0
+                "model_version": "2.0-flash",
+                "test_response_length": len(test_response.text) if test_response.text else 0,
+                "features": [
+                    "مقارنة نصية محسنة",
+                    "دقة أعلى في التحليل",
+                    "سرعة معالجة محسنة",
+                    "دعم أفضل للغة العربية"
+                ]
             }
             
         except Exception as e:

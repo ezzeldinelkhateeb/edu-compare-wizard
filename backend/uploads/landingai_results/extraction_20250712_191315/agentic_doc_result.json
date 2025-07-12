@@ -1,0 +1,147 @@
+{
+  "markdown": "3\nالفصل <!-- text, from page 0 (l=0.846,t=0.031,r=0.925,b=0.076), with ID 38672f92-0f7e-4ce5-bd47-478b7637a2d2 -->\n\n* قام العالم الفرنسى باسكال بصياغة هذه النتيجة كما يلى : <!-- text, from page 0 (l=0.463,t=0.086,r=0.931,b=0.114), with ID acefb3d2-759d-4f3e-9963-405b214347af -->\n\nقاعدة (مبدأ) باسكال\nعندما يؤثر ضغط على سائل محبوس في إناء، فإن ذلك الضغط ينتقل بتمامه إلى جميع أجزاء السائل، كما ينتقل إلى جدران الإناء. <!-- text, from page 0 (l=0.068,t=0.118,r=0.929,b=0.193), with ID 7c7c9062-5c4c-421f-acc4-fe0f28cd0634 -->\n\nملاحظة\n\nتخضع السوائل لقاعدة باسكال بينما لا تخضع الغازات لها،  \nلأن السوائل غير قابلة للانضغاط فينتقل الضغط المؤثر عليها بتمامه إلى جميع أجزاء السائل، أما الغازات فهي قابلة للانضغاط لوجود مسافات بينية كبيرة نسبياً بين جزيئات الغاز فيستهلك جزء من الشغل المبذول لضغط جزيئات الغاز وبالتالي ينتقل الضغط جزئياً خلال الغازات. <!-- text, from page 0 (l=0.069,t=0.206,r=0.940,b=0.345), with ID 8e4475a7-9ac6-4604-acd6-6a81007c992e -->\n\nSummary : This figure presents five real-world applications of Pascal's principle, specifically focusing on hydraulic systems in various machines and devices.\n\nphoto:  \nApplications of Pascal's Principle :  \n  • The figure is titled \"تطبيقات على قاعدة باسكال\" (Applications of Pascal's Principle).\n  • Five circular photographic images, each labeled with a number (١ to ٥), depict different hydraulic applications.\n  • Each image is accompanied by a short Arabic caption describing the application.\n\nApplications Depicted :  \n  1. المكبس الهيدروليكي (Hydraulic press)\n      • Shows a construction vehicle using a hydraulic press.\n  2. الفرامل الهيدروليكية للسيارة (Car hydraulic brakes)\n      • Shows a close-up of a car's hydraulic brake system.\n  3. الرافعة الهيدروليكية (Hydraulic crane)\n      • Shows a hydraulic crane lifting an object.\n  4. كرسي طبيب الأسنان (Dentist's chair)\n      • Shows a dentist's chair, which uses hydraulics for adjustment.\n  5. الحفار الهيدروليكي (Hydraulic excavator)\n      • Shows a hydraulic excavator arm.\n\nDesign & Layout :  \n  • The images are arranged horizontally in a row, each with a colored number marker above.\n  • Each application is separated by a dashed vertical line.\n  • The main title is in a red box at the top right.\n  • A green sentence at the bottom introduces further discussion about the hydraulic mixer.\n\nAnalysis :  \n  • The figure visually demonstrates the diversity of hydraulic applications, ranging from industrial machinery (excavators, cranes, presses) to everyday devices (car brakes, dentist chairs).\n  • The consistent use of circular images and clear labels aids in quick identification and comparison.\n  • The selection emphasizes the centrality of Pascal's principle in both heavy-duty and precision equipment. <!-- figure, from page 0 (l=0.071,t=0.359,r=0.933,b=0.623), with ID d3af196f-b173-4f06-b34b-9f22f60cf735 -->\n\nSummary : This is a labeled diagram and explanatory text describing the structure and function of a hydraulic press (المكبس الهيدروليكي), showing two connected cylinders of different cross-sectional areas filled with hydraulic fluid.\n\nillustration:\n# Scene Overview :\n  • The main subject is a U-shaped tube filled with hydraulic fluid, labeled as \"السائل الهيدروليكي\" (hydraulic fluid).\n  • The tube connects two vertical cylinders: one with a small cross-sectional area (a) and one with a large cross-sectional area (A).\n  • Each cylinder contains a piston (مكبس), with the smaller piston on the right and the larger on the left.\n  • The diagram is simple, uses black outlines, and labels the key parts in Arabic.\n\n# Technical Details :\n  • No scale bar or units are provided.\n  • The diagram is schematic, not to scale.\n  • The cross-sectional areas are labeled as \"a\" (small) and \"A\" (large).\n\n# Spatial Relationships :\n  • The two pistons are at different heights but are connected by the same hydraulic fluid.\n  • The small piston (a) is on the right, the large piston (A) is on the left.\n\n# Accompanying Explanatory Text :\n  • The text explains the structure (التركيب): \"أنبوبة موصلة بمكبسَين، أحدهما صغير مساحة مقطعه a والآخر كبير مساحة مقطعه A ويمتلئ الحيز بين المكبسين بسائل مناسب (سائل هيدروليكي) كما بالشكل.\"\n  • The function (الوظيفة): \"الحصول على قوة كبيرة تؤثر على المكبس الكبير باستخدام قوة صغيرة تؤثر على المكبس الصغير.\"\n\n# Analysis :\n  • The diagram visually demonstrates Pascal's principle: a small force applied to the small piston (a) can generate a much larger force on the large piston (A) due to the difference in cross-sectional areas, as long as the system is filled with an incompressible hydraulic fluid.\n  • The schematic is intended to clarify the mechanical advantage provided by hydraulic presses. <!-- figure, from page 0 (l=0.073,t=0.635,r=0.954,b=0.854), with ID 0754d851-de7a-46cd-a703-da3f38237507 -->\n\nفكرة العمل  \nقاعدة باسكال. <!-- text, from page 0 (l=0.749,t=0.857,r=0.941,b=0.897), with ID 1f622d7d-7c88-46fb-96c3-4bd3adbcf497 -->\n\n$10.4$ <!-- marginalia, from page 0 (l=0.867,t=0.921,r=0.923,b=0.949), with ID 055cecc8-7232-4ecd-b84c-665e1169feb2 -->",
+  "chunks": [
+    {
+      "text": "3\nالفصل",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.8459435105323792,
+            "t": 0.031210564076900482,
+            "r": 0.9247468113899231,
+            "b": 0.07550713419914246
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "38672f92-0f7e-4ce5-bd47-478b7637a2d2"
+    },
+    {
+      "text": "* قام العالم الفرنسى باسكال بصياغة هذه النتيجة كما يلى :",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.4634411633014679,
+            "t": 0.08619680255651474,
+            "r": 0.9308128356933594,
+            "b": 0.1140206977725029
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "acefb3d2-759d-4f3e-9963-405b214347af"
+    },
+    {
+      "text": "قاعدة (مبدأ) باسكال\nعندما يؤثر ضغط على سائل محبوس في إناء، فإن ذلك الضغط ينتقل بتمامه إلى جميع أجزاء السائل، كما ينتقل إلى جدران الإناء.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.06847235560417175,
+            "t": 0.11764343082904816,
+            "r": 0.929241418838501,
+            "b": 0.19348619878292084
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "7c7c9062-5c4c-421f-acc4-fe0f28cd0634"
+    },
+    {
+      "text": "ملاحظة\n\nتخضع السوائل لقاعدة باسكال بينما لا تخضع الغازات لها،  \nلأن السوائل غير قابلة للانضغاط فينتقل الضغط المؤثر عليها بتمامه إلى جميع أجزاء السائل، أما الغازات فهي قابلة للانضغاط لوجود مسافات بينية كبيرة نسبياً بين جزيئات الغاز فيستهلك جزء من الشغل المبذول لضغط جزيئات الغاز وبالتالي ينتقل الضغط جزئياً خلال الغازات.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.06859296560287476,
+            "t": 0.20591431856155396,
+            "r": 0.9400185942649841,
+            "b": 0.34450650215148926
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "8e4475a7-9ac6-4604-acd6-6a81007c992e"
+    },
+    {
+      "text": "Summary : This figure presents five real-world applications of Pascal's principle, specifically focusing on hydraulic systems in various machines and devices.\n\nphoto:  \nApplications of Pascal's Principle :  \n  • The figure is titled \"تطبيقات على قاعدة باسكال\" (Applications of Pascal's Principle).\n  • Five circular photographic images, each labeled with a number (١ to ٥), depict different hydraulic applications.\n  • Each image is accompanied by a short Arabic caption describing the application.\n\nApplications Depicted :  \n  1. المكبس الهيدروليكي (Hydraulic press)\n      • Shows a construction vehicle using a hydraulic press.\n  2. الفرامل الهيدروليكية للسيارة (Car hydraulic brakes)\n      • Shows a close-up of a car's hydraulic brake system.\n  3. الرافعة الهيدروليكية (Hydraulic crane)\n      • Shows a hydraulic crane lifting an object.\n  4. كرسي طبيب الأسنان (Dentist's chair)\n      • Shows a dentist's chair, which uses hydraulics for adjustment.\n  5. الحفار الهيدروليكي (Hydraulic excavator)\n      • Shows a hydraulic excavator arm.\n\nDesign & Layout :  \n  • The images are arranged horizontally in a row, each with a colored number marker above.\n  • Each application is separated by a dashed vertical line.\n  • The main title is in a red box at the top right.\n  • A green sentence at the bottom introduces further discussion about the hydraulic mixer.\n\nAnalysis :  \n  • The figure visually demonstrates the diversity of hydraulic applications, ranging from industrial machinery (excavators, cranes, presses) to everyday devices (car brakes, dentist chairs).\n  • The consistent use of circular images and clear labels aids in quick identification and comparison.\n  • The selection emphasizes the centrality of Pascal's principle in both heavy-duty and precision equipment.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.07111865282058716,
+            "t": 0.359177827835083,
+            "r": 0.9328672289848328,
+            "b": 0.6234337091445923
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "d3af196f-b173-4f06-b34b-9f22f60cf735"
+    },
+    {
+      "text": "Summary : This is a labeled diagram and explanatory text describing the structure and function of a hydraulic press (المكبس الهيدروليكي), showing two connected cylinders of different cross-sectional areas filled with hydraulic fluid.\n\nillustration:\n# Scene Overview :\n  • The main subject is a U-shaped tube filled with hydraulic fluid, labeled as \"السائل الهيدروليكي\" (hydraulic fluid).\n  • The tube connects two vertical cylinders: one with a small cross-sectional area (a) and one with a large cross-sectional area (A).\n  • Each cylinder contains a piston (مكبس), with the smaller piston on the right and the larger on the left.\n  • The diagram is simple, uses black outlines, and labels the key parts in Arabic.\n\n# Technical Details :\n  • No scale bar or units are provided.\n  • The diagram is schematic, not to scale.\n  • The cross-sectional areas are labeled as \"a\" (small) and \"A\" (large).\n\n# Spatial Relationships :\n  • The two pistons are at different heights but are connected by the same hydraulic fluid.\n  • The small piston (a) is on the right, the large piston (A) is on the left.\n\n# Accompanying Explanatory Text :\n  • The text explains the structure (التركيب): \"أنبوبة موصلة بمكبسَين، أحدهما صغير مساحة مقطعه a والآخر كبير مساحة مقطعه A ويمتلئ الحيز بين المكبسين بسائل مناسب (سائل هيدروليكي) كما بالشكل.\"\n  • The function (الوظيفة): \"الحصول على قوة كبيرة تؤثر على المكبس الكبير باستخدام قوة صغيرة تؤثر على المكبس الصغير.\"\n\n# Analysis :\n  • The diagram visually demonstrates Pascal's principle: a small force applied to the small piston (a) can generate a much larger force on the large piston (A) due to the difference in cross-sectional areas, as long as the system is filled with an incompressible hydraulic fluid.\n  • The schematic is intended to clarify the mechanical advantage provided by hydraulic presses.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.07264742255210876,
+            "t": 0.6354880928993225,
+            "r": 0.953571081161499,
+            "b": 0.8536298871040344
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "0754d851-de7a-46cd-a703-da3f38237507"
+    },
+    {
+      "text": "فكرة العمل  \nقاعدة باسكال.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.748988687992096,
+            "t": 0.8572457432746887,
+            "r": 0.9414277672767639,
+            "b": 0.896888792514801
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "1f622d7d-7c88-46fb-96c3-4bd3adbcf497"
+    },
+    {
+      "text": "$10.4$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.8674322962760925,
+            "t": 0.920991837978363,
+            "r": 0.9230095744132996,
+            "b": 0.9490264058113098
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "marginalia",
+      "chunk_id": "055cecc8-7232-4ecd-b84c-665e1169feb2"
+    }
+  ],
+  "result_path": null,
+  "image_was_downscaled": true,
+  "processed_image_size": {
+    "width": 709,
+    "height": 1024
+  }
+}

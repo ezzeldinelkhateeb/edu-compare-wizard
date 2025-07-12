@@ -1,0 +1,181 @@
+{
+  "markdown": "3\nالفصل <!-- text, from page 0 (l=0.850,t=0.046,r=0.929,b=0.090), with ID 4bc3766e-1d4f-4021-bde6-cd9e2955683a -->\n\nاختبر؟ نفسك 18 <!-- text, from page 0 (l=0.329,t=0.092,r=0.661,b=0.141), with ID 6354fa74-1ba0-4a02-be9e-c01f866415ba -->\n\nSummary : This image contains Arabic text on a red rounded rectangle, resembling a label or badge.\n\nlogo:  \nText & Design :  \n  • Arabic text reads \"مجاب عنها\" (translated: \"Answered\").  \n  • White text on a solid red, rounded rectangle background.  \n  • No additional symbols, icons, or company branding visible.  \n  • The label is slightly rotated counterclockwise.\n\nAnalysis :  \n  • The design suggests this is a status badge or label, likely used to indicate that a question or item has been answered or resolved. <!-- figure, from page 0 (l=0.067,t=0.103,r=0.168,b=0.142), with ID c3b2a5f4-e300-4b12-a864-fc96394b4ff0 -->\n\nاختر الإجابة الصحيحة من بين البديلات المعطاة :\n\nإذا كانت النسبة بين نصفي قطري المكبسين في المكبس الهيدروليكي ١ : ٥ ، فإن النسبة بين الضغط أسفل المكبس الصغير مباشرة إلى الضغط أسفل المكبس الكبير مباشرة عند اتزان المكبسين في مستوى أفقي واحد تساوي ................\n\n(بيـن مـاز / الميـاه)\n\n١\nـــ\n١\n\n١\nـــ\n٢٥\n\n٥\nـــ\n١\n\n١\nـــ\n٥ <!-- text, from page 0 (l=0.063,t=0.140,r=0.944,b=0.279), with ID a7d996be-8279-4425-ac26-9b36c5db3954 -->\n\nالفائدة الآلية للمكبس الهيدروليكي  <!-- text, from page 0 (l=0.561,t=0.302,r=0.932,b=0.339), with ID 9aaad969-8002-4c60-8707-9c65d0cf8937 -->\n\n* يمكن الاستفادة من القوة المؤثرة على المكبس الكبير (F) في كثير من الآلات، وتعين الفائدة الآلية (η) عند استقرار المكبسين من العلاقة : <!-- text, from page 0 (l=0.065,t=0.344,r=0.934,b=0.398), with ID 1a61c0cc-02e4-4422-8e9a-c601d40747a8 -->\n\n$\\eta = \\frac{A}{a} = \\frac{R^2}{r^2} = \\frac{y_1}{y_2}$ <!-- text, from page 0 (l=0.069,t=0.383,r=0.261,b=0.440), with ID edba679f-69d2-42ba-b7f1-d425a68c412a -->\n\nحيث : (A) مساحة مقطع الكبس الكبير، (a) مساحة مقطع الكبس الصغير، (R) نصف قطر الكبس الكبير، (r) نصف قطر الكبس الصغير، (y₁) إزاحة الكبس الصغير لأسفل، (y₂) إزاحة الكبس الكبير لأعلى.\n\n* إذا كان الكبسان في مستوى أفقي واحد عند الاتزان، تكون : <!-- text, from page 0 (l=0.090,t=0.447,r=0.936,b=0.547), with ID 1f223102-035f-4927-9560-3caec6d3abf5 -->\n\nSummary : This figure presents two graphical representations related to the relationship between two forces (F and f) and the corresponding displacements (y₂ and y₁) in a system at equilibrium, with mathematical expressions for the slope in each case.\n\nline plots:\n# First Graph : Force Relationship\n  • Depicts the relationship between the two forces F (vertical axis) and f (horizontal axis).\n  • Both axes are labeled with their respective variables (F and f).\n  • The plot shows a straight, positively sloped line starting from the origin.\n  • The slope of the line is given by η = F / f, and mathematically expressed as slope = ΔF / Δf = η.\n\n# Second Graph : Displacement Relationship\n  • Depicts the relationship between the displacement of the larger mass y₂ (vertical axis) and the displacement of the smaller mass y₁ (horizontal axis).\n  • Both axes are labeled with their respective variables (y₂ and y₁).\n  • The plot shows a straight, positively sloped line starting from the origin.\n  • The slope of the line is given by slope = Δy₂ / Δy₁ = 1 / η.\n\n# Design Encodings :\n  • Both graphs use simple line plots with red lines.\n  • Axes are drawn in blue.\n  • No gridlines, tick marks, or additional data points are shown.\n  • Mathematical expressions for the slope are provided next to each graph.\n\n# Analysis :\n  • Both relationships are linear, indicating proportionality between the variables in each case.\n  • The first graph shows that as f increases, F increases proportionally with a slope η.\n  • The second graph shows that as y₁ increases, y₂ increases proportionally with a slope of 1/η.\n  • The two slopes are reciprocals, reflecting the inverse relationship between force ratio and displacement ratio in the system. <!-- figure, from page 0 (l=0.060,t=0.550,r=0.934,b=0.881), with ID 2a1df36a-720a-4a03-a9f8-e8ccf5dba6fb -->\n\n$6 \\cdot 10$ <!-- marginalia, from page 0 (l=0.870,t=0.935,r=0.927,b=0.964), with ID ad856094-46e5-401d-94de-e2d6aecc72e5 -->",
+  "chunks": [
+    {
+      "text": "3\nالفصل",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.849736213684082,
+            "t": 0.045819178223609924,
+            "r": 0.9290122985839844,
+            "b": 0.08988207578659058
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "4bc3766e-1d4f-4021-bde6-cd9e2955683a"
+    },
+    {
+      "text": "اختبر؟ نفسك 18",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.32925766706466675,
+            "t": 0.09248032420873642,
+            "r": 0.6612550020217896,
+            "b": 0.1408112645149231
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "6354fa74-1ba0-4a02-be9e-c01f866415ba"
+    },
+    {
+      "text": "Summary : This image contains Arabic text on a red rounded rectangle, resembling a label or badge.\n\nlogo:  \nText & Design :  \n  • Arabic text reads \"مجاب عنها\" (translated: \"Answered\").  \n  • White text on a solid red, rounded rectangle background.  \n  • No additional symbols, icons, or company branding visible.  \n  • The label is slightly rotated counterclockwise.\n\nAnalysis :  \n  • The design suggests this is a status badge or label, likely used to indicate that a question or item has been answered or resolved.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.06652150303125381,
+            "t": 0.10289113223552704,
+            "r": 0.16789114475250244,
+            "b": 0.1420460045337677
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "c3b2a5f4-e300-4b12-a864-fc96394b4ff0"
+    },
+    {
+      "text": "اختر الإجابة الصحيحة من بين البديلات المعطاة :\n\nإذا كانت النسبة بين نصفي قطري المكبسين في المكبس الهيدروليكي ١ : ٥ ، فإن النسبة بين الضغط أسفل المكبس الصغير مباشرة إلى الضغط أسفل المكبس الكبير مباشرة عند اتزان المكبسين في مستوى أفقي واحد تساوي ................\n\n(بيـن مـاز / الميـاه)\n\n١\nـــ\n١\n\n١\nـــ\n٢٥\n\n٥\nـــ\n١\n\n١\nـــ\n٥",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.06267639994621277,
+            "t": 0.1400061696767807,
+            "r": 0.9438618421554565,
+            "b": 0.27899855375289917
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "a7d996be-8279-4425-ac26-9b36c5db3954"
+    },
+    {
+      "text": "الفائدة الآلية للمكبس الهيدروليكي ",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.5605813264846802,
+            "t": 0.30164217948913574,
+            "r": 0.9322395324707031,
+            "b": 0.3389131426811218
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "9aaad969-8002-4c60-8707-9c65d0cf8937"
+    },
+    {
+      "text": "* يمكن الاستفادة من القوة المؤثرة على المكبس الكبير (F) في كثير من الآلات، وتعين الفائدة الآلية (η) عند استقرار المكبسين من العلاقة :",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.06536859273910522,
+            "t": 0.3439389169216156,
+            "r": 0.9338740706443787,
+            "b": 0.39818432927131653
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "1a61c0cc-02e4-4422-8e9a-c601d40747a8"
+    },
+    {
+      "text": "$\\eta = \\frac{A}{a} = \\frac{R^2}{r^2} = \\frac{y_1}{y_2}$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.0694318562746048,
+            "t": 0.3825998902320862,
+            "r": 0.2611704468727112,
+            "b": 0.4403459429740906
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "edba679f-69d2-42ba-b7f1-d425a68c412a"
+    },
+    {
+      "text": "حيث : (A) مساحة مقطع الكبس الكبير، (a) مساحة مقطع الكبس الصغير، (R) نصف قطر الكبس الكبير، (r) نصف قطر الكبس الصغير، (y₁) إزاحة الكبس الصغير لأسفل، (y₂) إزاحة الكبس الكبير لأعلى.\n\n* إذا كان الكبسان في مستوى أفقي واحد عند الاتزان، تكون :",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.08990433812141418,
+            "t": 0.4472880959510803,
+            "r": 0.935741662979126,
+            "b": 0.5472360253334045
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "1f223102-035f-4927-9560-3caec6d3abf5"
+    },
+    {
+      "text": "Summary : This figure presents two graphical representations related to the relationship between two forces (F and f) and the corresponding displacements (y₂ and y₁) in a system at equilibrium, with mathematical expressions for the slope in each case.\n\nline plots:\n# First Graph : Force Relationship\n  • Depicts the relationship between the two forces F (vertical axis) and f (horizontal axis).\n  • Both axes are labeled with their respective variables (F and f).\n  • The plot shows a straight, positively sloped line starting from the origin.\n  • The slope of the line is given by η = F / f, and mathematically expressed as slope = ΔF / Δf = η.\n\n# Second Graph : Displacement Relationship\n  • Depicts the relationship between the displacement of the larger mass y₂ (vertical axis) and the displacement of the smaller mass y₁ (horizontal axis).\n  • Both axes are labeled with their respective variables (y₂ and y₁).\n  • The plot shows a straight, positively sloped line starting from the origin.\n  • The slope of the line is given by slope = Δy₂ / Δy₁ = 1 / η.\n\n# Design Encodings :\n  • Both graphs use simple line plots with red lines.\n  • Axes are drawn in blue.\n  • No gridlines, tick marks, or additional data points are shown.\n  • Mathematical expressions for the slope are provided next to each graph.\n\n# Analysis :\n  • Both relationships are linear, indicating proportionality between the variables in each case.\n  • The first graph shows that as f increases, F increases proportionally with a slope η.\n  • The second graph shows that as y₁ increases, y₂ increases proportionally with a slope of 1/η.\n  • The two slopes are reciprocals, reflecting the inverse relationship between force ratio and displacement ratio in the system.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.05973106622695923,
+            "t": 0.5504990220069885,
+            "r": 0.9340279698371887,
+            "b": 0.8810408711433411
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "2a1df36a-720a-4a03-a9f8-e8ccf5dba6fb"
+    },
+    {
+      "text": "$6 \\cdot 10$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.8702477812767029,
+            "t": 0.9347381591796875,
+            "r": 0.9268046021461487,
+            "b": 0.9635438919067383
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "marginalia",
+      "chunk_id": "ad856094-46e5-401d-94de-e2d6aecc72e5"
+    }
+  ],
+  "result_path": null,
+  "image_was_downscaled": true,
+  "processed_image_size": {
+    "width": 710,
+    "height": 1024
+  }
+}
