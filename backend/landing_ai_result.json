@@ -1,0 +1,53 @@
+{
+  "file_path": "D:\\ezz\\compair\\edu-compare-wizard\\backend\\..\\103.jpg",
+  "file_name": "103.jpg",
+  "processing_time": 2.020812,
+  "success": true,
+  "error_message": null,
+  "markdown_content": "# 103\n\n## الفصل الأول: مقدمة في الرياضيات\n\n### الأهداف التعليمية:\n- فهم مفهوم الأعداد الطبيعية\n- تطبيق العمليات الحسابية الأساسية\n- حل المسائل الرياضية البسيطة\n\n### المحتوى:\nيتناول هذا الفصل المفاهيم الأساسية في الرياضيات...\n\n### التمارين:\n1. احسب مجموع الأعداد من 1 إلى 10\n2. اوجد ناتج 15 × 7\n3. حل المعادلة س + 5 = 12\n\n### جدول النتائج:\n| الطالب | الدرجة | التقدير |\n|---------|---------|----------|\n| أحمد    | 85      | جيد جداً |\n| فاطمة   | 92      | ممتاز    |\n| محمد    | 78      | جيد      |\n",
+  "structured_analysis": {
+    "subject": "الرياضيات",
+    "grade_level": "الصف الثالث الابتدائي",
+    "chapter_title": "مقدمة في الرياضيات",
+    "learning_objectives": [
+      "فهم مفهوم الأعداد الطبيعية",
+      "تطبيق العمليات الحسابية الأساسية",
+      "حل المسائل الرياضية البسيطة"
+    ],
+    "topics": [
+      "الأعداد الطبيعية",
+      "العمليات الحسابية",
+      "حل المسائل"
+    ],
+    "key_concepts": [
+      "الجمع",
+      "الطرح",
+      "الضرب",
+      "القسمة"
+    ],
+    "assessment_methods": [
+      "تمارين",
+      "اختبارات",
+      "مشاريع"
+    ],
+    "exercises_count": 3,
+    "difficulty_level": "مبتدئ",
+    "page_count": 1,
+    "language": "العربية",
+    "content_type": "نظري وعملي"
+  },
+  "total_chunks": 3,
+  "chunks_by_type": {
+    "title": 1,
+    "text": 1,
+    "table": 1
+  },
+  "confidence_score": 0.95,
+  "visual_groundings": [],
+  "visualization_images": [],
+  "raw_json_path": "./uploads\\landingai_results\\extraction_20250629_051823\\103_mock.json",
+  "text_elements": 1,
+  "table_elements": 1,
+  "image_elements": 0,
+  "title_elements": 1
+}

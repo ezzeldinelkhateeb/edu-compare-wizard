@@ -3,7 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Upload, FileText, BarChart3, Download, BookOpen, Zap, Shield, Globe } from 'lucide-react';
 import UploadSection from '@/components/UploadSection';
-import ComparisonDashboard from '@/components/ComparisonDashboard';
+import { ComparisonDashboard } from '@/components/ComparisonDashboard';
 import { useToast } from '@/hooks/use-toast';
 
 const Index = () => {
@@ -175,7 +175,10 @@ const Index = () => {
       )}
 
       {currentStep === 'results' && uploadedFiles && (
-        <ComparisonDashboard files={uploadedFiles} />
+        <ComparisonDashboard 
+          files={uploadedFiles} 
+          onBack={() => setCurrentStep('upload')} 
+        />
       )}
 
       {/* الفوتر */}

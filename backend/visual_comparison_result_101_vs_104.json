@@ -1,0 +1,14 @@
+{
+  "timestamp": "53920.921",
+  "image_1": "../101.jpg",
+  "image_2": "../104.jpg",
+  "overall_similarity": 71.06,
+  "detailed_scores": {
+    "ssim": 0.744,
+    "phash": 0.906,
+    "clip": null,
+    "histogram": 0.57,
+    "features": 0.407,
+    "edges": 0.928
+  }
+}

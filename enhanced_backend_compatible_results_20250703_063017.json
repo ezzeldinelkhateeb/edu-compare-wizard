@@ -1,0 +1,51 @@
+{
+  "overall_score": 65.74589935486745,
+  "processing_time": 30.195319175720215,
+  "detailed_scores": {
+    "ssim": {
+      "score": 0.7444533840432824,
+      "map_available": true,
+      "mean_map": 0.7443237801377567,
+      "std_map": 0.3162258773573911,
+      "min_map": -0.9843526364671669,
+      "max_map": 1.0000000000143416
+    },
+    "phash": {
+      "score": 0.90625,
+      "hash1": "ea6b96962d6dc290",
+      "hash2": "ea6a96966969c790",
+      "distance": 6,
+      "max_distance": 64
+    },
+    "histogram": {
+      "score": 0.5833995135043829,
+      "method": "HISTCMP_CORREL",
+      "hist1_mean": 113383.5,
+      "hist2_mean": 113383.5
+    },
+    "features": {
+      "score": 0.49193379442419927,
+      "total_matches": 285,
+      "keypoints1": 1000,
+      "keypoints2": 1000,
+      "avg_distance": 130.064948627405,
+      "min_distance": 30.903074264526367,
+      "max_distance": 313.10382080078125
+    },
+    "edges": {
+      "score": 0.389133786366171,
+      "edges1_pixels": 409677,
+      "edges2_pixels": 349334,
+      "method": "CONTOURS_MATCH_I2"
+    }
+  },
+  "weights_used": {
+    "ssim": 0.3333333333333333,
+    "phash": 0.19999999999999998,
+    "clip": 0.0,
+    "histogram": 0.13333333333333333,
+    "features": 0.19999999999999998,
+    "edges": 0.13333333333333333
+  },
+  "timestamp": "2025-07-03 06:30:17"
+}

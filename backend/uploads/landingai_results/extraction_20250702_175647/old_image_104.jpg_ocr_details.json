@@ -1,0 +1,19 @@
+{
+  "confidence_score": 0.5083228511530398,
+  "language_detected": "ara+eng",
+  "config_used": "--oem 3 --psm 6",
+  "character_count": 1664,
+  "word_count": 495,
+  "processing_time": 36.85665,
+  "image_info": {
+    "width": 4496,
+    "height": 6488,
+    "format": "JPEG",
+    "mode": "RGB",
+    "size_bytes": 2239804
+  },
+  "extraction_details": {
+    "total_attempts": 2,
+    "successful_attempt": "ara+eng - --oem 3 --psm 6"
+  }
+}
