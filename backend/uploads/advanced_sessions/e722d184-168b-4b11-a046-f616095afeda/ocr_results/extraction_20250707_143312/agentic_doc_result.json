@@ -1,0 +1,232 @@
+{
+  "markdown": "Summary : This photograph shows a car repair workshop with two white vehicles, one elevated on a hydraulic lift and missing its wheels, and another on the ground with its hood open, indicating ongoing maintenance or repair work.\n\nphoto:\nScene Overview :\n  • The main subjects are two white SUVs in a well-lit automotive repair shop.\n  • The elevated car is on a hydraulic lift, missing all four wheels, exposing the brake rotors and undercarriage.\n  • The second car is on the ground, positioned to the left, with its hood open, suggesting engine or diagnostic work.\n  • The setting includes industrial lighting, tiled walls, and various workshop tools and equipment in the background.\n  • The colour palette is dominated by whites, greys, and metallic tones, with some red accents (e.g., a post marked \"KIA\").\n\nTechnical Details :\n  • No visible scale bar or measurement references.\n  • The license plate of the elevated car is partially visible: \"7200AP 136\".\n  • Workshop equipment includes tool cabinets, a waste bin, and a portable diagnostic or charging unit.\n  • The image is taken from a slightly low, wide-angle perspective, capturing both vehicles and much of the workshop environment.\n\nSpatial Relationships :\n  • The elevated car is positioned centrally and dominates the upper right of the image.\n  • The car on the ground is in the lower left, with its front facing rightward.\n  • The hydraulic lift and workshop equipment create a sense of depth and functional space.\n  • The composition follows a rule-of-thirds placement, with the main action (elevated car) in the upper right and supporting context (grounded car, tools) in the lower left.\n\nAnalysis :\n  • The image visually communicates a professional automotive service environment, highlighting both routine maintenance (open hood) and more extensive repair (wheel removal).\n  • The presence of two cars in different stages of service suggests a busy, multi-bay workshop.\n  • The clean, organized setting and visible equipment reinforce the impression of a modern, well-equipped facility. <!-- figure, from page 0 (l=0.000,t=0.004,r=0.997,b=0.397), with ID 525466f7-0597-43d6-a50b-eafe9cadf5bb -->\n\n3\nالفصل\n\nالدرس الخامس <!-- text, from page 0 (l=0.731,t=0.379,r=0.938,b=0.489), with ID 289800c2-5a2d-4eb5-8dea-90e99d39019b -->\n\nقاعدة باسكال <!-- text, from page 0 (l=0.255,t=0.419,r=0.544,b=0.469), with ID c8eb13e3-df9a-401a-a2bb-64817b46f502 -->\n\nقاعدة باسكال <!-- text, from page 0 (l=0.369,t=0.509,r=0.627,b=0.547), with ID 7c0d4138-56f0-49f9-92dc-f33fe2c487fd -->\n\n* عند وضع سائل في إناء زجاجي مزود بغطاء أعلاه، فإن الضغط عند النقطة A على عمق h من سطح السائل يتعين من العلاقة : <!-- text, from page 0 (l=0.346,t=0.546,r=0.935,b=0.603), with ID 955e43c7-62c1-4844-b57a-642b5aaf9b04 -->\n\nSummary : This is a labeled scientific illustration showing a piston compressing a liquid inside a glass container, with pressure and height variables annotated in Arabic.\n\nillustration:\nScene Overview :\n  • The main subject is a vertical cylindrical glass container filled with liquid.\n  • A piston (مكبس) is placed at the top, pressing down on the liquid.\n  • The piston is labeled with the external pressure Pa (ضغط خارجي).\n  • The liquid column beneath the piston is labeled with height h (ارتفاع).\n  • The pressure at a point A at the bottom of the liquid is labeled P(مكبس).\n  • The container is labeled as \"إناء زجاجي\" (glass vessel).\n  • The liquid is labeled as \"سائل\" (liquid).\n\nTechnical Details :\n  • All labels are in Arabic.\n  • The diagram uses arrows to indicate the direction of pressure applied by the piston.\n  • The point A at the bottom is marked with a dot and labeled \"A\".\n\nSpatial Relationships :\n  • The piston is at the top, in contact with the liquid surface.\n  • The height h is measured vertically from the piston to point A at the bottom.\n  • The pressure Pa is applied from above, and P(مكبس) is at the bottom.\n\nAnalysis :\n  • The illustration visually explains how pressure is transmitted through a liquid by a piston, with clear labeling of variables relevant to fluid statics (Pa, h, P(مكبس), A).\n  • The setup is typical for demonstrating Pascal’s principle or hydrostatic pressure calculations. <!-- figure, from page 0 (l=0.049,t=0.542,r=0.252,b=0.689), with ID d5370188-e77b-48ae-a179-61cf23bfb4ab -->\n\n$P = P_a + P_{\\text{(مكبس)}} + \\rho gh$ <!-- text, from page 0 (l=0.353,t=0.605,r=0.589,b=0.646), with ID ccbb948c-dae8-4e57-8e26-b5eecff120c4 -->\n\nحيث : $(P_a)$ الضغط الجوي، $(P_{مكبس})$ الضغط الناشئ عن وزن المكبس،\n$(pgh)$ ضغط عمود السائل فوق النقطة A\n\n* عند وضع ثقل إضافي على المكبس، فإن :\n\n- المكبس لا يتحرك إلى أسفل لعدم قابلية السائل للانضغاط.\n- الضغط عند النقطة A يزداد بمقدار $\\Delta P$ ويصبح : <!-- text, from page 0 (l=0.350,t=0.650,r=0.936,b=0.791), with ID 18630ceb-6a55-4e29-9e70-2fe4f457dd3e -->\n\nSummary : This is a labeled scientific illustration showing a piston-cylinder apparatus used to demonstrate pressure in a liquid, with all labels in Arabic.\n\nillustration:\nScene Overview :\n  • The main subject is a vertical glass container (إناء زجاجي) filled with liquid (سائل).\n  • A movable piston (مكبس) with a weight (ثقل) on top is fitted into the container, sealing the liquid below.\n  • The piston is shown with arrows indicating applied atmospheric pressure (Pa) from above.\n  • The pressure at a point A at depth h below the piston is labeled as P(عند A).\n  • The illustration is in color, with the liquid shaded blue and the piston and weight in yellow/gray.\n\nTechnical Details :\n  • Arabic labels: ثقل (weight), مكبس (piston), Pa (atmospheric pressure), إناء زجاجي (glass container), سائل (liquid), P(عند A) (pressure at A), h (depth), A (point in liquid).\n  • No scale bar or magnification is present.\n  • The diagram is schematic, not to scale.\n\nSpatial Relationships :\n  • The piston sits horizontally at the top of the liquid, with the weight directly above it.\n  • The depth h is marked vertically from the piston’s lower surface to point A in the liquid.\n  • Pressure arrows are shown acting downward on the piston and at point A.\n\nAnalysis :\n  • The illustration visually explains how pressure is transmitted through a liquid in a closed container, with pressure at depth h being influenced by both the atmospheric pressure above the piston and the weight on the piston.\n  • The diagram is suitable for teaching hydrostatics or fluid mechanics concepts, especially pressure in fluids. <!-- figure, from page 0 (l=0.050,t=0.708,r=0.240,b=0.869), with ID 2622f36b-efa4-496b-abed-40d1ee877af4 -->\n\n$P = P_a + P_{\\text{(مكبس)}} + \\rho gh + \\Delta P$ <!-- text, from page 0 (l=0.354,t=0.799,r=0.651,b=0.841), with ID f7b8df09-1f62-45d7-85be-6baa15447752 -->\n\n* إذا تم زيادة الضغط على الكبس إلى حد معين فإن الإناء الزجاجي ينكسر. <!-- text, from page 0 (l=0.342,t=0.846,r=0.934,b=0.875), with ID 01f2c488-252b-4ba1-865c-5eb249a9f07a -->\n\nأداة: الضغط الذي يؤثر به المكبس على السائل انتقل بتمامه إلى جميع أجزاء السائل وإلى جدران الإناء. <!-- text, from page 0 (l=0.109,t=0.877,r=0.923,b=0.905), with ID 1f78915b-54ea-4c35-a72e-47655281fc6e -->\n\n١٠٣ <!-- marginalia, from page 0 (l=0.072,t=0.918,r=0.129,b=0.948), with ID 349e5bcd-de79-437b-aa74-c4ece00eb1bc -->",
+  "chunks": [
+    {
+      "text": "Summary : This photograph shows a car repair workshop with two white vehicles, one elevated on a hydraulic lift and missing its wheels, and another on the ground with its hood open, indicating ongoing maintenance or repair work.\n\nphoto:\nScene Overview :\n  • The main subjects are two white SUVs in a well-lit automotive repair shop.\n  • The elevated car is on a hydraulic lift, missing all four wheels, exposing the brake rotors and undercarriage.\n  • The second car is on the ground, positioned to the left, with its hood open, suggesting engine or diagnostic work.\n  • The setting includes industrial lighting, tiled walls, and various workshop tools and equipment in the background.\n  • The colour palette is dominated by whites, greys, and metallic tones, with some red accents (e.g., a post marked \"KIA\").\n\nTechnical Details :\n  • No visible scale bar or measurement references.\n  • The license plate of the elevated car is partially visible: \"7200AP 136\".\n  • Workshop equipment includes tool cabinets, a waste bin, and a portable diagnostic or charging unit.\n  • The image is taken from a slightly low, wide-angle perspective, capturing both vehicles and much of the workshop environment.\n\nSpatial Relationships :\n  • The elevated car is positioned centrally and dominates the upper right of the image.\n  • The car on the ground is in the lower left, with its front facing rightward.\n  • The hydraulic lift and workshop equipment create a sense of depth and functional space.\n  • The composition follows a rule-of-thirds placement, with the main action (elevated car) in the upper right and supporting context (grounded car, tools) in the lower left.\n\nAnalysis :\n  • The image visually communicates a professional automotive service environment, highlighting both routine maintenance (open hood) and more extensive repair (wheel removal).\n  • The presence of two cars in different stages of service suggests a busy, multi-bay workshop.\n  • The clean, organized setting and visible equipment reinforce the impression of a modern, well-equipped facility.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.00033035874366760254,
+            "t": 0.0037483274936676025,
+            "r": 0.9969996213912964,
+            "b": 0.39710530638694763
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "525466f7-0597-43d6-a50b-eafe9cadf5bb"
+    },
+    {
+      "text": "3\nالفصل\n\nالدرس الخامس",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.7307660579681396,
+            "t": 0.3785969316959381,
+            "r": 0.9377782344818115,
+            "b": 0.48929324746131897
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "289800c2-5a2d-4eb5-8dea-90e99d39019b"
+    },
+    {
+      "text": "قاعدة باسكال",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.25462114810943604,
+            "t": 0.4185994565486908,
+            "r": 0.5437390208244324,
+            "b": 0.4689759910106659
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "c8eb13e3-df9a-401a-a2bb-64817b46f502"
+    },
+    {
+      "text": "قاعدة باسكال",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.3690286874771118,
+            "t": 0.5087063312530518,
+            "r": 0.626897931098938,
+            "b": 0.5469982624053955
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "7c0d4138-56f0-49f9-92dc-f33fe2c487fd"
+    },
+    {
+      "text": "* عند وضع سائل في إناء زجاجي مزود بغطاء أعلاه، فإن الضغط عند النقطة A على عمق h من سطح السائل يتعين من العلاقة :",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.3463798463344574,
+            "t": 0.5463171005249023,
+            "r": 0.9353785514831543,
+            "b": 0.6027365922927856
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "955e43c7-62c1-4844-b57a-642b5aaf9b04"
+    },
+    {
+      "text": "Summary : This is a labeled scientific illustration showing a piston compressing a liquid inside a glass container, with pressure and height variables annotated in Arabic.\n\nillustration:\nScene Overview :\n  • The main subject is a vertical cylindrical glass container filled with liquid.\n  • A piston (مكبس) is placed at the top, pressing down on the liquid.\n  • The piston is labeled with the external pressure Pa (ضغط خارجي).\n  • The liquid column beneath the piston is labeled with height h (ارتفاع).\n  • The pressure at a point A at the bottom of the liquid is labeled P(مكبس).\n  • The container is labeled as \"إناء زجاجي\" (glass vessel).\n  • The liquid is labeled as \"سائل\" (liquid).\n\nTechnical Details :\n  • All labels are in Arabic.\n  • The diagram uses arrows to indicate the direction of pressure applied by the piston.\n  • The point A at the bottom is marked with a dot and labeled \"A\".\n\nSpatial Relationships :\n  • The piston is at the top, in contact with the liquid surface.\n  • The height h is measured vertically from the piston to point A at the bottom.\n  • The pressure Pa is applied from above, and P(مكبس) is at the bottom.\n\nAnalysis :\n  • The illustration visually explains how pressure is transmitted through a liquid by a piston, with clear labeling of variables relevant to fluid statics (Pa, h, P(مكبس), A).\n  • The setup is typical for demonstrating Pascal’s principle or hydrostatic pressure calculations.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.0493035688996315,
+            "t": 0.5423339009284973,
+            "r": 0.2522675096988678,
+            "b": 0.6894990801811218
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "d5370188-e77b-48ae-a179-61cf23bfb4ab"
+    },
+    {
+      "text": "$P = P_a + P_{\\text{(مكبس)}} + \\rho gh$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.3534178137779236,
+            "t": 0.6045683026313782,
+            "r": 0.589040219783783,
+            "b": 0.6464961171150208
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "ccbb948c-dae8-4e57-8e26-b5eecff120c4"
+    },
+    {
+      "text": "حيث : $(P_a)$ الضغط الجوي، $(P_{مكبس})$ الضغط الناشئ عن وزن المكبس،\n$(pgh)$ ضغط عمود السائل فوق النقطة A\n\n* عند وضع ثقل إضافي على المكبس، فإن :\n\n- المكبس لا يتحرك إلى أسفل لعدم قابلية السائل للانضغاط.\n- الضغط عند النقطة A يزداد بمقدار $\\Delta P$ ويصبح :",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.35018405318260193,
+            "t": 0.6497330665588379,
+            "r": 0.9358386993408203,
+            "b": 0.7910716533660889
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "18630ceb-6a55-4e29-9e70-2fe4f457dd3e"
+    },
+    {
+      "text": "Summary : This is a labeled scientific illustration showing a piston-cylinder apparatus used to demonstrate pressure in a liquid, with all labels in Arabic.\n\nillustration:\nScene Overview :\n  • The main subject is a vertical glass container (إناء زجاجي) filled with liquid (سائل).\n  • A movable piston (مكبس) with a weight (ثقل) on top is fitted into the container, sealing the liquid below.\n  • The piston is shown with arrows indicating applied atmospheric pressure (Pa) from above.\n  • The pressure at a point A at depth h below the piston is labeled as P(عند A).\n  • The illustration is in color, with the liquid shaded blue and the piston and weight in yellow/gray.\n\nTechnical Details :\n  • Arabic labels: ثقل (weight), مكبس (piston), Pa (atmospheric pressure), إناء زجاجي (glass container), سائل (liquid), P(عند A) (pressure at A), h (depth), A (point in liquid).\n  • No scale bar or magnification is present.\n  • The diagram is schematic, not to scale.\n\nSpatial Relationships :\n  • The piston sits horizontally at the top of the liquid, with the weight directly above it.\n  • The depth h is marked vertically from the piston’s lower surface to point A in the liquid.\n  • Pressure arrows are shown acting downward on the piston and at point A.\n\nAnalysis :\n  • The illustration visually explains how pressure is transmitted through a liquid in a closed container, with pressure at depth h being influenced by both the atmospheric pressure above the piston and the weight on the piston.\n  • The diagram is suitable for teaching hydrostatics or fluid mechanics concepts, especially pressure in fluids.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.05038934201002121,
+            "t": 0.7076378464698792,
+            "r": 0.2398376166820526,
+            "b": 0.8686828017234802
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "2622f36b-efa4-496b-abed-40d1ee877af4"
+    },
+    {
+      "text": "$P = P_a + P_{\\text{(مكبس)}} + \\rho gh + \\Delta P$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.35351985692977905,
+            "t": 0.7991167306900024,
+            "r": 0.6514236330986023,
+            "b": 0.8409335613250732
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "f7b8df09-1f62-45d7-85be-6baa15447752"
+    },
+    {
+      "text": "* إذا تم زيادة الضغط على الكبس إلى حد معين فإن الإناء الزجاجي ينكسر.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.34197407960891724,
+            "t": 0.8464198708534241,
+            "r": 0.9336571097373962,
+            "b": 0.8745478987693787
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "01f2c488-252b-4ba1-865c-5eb249a9f07a"
+    },
+    {
+      "text": "أداة: الضغط الذي يؤثر به المكبس على السائل انتقل بتمامه إلى جميع أجزاء السائل وإلى جدران الإناء.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.1086617112159729,
+            "t": 0.8767614364624023,
+            "r": 0.9234758019447327,
+            "b": 0.9051560163497925
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "1f78915b-54ea-4c35-a72e-47655281fc6e"
+    },
+    {
+      "text": "١٠٣",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.07239536195993423,
+            "t": 0.9182634949684143,
+            "r": 0.12852798402309418,
+            "b": 0.9478824734687805
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "marginalia",
+      "chunk_id": "349e5bcd-de79-437b-aa74-c4ece00eb1bc"
+    }
+  ],
+  "result_path": null,
+  "image_was_downscaled": true,
+  "processed_image_size": {
+    "width": 708,
+    "height": 1024
+  }
+}

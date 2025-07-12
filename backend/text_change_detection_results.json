@@ -1,0 +1,20 @@
+{
+  "test_date": "2025-07-09T17:48:11.421064",
+  "test_type": "text_change_detection",
+  "summary": {
+    "total_tests": 7,
+    "average_similarity": 0.9751285714285712
+  },
+  "detailed_results": [
+    {
+      "test_name": "نفس النص تماماً",
+      "description": "نص متطابق 100% - يجب أن تكون النتيجة عالية جداً",
+      "similarity_metrics": {
+        "psnr_similarity": 1.0,
+        "ssim_similarity": 1.0,
+        "histogram_similarity": 1.0,
+        "pixel_similarity": 1.0,
+        "edge_similarity": 1.0,
+        "combined_similarity": 1.0,
+        "mse": 0.0,
+        "different_pixels": 

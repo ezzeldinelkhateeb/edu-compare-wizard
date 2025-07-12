@@ -1,0 +1,300 @@
+{
+  "markdown": "Summary : This is a labeled schematic diagram illustrating the principle of a hydraulic press using a U-shaped vessel filled with hydraulic fluid, showing the relationship between applied forces, areas, and heights on both sides.\n\nillustration:\n# System Overview :\n  • U-shaped vessel filled with hydraulic fluid, labeled as \"السانل الهيدروليكي\" (hydraulic fluid).\n  • Left side: Large piston with area labeled \"A\" and applied force \"F\" pushing down.\n  • Right side: Small piston with area labeled \"a\" and applied force \"f\" pushing down.\n  • Both pistons are shown at different heights above a reference level.\n\n# Labels & Dimensions :\n  • Left piston: Area \"A\", force \"F\", height above reference \"y2\".\n  • Right piston: Area \"a\", force \"f\", height above reference \"y1\".\n  • Vertical distances \"y2\" and \"y1\" are marked with dashed lines.\n  • The diagram is labeled as \"شكل (1)\" (Figure 1).\n\n# Contextual Notes :\n  • The diagram is part of \"الدرس الخامس\" (Lesson Five).\n  • Associated Arabic text discusses the forces and pressures on the pistons and the surface.\n\n# Analysis :\n  • The figure visually demonstrates Pascal’s principle: a force applied to a confined fluid is transmitted undiminished throughout the fluid, allowing a small force on a small piston to balance a larger force on a larger piston if the area ratio is appropriate.\n  • The height difference (y2 vs. y1) may relate to pressure calculations or work done in the system. <!-- figure, from page 0 (l=0.064,t=0.061,r=0.415,b=0.252), with ID 5cd224c9-115f-42ad-9c61-f8a969963c49 -->\n\n- عندما يكون المكبسان في مستوى افقي واحد ويتم التأثير بقوة f على المكبس الصغير كما في الشكل (1) ينتج عن هذه القوة ضغط P أسفل المكبس الصغير مباشرة حيث : $P = \\frac{f}{a}$ <!-- text, from page 0 (l=0.333,t=0.096,r=0.956,b=0.176), with ID fd0bf1ae-051c-4898-b118-0feb9d50b2f6 -->\n\n- ينتقل هذا الضغط بتماسه إلى جميع أجزاء السائل وإلى السطح السفلى للمكبس الكبير فتؤثر قوة F على المكبس الكبير تعمل على <!-- text, from page 0 (l=0.334,t=0.179,r=0.872,b=0.229), with ID c489bad3-db76-40d9-9d2b-1f06d87ccc97 -->\n\n$P = \\frac{F}{A} : \\text{تحريكه لأعلى حيث}$ <!-- text, from page 0 (l=0.624,t=0.232,r=0.861,b=0.262), with ID 1c0dd4f5-55f1-4ec8-88cf-1fce87b822d8 -->\n\n- إذا سببت القوة F في تحريك المكبس الصغير مسافة 𝑦₁ لأسفل فإن المكبس الكبير يتأثر بقوة F تسبب تحرك مسافة 𝑦₂ لأعلى ويطبق قانون بقاء الطاقة (في حالة المكبس الهيدروليكي المثالي) فإن :\n\nالشغل المبذول على المكبس الصغير = الشغل الناتج عند المكبس الكبير. <!-- text, from page 0 (l=0.066,t=0.265,r=0.871,b=0.336), with ID cee57d1b-00f8-481b-baa3-0492150a3680 -->\n\n$ \\frac{F}{f} = \\frac{y_1}{y_2} $ <!-- text, from page 0 (l=0.630,t=0.340,r=0.770,b=0.391), with ID 573cbb24-8ece-4b5e-b93a-fa00bfc4a467 -->\n\n$ \\mathrm{fy}_1 = \\mathrm{Fy}_2 $ <!-- text, from page 0 (l=0.314,t=0.338,r=0.465,b=0.392), with ID 4e6368e3-a5e3-47fe-99ad-020752899206 -->\n\n- أي أن المكبس الكبير يتحرك مسافة صغيرة إلى أعلى بتأثير إزاحة كبيرة للمكبس الصغير إلى أسفل، ويمكن الوصول لنفس الاستنتاج كالتالي: <!-- text, from page 0 (l=0.063,t=0.391,r=0.874,b=0.440), with ID 8cc7dfbe-7630-4125-a776-9339df34e7cf -->\n\nعند إزاحة الكبس الصغير إلى أسفل وحيثُ إن السائل غير قابل للانضغاط فإن حجم السائل المزاح من أنبوبة الكبس الصغير = حجم السائل المزاح إلى أنبوبة الكبس الكبير. <!-- text, from page 0 (l=0.065,t=0.440,r=0.862,b=0.487), with ID 191afe5f-0c59-4d4a-8797-20cbd5c71521 -->\n\n$ \\frac{A}{a} = \\frac{y_1}{y_2} $ <!-- text, from page 0 (l=0.631,t=0.489,r=0.772,b=0.544), with ID e11bcc13-3260-4782-b53e-d286227a3704 -->\n\n$ \\therefore \\quad A\\,y_2 = a\\,y_1 $ <!-- text, from page 0 (l=0.319,t=0.489,r=0.489,b=0.543), with ID d3ae1fc4-4830-4405-8269-1153c59b183e -->\n\nSummary : This illustration demonstrates the principle of hydraulic systems, showing how a force applied to a large piston is transmitted through an incompressible fluid to a smaller piston, resulting in a different force output.\n\nillustration:\nHydraulic System Overview :\n  • Two vertical cylinders of different diameters are connected at the base by a U-shaped tube filled with liquid.\n  • The left cylinder is larger, labeled with piston area \"A\" and force \"F\" applied downward.\n  • The right cylinder is smaller, labeled with piston area \"a\" and force \"f\" applied downward.\n  • Both pistons are shown pressing down on the liquid, with the liquid level equal in both arms.\n\nLabels & Notation :\n  • Left piston: \"A\" (area), \"F\" (force).\n  • Right piston: \"a\" (area), \"f\" (force).\n  • Dashed horizontal line indicates equal liquid level.\n  • Persian text at the bottom: \"شکل ۲\" (Figure 2).\n\nSpatial Relationships :\n  • The larger piston (left) and smaller piston (right) are at the same liquid height, indicating pressure transmission.\n  • The U-shaped tube ensures the fluid connects both pistons.\n\nAnalysis :\n  • The figure visually represents Pascal's principle: pressure applied to a confined fluid is transmitted undiminished throughout the fluid.\n  • The system illustrates how a small force on a small piston can balance a larger force on a larger piston if the ratio of forces equals the ratio of areas (F/A = f/a).\n  • No numerical values are provided; the focus is on conceptual understanding of force and area relationships in hydraulic systems. <!-- figure, from page 0 (l=0.062,t=0.472,r=0.278,b=0.611), with ID f5276db7-65e5-41bd-93b4-7160d4ad3092 -->\n\n- لكي يعود المكبسان في مستوي أفقي واحد كما في الشكل (2) يجب التأثير على المكبس الكبير بقوة F لأسفل. <!-- text, from page 0 (l=0.315,t=0.547,r=0.874,b=0.594), with ID 79bdcf7d-b89a-4200-8965-07f56e633f34 -->\n\nحالات المكبس الهيدروليكى عند الاستقرار <!-- text, from page 0 (l=0.531,t=0.608,r=0.929,b=0.647), with ID 00c0da15-49de-4d8f-bf90-84296936d71a -->\n\nSummary : This figure compares the pressure relationships and equations for two pistons in a U-tube hydraulic system, considering cases where the pistons are at different and the same horizontal levels.\n\nillustration:\n# Left and Center Panels: Pistons at Different Levels :\n  • Both panels show a U-tube filled with liquid, with two pistons (areas a and A) at different heights.\n  • A force f is applied to the smaller piston (area a, left side), and a force F is applied to the larger piston (area A, right side).\n  • The height difference between the pistons is labeled h.\n  • The pressure equality is given as P₁ = P₂.\n  • The pressure equation is: (f/a) = (F/A) + ρgh, where ρ is the liquid density and g is gravitational acceleration.\n  • Both panels illustrate the same principle but with slightly different piston placements.\n\n# Right Panel: Pistons at the Same Level :\n  • Shows a U-tube with both pistons at the same horizontal level.\n  • Forces f and F are applied to pistons of areas a and A, respectively.\n  • The pressure equality is P₁ = P₂.\n  • The pressure equation simplifies to: (f/a) = (F/A), since h = 0.\n\n# Headings and Labels :\n  • Top left and center: \"المكبسـان في مستويين مختلفين\" (\"The pistons at different levels\").\n  • Top right: \"المكبسـان في نفس المستوى الأفقي\" (\"The pistons at the same horizontal level\").\n  • Variables: f, F (forces), a, A (areas), h (height difference), ρ (density), g (gravity), P₁, P₂ (pressures).\n\nAnalysis :\n  • When the pistons are at different heights, the pressure applied to the smaller piston must overcome both the force on the larger piston and the hydrostatic pressure due to the height difference (ρgh).\n  • When the pistons are at the same level, the pressure relationship depends only on the ratio of forces to areas, with no hydrostatic term.\n  • The figure visually and mathematically demonstrates the effect of piston height difference on hydraulic pressure transmission. <!-- figure, from page 0 (l=0.108,t=0.651,r=0.888,b=0.892), with ID 8d0ed3ca-fa64-4954-ac2d-a9b9bf004b11 -->\n\nحيث : (ρ) كثافة السائل ، (h) ارتفاع عمود السائل بين المكبسـين. <!-- text, from page 0 (l=0.389,t=0.898,r=0.895,b=0.924), with ID d7883e40-07a0-4d30-979a-eb0934635eac -->\n\nالامتحان فيزياء - ٢ ث - ترم ٢ - ١٤ / ٤ / ٢٠٢٣ (١٠٥) <!-- text, from page 0 (l=0.068,t=0.932,r=0.406,b=0.964), with ID 3d326dc7-90b3-41bc-a228-60c6149e6e17 -->",
+  "chunks": [
+    {
+      "text": "Summary : This is a labeled schematic diagram illustrating the principle of a hydraulic press using a U-shaped vessel filled with hydraulic fluid, showing the relationship between applied forces, areas, and heights on both sides.\n\nillustration:\n# System Overview :\n  • U-shaped vessel filled with hydraulic fluid, labeled as \"السانل الهيدروليكي\" (hydraulic fluid).\n  • Left side: Large piston with area labeled \"A\" and applied force \"F\" pushing down.\n  • Right side: Small piston with area labeled \"a\" and applied force \"f\" pushing down.\n  • Both pistons are shown at different heights above a reference level.\n\n# Labels & Dimensions :\n  • Left piston: Area \"A\", force \"F\", height above reference \"y2\".\n  • Right piston: Area \"a\", force \"f\", height above reference \"y1\".\n  • Vertical distances \"y2\" and \"y1\" are marked with dashed lines.\n  • The diagram is labeled as \"شكل (1)\" (Figure 1).\n\n# Contextual Notes :\n  • The diagram is part of \"الدرس الخامس\" (Lesson Five).\n  • Associated Arabic text discusses the forces and pressures on the pistons and the surface.\n\n# Analysis :\n  • The figure visually demonstrates Pascal’s principle: a force applied to a confined fluid is transmitted undiminished throughout the fluid, allowing a small force on a small piston to balance a larger force on a larger piston if the area ratio is appropriate.\n  • The height difference (y2 vs. y1) may relate to pressure calculations or work done in the system.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.0640561580657959,
+            "t": 0.060518138110637665,
+            "r": 0.4153969883918762,
+            "b": 0.25242939591407776
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "5cd224c9-115f-42ad-9c61-f8a969963c49"
+    },
+    {
+      "text": "- عندما يكون المكبسان في مستوى افقي واحد ويتم التأثير بقوة f على المكبس الصغير كما في الشكل (1) ينتج عن هذه القوة ضغط P أسفل المكبس الصغير مباشرة حيث : $P = \\frac{f}{a}$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.3327785134315491,
+            "t": 0.09620150923728943,
+            "r": 0.9555694460868835,
+            "b": 0.17638224363327026
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "fd0bf1ae-051c-4898-b118-0feb9d50b2f6"
+    },
+    {
+      "text": "- ينتقل هذا الضغط بتماسه إلى جميع أجزاء السائل وإلى السطح السفلى للمكبس الكبير فتؤثر قوة F على المكبس الكبير تعمل على",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.33354270458221436,
+            "t": 0.1793450117111206,
+            "r": 0.8721239566802979,
+            "b": 0.22909006476402283
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "c489bad3-db76-40d9-9d2b-1f06d87ccc97"
+    },
+    {
+      "text": "$P = \\frac{F}{A} : \\text{تحريكه لأعلى حيث}$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.6244978904724121,
+            "t": 0.23180389404296875,
+            "r": 0.86127769947052,
+            "b": 0.2617265582084656
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "1c0dd4f5-55f1-4ec8-88cf-1fce87b822d8"
+    },
+    {
+      "text": "- إذا سببت القوة F في تحريك المكبس الصغير مسافة 𝑦₁ لأسفل فإن المكبس الكبير يتأثر بقوة F تسبب تحرك مسافة 𝑦₂ لأعلى ويطبق قانون بقاء الطاقة (في حالة المكبس الهيدروليكي المثالي) فإن :\n\nالشغل المبذول على المكبس الصغير = الشغل الناتج عند المكبس الكبير.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.06630414724349976,
+            "t": 0.2654576897621155,
+            "r": 0.8708971738815308,
+            "b": 0.3356996178627014
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "cee57d1b-00f8-481b-baa3-0492150a3680"
+    },
+    {
+      "text": "$ \\frac{F}{f} = \\frac{y_1}{y_2} $",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.6300811767578125,
+            "t": 0.3397955000400543,
+            "r": 0.7695490121841431,
+            "b": 0.39064255356788635
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "573cbb24-8ece-4b5e-b93a-fa00bfc4a467"
+    },
+    {
+      "text": "$ \\mathrm{fy}_1 = \\mathrm{Fy}_2 $",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.3140437602996826,
+            "t": 0.3383141756057739,
+            "r": 0.46492522954940796,
+            "b": 0.39216750860214233
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "4e6368e3-a5e3-47fe-99ad-020752899206"
+    },
+    {
+      "text": "- أي أن المكبس الكبير يتحرك مسافة صغيرة إلى أعلى بتأثير إزاحة كبيرة للمكبس الصغير إلى أسفل، ويمكن الوصول لنفس الاستنتاج كالتالي:",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.06336382031440735,
+            "t": 0.3907957077026367,
+            "r": 0.8739032745361328,
+            "b": 0.44045352935791016
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "8cc7dfbe-7630-4125-a776-9339df34e7cf"
+    },
+    {
+      "text": "عند إزاحة الكبس الصغير إلى أسفل وحيثُ إن السائل غير قابل للانضغاط فإن حجم السائل المزاح من أنبوبة الكبس الصغير = حجم السائل المزاح إلى أنبوبة الكبس الكبير.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.06539452075958252,
+            "t": 0.439998596906662,
+            "r": 0.86152184009552,
+            "b": 0.4873782694339752
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "191afe5f-0c59-4d4a-8797-20cbd5c71521"
+    },
+    {
+      "text": "$ \\frac{A}{a} = \\frac{y_1}{y_2} $",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.6314496994018555,
+            "t": 0.4892953038215637,
+            "r": 0.7718244791030884,
+            "b": 0.5435622334480286
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "e11bcc13-3260-4782-b53e-d286227a3704"
+    },
+    {
+      "text": "$ \\therefore \\quad A\\,y_2 = a\\,y_1 $",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.3186171054840088,
+            "t": 0.4887993633747101,
+            "r": 0.489460289478302,
+            "b": 0.543428897857666
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "d3ae1fc4-4830-4405-8269-1153c59b183e"
+    },
+    {
+      "text": "Summary : This illustration demonstrates the principle of hydraulic systems, showing how a force applied to a large piston is transmitted through an incompressible fluid to a smaller piston, resulting in a different force output.\n\nillustration:\nHydraulic System Overview :\n  • Two vertical cylinders of different diameters are connected at the base by a U-shaped tube filled with liquid.\n  • The left cylinder is larger, labeled with piston area \"A\" and force \"F\" applied downward.\n  • The right cylinder is smaller, labeled with piston area \"a\" and force \"f\" applied downward.\n  • Both pistons are shown pressing down on the liquid, with the liquid level equal in both arms.\n\nLabels & Notation :\n  • Left piston: \"A\" (area), \"F\" (force).\n  • Right piston: \"a\" (area), \"f\" (force).\n  • Dashed horizontal line indicates equal liquid level.\n  • Persian text at the bottom: \"شکل ۲\" (Figure 2).\n\nSpatial Relationships :\n  • The larger piston (left) and smaller piston (right) are at the same liquid height, indicating pressure transmission.\n  • The U-shaped tube ensures the fluid connects both pistons.\n\nAnalysis :\n  • The figure visually represents Pascal's principle: pressure applied to a confined fluid is transmitted undiminished throughout the fluid.\n  • The system illustrates how a small force on a small piston can balance a larger force on a larger piston if the ratio of forces equals the ratio of areas (F/A = f/a).\n  • No numerical values are provided; the focus is on conceptual understanding of force and area relationships in hydraulic systems.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.06224636733531952,
+            "t": 0.47223007678985596,
+            "r": 0.27769923210144043,
+            "b": 0.6105756759643555
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "f5276db7-65e5-41bd-93b4-7160d4ad3092"
+    },
+    {
+      "text": "- لكي يعود المكبسان في مستوي أفقي واحد كما في الشكل (2) يجب التأثير على المكبس الكبير بقوة F لأسفل.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.3151538670063019,
+            "t": 0.5474143624305725,
+            "r": 0.8744087219238281,
+            "b": 0.5939581990242004
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "79bdcf7d-b89a-4200-8965-07f56e633f34"
+    },
+    {
+      "text": "حالات المكبس الهيدروليكى عند الاستقرار",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.5307940244674683,
+            "t": 0.6083161234855652,
+            "r": 0.9293876886367798,
+            "b": 0.6465296149253845
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "00c0da15-49de-4d8f-bf90-84296936d71a"
+    },
+    {
+      "text": "Summary : This figure compares the pressure relationships and equations for two pistons in a U-tube hydraulic system, considering cases where the pistons are at different and the same horizontal levels.\n\nillustration:\n# Left and Center Panels: Pistons at Different Levels :\n  • Both panels show a U-tube filled with liquid, with two pistons (areas a and A) at different heights.\n  • A force f is applied to the smaller piston (area a, left side), and a force F is applied to the larger piston (area A, right side).\n  • The height difference between the pistons is labeled h.\n  • The pressure equality is given as P₁ = P₂.\n  • The pressure equation is: (f/a) = (F/A) + ρgh, where ρ is the liquid density and g is gravitational acceleration.\n  • Both panels illustrate the same principle but with slightly different piston placements.\n\n# Right Panel: Pistons at the Same Level :\n  • Shows a U-tube with both pistons at the same horizontal level.\n  • Forces f and F are applied to pistons of areas a and A, respectively.\n  • The pressure equality is P₁ = P₂.\n  • The pressure equation simplifies to: (f/a) = (F/A), since h = 0.\n\n# Headings and Labels :\n  • Top left and center: \"المكبسـان في مستويين مختلفين\" (\"The pistons at different levels\").\n  • Top right: \"المكبسـان في نفس المستوى الأفقي\" (\"The pistons at the same horizontal level\").\n  • Variables: f, F (forces), a, A (areas), h (height difference), ρ (density), g (gravity), P₁, P₂ (pressures).\n\nAnalysis :\n  • When the pistons are at different heights, the pressure applied to the smaller piston must overcome both the force on the larger piston and the hydrostatic pressure due to the height difference (ρgh).\n  • When the pistons are at the same level, the pressure relationship depends only on the ratio of forces to areas, with no hydrostatic term.\n  • The figure visually and mathematically demonstrates the effect of piston height difference on hydraulic pressure transmission.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.10803648829460144,
+            "t": 0.6514878273010254,
+            "r": 0.8884717226028442,
+            "b": 0.8922713994979858
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "8d0ed3ca-fa64-4954-ac2d-a9b9bf004b11"
+    },
+    {
+      "text": "حيث : (ρ) كثافة السائل ، (h) ارتفاع عمود السائل بين المكبسـين.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.3893098533153534,
+            "t": 0.897674024105072,
+            "r": 0.8954228162765503,
+            "b": 0.9237344861030579
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "d7883e40-07a0-4d30-979a-eb0934635eac"
+    },
+    {
+      "text": "الامتحان فيزياء - ٢ ث - ترم ٢ - ١٤ / ٤ / ٢٠٢٣ (١٠٥)",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.06773720681667328,
+            "t": 0.9318723678588867,
+            "r": 0.4056176543235779,
+            "b": 0.964449405670166
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "3d326dc7-90b3-41bc-a228-60c6149e6e17"
+    }
+  ],
+  "result_path": null,
+  "image_was_downscaled": true,
+  "processed_image_size": {
+    "width": 709,
+    "height": 1024
+  }
+}

@@ -6,7 +6,7 @@
 import { supabase } from '@/integrations/supabase/client';
 
 // Backend base URL – override by setting VITE_BACKEND_URL in your env
-const API_BASE_URL = import.meta.env.VITE_BACKEND_URL ?? 'http://localhost:8001/api/v1';
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL ?? '/api/v1';
 // Derive WebSocket base URL from HTTP base URL
 const WS_BASE_URL = API_BASE_URL.replace(/^http/, 'ws');
 
@@ -169,7 +169,7 @@ class BackendService {
     } catch (error) {
       if (error.name === 'AbortError') {
         console.error('❌ انتهت مهلة الاتصال بالخادم الخلفي');
-        throw new Error('انتهت مهلة الاتصال - تأكد من تشغيل الخادم الخلفي على http://localhost:8000');
+        throw new Error('انتهت مهلة الاتصال - تأكد من تشغيل الخادم الخلفي على http://localhost:8001');
       }
       console.error('❌ فشل في إنشاء جلسة الرفع:', error);
       throw error instanceof Error ? error : new Error('خطأ غير معروف في إنشاء الجلسة');

@@ -145,11 +145,22 @@ const API_PREFIX = '/api/v1';
  * يعطي الأولوية لمتغير البيئة VITE_BACKEND_URL، ثم يعود إلى استخدام المسارات النسبية (التي سيعترضها وكيل Vite).
  */
 async function fetchWithFallback(path: string, options?: RequestInit): Promise<Response> {
-  const baseUrl = import.meta.env.VITE_BACKEND_URL?.replace(/\/$/, '') || '';
-  const url = `${baseUrl}${path}`;
+  // استخدام الـ proxy بدلاً من الاتصال المباشر
+  const url = path;
+  
+  // إضافة timeout طويل للطلبات التي قد تستغرق وقتاً طويلاً
+  const timeoutMs = 300000; // 5 minutes
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
 
   try {
-    const response = await fetch(url, options);
+    const response = await fetch(url, {
+      ...options,
+      signal: controller.signal,
+    });
+    
+    clearTimeout(timeoutId);
+    
     if (!response.ok) {
         // قراءة الجسم كـ JSON لمحاولة الحصول على تفاصيل الخطأ من الواجهة الخلفية
         const errorBody = await response.json().catch(() => ({ message: 'Could not parse error body' }));
@@ -159,6 +170,11 @@ async function fetchWithFallback(path: string, options?: RequestInit): Promise<R
     }
     return response;
   } catch (err) {
+    clearTimeout(timeoutId);
+    if (err instanceof Error && err.name === 'AbortError') {
+      console.error(`⏰ انتهت مهلة الطلب بعد ${timeoutMs / 1000} ثانية`);
+      throw new Error(`انتهت مهلة الطلب - العملية استغرقت أكثر من ${timeoutMs / 1000} ثانية`);
+    }
     console.error(`⚠️ فشل الاتصال بـ ${url}:`, err);
     // إعادة رمي الخطأ للتعامل معه في الكود الذي استدعى الدالة
     throw err;
@@ -271,6 +287,10 @@ export const useRealComparison = () => {
       updateProgress();
 
       // ... The rest of the comparison logic
+      addLog('🔄 بدء المقارنة الكاملة (قد تستغرق عدة دقائق)...');
+      updateStep('ocr', { status: 'processing', progress: 50 });
+      updateProgress();
+      
       const fullComparisonResponse = await apiFetch(`/compare/full-comparison/${newSessionId}`, {
           method: 'POST',
           body: formData,
@@ -280,6 +300,7 @@ export const useRealComparison = () => {
           throw new Error('فشل في إجراء المقارنة الكاملة');
       }
 
+      addLog('✅ تم الحصول على النتائج، جاري التحليل...');
       const results = await fullComparisonResponse.json();
 
       setState(prev => ({

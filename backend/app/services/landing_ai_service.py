@@ -6,7 +6,7 @@ LandingAI Agentic Document Extraction Service
 import os
 import json
 import asyncio
-from typing import Dict, Any, List, Optional, Union
+from typing import Dict, Any, List, Optional, Tuple, ContextManager
 from datetime import datetime
 from pathlib import Path
 import tempfile
@@ -211,8 +211,15 @@ class LandingAIService:
     
     def __init__(self):
         self.api_key = VISION_AGENT_API_KEY
-        self.enabled = bool(self.api_key) and LANDINGAI_AVAILABLE
-        self.agentic_doc_available = LANDINGAI_AVAILABLE  # إضافة الخاصية المفقودة
+        # توحيد حالة الخدمة في متغير واحد: mock_mode
+        self.mock_mode = not (bool(self.api_key) and LANDINGAI_AVAILABLE)
+        self.agentic_doc_available = LANDINGAI_AVAILABLE
+        
+        if self.mock_mode:
+            logger.warning("LandingAI service is in MOCK MODE due to missing API key or library.")
+        else:
+            logger.info("✅ تم تكوين LandingAI Service مع API حقيقي.")
+
         self.api_endpoint = "https://predict.app.landing.ai/inference/v1/predict"
         if not LANDINGAI_AVAILABLE:
             logger.warning("agentic-doc library not installed. LandingAI service will be disabled.")
@@ -234,18 +241,10 @@ class LandingAIService:
         # حفظ النص المستخرج تلقائياً
         self.auto_save_md = os.getenv("AUTO_SAVE_MD", "True").lower() == "true"
         
-        # تعطيل Tesseract backup للإجبار على استخدام LandingAI فقط
-        self.ocr_available = False  # تعطيل Tesseract نهائياً
+        # تعطيل Tesseract backup
+        self.ocr_available = False
         
-        # استخدام LandingAI الحقيقي بدلاً من المحاكاة
-        self.mock_mode = False  # إيقاف المحاكاة نهائياً
-        
-        if self.api_key:
-            logger.info("✅ تم تكوين LandingAI Service مع API حقيقي (LandingAI فقط - لا Tesseract backup)")
-        else:
-            logger.error("❌ لا يوجد API key - الخدمة معطلة")
-    
-    def _downscale_if_needed(self, image_path: str, max_dim: int = 1024, temp_dir: str = None) -> (str, bool):
+    def _downscale_if_needed(self, image_path: str, max_dim: int = 1024, temp_dir: str = None) -> Tuple[str, bool]:
         """
         تصغير الصور الكبيرة للحفاظ على سرعة استجابة LandingAI (محسن)
         Downscales large images to maintain LandingAI API performance (optimized).
@@ -292,27 +291,28 @@ class LandingAIService:
         job_id: Optional[str] = None
     ) -> LandingAIExtractionResult:
         """
-        استخراج محتوى من ملف واحد - LandingAI فقط
-        Extract content from a single file - LandingAI only
+        استخراج محتوى من ملف واحد.
+        سيتم استخدام المحاكاة تلقائياً إذا كانت الخدمة في mock_mode.
         """
         start_time = datetime.now()
         file_name = Path(file_path).name
         
-        logger.info(f"📄 بدء استخراج النص من: {file_name} (LandingAI فقط)")
+        # تحديد المجلدات
+        if not output_dir:
+            output_dir = os.path.join(settings.UPLOAD_DIR, "landingai_results")
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        session_dir = os.path.join(output_dir, f"extraction_{timestamp}")
+        os.makedirs(session_dir, exist_ok=True)
+        
+        # التحقق من وضع المحاكاة أولاً
+        if self.mock_mode:
+            logger.warning(f"⚠️ استدعاء محاكاة استخراج لـ {file_name}")
+            return await self._mock_extraction(file_path, session_dir, file_name)
+
+        logger.info(f"📄 بدء استخراج النص الحقيقي من: {file_name}")
         
         try:
-            # إعداد مجلدات الإخراج
-            if not output_dir:
-                output_dir = os.path.join(settings.UPLOAD_DIR, "landingai_results")
-            
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            session_dir = os.path.join(output_dir, f"extraction_{timestamp}")
-            os.makedirs(session_dir, exist_ok=True)
-            
-            # استخدام LandingAI API فقط - لا backup
-            if not self.api_key:
-                raise Exception("LandingAI API key غير متوفر")
-            
+            # استخدام LandingAI API الحقيقي
             logger.info("🌐 بدء الاستخراج باستخدام Landing AI API...")
             result = await self._real_landingai_extraction(file_path, session_dir, file_name)
             
@@ -1154,7 +1154,8 @@ class LandingAIService:
             }
 
     def is_enabled(self) -> bool:
-        return self.enabled
+        """للتحقق من أن الخدمة ليست في وضع المحاكاة"""
+        return not self.mock_mode
 
 
 # إنشاء instance واحد للخدمة

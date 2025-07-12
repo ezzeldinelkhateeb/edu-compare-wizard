@@ -1,0 +1,283 @@
+{
+  "markdown": "3\nالفصل <!-- text, from page 0 (l=0.851,t=0.047,r=0.927,b=0.088), with ID 2eca6ca0-1827-49ee-b204-dc1acbb8fc98 -->\n\nالحل <!-- text, from page 0 (l=0.806,t=0.105,r=0.940,b=0.129), with ID 041e5091-b375-4018-a558-f3e53705ddb0 -->\n\na: 10 cm²  \nf: 100 N  \nA: 800 cm²  \ng: 10 m/s²  \ny₂: 1 cm <!-- text, from page 0 (l=0.089,t=0.130,r=0.732,b=0.164), with ID 74152b88-6a30-4373-a012-cc6d6cafb20b -->\n\nM = ?\n\ny₁ = ? <!-- text, from page 0 (l=0.088,t=0.168,r=0.262,b=0.203), with ID e25a8e9b-17c9-4031-9fae-4f5050cab956 -->\n\n$ \\therefore \\frac{F}{f} = \\frac{A}{a} $\n\n$ \\therefore F = \\frac{A}{a} f = \\frac{800}{10} \\times 100 = 8 \\times 10^3 \\text{ N} $ <!-- text, from page 0 (l=0.085,t=0.214,r=0.909,b=0.252), with ID 45a2edfb-a2e0-418e-a9dd-5e36a4227b88 -->\n\n$ \\therefore F = \\mathbf{M}g $\n\n$ \\therefore \\mathbf{M} = \\frac{F}{g} = \\frac{8 \\times 10^3}{10} = \\mathbf{800\\ kg} $ <!-- text, from page 0 (l=0.087,t=0.263,r=0.687,b=0.300), with ID be1dbe15-56f9-470c-aaae-2fd59962aa80 -->\n\n: :  الاختيار الصحيح هو  د <!-- text, from page 0 (l=0.650,t=0.317,r=0.880,b=0.346), with ID fb24d6db-c2a4-4ddc-883e-d6e5706dc282 -->\n\n$fy_1 = Fy_2 \\qquad , \\qquad y_1 = \\frac{F}{f} y_2 = \\frac{8 \\times 10^3}{100} \\times 1 = \\mathbf{80\\ cm}$ <!-- text, from page 0 (l=0.088,t=0.360,r=0.702,b=0.397), with ID 89ee257c-9434-4a3e-8c01-b4f938efa7c2 -->\n\n: : الاختيار الصحيح هو ب <!-- text, from page 0 (l=0.652,t=0.413,r=0.882,b=0.438), with ID cac9c01b-dab7-4e7c-bb42-0f60c4e339d9 -->\n\nكان المطلوب حساب الفائدة الآلية للمكبس، ما إجابتك؟\n\n١٠  ٢٠  ٤٠  ٨٠ <!-- text, from page 0 (l=0.092,t=0.445,r=0.907,b=0.518), with ID f66fd5db-989f-4208-8160-270b7ceca721 -->\n\nالشكل المقابل يوضح مكبس هيدروليكي به كمية من زيت كثافته 800 kg/m³،  \nفإذا كانت مساحة مقطع مكبسه الصغير 10 cm² وتؤثر عليه قوة مقدارها 180 N ومساحة مقطع مكبسه الكبير 100 cm²، فإن :  \n(علماً بأن : g = 9.8 m/s²) <!-- text, from page 0 (l=0.334,t=0.559,r=0.928,b=0.723), with ID 8c9e6b3d-00bc-43ac-ac70-7ce7ca2e10ca -->\n\nSummary : This is a schematic illustration of a U-shaped hydraulic system with two pistons of different areas, showing the application of forces and the height difference in the fluid.\n\nillustration:\nSystem Overview :\n  • U-shaped container filled with fluid.\n  • Two vertical pistons are placed on the left and right arms of the container.\n  • The left piston is smaller and labeled with a downward force \"f\".\n  • The right piston is larger and labeled with an upward force \"F\".\n\nDimensions & Labels :\n  • The vertical distance between the fluid surfaces under the two pistons is marked as h = 8 cm.\n\nForces & Directions :\n  • Left piston: force \"f\" is applied downward.\n  • Right piston: force \"F\" is applied upward.\n\nSpatial Relationships :\n  • The left piston sits lower than the right piston, indicating a pressure difference.\n  • The fluid level is higher on the right side under the larger piston.\n\nAnalysis :\n  • The diagram visually represents Pascal’s principle, showing how a small force applied to a smaller piston can balance a larger force on a bigger piston, with the height difference (h = 8 cm) indicating the pressure transmission through the fluid. <!-- figure, from page 0 (l=0.086,t=0.596,r=0.302,b=0.754), with ID 0618ee07-c313-4215-a1da-f92ec0c06002 -->\n\n(1) القوة المؤثرة على المكبس الكبير تساوى ...............\n\n6.5 × 10³ N  أ\n\n1.5 × 10³ N  ب\n\n1.8 × 10³ N  ج\n\n1.9 × 10³ N  د <!-- text, from page 0 (l=0.368,t=0.728,r=0.909,b=0.824), with ID 11b1afab-4e14-4c62-b816-8e426953ff1e -->\n\n(٢) الفائدة الآلية للمكبس الهيدروليكي تساوي ............ <!-- text, from page 0 (l=0.471,t=0.834,r=0.910,b=0.860), with ID 0bbbc26a-930b-4f66-a4e3-66c0664cd185 -->\n\n20 ⏷    15 ⟶    10 ☺    5 ⓘ <!-- text, from page 0 (l=0.282,t=0.866,r=0.882,b=0.895), with ID 6b2339fa-62e5-49fe-ac5c-0b2a59d8fa45 -->\n\n$1 \\cdot 8$ <!-- marginalia, from page 0 (l=0.873,t=0.936,r=0.926,b=0.962), with ID a7c650ed-c0be-4bcf-8816-bcbcf98da8c8 -->",
+  "chunks": [
+    {
+      "text": "3\nالفصل",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.8514347672462463,
+            "t": 0.04685857892036438,
+            "r": 0.9274247288703918,
+            "b": 0.0880340188741684
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "2eca6ca0-1827-49ee-b204-dc1acbb8fc98"
+    },
+    {
+      "text": "الحل",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.8056379556655884,
+            "t": 0.10461518168449402,
+            "r": 0.9400807619094849,
+            "b": 0.12901772558689117
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "041e5091-b375-4018-a558-f3e53705ddb0"
+    },
+    {
+      "text": "a: 10 cm²  \nf: 100 N  \nA: 800 cm²  \ng: 10 m/s²  \ny₂: 1 cm",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.0890330970287323,
+            "t": 0.1301165223121643,
+            "r": 0.7316199541091919,
+            "b": 0.1640954613685608
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "74152b88-6a30-4373-a012-cc6d6cafb20b"
+    },
+    {
+      "text": "M = ?\n\ny₁ = ?",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.08757350593805313,
+            "t": 0.16801121830940247,
+            "r": 0.2615850567817688,
+            "b": 0.20293420553207397
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "e25a8e9b-17c9-4031-9fae-4f5050cab956"
+    },
+    {
+      "text": "$ \\therefore \\frac{F}{f} = \\frac{A}{a} $\n\n$ \\therefore F = \\frac{A}{a} f = \\frac{800}{10} \\times 100 = 8 \\times 10^3 \\text{ N} $",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.08517375588417053,
+            "t": 0.2140643149614334,
+            "r": 0.9087159633636475,
+            "b": 0.2521266043186188
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "45a2edfb-a2e0-418e-a9dd-5e36a4227b88"
+    },
+    {
+      "text": "$ \\therefore F = \\mathbf{M}g $\n\n$ \\therefore \\mathbf{M} = \\frac{F}{g} = \\frac{8 \\times 10^3}{10} = \\mathbf{800\\ kg} $",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.08668571710586548,
+            "t": 0.2626590132713318,
+            "r": 0.6866233944892883,
+            "b": 0.2998660206794739
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "be1dbe15-56f9-470c-aaae-2fd59962aa80"
+    },
+    {
+      "text": ": :  الاختيار الصحيح هو  د",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.6503982543945312,
+            "t": 0.3171135485172272,
+            "r": 0.879688024520874,
+            "b": 0.34617623686790466
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "fb24d6db-c2a4-4ddc-883e-d6e5706dc282"
+    },
+    {
+      "text": "$fy_1 = Fy_2 \\qquad , \\qquad y_1 = \\frac{F}{f} y_2 = \\frac{8 \\times 10^3}{100} \\times 1 = \\mathbf{80\\ cm}$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.08828330039978027,
+            "t": 0.35999125242233276,
+            "r": 0.7015464305877686,
+            "b": 0.3970237970352173
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "89ee257c-9434-4a3e-8c01-b4f938efa7c2"
+    },
+    {
+      "text": ": : الاختيار الصحيح هو ب",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.6517058610916138,
+            "t": 0.4126255214214325,
+            "r": 0.882392406463623,
+            "b": 0.4380858838558197
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "cac9c01b-dab7-4e7c-bb42-0f60c4e339d9"
+    },
+    {
+      "text": "كان المطلوب حساب الفائدة الآلية للمكبس، ما إجابتك؟\n\n١٠  ٢٠  ٤٠  ٨٠",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.09204387664794922,
+            "t": 0.44521597027778625,
+            "r": 0.9066181182861328,
+            "b": 0.5177131295204163
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "f66fd5db-989f-4208-8160-270b7ceca721"
+    },
+    {
+      "text": "الشكل المقابل يوضح مكبس هيدروليكي به كمية من زيت كثافته 800 kg/m³،  \nفإذا كانت مساحة مقطع مكبسه الصغير 10 cm² وتؤثر عليه قوة مقدارها 180 N ومساحة مقطع مكبسه الكبير 100 cm²، فإن :  \n(علماً بأن : g = 9.8 m/s²)",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.3335322141647339,
+            "t": 0.5592625141143799,
+            "r": 0.9280507564544678,
+            "b": 0.7229835987091064
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "8c9e6b3d-00bc-43ac-ac70-7ce7ca2e10ca"
+    },
+    {
+      "text": "Summary : This is a schematic illustration of a U-shaped hydraulic system with two pistons of different areas, showing the application of forces and the height difference in the fluid.\n\nillustration:\nSystem Overview :\n  • U-shaped container filled with fluid.\n  • Two vertical pistons are placed on the left and right arms of the container.\n  • The left piston is smaller and labeled with a downward force \"f\".\n  • The right piston is larger and labeled with an upward force \"F\".\n\nDimensions & Labels :\n  • The vertical distance between the fluid surfaces under the two pistons is marked as h = 8 cm.\n\nForces & Directions :\n  • Left piston: force \"f\" is applied downward.\n  • Right piston: force \"F\" is applied upward.\n\nSpatial Relationships :\n  • The left piston sits lower than the right piston, indicating a pressure difference.\n  • The fluid level is higher on the right side under the larger piston.\n\nAnalysis :\n  • The diagram visually represents Pascal’s principle, showing how a small force applied to a smaller piston can balance a larger force on a bigger piston, with the height difference (h = 8 cm) indicating the pressure transmission through the fluid.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.08640145510435104,
+            "t": 0.5958829522132874,
+            "r": 0.30213648080825806,
+            "b": 0.7541453242301941
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "0618ee07-c313-4215-a1da-f92ec0c06002"
+    },
+    {
+      "text": "(1) القوة المؤثرة على المكبس الكبير تساوى ...............\n\n6.5 × 10³ N  أ\n\n1.5 × 10³ N  ب\n\n1.8 × 10³ N  ج\n\n1.9 × 10³ N  د",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.3681037127971649,
+            "t": 0.72772216796875,
+            "r": 0.90944504737854,
+            "b": 0.8237065076828003
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "11b1afab-4e14-4c62-b816-8e426953ff1e"
+    },
+    {
+      "text": "(٢) الفائدة الآلية للمكبس الهيدروليكي تساوي ............",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.4714319109916687,
+            "t": 0.8339872360229492,
+            "r": 0.9098601937294006,
+            "b": 0.8604894876480103
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "0bbbc26a-930b-4f66-a4e3-66c0664cd185"
+    },
+    {
+      "text": "20 ⏷    15 ⟶    10 ☺    5 ⓘ",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.2817915081977844,
+            "t": 0.8661611080169678,
+            "r": 0.8820622563362122,
+            "b": 0.8945287466049194
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "6b2339fa-62e5-49fe-ac5c-0b2a59d8fa45"
+    },
+    {
+      "text": "$1 \\cdot 8$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.873140275478363,
+            "t": 0.9356956481933594,
+            "r": 0.9256771206855774,
+            "b": 0.9621163606643677
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "marginalia",
+      "chunk_id": "a7c650ed-c0be-4bcf-8816-bcbcf98da8c8"
+    }
+  ],
+  "result_path": null,
+  "image_was_downscaled": true,
+  "processed_image_size": {
+    "width": 709,
+    "height": 1024
+  }
+}

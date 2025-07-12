@@ -1,0 +1,147 @@
+{
+  "markdown": "Summary : This is a physics illustration showing a U-shaped tube with two pistons of different areas, accompanied by a multiple-choice question about the ratio of pressures at the large and small pistons.\n\nillustration:\nScene Overview :\n  • The image shows a U-shaped tube filled with liquid.\n  • The left side has a large piston labeled with area \"2A\" and an upward force \"F\".\n  • The right side has a smaller piston labeled with area \"A\" and an upward force \"f\".\n  • Both pistons are at the same horizontal level, marked \"A\".\n\nTechnical Details :\n  • The left piston has twice the area of the right piston.\n  • The forces and areas are clearly labeled.\n  • The liquid level is the same on both sides, indicating equilibrium.\n\nSpatial Relationships :\n  • The large piston (2A) is on the left, the small piston (A) is on the right.\n  • Both pistons are pushing up on the liquid.\n\nQuestion and Choices :\n  • The question asks: \"In the adjacent figure, the ratio of the pressure at the large piston to the pressure at the small piston is ....\"\n  • Four answer choices are provided:\n    1. 1/1 (circled)\n    2. 1/2\n    3. 2/1\n    4. Cannot be determined\n\nAnalysis :\n  • The illustration is designed to test understanding of pressure transmission in fluids (Pascal's principle).\n  • The key visual message is the comparison of pressures at pistons of different areas but at the same height in a connected fluid system. <!-- figure, from page 0 (l=0.077,t=0.056,r=0.928,b=0.196), with ID 4257f6e3-c6e0-4158-8695-38067c466cc9 -->\n\nSummary : The figure presents four different graphs, each illustrating a possible relationship between the displacement of a large hydraulic piston (y₂) and the displacement of a small piston (y₁), with both axes labeled and the same scale used for both quantities. The question asks which graph best represents the relationship between these two displacements.\n\nline plots:\nTitle & Axes :\n  • No explicit title on the figure, but the context is the relationship between the displacement of a large hydraulic piston (y₂) and a small piston (y₁).\n  • X-axis: y₁ (displacement of the small piston).\n  • Y-axis: y₂ (displacement of the large piston).\n  • Both axes are labeled in Arabic as y₁ and y₂, with positive direction indicated by arrows.\n  • No tick labels or numeric values shown.\n\nPanels & Curves :\n  • Four panels labeled (أ), (ب), (ج), (د) from right to left.\n  • (أ): Upward-sloping straight line from origin (linear, positive slope).\n  • (ب): Upward-sloping straight line from origin, steeper than (أ).\n  • (ج): Downward-sloping curve, concave down, starting high on y₂-axis and approaching x-axis as y₁ increases (hyperbolic-like).\n  • (د): Downward-sloping curve, concave up, starting high on y₂-axis and approaching x-axis as y₁ increases (inverse relationship).\n\nDesign Encodings :\n  • All curves are drawn in red.\n  • Axes are blue with arrowheads.\n  • Each panel is encircled and labeled with an Arabic letter.\n\nAnalysis :\n  • The four graphs offer different mathematical relationships: (أ) and (ب) are linear with positive slopes, while (ج) and (د) are nonlinear, showing inverse relationships.\n  • The question context (hydraulic pistons) suggests an inverse relationship between the displacements, which is visually represented in panels (ج) and (د).\n  • The figure is designed to test understanding of the physical relationship between piston displacements in a hydraulic system. <!-- figure, from page 0 (l=0.071,t=0.198,r=0.925,b=0.388), with ID 7893b42f-de08-4861-884a-faf05185d426 -->\n\nإذا كانت النسبة بين قطري مكبسي المكبس الهيدروليكي هي ٥ : ١، فإن نسبة الضغط عند المكبس الصغير إلى الضغط الناتج عند المكبس الكبير في حالة اتزان المكبسين في مستوى أفقي واحد هي ........\n(سمود / القريبة ٢٣)\n\n١/٥ ⓘ      ٥/١ ⓘ      ١/١ ⓘ      ٢٥/١ ⓘ <!-- text, from page 0 (l=0.074,t=0.391,r=0.926,b=0.482), with ID 0f346220-85b2-44c0-ab47-5d5a86d119d2 -->\n\nإذا كانت النسبة بين نصفي قطري أسطوانتي المكبس الهيدروليكي $\\frac{5}{2}$ فإن الفائدة الآلية للمكبس تساوي ........\n\n(أ) $\\frac{4}{25}$  (ب) $\\frac{2}{5}$  (ج) $\\frac{25}{4}$  (د) $\\frac{5}{2}$\n\n(كفر الدوار / البحيرة ٢٤) <!-- text, from page 0 (l=0.074,t=0.485,r=0.927,b=0.552), with ID 08c6de56-5ae4-4ff7-8536-b0233d865bf8 -->\n\nإذا كانت الفائدة الآلية لمكبس هيدروليكي تساوي 250 ومساحة المكبس الصغير 2.5 cm² فإن نصف قطر المكبس الكبير يساوي ........\n\n625 cm ⃝      198.81 cm ⃝      100 cm ⃝      14.1 cm ⃝\n\n(أزمنة / الأقصر 24) <!-- text, from page 0 (l=0.073,t=0.555,r=0.926,b=0.641), with ID 0325c444-da0c-48ea-b0e8-f6d372c43a75 -->\n\nSummary : This is a physics illustration and multiple-choice question about a hydraulic press containing a liquid of density ρ, with two pistons of areas A and 3A. A mass m is placed on the larger piston, and the question asks for the value of m in terms of ρ, h, and A, given the system is in equilibrium.\n\nillustration:\nScene Overview :\n  • Schematic diagram of a U-shaped hydraulic press with two pistons.\n  • Left piston (smaller) has area A and is at height h above the liquid.\n  • Right piston (larger) has area 3A and supports a mass m.\n  • Both pistons are shown at equilibrium, with the liquid level equal on both sides except for the height h on the left.\n\nTechnical Details :\n  • The liquid has density ρ.\n  • The height difference between the pistons is labeled h.\n  • The area of the left piston is A; the area of the right piston is 3A.\n  • The mass m is placed on the larger piston.\n\nSpatial Relationships :\n  • The left piston is higher than the right by a vertical distance h.\n  • The mass m is only on the right (larger) piston.\n\nQuestion and Choices :\n  • The question asks: \"If the system is in equilibrium, what is the value of the mass m placed on the larger piston?\"\n  • Four answer choices are given:\n    – m = ρhA\n    – m = 2ρhA\n    – m = 3ρhA\n    – m = 4ρhA\n\nAnalysis :\n  • The diagram visually represents Pascal's principle and the equilibrium of forces in a hydraulic press.\n  • The key variables are the density ρ, height h, and piston areas A and 3A.\n  • The answer choices reflect different possible values for the mass m required to balance the pressure difference due to the height h of the liquid column. <!-- figure, from page 0 (l=0.074,t=0.646,r=0.926,b=0.778), with ID b6ec088e-de87-4625-989e-b997d37d772a -->\n\nSummary : This is a physics illustration and multiple-choice question about a hydraulic press system, showing two pistons of different areas connected by a fluid, with weights placed on each piston. The question asks for the value of the larger mass (M) required for equilibrium, given the smaller mass (m) and the area ratio.\n\nillustration:\n# Hydraulic Press System :\n  • Diagram shows two vertical pistons connected at the base by a tube filled with hydraulic fluid.\n  • Left piston (smaller) labeled with mass m and area a.\n  • Right piston (larger) labeled with mass M and area 10a.\n  • Both pistons are shown pressing down on the fluid, with the fluid level equal in both containers.\n  • The system is labeled \"سائل هيدروليكي\" (hydraulic fluid).\n\n# Question Text (in Arabic) :\n  • States that the small piston has area a and mass m, the large piston has area 10a and mass M.\n  • Asks: When the pistons are in horizontal equilibrium and their own masses are neglected, what is the value of M in terms of m?\n  • Four answer choices are provided:\n    1. M = m\n    2. M = 10 m\n    3. M = 100 m\n    4. M = 150 m\n\n# Analysis :\n  • The illustration visually represents Pascal's principle in a hydraulic press.\n  • The question tests understanding of force and area relationships in hydraulic systems.\n  • The answer choices reflect different possible ratios for the required mass M to balance the system, based on the area ratio (10:1).\n  • The correct answer (by the area ratio) is M = 10 m, matching the area ratio of the pistons. <!-- figure, from page 0 (l=0.074,t=0.783,r=0.926,b=0.930), with ID c3f2479e-22ad-45cb-9ebd-82e55857e0a4 -->\n\n‴ <!-- marginalia, from page 0 (l=0.081,t=0.936,r=0.119,b=0.954), with ID 59b28932-95ca-40f8-800c-6cbce0dedc5b -->",
+  "chunks": [
+    {
+      "text": "Summary : This is a physics illustration showing a U-shaped tube with two pistons of different areas, accompanied by a multiple-choice question about the ratio of pressures at the large and small pistons.\n\nillustration:\nScene Overview :\n  • The image shows a U-shaped tube filled with liquid.\n  • The left side has a large piston labeled with area \"2A\" and an upward force \"F\".\n  • The right side has a smaller piston labeled with area \"A\" and an upward force \"f\".\n  • Both pistons are at the same horizontal level, marked \"A\".\n\nTechnical Details :\n  • The left piston has twice the area of the right piston.\n  • The forces and areas are clearly labeled.\n  • The liquid level is the same on both sides, indicating equilibrium.\n\nSpatial Relationships :\n  • The large piston (2A) is on the left, the small piston (A) is on the right.\n  • Both pistons are pushing up on the liquid.\n\nQuestion and Choices :\n  • The question asks: \"In the adjacent figure, the ratio of the pressure at the large piston to the pressure at the small piston is ....\"\n  • Four answer choices are provided:\n    1. 1/1 (circled)\n    2. 1/2\n    3. 2/1\n    4. Cannot be determined\n\nAnalysis :\n  • The illustration is designed to test understanding of pressure transmission in fluids (Pascal's principle).\n  • The key visual message is the comparison of pressures at pistons of different areas but at the same height in a connected fluid system.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.07705563306808472,
+            "t": 0.05585908144712448,
+            "r": 0.9282481074333191,
+            "b": 0.19644695520401
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "4257f6e3-c6e0-4158-8695-38067c466cc9"
+    },
+    {
+      "text": "Summary : The figure presents four different graphs, each illustrating a possible relationship between the displacement of a large hydraulic piston (y₂) and the displacement of a small piston (y₁), with both axes labeled and the same scale used for both quantities. The question asks which graph best represents the relationship between these two displacements.\n\nline plots:\nTitle & Axes :\n  • No explicit title on the figure, but the context is the relationship between the displacement of a large hydraulic piston (y₂) and a small piston (y₁).\n  • X-axis: y₁ (displacement of the small piston).\n  • Y-axis: y₂ (displacement of the large piston).\n  • Both axes are labeled in Arabic as y₁ and y₂, with positive direction indicated by arrows.\n  • No tick labels or numeric values shown.\n\nPanels & Curves :\n  • Four panels labeled (أ), (ب), (ج), (د) from right to left.\n  • (أ): Upward-sloping straight line from origin (linear, positive slope).\n  • (ب): Upward-sloping straight line from origin, steeper than (أ).\n  • (ج): Downward-sloping curve, concave down, starting high on y₂-axis and approaching x-axis as y₁ increases (hyperbolic-like).\n  • (د): Downward-sloping curve, concave up, starting high on y₂-axis and approaching x-axis as y₁ increases (inverse relationship).\n\nDesign Encodings :\n  • All curves are drawn in red.\n  • Axes are blue with arrowheads.\n  • Each panel is encircled and labeled with an Arabic letter.\n\nAnalysis :\n  • The four graphs offer different mathematical relationships: (أ) and (ب) are linear with positive slopes, while (ج) and (د) are nonlinear, showing inverse relationships.\n  • The question context (hydraulic pistons) suggests an inverse relationship between the displacements, which is visually represented in panels (ج) and (د).\n  • The figure is designed to test understanding of the physical relationship between piston displacements in a hydraulic system.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.07114183902740479,
+            "t": 0.19792258739471436,
+            "r": 0.9246849417686462,
+            "b": 0.38768380880355835
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "7893b42f-de08-4861-884a-faf05185d426"
+    },
+    {
+      "text": "إذا كانت النسبة بين قطري مكبسي المكبس الهيدروليكي هي ٥ : ١، فإن نسبة الضغط عند المكبس الصغير إلى الضغط الناتج عند المكبس الكبير في حالة اتزان المكبسين في مستوى أفقي واحد هي ........\n(سمود / القريبة ٢٣)\n\n١/٥ ⓘ      ٥/١ ⓘ      ١/١ ⓘ      ٢٥/١ ⓘ",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.07361391186714172,
+            "t": 0.39115825295448303,
+            "r": 0.9261043071746826,
+            "b": 0.48156800866127014
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "0f346220-85b2-44c0-ab47-5d5a86d119d2"
+    },
+    {
+      "text": "إذا كانت النسبة بين نصفي قطري أسطوانتي المكبس الهيدروليكي $\\frac{5}{2}$ فإن الفائدة الآلية للمكبس تساوي ........\n\n(أ) $\\frac{4}{25}$  (ب) $\\frac{2}{5}$  (ج) $\\frac{25}{4}$  (د) $\\frac{5}{2}$\n\n(كفر الدوار / البحيرة ٢٤)",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.07418158650398254,
+            "t": 0.4845332205295563,
+            "r": 0.926628828048706,
+            "b": 0.551609456539154
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "08c6de56-5ae4-4ff7-8536-b0233d865bf8"
+    },
+    {
+      "text": "إذا كانت الفائدة الآلية لمكبس هيدروليكي تساوي 250 ومساحة المكبس الصغير 2.5 cm² فإن نصف قطر المكبس الكبير يساوي ........\n\n625 cm ⃝      198.81 cm ⃝      100 cm ⃝      14.1 cm ⃝\n\n(أزمنة / الأقصر 24)",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.07293182611465454,
+            "t": 0.5553557276725769,
+            "r": 0.9262663125991821,
+            "b": 0.6408564448356628
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "0325c444-da0c-48ea-b0e8-f6d372c43a75"
+    },
+    {
+      "text": "Summary : This is a physics illustration and multiple-choice question about a hydraulic press containing a liquid of density ρ, with two pistons of areas A and 3A. A mass m is placed on the larger piston, and the question asks for the value of m in terms of ρ, h, and A, given the system is in equilibrium.\n\nillustration:\nScene Overview :\n  • Schematic diagram of a U-shaped hydraulic press with two pistons.\n  • Left piston (smaller) has area A and is at height h above the liquid.\n  • Right piston (larger) has area 3A and supports a mass m.\n  • Both pistons are shown at equilibrium, with the liquid level equal on both sides except for the height h on the left.\n\nTechnical Details :\n  • The liquid has density ρ.\n  • The height difference between the pistons is labeled h.\n  • The area of the left piston is A; the area of the right piston is 3A.\n  • The mass m is placed on the larger piston.\n\nSpatial Relationships :\n  • The left piston is higher than the right by a vertical distance h.\n  • The mass m is only on the right (larger) piston.\n\nQuestion and Choices :\n  • The question asks: \"If the system is in equilibrium, what is the value of the mass m placed on the larger piston?\"\n  • Four answer choices are given:\n    – m = ρhA\n    – m = 2ρhA\n    – m = 3ρhA\n    – m = 4ρhA\n\nAnalysis :\n  • The diagram visually represents Pascal's principle and the equilibrium of forces in a hydraulic press.\n  • The key variables are the density ρ, height h, and piston areas A and 3A.\n  • The answer choices reflect different possible values for the mass m required to balance the pressure difference due to the height h of the liquid column.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.07445007562637329,
+            "t": 0.6460578441619873,
+            "r": 0.9263507723808289,
+            "b": 0.7777920961380005
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "b6ec088e-de87-4625-989e-b997d37d772a"
+    },
+    {
+      "text": "Summary : This is a physics illustration and multiple-choice question about a hydraulic press system, showing two pistons of different areas connected by a fluid, with weights placed on each piston. The question asks for the value of the larger mass (M) required for equilibrium, given the smaller mass (m) and the area ratio.\n\nillustration:\n# Hydraulic Press System :\n  • Diagram shows two vertical pistons connected at the base by a tube filled with hydraulic fluid.\n  • Left piston (smaller) labeled with mass m and area a.\n  • Right piston (larger) labeled with mass M and area 10a.\n  • Both pistons are shown pressing down on the fluid, with the fluid level equal in both containers.\n  • The system is labeled \"سائل هيدروليكي\" (hydraulic fluid).\n\n# Question Text (in Arabic) :\n  • States that the small piston has area a and mass m, the large piston has area 10a and mass M.\n  • Asks: When the pistons are in horizontal equilibrium and their own masses are neglected, what is the value of M in terms of m?\n  • Four answer choices are provided:\n    1. M = m\n    2. M = 10 m\n    3. M = 100 m\n    4. M = 150 m\n\n# Analysis :\n  • The illustration visually represents Pascal's principle in a hydraulic press.\n  • The question tests understanding of force and area relationships in hydraulic systems.\n  • The answer choices reflect different possible ratios for the required mass M to balance the system, based on the area ratio (10:1).\n  • The correct answer (by the area ratio) is M = 10 m, matching the area ratio of the pistons.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.07446232438087463,
+            "t": 0.7833184599876404,
+            "r": 0.9258105754852295,
+            "b": 0.9295232892036438
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "c3f2479e-22ad-45cb-9ebd-82e55857e0a4"
+    },
+    {
+      "text": "‴",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.08087671548128128,
+            "t": 0.9360815286636353,
+            "r": 0.1190941110253334,
+            "b": 0.953710675239563
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "marginalia",
+      "chunk_id": "59b28932-95ca-40f8-800c-6cbce0dedc5b"
+    }
+  ],
+  "result_path": null,
+  "image_was_downscaled": true,
+  "processed_image_size": {
+    "width": 713,
+    "height": 1024
+  }
+}

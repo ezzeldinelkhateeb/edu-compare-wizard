@@ -38,7 +38,7 @@ class Settings(BaseSettings):
     
     # AI Services
     LANDING_AI_API_KEY: Optional[str] = None
-    GEMINI_API_KEY: str = os.environ.get("GEMINI_API_KEY", "")
+    GEMINI_API_KEY: str = os.environ.get("GEMINI_API_KEY", "AIzaSyCDO-0puQQN79BJ4u503O31g16ww8CAycg")
     VISION_AGENT_API_KEY: str = os.environ.get("VISION_AGENT_API_KEY", "")
     
     # File Processing
@@ -78,7 +78,7 @@ class Settings(BaseSettings):
             os.makedirs(self.UPLOAD_DIR, exist_ok=True)
         
         # إنشاء مجلدات فرعية
-        subdirs = ["old", "new", "temp", "results"]
+        subdirs = ["old", "new", "temp", "results", "batch_processing", "multilingual_results"]
         for subdir in subdirs:
             path = os.path.join(self.UPLOAD_DIR, subdir)
             if not os.path.exists(path):

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Upload, FileText, BarChart3, Download, BookOpen, Zap, Shield, Globe } from 'lucide-react';
+import { Upload, FileText, BarChart3, Download, BookOpen, Zap, Shield, Globe, Brain, Rocket } from 'lucide-react';
 import UploadSection from '@/components/UploadSection';
-import { ComparisonDashboard } from '@/components/ComparisonDashboard';
+import SmartComparisonDashboard from '@/components/SmartComparisonDashboard';
 import { useToast } from '@/hooks/use-toast';
 
 const Index = () => {
-  const [currentStep, setCurrentStep] = useState<'upload' | 'results'>('upload');
+  const [currentStep, setCurrentStep] = useState<'upload' | 'smart'>('upload');
   const [uploadedFiles, setUploadedFiles] = useState<{old: File[], new: File[]} | null>(null);
   const { toast } = useToast();
 
@@ -18,20 +18,27 @@ const Index = () => {
     });
     
     setUploadedFiles(files);
-    setCurrentStep('results');
+    setCurrentStep('smart');
     
     toast({
       title: "تم رفع الملفات",
-      description: "جاري بدء عملية المقارنة والتحليل...",
+      description: "جاري بدء عملية المقارنة الذكية...",
       duration: 3000
     });
   };
 
   const features = [
     {
+      icon: Brain,
+      title: "نظام ذكي متدرج",
+      description: "3 مراحل ذكية توفر 35-50% من التكاليف",
+      isNew: true
+    },
+    {
       icon: Zap,
-      title: "مقارنة ذكية",
-      description: "خوارزميات متطورة للمقارنة البصرية والنصية"
+      title: "مقارنة بصرية فورية",
+      description: "كشف التطابق الكامل بدون تكلفة إضافية",
+      isNew: true
     },
     {
       icon: Globe,
@@ -47,6 +54,12 @@ const Index = () => {
       icon: BarChart3,
       title: "تقارير تفاعلية",
       description: "تقارير مرئية شاملة وقابلة للتصدير"
+    },
+    {
+      icon: FileText,
+      title: "تحليل عميق بالذكاء الاصطناعي",
+      description: "Gemini AI لتحليل التغييرات والتوصيات",
+      isNew: true
     }
   ];
 
@@ -81,26 +94,30 @@ const Index = () => {
           <section className="container mx-auto px-6 py-16">
             <div className="text-center max-w-4xl mx-auto mb-16">
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                قارن المناهج التعليمية بذكاء اصطناعي متطور
+                النظام الذكي لمقارنة المناهج التعليمية
               </h2>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                احصل على مقارنة دقيقة وشاملة بين المناهج القديمة والجديدة في ثوانٍ معدودة
+                نظام ذكي متدرج يوفر 35-50% من التكاليف مع دقة 100% في المقارنة البصرية
                 <br />
-                وفر 80% من وقت موظفي إدخال البيانات
+                معالجة سريعة ومتوازية مع تقارير تفصيلية احترافية
               </p>
               
               <div className="flex flex-wrap justify-center gap-4 mb-12">
                 <div className="flex items-center gap-2 px-4 py-2 bg-green-50 text-green-700 rounded-full">
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                  <span className="text-sm font-medium">دقة 95% في التحليل النصي</span>
+                  <span className="text-sm font-medium">دقة 100% في المقارنة البصرية</span>
+                </div>
+                <div className="flex items-center gap-2 px-4 py-2 bg-purple-50 text-purple-700 rounded-full">
+                  <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
+                  <span className="text-sm font-medium">توفير 35-50% في التكلفة</span>
                 </div>
                 <div className="flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-700 rounded-full">
                   <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-                  <span className="text-sm font-medium">دقة 90% في المقارنة البصرية</span>
+                  <span className="text-sm font-medium">معالجة 7+ ملفات/ثانية</span>
                 </div>
                 <div className="flex items-center gap-2 px-4 py-2 bg-orange-50 text-orange-700 rounded-full">
                   <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
-                  <span className="text-sm font-medium">≤ 30 ثانية لكل 10 صفحات</span>
+                  <span className="text-sm font-medium">تحليل ذكي بـ Gemini AI</span>
                 </div>
               </div>
             </div>
@@ -120,11 +137,20 @@ const Index = () => {
                 </p>
               </div>
               
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {features.map((feature, index) => (
-                  <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                  <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative">
                     <CardContent className="p-8 text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                      {feature.isNew && (
+                        <div className="absolute -top-2 -right-2 bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs px-3 py-1 rounded-full font-bold">
+                          جديد
+                        </div>
+                      )}
+                      <div className={`w-16 h-16 ${
+                        feature.isNew 
+                          ? 'bg-gradient-to-br from-purple-500 to-blue-600' 
+                          : 'bg-gradient-to-br from-blue-500 to-indigo-600'
+                      } rounded-2xl flex items-center justify-center mx-auto mb-6`}>
                         <feature.icon className="w-8 h-8 text-white" />
                       </div>
                       <h4 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h4>
@@ -150,7 +176,7 @@ const Index = () => {
 
               <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
                 {[
-                  { step: 1, icon: Upload, title: "ارفع الملفات", desc: "قم برfع المجلدين القديم والجديد" },
+                  { step: 1, icon: Upload, title: "ارفع الملفات", desc: "قم برفع المجلدين القديم والجديد" },
                   { step: 2, icon: Zap, title: "المعالجة الذكية", desc: "تحليل بصري ونصي متطور بالذكاء الاصطناعي" },
                   { step: 3, icon: Download, title: "احصل على التقرير", desc: "تقرير تفاعلي وملف PowerPoint جاهز" }
                 ].map((item, index) => (
@@ -174,9 +200,9 @@ const Index = () => {
         </>
       )}
 
-      {currentStep === 'results' && uploadedFiles && (
-        <ComparisonDashboard 
-          files={uploadedFiles} 
+      {currentStep === 'smart' && (
+        <SmartComparisonDashboard 
+          files={uploadedFiles}
           onBack={() => setCurrentStep('upload')} 
         />
       )}

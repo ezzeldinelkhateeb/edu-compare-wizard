@@ -1,0 +1,79 @@
+{
+  "markdown": "معـلومة إثرائية\n\nتطبيقات على قاعدة باسكال\n\n(1) الفرامل الهيدروليكية للسيارة: يوجد منها نوعان:\n\n* الفرامل الخلفية:\n- يستخدم نظام الفرملة سائلًا وسيطًا.\n- عند الضغط على دواسة الفرملة بقوة صغيرة ولسافة كبيرة نسبيًا تنشأ قوة كبيرة على المكبس في أسطوانة الفرملة العمومية وينتقل هذا الضغط إلى السائل ومنه إلى باقي خط الفرملة ثم إلى مكابس أسطوانات فرملة العجل إلى الخارج ومن ثم على حذاء الفرملة ثم إلى جسم الفرملة، فتنتشأ قوة احتكاك كبيرة تؤدي لتوقف السيارة.\n\nالفرامل الخلفية  \nحذاء الفرامل  \nالطبلة  \nالفرامل الخلفية\n\n* الفرامل الأمامية:\n- يستخدم فيها نظام القرص.\n- القوة الناتجة من الفرملة تضغط على مخدات الفرامل مما ينشأ عنه احتكاك يوقف العجلة.\n\nالفرامل الأمامية  \nمخدات الفرامل  \nالقرص\n\n* يلاحظ أن المسافة التي يتحركها حذاء الفرملة الأمامية والخلفية صغيرة لأن القوة كبيرة.\n\n(2) الرافعة الهيدروليكية:\nتحتوي على سائل هيدروليكي مثل الزيت وتستخدم لرفع السيارات في محطات البنزين. <!-- text, from page 0 (l=0.073,t=0.073,r=0.930,b=0.617), with ID d08f696b-2061-40fd-9d7d-3799690b9094 -->\n\nفى العام الدراسى القادم\nاحرص على اقتناء\nكتب الامتحان\nفى جميع المواد\n3 ثانوى <!-- text, from page 0 (l=0.382,t=0.696,r=0.803,b=0.877), with ID 5cd143ba-c323-4eef-acb6-fcb96bc0c4dc -->\n\nSummary : This is a colourful illustration showing a stack of books with an assortment of pencils and pens arranged upright on top, evoking a creative and academic atmosphere.\n\nillustration:\nScene Overview : \n  • Main subject is a stack of seven books, each with a different coloured cover (blue, orange, yellow, and white tones).\n  • On top of the stack, there are multiple pencils and pens (mostly yellow, blue, and black) standing upright, fanned out in a semi-circle.\n  • The illustration uses a soft, pastel colour palette with blue and yellow highlights and small heart and sparkle motifs around the stack.\n  • The perspective is slightly angled, showing the spines and tops of the books and the full length of the pencils and pens.\n\nTechnical Details : \n  • No scale bar, text, or numeric values are present.\n  • The books have visible bookmarks and decorative patterns on the spines.\n  • The illustration is hand-drawn with smooth shading and soft outlines.\n\nSpatial Relationships : \n  • The books are stacked vertically, with the pencils and pens radiating outward from the top.\n  • The arrangement creates a sense of upward movement and balance, with the writing instruments forming a crown-like shape above the books.\n  • The background is minimal, with a light blue wash and no distinct setting.\n\nAnalysis : \n  • The image conveys themes of learning, creativity, and organisation.\n  • The harmonious colour scheme and whimsical details suggest a positive, inspiring environment related to study or artistic pursuits. <!-- figure, from page 0 (l=0.044,t=0.661,r=0.327,b=0.909), with ID 7a4c039a-77ae-469c-8ec7-48a0d5d6aca8 -->\n\n$1 \\cdot 9$ <!-- marginalia, from page 0 (l=0.084,t=0.935,r=0.126,b=0.954), with ID 3ad12fc4-7133-4bae-a70e-06ca08d730f5 -->",
+  "chunks": [
+    {
+      "text": "معـلومة إثرائية\n\nتطبيقات على قاعدة باسكال\n\n(1) الفرامل الهيدروليكية للسيارة: يوجد منها نوعان:\n\n* الفرامل الخلفية:\n- يستخدم نظام الفرملة سائلًا وسيطًا.\n- عند الضغط على دواسة الفرملة بقوة صغيرة ولسافة كبيرة نسبيًا تنشأ قوة كبيرة على المكبس في أسطوانة الفرملة العمومية وينتقل هذا الضغط إلى السائل ومنه إلى باقي خط الفرملة ثم إلى مكابس أسطوانات فرملة العجل إلى الخارج ومن ثم على حذاء الفرملة ثم إلى جسم الفرملة، فتنتشأ قوة احتكاك كبيرة تؤدي لتوقف السيارة.\n\nالفرامل الخلفية  \nحذاء الفرامل  \nالطبلة  \nالفرامل الخلفية\n\n* الفرامل الأمامية:\n- يستخدم فيها نظام القرص.\n- القوة الناتجة من الفرملة تضغط على مخدات الفرامل مما ينشأ عنه احتكاك يوقف العجلة.\n\nالفرامل الأمامية  \nمخدات الفرامل  \nالقرص\n\n* يلاحظ أن المسافة التي يتحركها حذاء الفرملة الأمامية والخلفية صغيرة لأن القوة كبيرة.\n\n(2) الرافعة الهيدروليكية:\nتحتوي على سائل هيدروليكي مثل الزيت وتستخدم لرفع السيارات في محطات البنزين.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.07346779108047485,
+            "t": 0.0728500485420227,
+            "r": 0.9300071597099304,
+            "b": 0.6169693470001221
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "d08f696b-2061-40fd-9d7d-3799690b9094"
+    },
+    {
+      "text": "فى العام الدراسى القادم\nاحرص على اقتناء\nكتب الامتحان\nفى جميع المواد\n3 ثانوى",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.38192111253738403,
+            "t": 0.6959259510040283,
+            "r": 0.8030058741569519,
+            "b": 0.8766751289367676
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "5cd143ba-c323-4eef-acb6-fcb96bc0c4dc"
+    },
+    {
+      "text": "Summary : This is a colourful illustration showing a stack of books with an assortment of pencils and pens arranged upright on top, evoking a creative and academic atmosphere.\n\nillustration:\nScene Overview : \n  • Main subject is a stack of seven books, each with a different coloured cover (blue, orange, yellow, and white tones).\n  • On top of the stack, there are multiple pencils and pens (mostly yellow, blue, and black) standing upright, fanned out in a semi-circle.\n  • The illustration uses a soft, pastel colour palette with blue and yellow highlights and small heart and sparkle motifs around the stack.\n  • The perspective is slightly angled, showing the spines and tops of the books and the full length of the pencils and pens.\n\nTechnical Details : \n  • No scale bar, text, or numeric values are present.\n  • The books have visible bookmarks and decorative patterns on the spines.\n  • The illustration is hand-drawn with smooth shading and soft outlines.\n\nSpatial Relationships : \n  • The books are stacked vertically, with the pencils and pens radiating outward from the top.\n  • The arrangement creates a sense of upward movement and balance, with the writing instruments forming a crown-like shape above the books.\n  • The background is minimal, with a light blue wash and no distinct setting.\n\nAnalysis : \n  • The image conveys themes of learning, creativity, and organisation.\n  • The harmonious colour scheme and whimsical details suggest a positive, inspiring environment related to study or artistic pursuits.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.04418553411960602,
+            "t": 0.6606742739677429,
+            "r": 0.3272021412849426,
+            "b": 0.9089637398719788
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "7a4c039a-77ae-469c-8ec7-48a0d5d6aca8"
+    },
+    {
+      "text": "$1 \\cdot 9$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.08355148881673813,
+            "t": 0.934604287147522,
+            "r": 0.12578585743904114,
+            "b": 0.9542313814163208
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "marginalia",
+      "chunk_id": "3ad12fc4-7133-4bae-a70e-06ca08d730f5"
+    }
+  ],
+  "result_path": null,
+  "image_was_downscaled": true,
+  "processed_image_size": {
+    "width": 712,
+    "height": 1024
+  }
+}

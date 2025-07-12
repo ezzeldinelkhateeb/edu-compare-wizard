@@ -1239,7 +1239,7 @@ async def full_comparison(session_id: str):
                 old_image_path, new_image_path
             )
             if visual_result:
-                logger.info(f"✅ تمت المقارنة البصرية بنجاح: {visual_result.overall_similarity:.1f}% تطابق")
+                logger.info(f"✅ تمت المقارنة البصرية بنجاح: {visual_result.similarity_score:.1f}% تطابق")
             else:
                 logger.warning("⚠️ فشل في المقارنة البصرية")
         except Exception as e:

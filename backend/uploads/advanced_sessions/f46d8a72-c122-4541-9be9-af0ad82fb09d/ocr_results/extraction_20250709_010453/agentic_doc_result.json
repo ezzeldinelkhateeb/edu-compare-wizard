@@ -1,0 +1,249 @@
+{
+  "markdown": "Summary : This is a labeled illustration and accompanying explanation of the operation of a hydraulic press, showing how force and pressure are transmitted through a hydraulic fluid between two pistons of different areas.\n\nillustration:\n# Diagram Overview :\n  • The diagram shows two connected cylinders (left and right) filled with hydraulic fluid (labeled \"السائل الهيدروليكي\").\n  • The left cylinder has a large piston with area \"A\" and force \"F\" applied downward.\n  • The right cylinder has a smaller piston with area \"a\" and force \"f\" applied downward.\n  • The heights of the fluid under each piston are labeled \"y1\" (left) and \"y2\" (right).\n  • The pistons are at the same horizontal level.\n\n# Labeled Quantities :\n  • Left piston: Area \"A\", force \"F\", height \"y1\".\n  • Right piston: Area \"a\", force \"f\", height \"y2\".\n  • Both pistons are shown with arrows indicating the direction of applied force (downward).\n\n# Accompanying Text (Key Points) :\n  • When the pistons are at the same horizontal level, a force \"f\" is applied to the small piston.\n  • This creates a pressure \"P\" under the small piston: P = f / a.\n  • The pressure is transmitted equally throughout the fluid to the large piston.\n  • The large piston experiences an upward force \"F\" given by F = P × A, or P = F / A.\n\n# Analysis :\n  • The illustration and text together explain Pascal's principle: pressure applied to a confined fluid is transmitted undiminished throughout the fluid.\n  • The diagram visually demonstrates how a small force on a small piston can generate a larger force on a larger piston, forming the basis of hydraulic press operation.\n  • All variables and relationships are clearly labeled, supporting understanding of the pressure and force transmission. <!-- figure, from page 0 (l=0.081,t=0.072,r=0.892,b=0.243), with ID 35336b42-c5dc-4995-855d-2f77e01b38b0 -->\n\n- إذا تسببت القوة F في تحريك المكبس الصغير مسافة 𝑦1 لأسفل فإن المكبس الكبير يتأثر بقوة F' تسبب تحرك مسافة 𝑦2 لأعلى ، ويطبق قانون بقاء الطاقة (في حالة المكبس الهيدروليكي المثالي) فإن :\nالشغل المبذول على المكبس الصغير = الشغل الناتج عند المكبس الكبير. <!-- text, from page 0 (l=0.065,t=0.246,r=0.837,b=0.322), with ID b702e80f-6733-408d-8937-e399260f47ab -->\n\n$ \\frac{F}{f} = \\frac{y_1}{y_2} $ <!-- text, from page 0 (l=0.613,t=0.326,r=0.765,b=0.380), with ID 888656d1-6d1e-4cea-931c-36c3a5e4cf1f -->\n\nSummary : This image shows a mathematical equation relating two terms, indicating equality between \"fy₁\" and \"Fy₂\".\n\nequation:\n  Equation Content :\n    • The equation displayed is: fy₁ = Fy₂.\n    • Subscripts: \"y₁\" and \"y₂\" are present.\n    • The left side uses a lowercase \"f\", while the right side uses an uppercase \"F\".\n  Formatting :\n    • The equation is centered within a rectangular box with a wavy blue border.\n    • All characters are in a serif font, with clear distinction between uppercase and lowercase letters.\n\nAnalysis :\n  • The equation expresses that the quantity \"fy₁\" is equal to \"Fy₂\", possibly indicating a relationship or equivalence between two variables or functions, with attention to the case of \"f\" and \"F\" and the subscripts. <!-- figure, from page 0 (l=0.308,t=0.325,r=0.456,b=0.380), with ID 5a04c63f-0916-4c76-9232-19c646cdafcd -->\n\n- أي أن المكبس الكبير يتحرك مسافة صغيرة إلى أعلى بتأثير إزاحة كبيرة للمكبس الصغير إلى أسفل،\nويمكن الوصول لنفس الاستنتاج كالتالي : <!-- text, from page 0 (l=0.065,t=0.381,r=0.837,b=0.433), with ID e17e064e-265a-4f03-be44-e79bd54a7957 -->\n\nعند إزاحة المكبس الصغير إلى أسفل وحيث إن السائل غير قابل للانضغاط فإن حجم السائل المزاح من أنبوبة المكبس الصغير = حجم السائل المزاح إلى أنبوبة المكبس الكبير. <!-- text, from page 0 (l=0.064,t=0.434,r=0.824,b=0.484), with ID 43f63ec0-55f9-4ea5-9ee2-0963ebf1377e -->\n\nSummary : This image presents a mathematical equation showing the proportional relationship between two ratios.\n\nequation:\n  Equation Details :\n    • The equation shown is: A / a = y₁ / y₂.\n    • All variables are presented in uppercase and lowercase letters, with subscripts for y₁ and y₂.\n    • The equation is centered within a bordered box.\n\n  Analysis :\n    • The equation expresses that the ratio of A to a is equal to the ratio of y₁ to y₂, indicating a direct proportionality between these pairs of variables. <!-- figure, from page 0 (l=0.618,t=0.486,r=0.763,b=0.543), with ID fe56e8f2-4f2e-490d-b05b-ba4a14cf4fb5 -->\n\nSummary : This image presents a boxed mathematical equation relating two variables y₂ and y₁ through constants A and a, introduced by the \"therefore\" (∴) symbol.\nequation:\nMathematical Statement :\n  • The equation shown is: ∴ A y₂ = a y₁\n  • \"A\" and \"a\" are likely constants or coefficients.\n  • \"y₂\" and \"y₁\" are variables, with subscripts indicating different instances or steps.\n  • The equation is enclosed in a blue, wavy-bordered box.\n  • The \"therefore\" (∴) symbol precedes the equation, indicating a logical conclusion from previous steps.\nDesign & Formatting :\n  • Serif font, standard mathematical typesetting.\n  • Subscripts are used for y₂ and y₁.\n  • The equation is centered within the box.\nAnalysis :\n  • The equation expresses a proportional or linear relationship between y₂ and y₁, scaled by constants A and a, and is presented as a derived result or conclusion. <!-- figure, from page 0 (l=0.311,t=0.487,r=0.481,b=0.543), with ID 391d4178-10e5-4652-9abc-5aaae6361677 -->\n\nSummary : This illustration demonstrates the principle of hydraulic systems, showing how a force applied to a large piston is transmitted through a liquid to a smaller piston, resulting in a different force output.\n\nillustration:\nScene Overview :\n  • The image shows two vertical cylinders of different diameters connected at the base by a U-shaped tube filled with liquid.\n  • The left cylinder is larger, labeled with piston area \"A\" and force \"F\" applied downward on the piston.\n  • The right cylinder is smaller, labeled with piston area \"a\" and force \"f\" applied downward on the piston.\n  • The liquid level is the same on both sides, indicating equilibrium.\n  • The diagram is labeled \"شكل ۲\" (Figure 2 in Persian).\n\nTechnical Details :\n  • No scale bar or units are provided.\n  • The pistons are depicted as flat, circular, and fit tightly in their respective cylinders.\n  • The forces (F and f) are shown as vertical arrows pointing downward on each piston.\n\nSpatial Relationships :\n  • The larger piston (A) is on the left, the smaller piston (a) is on the right.\n  • The liquid connects both pistons, transmitting force between them.\n  • The liquid surface is at the same height in both cylinders, indicating pressure balance.\n\nAnalysis :\n  • The illustration visually explains Pascal's principle: pressure applied to a confined fluid is transmitted undiminished throughout the fluid.\n  • The system demonstrates how a small force applied to a small piston can balance a larger force on a larger piston, depending on the ratio of their areas.\n  • This is the basic operating principle of hydraulic presses and lifts. <!-- figure, from page 0 (l=0.061,t=0.476,r=0.270,b=0.615), with ID e25ca435-04fd-4a1d-ade7-d280af727ae1 -->\n\n- لكي يعود الكبسان في مستوى أفقي واحد كما في الشكل (2) يجب التأثير على الكبب الكبير بقوة F لأسفل. <!-- text, from page 0 (l=0.313,t=0.549,r=0.837,b=0.598), with ID 5538c234-278d-4ed5-b968-05d1418fa5ed -->\n\nSummary : This figure illustrates the different equilibrium states of a hydraulic piston system, showing the relationship between force, area, and pressure when the pistons are at the same or different levels, with corresponding equations.\n\ndiagram:\n# Title & Structure :\n  • Title at top: \"حالات المكبس الهيدروليكي عند الاستقرار\" (\"States of the Hydraulic Piston at Equilibrium\").\n  • Three side-by-side schematic diagrams, each showing a U-shaped hydraulic system with two pistons (labeled 1 and 2) of different areas (a and A), and forces (f and F) applied.\n  • Each diagram is accompanied by equations and descriptive labels.\n\n# Left Panel: المكبسان في مستويين مختلفين (\"Pistons at Different Levels\")\n  • Shows piston 1 at a lower level than piston 2, with a height difference h.\n  • Forces: f applied to piston 1 (area a), F applied to piston 2 (area A).\n  • Equation: \n      - P₁ = P₂\n      - f/a = F/A + ρgh\n\n# Middle Panel: المكبسان في مستويين مختلفين (\"Pistons at Different Levels\")\n  • Shows piston 1 at a higher level than piston 2, with a height difference h.\n  • Forces: f applied to piston 1 (area a), F applied to piston 2 (area A).\n  • Equation:\n      - P₁ = P₂\n      - f/a + ρgh = F/A\n\n# Right Panel: المكبسان في نفس المستوى الأفقي (\"Pistons at the Same Horizontal Level\")\n  • Both pistons are at the same height.\n  • Forces: f applied to piston 1 (area a), F applied to piston 2 (area A).\n  • Equation:\n      - P₁ = P₂\n      - f/a = F/A\n\n# Symbols & Notation :\n  • f: Force applied to small piston (area a).\n  • F: Force applied to large piston (area A).\n  • h: Height difference between pistons.\n  • ρ: Fluid density.\n  • g: Acceleration due to gravity.\n  • P₁, P₂: Pressure at pistons 1 and 2.\n\n# Analysis :\n  • The diagrams and equations show that when pistons are at different heights, the pressure difference includes a hydrostatic term (ρgh), while at the same level, the force-to-area ratios are equal.\n  • The system visually demonstrates Pascal’s principle and the effect of height differences on hydraulic equilibrium. <!-- figure, from page 0 (l=0.113,t=0.626,r=0.893,b=0.906), with ID ca4ce826-46af-4e3e-9cc8-7bcb285659a5 -->\n\nحيث : (ρ) كثافة السائل ، (h) ارتفاع عمود السائل بين المكبسين. <!-- text, from page 0 (l=0.391,t=0.912,r=0.887,b=0.936), with ID beb8e78e-3b02-4978-8312-2e7ef7c91462 -->\n\n$1 \\cdot \\xi$ <!-- marginalia, from page 0 (l=0.872,t=0.947,r=0.909,b=0.963), with ID 8d885aa1-cba9-4731-a747-70916ab627bd -->\n\nالحل  \n3 <!-- marginalia, from page 0 (l=0.923,t=0.065,r=0.952,b=0.127), with ID 6b2b7821-635c-4e7f-8b07-4eb99db211b2 -->",
+  "chunks": [
+    {
+      "text": "Summary : This is a labeled illustration and accompanying explanation of the operation of a hydraulic press, showing how force and pressure are transmitted through a hydraulic fluid between two pistons of different areas.\n\nillustration:\n# Diagram Overview :\n  • The diagram shows two connected cylinders (left and right) filled with hydraulic fluid (labeled \"السائل الهيدروليكي\").\n  • The left cylinder has a large piston with area \"A\" and force \"F\" applied downward.\n  • The right cylinder has a smaller piston with area \"a\" and force \"f\" applied downward.\n  • The heights of the fluid under each piston are labeled \"y1\" (left) and \"y2\" (right).\n  • The pistons are at the same horizontal level.\n\n# Labeled Quantities :\n  • Left piston: Area \"A\", force \"F\", height \"y1\".\n  • Right piston: Area \"a\", force \"f\", height \"y2\".\n  • Both pistons are shown with arrows indicating the direction of applied force (downward).\n\n# Accompanying Text (Key Points) :\n  • When the pistons are at the same horizontal level, a force \"f\" is applied to the small piston.\n  • This creates a pressure \"P\" under the small piston: P = f / a.\n  • The pressure is transmitted equally throughout the fluid to the large piston.\n  • The large piston experiences an upward force \"F\" given by F = P × A, or P = F / A.\n\n# Analysis :\n  • The illustration and text together explain Pascal's principle: pressure applied to a confined fluid is transmitted undiminished throughout the fluid.\n  • The diagram visually demonstrates how a small force on a small piston can generate a larger force on a larger piston, forming the basis of hydraulic press operation.\n  • All variables and relationships are clearly labeled, supporting understanding of the pressure and force transmission.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.08136981725692749,
+            "t": 0.07193120568990707,
+            "r": 0.8921470642089844,
+            "b": 0.2428482174873352
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "35336b42-c5dc-4995-855d-2f77e01b38b0"
+    },
+    {
+      "text": "- إذا تسببت القوة F في تحريك المكبس الصغير مسافة 𝑦1 لأسفل فإن المكبس الكبير يتأثر بقوة F' تسبب تحرك مسافة 𝑦2 لأعلى ، ويطبق قانون بقاء الطاقة (في حالة المكبس الهيدروليكي المثالي) فإن :\nالشغل المبذول على المكبس الصغير = الشغل الناتج عند المكبس الكبير.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.06469395756721497,
+            "t": 0.24575836956501007,
+            "r": 0.8365142345428467,
+            "b": 0.3215070366859436
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "b702e80f-6733-408d-8937-e399260f47ab"
+    },
+    {
+      "text": "$ \\frac{F}{f} = \\frac{y_1}{y_2} $",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.6127299070358276,
+            "t": 0.32561051845550537,
+            "r": 0.7650701999664307,
+            "b": 0.38024789094924927
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "888656d1-6d1e-4cea-931c-36c3a5e4cf1f"
+    },
+    {
+      "text": "Summary : This image shows a mathematical equation relating two terms, indicating equality between \"fy₁\" and \"Fy₂\".\n\nequation:\n  Equation Content :\n    • The equation displayed is: fy₁ = Fy₂.\n    • Subscripts: \"y₁\" and \"y₂\" are present.\n    • The left side uses a lowercase \"f\", while the right side uses an uppercase \"F\".\n  Formatting :\n    • The equation is centered within a rectangular box with a wavy blue border.\n    • All characters are in a serif font, with clear distinction between uppercase and lowercase letters.\n\nAnalysis :\n  • The equation expresses that the quantity \"fy₁\" is equal to \"Fy₂\", possibly indicating a relationship or equivalence between two variables or functions, with attention to the case of \"f\" and \"F\" and the subscripts.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.30779653787612915,
+            "t": 0.324634850025177,
+            "r": 0.45591962337493896,
+            "b": 0.37981218099594116
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "5a04c63f-0916-4c76-9232-19c646cdafcd"
+    },
+    {
+      "text": "- أي أن المكبس الكبير يتحرك مسافة صغيرة إلى أعلى بتأثير إزاحة كبيرة للمكبس الصغير إلى أسفل،\nويمكن الوصول لنفس الاستنتاج كالتالي :",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.06466212868690491,
+            "t": 0.3812803328037262,
+            "r": 0.836997389793396,
+            "b": 0.4327004849910736
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "e17e064e-265a-4f03-be44-e79bd54a7957"
+    },
+    {
+      "text": "عند إزاحة المكبس الصغير إلى أسفل وحيث إن السائل غير قابل للانضغاط فإن حجم السائل المزاح من أنبوبة المكبس الصغير = حجم السائل المزاح إلى أنبوبة المكبس الكبير.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.06414332985877991,
+            "t": 0.4340355694293976,
+            "r": 0.824379563331604,
+            "b": 0.48439469933509827
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "43f63ec0-55f9-4ea5-9ee2-0963ebf1377e"
+    },
+    {
+      "text": "Summary : This image presents a mathematical equation showing the proportional relationship between two ratios.\n\nequation:\n  Equation Details :\n    • The equation shown is: A / a = y₁ / y₂.\n    • All variables are presented in uppercase and lowercase letters, with subscripts for y₁ and y₂.\n    • The equation is centered within a bordered box.\n\n  Analysis :\n    • The equation expresses that the ratio of A to a is equal to the ratio of y₁ to y₂, indicating a direct proportionality between these pairs of variables.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.6182986497879028,
+            "t": 0.48638099431991577,
+            "r": 0.7629799842834473,
+            "b": 0.5431086421012878
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "fe56e8f2-4f2e-490d-b05b-ba4a14cf4fb5"
+    },
+    {
+      "text": "Summary : This image presents a boxed mathematical equation relating two variables y₂ and y₁ through constants A and a, introduced by the \"therefore\" (∴) symbol.\nequation:\nMathematical Statement :\n  • The equation shown is: ∴ A y₂ = a y₁\n  • \"A\" and \"a\" are likely constants or coefficients.\n  • \"y₂\" and \"y₁\" are variables, with subscripts indicating different instances or steps.\n  • The equation is enclosed in a blue, wavy-bordered box.\n  • The \"therefore\" (∴) symbol precedes the equation, indicating a logical conclusion from previous steps.\nDesign & Formatting :\n  • Serif font, standard mathematical typesetting.\n  • Subscripts are used for y₂ and y₁.\n  • The equation is centered within the box.\nAnalysis :\n  • The equation expresses a proportional or linear relationship between y₂ and y₁, scaled by constants A and a, and is presented as a derived result or conclusion.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.3112447261810303,
+            "t": 0.48696205019950867,
+            "r": 0.48053061962127686,
+            "b": 0.5432173013687134
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "391d4178-10e5-4652-9abc-5aaae6361677"
+    },
+    {
+      "text": "Summary : This illustration demonstrates the principle of hydraulic systems, showing how a force applied to a large piston is transmitted through a liquid to a smaller piston, resulting in a different force output.\n\nillustration:\nScene Overview :\n  • The image shows two vertical cylinders of different diameters connected at the base by a U-shaped tube filled with liquid.\n  • The left cylinder is larger, labeled with piston area \"A\" and force \"F\" applied downward on the piston.\n  • The right cylinder is smaller, labeled with piston area \"a\" and force \"f\" applied downward on the piston.\n  • The liquid level is the same on both sides, indicating equilibrium.\n  • The diagram is labeled \"شكل ۲\" (Figure 2 in Persian).\n\nTechnical Details :\n  • No scale bar or units are provided.\n  • The pistons are depicted as flat, circular, and fit tightly in their respective cylinders.\n  • The forces (F and f) are shown as vertical arrows pointing downward on each piston.\n\nSpatial Relationships :\n  • The larger piston (A) is on the left, the smaller piston (a) is on the right.\n  • The liquid connects both pistons, transmitting force between them.\n  • The liquid surface is at the same height in both cylinders, indicating pressure balance.\n\nAnalysis :\n  • The illustration visually explains Pascal's principle: pressure applied to a confined fluid is transmitted undiminished throughout the fluid.\n  • The system demonstrates how a small force applied to a small piston can balance a larger force on a larger piston, depending on the ratio of their areas.\n  • This is the basic operating principle of hydraulic presses and lifts.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.061197832226753235,
+            "t": 0.4759705364704132,
+            "r": 0.2704121470451355,
+            "b": 0.6152092814445496
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "e25ca435-04fd-4a1d-ade7-d280af727ae1"
+    },
+    {
+      "text": "- لكي يعود الكبسان في مستوى أفقي واحد كما في الشكل (2) يجب التأثير على الكبب الكبير بقوة F لأسفل.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.313112735748291,
+            "t": 0.5485941767692566,
+            "r": 0.8372617959976196,
+            "b": 0.5979676842689514
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "5538c234-278d-4ed5-b968-05d1418fa5ed"
+    },
+    {
+      "text": "Summary : This figure illustrates the different equilibrium states of a hydraulic piston system, showing the relationship between force, area, and pressure when the pistons are at the same or different levels, with corresponding equations.\n\ndiagram:\n# Title & Structure :\n  • Title at top: \"حالات المكبس الهيدروليكي عند الاستقرار\" (\"States of the Hydraulic Piston at Equilibrium\").\n  • Three side-by-side schematic diagrams, each showing a U-shaped hydraulic system with two pistons (labeled 1 and 2) of different areas (a and A), and forces (f and F) applied.\n  • Each diagram is accompanied by equations and descriptive labels.\n\n# Left Panel: المكبسان في مستويين مختلفين (\"Pistons at Different Levels\")\n  • Shows piston 1 at a lower level than piston 2, with a height difference h.\n  • Forces: f applied to piston 1 (area a), F applied to piston 2 (area A).\n  • Equation: \n      - P₁ = P₂\n      - f/a = F/A + ρgh\n\n# Middle Panel: المكبسان في مستويين مختلفين (\"Pistons at Different Levels\")\n  • Shows piston 1 at a higher level than piston 2, with a height difference h.\n  • Forces: f applied to piston 1 (area a), F applied to piston 2 (area A).\n  • Equation:\n      - P₁ = P₂\n      - f/a + ρgh = F/A\n\n# Right Panel: المكبسان في نفس المستوى الأفقي (\"Pistons at the Same Horizontal Level\")\n  • Both pistons are at the same height.\n  • Forces: f applied to piston 1 (area a), F applied to piston 2 (area A).\n  • Equation:\n      - P₁ = P₂\n      - f/a = F/A\n\n# Symbols & Notation :\n  • f: Force applied to small piston (area a).\n  • F: Force applied to large piston (area A).\n  • h: Height difference between pistons.\n  • ρ: Fluid density.\n  • g: Acceleration due to gravity.\n  • P₁, P₂: Pressure at pistons 1 and 2.\n\n# Analysis :\n  • The diagrams and equations show that when pistons are at different heights, the pressure difference includes a hydrostatic term (ρgh), while at the same level, the force-to-area ratios are equal.\n  • The system visually demonstrates Pascal’s principle and the effect of height differences on hydraulic equilibrium.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.1134757399559021,
+            "t": 0.6256259679794312,
+            "r": 0.893269956111908,
+            "b": 0.9063607454299927
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "ca4ce826-46af-4e3e-9cc8-7bcb285659a5"
+    },
+    {
+      "text": "حيث : (ρ) كثافة السائل ، (h) ارتفاع عمود السائل بين المكبسين.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.39146673679351807,
+            "t": 0.9118091464042664,
+            "r": 0.8870728015899658,
+            "b": 0.935830295085907
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "beb8e78e-3b02-4978-8312-2e7ef7c91462"
+    },
+    {
+      "text": "$1 \\cdot \\xi$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.8719985485076904,
+            "t": 0.9465352892875671,
+            "r": 0.9090011119842529,
+            "b": 0.9634585976600647
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "marginalia",
+      "chunk_id": "8d885aa1-cba9-4731-a747-70916ab627bd"
+    },
+    {
+      "text": "الحل  \n3",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.9230538606643677,
+            "t": 0.06483637541532516,
+            "r": 0.9522377252578735,
+            "b": 0.1266353577375412
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "marginalia",
+      "chunk_id": "6b2b7821-635c-4e7f-8b07-4eb99db211b2"
+    }
+  ],
+  "result_path": null,
+  "image_was_downscaled": true,
+  "processed_image_size": {
+    "width": 713,
+    "height": 1024
+  }
+}

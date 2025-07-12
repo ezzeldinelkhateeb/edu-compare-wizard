@@ -1,0 +1,164 @@
+{
+  "markdown": "اختر الإجابة الصحيحة من بين الإجابات المعطاة:\n\nإذا كانت النسبة بين نصفي قطري المكبسين في المكبس الهيدروليكي $\\frac{1}{5}$، فإن النسبة بين الضغط أسفل المكبس الصغير مباشرة إلى الضغط أسفل المكبس الكبير مباشرة عند اتزان المكبسين في مستوى أفقي واحد تساوي ...............\n\n1  \n$\\frac{1}{25}$  \n5  \n$\\frac{1}{5}$ <!-- text, from page 0 (l=0.077,t=0.070,r=0.933,b=0.259), with ID 1d87bccd-d927-462b-adae-5b5b1a50c119 -->\n\nالفائدة الآلية للمكبس الهيدروليكي ١٦ <!-- text, from page 0 (l=0.564,t=0.276,r=0.930,b=0.310), with ID 988f7eaf-8d7d-4755-862c-10553bab977b -->\n\n* يمكن الاستفادة من القوة المؤثرة على المكبس الكبير (F) في كثير من الآلات، وتعين الفائدة الآلية (م) عند استقرار المكبسين من العلاقة: <!-- text, from page 0 (l=0.076,t=0.319,r=0.934,b=0.370), with ID d912cd3c-0c84-4937-9a15-597840126cfc -->\n\n$\\eta = \\frac{A}{a} = \\frac{R^2}{r^2} = \\frac{y_1}{y_2}$ <!-- text, from page 0 (l=0.079,t=0.361,r=0.267,b=0.416), with ID e131e992-5994-4167-b057-3864ac527c95 -->\n\nحيث :\n(A) مساحة مقطع المكبس الكبير، (a) مساحة مقطع المكبس الصغير، (R) نصف قطر المكبس الكبير، (r) نصف قطر المكبس الصغير، (y₁) إزاحة المكبس الصغير لأسفل، (y₂) إزاحة المكبس الكبير لأعلى. <!-- text, from page 0 (l=0.142,t=0.429,r=0.917,b=0.514), with ID e19a07f4-bc5f-4081-8162-228d54b2a604 -->\n\n* إذا كان المكبسان في مستوى أفقي افقي واحد عند الاتزان، تكون : <!-- text, from page 0 (l=0.474,t=0.532,r=0.932,b=0.558), with ID 5447a1c0-6a15-40de-b606-75c90eee2007 -->\n\n$\\eta = \\frac{F}{f}$ <!-- text, from page 0 (l=0.078,t=0.564,r=0.188,b=0.607), with ID 1bfefa13-2609-4d24-93fa-a50ac47caf8f -->\n\n- التمثيل البياني للعلاقة بين القوتين F ، f عندما يكون المكبسين في حالة اتزان وفي مستوى أفقي واحد، علماً بأن تمثيل الكميتين على المحورين بنفس مقياس الرسم:\n  \n  line graph: A line graph with the vertical axis labeled \"F\" and the horizontal axis labeled \"f\". The graph shows a straight line with a positive slope, indicating a direct relationship between F and f. The line is marked with a segment labeled \"slope = η\".\n  \n  $slope = \\frac{\\Delta F}{\\Delta f} = \\eta$\n\n- التمثيل البياني للعلاقة بين مقدار إزاحة المكبس الكبير $y_2$ لأعلى ومقدار إزاحة المكبس الصغير $y_1$ لأسفل، علماً بأن تمثيل الكميتين على المحورين بنفس مقياس الرسم:\n\n  line graph: A line graph with the vertical axis labeled \"$y_2$\" and the horizontal axis labeled \"$y_1$\". The graph shows a straight line with a positive slope, indicating a direct relationship between $y_2$ and $y_1$. The line is marked with a segment labeled \"slope = 1/η\".\n  \n  $slope = \\frac{\\Delta y_2}{\\Delta y_1} = \\frac{1}{\\eta}$ <!-- text, from page 0 (l=0.073,t=0.638,r=0.930,b=0.905), with ID cb25728b-20d3-46b9-b4fd-f85c921e4d0d -->\n\nالامتحان فيزياء - ٢ ث - ترم ٢ - ب (١٤/٤/٢٠٢١)\n\n١٠٥ <!-- text, from page 0 (l=0.084,t=0.937,r=0.412,b=0.960), with ID d894dea4-1044-48a6-bd84-14d737d8932e -->",
+  "chunks": [
+    {
+      "text": "اختر الإجابة الصحيحة من بين الإجابات المعطاة:\n\nإذا كانت النسبة بين نصفي قطري المكبسين في المكبس الهيدروليكي $\\frac{1}{5}$، فإن النسبة بين الضغط أسفل المكبس الصغير مباشرة إلى الضغط أسفل المكبس الكبير مباشرة عند اتزان المكبسين في مستوى أفقي واحد تساوي ...............\n\n1  \n$\\frac{1}{25}$  \n5  \n$\\frac{1}{5}$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.07656842470169067,
+            "t": 0.07045458257198334,
+            "r": 0.9325334429740906,
+            "b": 0.25896549224853516
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "1d87bccd-d927-462b-adae-5b5b1a50c119"
+    },
+    {
+      "text": "الفائدة الآلية للمكبس الهيدروليكي ١٦",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.563635528087616,
+            "t": 0.27611243724823,
+            "r": 0.9302018284797668,
+            "b": 0.309628427028656
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "988f7eaf-8d7d-4755-862c-10553bab977b"
+    },
+    {
+      "text": "* يمكن الاستفادة من القوة المؤثرة على المكبس الكبير (F) في كثير من الآلات، وتعين الفائدة الآلية (م) عند استقرار المكبسين من العلاقة:",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.07586228847503662,
+            "t": 0.3185461461544037,
+            "r": 0.9336777925491333,
+            "b": 0.37026140093803406
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "d912cd3c-0c84-4937-9a15-597840126cfc"
+    },
+    {
+      "text": "$\\eta = \\frac{A}{a} = \\frac{R^2}{r^2} = \\frac{y_1}{y_2}$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.07898107916116714,
+            "t": 0.3609409034252167,
+            "r": 0.2671930193901062,
+            "b": 0.41640302538871765
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "e131e992-5994-4167-b057-3864ac527c95"
+    },
+    {
+      "text": "حيث :\n(A) مساحة مقطع المكبس الكبير، (a) مساحة مقطع المكبس الصغير، (R) نصف قطر المكبس الكبير، (r) نصف قطر المكبس الصغير، (y₁) إزاحة المكبس الصغير لأسفل، (y₂) إزاحة المكبس الكبير لأعلى.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.14242619276046753,
+            "t": 0.42878180742263794,
+            "r": 0.9169991612434387,
+            "b": 0.5137572288513184
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "e19a07f4-bc5f-4081-8162-228d54b2a604"
+    },
+    {
+      "text": "* إذا كان المكبسان في مستوى أفقي افقي واحد عند الاتزان، تكون :",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.47384023666381836,
+            "t": 0.5323946475982666,
+            "r": 0.9319826364517212,
+            "b": 0.5583484172821045
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "5447a1c0-6a15-40de-b606-75c90eee2007"
+    },
+    {
+      "text": "$\\eta = \\frac{F}{f}$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.0782783031463623,
+            "t": 0.5641068816184998,
+            "r": 0.18829575181007385,
+            "b": 0.6074468493461609
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "1bfefa13-2609-4d24-93fa-a50ac47caf8f"
+    },
+    {
+      "text": "- التمثيل البياني للعلاقة بين القوتين F ، f عندما يكون المكبسين في حالة اتزان وفي مستوى أفقي واحد، علماً بأن تمثيل الكميتين على المحورين بنفس مقياس الرسم:\n  \n  line graph: A line graph with the vertical axis labeled \"F\" and the horizontal axis labeled \"f\". The graph shows a straight line with a positive slope, indicating a direct relationship between F and f. The line is marked with a segment labeled \"slope = η\".\n  \n  $slope = \\frac{\\Delta F}{\\Delta f} = \\eta$\n\n- التمثيل البياني للعلاقة بين مقدار إزاحة المكبس الكبير $y_2$ لأعلى ومقدار إزاحة المكبس الصغير $y_1$ لأسفل، علماً بأن تمثيل الكميتين على المحورين بنفس مقياس الرسم:\n\n  line graph: A line graph with the vertical axis labeled \"$y_2$\" and the horizontal axis labeled \"$y_1$\". The graph shows a straight line with a positive slope, indicating a direct relationship between $y_2$ and $y_1$. The line is marked with a segment labeled \"slope = 1/η\".\n  \n  $slope = \\frac{\\Delta y_2}{\\Delta y_1} = \\frac{1}{\\eta}$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.07291895151138306,
+            "t": 0.6377578973770142,
+            "r": 0.9299725890159607,
+            "b": 0.9048968553543091
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "cb25728b-20d3-46b9-b4fd-f85c921e4d0d"
+    },
+    {
+      "text": "الامتحان فيزياء - ٢ ث - ترم ٢ - ب (١٤/٤/٢٠٢١)\n\n١٠٥",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.08383223414421082,
+            "t": 0.9374035596847534,
+            "r": 0.41228440403938293,
+            "b": 0.9596787691116333
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "d894dea4-1044-48a6-bd84-14d737d8932e"
+    }
+  ],
+  "result_path": null,
+  "image_was_downscaled": true,
+  "processed_image_size": {
+    "width": 710,
+    "height": 1024
+  }
+}

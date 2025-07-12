@@ -1,0 +1,300 @@
+{
+  "markdown": "المفضل\n3 <!-- text, from page 0 (l=0.923,t=0.063,r=0.953,b=0.122), with ID 3a30a06c-6ff0-431e-b35c-131d74f098d1 -->\n\nSummary : This is a circular red stamp or badge containing the Arabic word \"مثال\" (meaning \"example\") above the number \"3\", both in white text.\n\nstamp: \nShape & Colour : \n  • Circle with solid red fill.\n  • White text and border.\nText & Elements : \n  • Arabic word \"مثال\" (translates to \"example\") at the top.\n  • Number \"3\" centered below the text.\n  • No additional graphics or symbols.\nDimensions & Placement : \n  • Proportions suggest a small badge or label, with text and number centrally aligned.\n\nAnalysis : \n  • The stamp likely serves as a marker or label for \"Example 3\" in a sequence, using clear, high-contrast design for visibility. <!-- figure, from page 0 (l=0.848,t=0.070,r=0.915,b=0.119), with ID 0d27bb9e-1b7a-41ca-b775-c4a514b7485a -->\n\nاختر: آلة رفع هيدروليكية نصف قطر مكبسها 4 cm ، 60 cm . إذا تأثر المكبس الصغير بضغط إضافي مقداره $8.48 \\times 10^4 \\ N/m^2$ فإن أكبر كتلة يمكن رفعها بواسطة المكبس الكبير ليبقى الكبسان في مستوى أفقي واحد تساوي ............\n(علما بأن : $g = 10 \\ m/s^2$) <!-- text, from page 0 (l=0.066,t=0.081,r=0.845,b=0.164), with ID e818df4d-0da0-48fe-97ec-dfddf532c3f9 -->\n\n$95.95 \\times 10^3\\,\\mathrm{kg}\\; \\bigodot \\qquad 47.97 \\times 10^3\\,\\mathrm{kg}\\; \\bigotimes \\qquad 9.595 \\times 10^3\\,\\mathrm{kg}\\; \\bigodot \\qquad 4.797 \\times 10^3\\,\\mathrm{kg}\\; \\bigcirc$ <!-- text, from page 0 (l=0.075,t=0.168,r=0.845,b=0.200), with ID adb61474-6056-4881-bd0e-ba02b45f0a46 -->\n\nالحل <!-- text, from page 0 (l=0.812,t=0.203,r=0.903,b=0.225), with ID 90ce004b-adf7-42d7-afb9-6534ec2ba2d5 -->\n\nr: 4 cm\nR: 60 cm\nP: 8.48 × 10⁴ N/m²\ng: 10 m/s²\nM = ? <!-- text, from page 0 (l=0.066,t=0.228,r=0.691,b=0.269), with ID 93b8985d-4fc4-4f88-8052-0ac49314a7da -->\n\nوسيلة مساعدة\n\nتبعا لقاعدة باسكال فإن الضغط المؤثر على المكبس الصغير ينتقل بالكامل إلى جميع أجزاء السائل. ونظراً لأن المكبسين في مستوى أفقي واحد، فيكون الضغط أسفل المكبس الصغير مساوٍ للضغط أسفل المكبس الكبير. <!-- text, from page 0 (l=0.074,t=0.273,r=0.883,b=0.345), with ID 845a11ee-60d8-4150-9686-8ce06a32e1e8 -->\n\n$F = PA = P\\pi R^2 = 8.48 \\times 10^4 \\times \\frac{22}{7} \\times (60 \\times 10^{-2})^2 = 9.595 \\times 10^4 \\ \\text{N}$ <!-- text, from page 0 (l=0.065,t=0.355,r=0.654,b=0.385), with ID 6c3eabbf-fe32-44ef-a0b0-edd70691dc85 -->\n\n$F = Mg$ <!-- text, from page 0 (l=0.066,t=0.389,r=0.147,b=0.410), with ID 7529451b-c13e-45e2-a015-05036e1efd59 -->\n\n$M = \\frac{F}{g} = \\frac{9.595 \\times 10^4}{10} = \\mathbf{9.595 \\times 10^3\\ kg}$ <!-- text, from page 0 (l=0.065,t=0.414,r=0.427,b=0.456), with ID 0e74bb6d-4255-4d4a-9597-74a95e093c72 -->\n\n: : الاختيار الصحيح هو ب <!-- text, from page 0 (l=0.634,t=0.452,r=0.854,b=0.478), with ID 8f10d804-4b6b-4cef-90e7-50ffd59fe6ab -->\n\nماذا لو\nكان نصف قطر المكبس الصغير 6 cm وأثر عليه نفس الضغط الإضافي، أي من الاختيارات السابقة يمثل أكبر كتلة يمكن رفعها بواسطة المكبس الكبير، ليترن المكبسين في مستوى أفقي واحد؟ <!-- text, from page 0 (l=0.079,t=0.485,r=0.877,b=0.553), with ID 52971e6a-4506-45ab-a254-1bc18f76257d -->\n\n١٨\n\nاختر الإجابة الصحيحة من بين الإجابات المعطاة:\n\n١- مكبس هيدروليكي فائدته الآلية ٩٠ ونصف قطر مكبسه الكبير ٣٠ cm، فإن مساحة مقطع مكبسه الصغير تساوي ...............\n\n(امتحان / بني سويف ٢٤)\n\n[ ] ٣ $\\pi$ cm$^2$      [ ] ٥ $\\pi$ cm$^2$      [x] ١٠ $\\pi$ cm$^2$      [ ] ١٢ $\\pi$ cm$^2$ <!-- text, from page 0 (l=0.070,t=0.576,r=0.914,b=0.714), with ID 1ccee1fe-6572-4acf-8c16-c1776815aeb5 -->\n\nالشكل المقابل يوضح مكبس هيدروليكي مكبسيه في مستوى أفقي واحد موضوع على مكبسه الكبير مكعب مصمت من الحديد طول ضلعه ١، وعلى مكبسه الصغير مكعب آخر مصمت من نفس المادة طول ضلعه ٢، فإذا كان نصف قطر المكبس الكبير 8 cm ونصف قطر المكبس الصغير 1 cm، فإن النسبة $\\left(\\frac{l_1}{l_2}\\right)$ تساوي ............ <!-- text, from page 0 (l=0.075,t=0.714,r=0.866,b=0.869), with ID b923026e-c467-4b24-b52a-48235db6d0a0 -->\n\n$64 \\div 8 \\div 4 = 2$ <!-- text, from page 0 (l=0.304,t=0.871,r=0.836,b=0.925), with ID 073a641b-a7ae-41d5-a434-a947402e7c72 -->\n\n$ \\frac{2}{1} \\; \\text{(clock icon showing 3 o'clock)} $ <!-- text, from page 0 (l=0.150,t=0.892,r=0.213,b=0.923), with ID cf1e99a3-f3c1-43b3-bed4-fed9f764014b -->\n\n$1 \\cdot 8$ <!-- marginalia, from page 0 (l=0.871,t=0.943,r=0.910,b=0.961), with ID 9153a631-0399-446a-bcc3-3207a4685105 -->",
+  "chunks": [
+    {
+      "text": "المفضل\n3",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.9228174090385437,
+            "t": 0.06328287720680237,
+            "r": 0.9530873894691467,
+            "b": 0.12189808487892151
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "3a30a06c-6ff0-431e-b35c-131d74f098d1"
+    },
+    {
+      "text": "Summary : This is a circular red stamp or badge containing the Arabic word \"مثال\" (meaning \"example\") above the number \"3\", both in white text.\n\nstamp: \nShape & Colour : \n  • Circle with solid red fill.\n  • White text and border.\nText & Elements : \n  • Arabic word \"مثال\" (translates to \"example\") at the top.\n  • Number \"3\" centered below the text.\n  • No additional graphics or symbols.\nDimensions & Placement : \n  • Proportions suggest a small badge or label, with text and number centrally aligned.\n\nAnalysis : \n  • The stamp likely serves as a marker or label for \"Example 3\" in a sequence, using clear, high-contrast design for visibility.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.8483718037605286,
+            "t": 0.06971405446529388,
+            "r": 0.9150636792182922,
+            "b": 0.11858521401882172
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "0d27bb9e-1b7a-41ca-b775-c4a514b7485a"
+    },
+    {
+      "text": "اختر: آلة رفع هيدروليكية نصف قطر مكبسها 4 cm ، 60 cm . إذا تأثر المكبس الصغير بضغط إضافي مقداره $8.48 \\times 10^4 \\ N/m^2$ فإن أكبر كتلة يمكن رفعها بواسطة المكبس الكبير ليبقى الكبسان في مستوى أفقي واحد تساوي ............\n(علما بأن : $g = 10 \\ m/s^2$)",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.06586366891860962,
+            "t": 0.0807114914059639,
+            "r": 0.8450257778167725,
+            "b": 0.16370832920074463
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "e818df4d-0da0-48fe-97ec-dfddf532c3f9"
+    },
+    {
+      "text": "$95.95 \\times 10^3\\,\\mathrm{kg}\\; \\bigodot \\qquad 47.97 \\times 10^3\\,\\mathrm{kg}\\; \\bigotimes \\qquad 9.595 \\times 10^3\\,\\mathrm{kg}\\; \\bigodot \\qquad 4.797 \\times 10^3\\,\\mathrm{kg}\\; \\bigcirc$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.07457044720649719,
+            "t": 0.16820600628852844,
+            "r": 0.8449190855026245,
+            "b": 0.19961991906166077
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "adb61474-6056-4881-bd0e-ba02b45f0a46"
+    },
+    {
+      "text": "الحل",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.8124151825904846,
+            "t": 0.20345863699913025,
+            "r": 0.9028282761573792,
+            "b": 0.22493678331375122
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "90ce004b-adf7-42d7-afb9-6534ec2ba2d5"
+    },
+    {
+      "text": "r: 4 cm\nR: 60 cm\nP: 8.48 × 10⁴ N/m²\ng: 10 m/s²\nM = ?",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.06588244438171387,
+            "t": 0.2284296154975891,
+            "r": 0.6910459995269775,
+            "b": 0.2685847282409668
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "93b8985d-4fc4-4f88-8052-0ac49314a7da"
+    },
+    {
+      "text": "وسيلة مساعدة\n\nتبعا لقاعدة باسكال فإن الضغط المؤثر على المكبس الصغير ينتقل بالكامل إلى جميع أجزاء السائل. ونظراً لأن المكبسين في مستوى أفقي واحد، فيكون الضغط أسفل المكبس الصغير مساوٍ للضغط أسفل المكبس الكبير.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.07422438263893127,
+            "t": 0.27342700958251953,
+            "r": 0.883367657661438,
+            "b": 0.3446230888366699
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "845a11ee-60d8-4150-9686-8ce06a32e1e8"
+    },
+    {
+      "text": "$F = PA = P\\pi R^2 = 8.48 \\times 10^4 \\times \\frac{22}{7} \\times (60 \\times 10^{-2})^2 = 9.595 \\times 10^4 \\ \\text{N}$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.06468340754508972,
+            "t": 0.3554346561431885,
+            "r": 0.654323935508728,
+            "b": 0.3845869302749634
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "6c3eabbf-fe32-44ef-a0b0-edd70691dc85"
+    },
+    {
+      "text": "$F = Mg$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.06573738157749176,
+            "t": 0.388765811920166,
+            "r": 0.14683838188648224,
+            "b": 0.4103015661239624
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "7529451b-c13e-45e2-a015-05036e1efd59"
+    },
+    {
+      "text": "$M = \\frac{F}{g} = \\frac{9.595 \\times 10^4}{10} = \\mathbf{9.595 \\times 10^3\\ kg}$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.06526894867420197,
+            "t": 0.4137171804904938,
+            "r": 0.4266034960746765,
+            "b": 0.45577117800712585
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "0e74bb6d-4255-4d4a-9597-74a95e093c72"
+    },
+    {
+      "text": ": : الاختيار الصحيح هو ب",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.6344896554946899,
+            "t": 0.4519214332103729,
+            "r": 0.854377269744873,
+            "b": 0.4784452021121979
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "8f10d804-4b6b-4cef-90e7-50ffd59fe6ab"
+    },
+    {
+      "text": "ماذا لو\nكان نصف قطر المكبس الصغير 6 cm وأثر عليه نفس الضغط الإضافي، أي من الاختيارات السابقة يمثل أكبر كتلة يمكن رفعها بواسطة المكبس الكبير، ليترن المكبسين في مستوى أفقي واحد؟",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.07895135879516602,
+            "t": 0.48453986644744873,
+            "r": 0.8768157958984375,
+            "b": 0.5534707307815552
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "52971e6a-4506-45ab-a254-1bc18f76257d"
+    },
+    {
+      "text": "١٨\n\nاختر الإجابة الصحيحة من بين الإجابات المعطاة:\n\n١- مكبس هيدروليكي فائدته الآلية ٩٠ ونصف قطر مكبسه الكبير ٣٠ cm، فإن مساحة مقطع مكبسه الصغير تساوي ...............\n\n(امتحان / بني سويف ٢٤)\n\n[ ] ٣ $\\pi$ cm$^2$      [ ] ٥ $\\pi$ cm$^2$      [x] ١٠ $\\pi$ cm$^2$      [ ] ١٢ $\\pi$ cm$^2$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.0701150894165039,
+            "t": 0.5755571126937866,
+            "r": 0.914366602897644,
+            "b": 0.7144290208816528
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "1ccee1fe-6572-4acf-8c16-c1776815aeb5"
+    },
+    {
+      "text": "الشكل المقابل يوضح مكبس هيدروليكي مكبسيه في مستوى أفقي واحد موضوع على مكبسه الكبير مكعب مصمت من الحديد طول ضلعه ١، وعلى مكبسه الصغير مكعب آخر مصمت من نفس المادة طول ضلعه ٢، فإذا كان نصف قطر المكبس الكبير 8 cm ونصف قطر المكبس الصغير 1 cm، فإن النسبة $\\left(\\frac{l_1}{l_2}\\right)$ تساوي ............",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.07537612318992615,
+            "t": 0.7138259410858154,
+            "r": 0.8656158447265625,
+            "b": 0.8693435192108154
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "b923026e-c467-4b24-b52a-48235db6d0a0"
+    },
+    {
+      "text": "$64 \\div 8 \\div 4 = 2$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.30403029918670654,
+            "t": 0.8714151382446289,
+            "r": 0.8362157344818115,
+            "b": 0.9253137111663818
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "073a641b-a7ae-41d5-a434-a947402e7c72"
+    },
+    {
+      "text": "$ \\frac{2}{1} \\; \\text{(clock icon showing 3 o'clock)} $",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.14974325895309448,
+            "t": 0.8923970460891724,
+            "r": 0.2129248082637787,
+            "b": 0.9225287437438965
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "cf1e99a3-f3c1-43b3-bed4-fed9f764014b"
+    },
+    {
+      "text": "$1 \\cdot 8$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.8711793422698975,
+            "t": 0.9432917833328247,
+            "r": 0.9098936319351196,
+            "b": 0.9612243175506592
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "marginalia",
+      "chunk_id": "9153a631-0399-446a-bcc3-3207a4685105"
+    }
+  ],
+  "result_path": null,
+  "image_was_downscaled": true,
+  "processed_image_size": {
+    "width": 713,
+    "height": 1024
+  }
+}

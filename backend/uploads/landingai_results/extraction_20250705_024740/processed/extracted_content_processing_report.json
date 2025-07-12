@@ -1,0 +1,15 @@
+{
+  "file_path": "d:\\ezz\\compair\\edu-compare-wizard\\backend\\uploads\\landingai_results\\extraction_20250705_024740\\extracted_content.md",
+  "processing_time": 0.005033,
+  "content_type": "technical_metadata",
+  "confidence": 0.9,
+  "metadata": {
+    "original_length": 8695,
+    "cleaned_length": 832,
+    "reduction_percentage": 90.43128234617596,
+    "removed_chunks_count": 232,
+    "kept_chunks_count": 1
+  },
+  "chunks_removed_count": 232,
+  "chunks_kept_count": 1
+}

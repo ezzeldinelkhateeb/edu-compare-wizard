@@ -84,7 +84,7 @@ export const useBackendComparison = () => {
       console.error('❌ Backend غير متاح:', error);
       setState(prev => ({ 
         ...prev, 
-        error: 'لا يمكن الاتصال بـ Backend - تأكد من تشغيل الخادم على localhost:8000' 
+        error: 'لا يمكن الاتصال بـ Backend - تأكد من تشغيل الخادم على localhost:8001' 
       }));
       
       toast({

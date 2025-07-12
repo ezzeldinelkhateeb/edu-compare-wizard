@@ -1,0 +1,15 @@
+{
+  "file_path": "temp_test_file.md",
+  "processing_time": 0.0,
+  "content_type": "technical_metadata",
+  "confidence": 0.9,
+  "metadata": {
+    "original_length": 180,
+    "cleaned_length": 26,
+    "reduction_percentage": 85.55555555555556,
+    "removed_chunks_count": 11,
+    "kept_chunks_count": 1
+  },
+  "chunks_removed_count": 11,
+  "chunks_kept_count": 1
+}

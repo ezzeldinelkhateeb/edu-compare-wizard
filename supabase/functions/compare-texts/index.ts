@@ -8,6 +8,51 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
+// دالة لتنظيف النصوص من تفاصيل Landing AI الزائدة
+function cleanLandingAIText(text: string): string {
+  // إزالة أوصاف الصور بالإنجليزية والمعلومات التقنية
+  const cleanText = text
+    // إزالة أوصاف الصور والتفاصيل التقنية
+    .replace(/Summary\s*:\s*This[\s\S]*?<!-- figure[\s\S]*?-->/g, '')
+    .replace(/photo:\s*[\s\S]*?Analysis\s*:[\s\S]*?<!-- figure[\s\S]*?-->/g, '')
+    .replace(/illustration:\s*[\s\S]*?Analysis\s*:[\s\S]*?<!-- figure[\s\S]*?-->/g, '')
+    // إزالة التفاصيل التقنية من Landing AI
+    .replace(/<!-- text,[\s\S]*?-->/g, '')
+    .replace(/<!-- figure,[\s\S]*?-->/g, '')
+    .replace(/<!-- marginalia,[\s\S]*?-->/g, '')
+    // إزالة النص الإنجليزي العام
+    .replace(/Scene Overview\s*:[\s\S]*?(?=\n\n|\n[أ-ي])/g, '')
+    .replace(/Technical Details\s*:[\s\S]*?(?=\n\n|\n[أ-ي])/g, '')
+    .replace(/Spatial Relationships\s*:[\s\S]*?(?=\n\n|\n[أ-ي])/g, '')
+    .replace(/Analysis\s*:[\s\S]*?(?=\n\n|\n[أ-ي])/g, '')
+    // تنظيف النص من الأسطر الفارغة المتكررة
+    .replace(/\n\s*\n\s*\n/g, '\n\n')
+    .trim();
+  
+  return cleanText;
+}
+
+// دالة حساب التشابه الأساسي
+function calculateBasicSimilarity(text1: string, text2: string): number {
+  if (!text1 || !text2) return 0;
+  
+  // تنظيف النصوص من الكلمات الصغيرة والكلمات الشائعة
+  const words1 = text1.toLowerCase()
+    .split(/\s+/)
+    .filter(word => word.length > 2 && !['من', 'في', 'على', 'إلى', 'أن', 'هذا', 'هذه', 'that', 'the', 'and', 'or'].includes(word));
+  const words2 = text2.toLowerCase()
+    .split(/\s+/)
+    .filter(word => word.length > 2 && !['من', 'في', 'على', 'إلى', 'أن', 'هذا', 'هذه', 'that', 'the', 'and', 'or'].includes(word));
+  
+  const set1 = new Set(words1);
+  const set2 = new Set(words2);
+  
+  const intersection = new Set([...set1].filter(x => set2.has(x)));
+  const union = new Set([...set1, ...set2]);
+  
+  return Math.round((intersection.size / union.size) * 100);
+}
+
 const supabase = createClient(
   Deno.env.get('SUPABASE_URL') ?? '',
   Deno.env.get('SUPABASE_ANON_KEY') ?? ''
@@ -90,36 +135,50 @@ serve(async (req) => {
       );
     }
 
+    // تنظيف النصوص من تفاصيل Landing AI الزائدة
+    const cleanOldText = cleanLandingAIText(oldText);
+    const cleanNewText = cleanLandingAIText(newText);
+    
     // إعداد النص للمقارنة
     const prompt = `
-قم بمقارنة النصين التاليين من كتابين دراسيين (قديم وجديد) وحدد التغييرات الفعلية في المحتوى التعليمي:
+أنت خبير في مقارنة المناهج التعليمية. قم بمقارنة هذين النصين من صفحتين من كتاب مدرسي (نسخة قديمة ونسخة جديدة) وركز على المحتوى التعليمي الأساسي فقط.
 
-النص القديم:
+تجاهل تماماً:
+- أوصاف الصور والرسوم البيانية بالإنجليزية 
+- التفاصيل التقنية مثل المواقع والأبعاد
+- الملاحظات الفنية من أنظمة الاستخراج
+
+ركز فقط على:
+- النصوص العربية التعليمية الأساسية
+- القوانين والقواعد العلمية
+- الأمثلة والتطبيقات
+- الأسئلة والتمارين
+
+النص القديم (المحتوى التعليمي فقط):
 """
-${oldText.substring(0, 2000)} // تقليل الطول لتجنب مشاكل الحد الأقصى
+${cleanOldText.substring(0, 4000)}
 """
 
-النص الجديد:  
+النص الجديد (المحتوى التعليمي فقط):
 """
-${newText.substring(0, 2000)}
+${cleanNewText.substring(0, 4000)}
 """
 
-المطلوب تحليل شامل ودقيق:
-1. حدد التغييرات الجوهرية في الشرح والمحتوى التعليمي
-2. اذكر الأسئلة المضافة أو المحذوفة أو المعدلة
-3. حدد التحديثات في الأمثلة والتمارين
-4. احسب نسبة التطابق للمحتوى التعليمي (ليس النص الحرفي)
-5. قدم ملخصاً للتغييرات المهمة وتوصيات للمعلمين
+التعليمات:
+1. قارن المحتوى التعليمي الأساسي فقط
+2. تجاهل الاختلافات في أوصاف الصور
+3. إذا كان المحتوى التعليمي متطابق، اعط نسبة تشابه عالية (85%+)
+4. ركز على التغييرات الجوهرية في الشرح والقوانين والأمثلة
 
 أجب بصيغة JSON صحيحة فقط:
 {
   "similarity_percentage": رقم من 0 إلى 100,
-  "content_changes": ["قائمة دقيقة بالتغييرات في المحتوى"],
-  "questions_changes": ["التغييرات المحددة في الأسئلة"],
-  "examples_changes": ["التغييرات في الأمثلة والتمارين"],
-  "major_differences": ["الاختلافات الرئيسية المهمة"],
-  "summary": "ملخص شامل ومفيد للتغييرات",
-  "recommendation": "توصيات عملية للمعلم أو الطالب"
+  "content_changes": ["قائمة دقيقة بالتغييرات في المحتوى التعليمي فقط"],
+  "questions_changes": ["التغييرات في الأسئلة والتمارين"],
+  "examples_changes": ["التغييرات في الأمثلة التعليمية"],
+  "major_differences": ["الاختلافات الجوهرية في المحتوى التعليمي"],
+  "summary": "ملخص التغييرات المهمة في المحتوى التعليمي",
+  "recommendation": "توصيات للمعلمين بناءً على التغييرات الفعلية"
 }`;
 
     try {
@@ -171,7 +230,7 @@ ${newText.substring(0, 2000)}
         console.error('خطأ في تحليل JSON من Gemini:', parseError);
         // إنشاء هيكل تحليلي أساسي مع معلومات مفيدة
         analysisData = {
-          similarity_percentage: this.calculateBasicSimilarity(oldText, newText),
+          similarity_percentage: calculateBasicSimilarity(oldText, newText),
           content_changes: ['تم تحليل النص وتحديد وجود تغييرات في المحتوى'],
           questions_changes: ['تم العثور على تحديثات في أسلوب الأسئلة'],
           examples_changes: ['تم تحديث بعض الأمثلة والتمارين'],
@@ -222,7 +281,7 @@ ${newText.substring(0, 2000)}
       
       // إنشاء تحليل أساسي في حالة الفشل
       const fallbackAnalysis = {
-        similarity_percentage: this.calculateBasicSimilarity(oldText, newText),
+        similarity_percentage: calculateBasicSimilarity(oldText, newText),
         content_changes: ['تم تحديد تغييرات أساسية في المحتوى'],
         questions_changes: ['تم تحديد تحديثات في الأسئلة'],
         examples_changes: ['تم تحديد تحديثات في الأمثلة'],
@@ -265,19 +324,3 @@ ${newText.substring(0, 2000)}
     );
   }
 });
-
-// دالة مساعدة لحساب التشابه الأساسي
-function calculateBasicSimilarity(text1: string, text2: string): number {
-  if (!text1 || !text2) return 0;
-  
-  const words1 = text1.toLowerCase().split(/\s+/);
-  const words2 = text2.toLowerCase().split(/\s+/);
-  
-  const set1 = new Set(words1);
-  const set2 = new Set(words2);
-  
-  const intersection = new Set([...set1].filter(x => set2.has(x)));
-  const union = new Set([...set1, ...set2]);
-  
-  return Math.round((intersection.size / union.size) * 100);
-}

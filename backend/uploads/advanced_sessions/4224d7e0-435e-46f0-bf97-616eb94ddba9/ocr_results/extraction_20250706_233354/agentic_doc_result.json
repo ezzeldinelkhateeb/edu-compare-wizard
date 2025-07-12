@@ -1,0 +1,470 @@
+{
+  "markdown": "$ \\text{fy}_1 = \\text{Fy}_2 $ <!-- text, from page 0 (l=0.036,t=0.042,r=0.184,b=0.118), with ID b67aea4b-2eb2-4dcb-8571-39589c47941e -->\n\n$y_1 = \\frac{\\mathrm{F}}{\\mathrm{f}} y_2 = \\frac{8 \\times 10^3}{100} \\times 1 = \\mathbf{80\\ cm}$ <!-- text, from page 0 (l=0.372,t=0.065,r=0.692,b=0.110), with ID b108bc0c-195f-4359-a384-1a2c7af9e118 -->\n\n: . الاختيار الصحيح هو ب <!-- text, from page 0 (l=0.644,t=0.124,r=0.870,b=0.153), with ID 19c30720-8ff7-43b4-87f3-24d38269e975 -->\n\nكان المطلوب حساب الفائدة الآلية للمكبس، ما إجابتك؟\n\n[ ] 10\n\n[ ] 20\n\n[ ] 40\n\n[ ] 80 <!-- text, from page 0 (l=0.084,t=0.159,r=0.896,b=0.235), with ID 276ed9b0-3775-4431-a80d-adb66716631b -->\n\nSummary : This illustration shows a U-shaped container filled with liquid, with two pistons of different areas placed on each side, demonstrating the principle of hydraulic systems and Pascal's law.\n\nillustration:\nScene Overview :\n  • The main subject is a U-shaped vessel containing a liquid (likely oil or water), with two vertical arms of different diameters.\n  • Each arm has a piston: the left piston is smaller and labeled with a downward force \"f\", the right piston is larger and labeled with an upward force \"F\".\n  • The liquid level is the same on both sides, indicating equilibrium.\n  • The vertical distance between the pistons is marked as \"h = 8 cm\".\n\nTechnical Details :\n  • The pistons are shown as solid disks fitting snugly in the arms of the vessel.\n  • The force \"f\" is applied downward on the smaller piston, while the force \"F\" is exerted upward on the larger piston.\n  • The height difference between the pistons is explicitly labeled as 8 cm.\n\nSpatial Relationships :\n  • The smaller piston (left) is at a higher position than the larger piston (right).\n  • The forces are applied in opposite directions: \"f\" downward, \"F\" upward.\n  • The liquid transmits pressure from one piston to the other through the U-shaped connection.\n\nAnalysis :\n  • The figure visually demonstrates Pascal's principle: a force applied to a confined fluid is transmitted undiminished throughout the fluid.\n  • The difference in piston areas and the labeled height suggest a setup for analyzing mechanical advantage or pressure transmission in hydraulic systems.\n  • The labeled height (8 cm) may be relevant for calculating pressure differences or force ratios. <!-- figure, from page 0 (l=0.072,t=0.289,r=0.290,b=0.450), with ID 785b55be-b6d9-49b0-9a11-bdee6864f9ff -->\n\nاختر: الشكل المقابل يوضح مكبس هيدروليكي به  \nكمية من زيت كثافته  $800 \\ kg/m^3$ ، فإذا كانت مساحة  \nمقطع مكبسه الصغير $10 \\ cm^2$ وتؤثر عليه قوة مقدارها  \n$180 \\ N$ ومساحة مقطع مكبسه الكبير $100 \\ cm^2$ ، فإن :  \n(علماً بأن : $g = 9.8 \\ m/s^2$ )  \nالقوة المؤثرة على المكبس الكبير تساوي ............ <!-- text, from page 0 (l=0.433,t=0.280,r=0.926,b=0.465), with ID b084f123-2822-4312-8366-7ee9d4c13268 -->\n\n1.5 × 10³ N ![inline figure: clockwise arrow in circle]\n\n6.5 × 10³ N ![inline figure: upward arrow in circle]\n\n1.9 × 10³ N ![inline figure: downward arrow in circle]\n\n1.8 × 10³ N ![inline figure: rightward arrow in circle] <!-- text, from page 0 (l=0.365,t=0.477,r=0.851,b=0.547), with ID 133c53e8-d48c-463a-8f4f-2bcb3629d9eb -->\n\n(2) الفائدة الآلية للمكبس الهيدروليكى تساوى ............ <!-- text, from page 0 (l=0.404,t=0.555,r=0.855,b=0.583), with ID e489b768-34c1-4482-8c87-b166ece65f28 -->\n\n20 ⓙ <!-- text, from page 0 (l=0.281,t=0.589,r=0.347,b=0.614), with ID 627bfcad-f1bb-4f34-aee0-22f999d1a5b1 -->\n\n15 ⏏️ <!-- text, from page 0 (l=0.448,t=0.588,r=0.517,b=0.616), with ID f1a4f32a-f295-42fb-bd6c-f7ef1fe4065d -->\n\n10 ب <!-- text, from page 0 (l=0.623,t=0.589,r=0.691,b=0.617), with ID 5af9e661-2fc4-49cb-977a-a93eb770b7ec -->\n\n5 ⓘ <!-- text, from page 0 (l=0.771,t=0.591,r=0.828,b=0.616), with ID ee841863-a47e-4104-ba39-7821508bd842 -->\n\nالحل <!-- text, from page 0 (l=0.824,t=0.624,r=0.920,b=0.648), with ID 2850d6c7-ce59-48af-b352-29c4e37db2b8 -->\n\nρ (زيت): 800 kg/m³\n\na: 10 cm² <!-- text, from page 0 (l=0.078,t=0.657,r=0.403,b=0.697), with ID 5eac691d-f0db-4a55-aaf6-7078ce744bef -->\n\n$f = 180\\,\\mathrm{N}$ <!-- text, from page 0 (l=0.410,t=0.657,r=0.528,b=0.699), with ID 41fe1ec1-a099-4214-933b-29ed4cf9ebd9 -->\n\n$A = 100\\ \\mathrm{cm}^2$ <!-- text, from page 0 (l=0.532,t=0.658,r=0.675,b=0.698), with ID 7edb49a8-26e4-426a-ae7c-ad5fc8cf6e31 -->\n\nSummary : This image displays a single measurement value for height.\n\nphoto:\nScene Overview :\n  • The image contains the text \"h = 8 cm\" centered on a light background.\n  • The text is enclosed within a dashed rectangular border.\nTechnical Details :\n  • The value \"h\" is defined as 8 centimeters (cm).\n  • No additional graphical elements, axes, or data points are present.\nSpatial Relationships :\n  • The text is horizontally centered within the dashed border.\nAnalysis :\n  • The image serves as a clear label or annotation indicating that the height (h) is 8 cm. <!-- figure, from page 0 (l=0.683,t=0.659,r=0.788,b=0.698), with ID 7194dc62-dc4f-43dc-8e52-c8a52ceaaee6 -->\n\ng: 9.8 m/s²\n\nF: ?\n\nη: ? <!-- text, from page 0 (l=0.078,t=0.701,r=0.367,b=0.737), with ID e3784311-b857-4163-9ba3-9ebf1e46f2a4 -->\n\n$∴ \\frac{f}{a} = \\frac{\\mathbf{F}}{\\mathbf{A}} + \\rho_{(\\text{زيت})}gh$ <!-- text, from page 0 (l=0.078,t=0.733,r=0.280,b=0.772), with ID ceb6104d-162e-43ad-8dda-da9d80c7935b -->\n\n$ \\therefore \\frac{\\mathbf{F}}{A} = \\frac{f}{a} - \\rho_{(\\text{زيت})}gh $ <!-- text, from page 0 (l=0.461,t=0.735,r=0.660,b=0.772), with ID 44a66781-7d3c-4de9-8196-f85b391082ea -->\n\n$ \\therefore \\frac{\\textcolor{red}{\\mathbf{F}}}{100 \\times 10^{-4}} = \\frac{180}{10 \\times 10^{-4}} - (800 \\times 9.8 \\times 8 \\times 10^{-2}) $ <!-- text, from page 0 (l=0.079,t=0.777,r=0.548,b=0.820), with ID 2d5b78b4-3a36-4a57-8cd5-1429e7383be5 -->\n\n$F = 1.8 \\times 10^3\\,\\text{N}$ <!-- text, from page 0 (l=0.654,t=0.782,r=0.817,b=0.809), with ID 44038f01-41b8-4918-9aa6-5a7409f7768d -->\n\n: . الاختيار الصحيح هو ج <!-- text, from page 0 (l=0.646,t=0.814,r=0.869,b=0.843), with ID f6e5f5e0-e9aa-4be0-a8ca-537637506711 -->\n\n$\\eta = \\frac{\\mathrm{A}}{a} = \\frac{100}{10} = \\mathbf{10}$ <!-- text, from page 0 (l=0.072,t=0.843,r=0.260,b=0.885), with ID d2236436-5f31-4ead-97bb-5b65dc91d92d -->\n\n$ (۲) $ <!-- text, from page 0 (l=0.859,t=0.855,r=0.896,b=0.881), with ID 37427ad6-1908-4115-9dad-fb1df85fa1d0 -->\n\n: . الاختيار الصحيح هو  ب <!-- text, from page 0 (l=0.646,t=0.887,r=0.864,b=0.915), with ID 9c667f15-092b-40f9-934c-9d39b9ad8d93 -->\n\n$1 \\cdot 7$ <!-- marginalia, from page 0 (l=0.082,t=0.937,r=0.122,b=0.957), with ID 7a4a78c5-9886-44ad-8368-dff605af81c3 -->",
+  "chunks": [
+    {
+      "text": "$ \\text{fy}_1 = \\text{Fy}_2 $",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.035698726773262024,
+            "t": 0.041560377925634384,
+            "r": 0.1835261881351471,
+            "b": 0.11840398609638214
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "b67aea4b-2eb2-4dcb-8571-39589c47941e"
+    },
+    {
+      "text": "$y_1 = \\frac{\\mathrm{F}}{\\mathrm{f}} y_2 = \\frac{8 \\times 10^3}{100} \\times 1 = \\mathbf{80\\ cm}$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.37173396348953247,
+            "t": 0.06525032222270966,
+            "r": 0.6919133067131042,
+            "b": 0.1096552163362503
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "b108bc0c-195f-4359-a384-1a2c7af9e118"
+    },
+    {
+      "text": ": . الاختيار الصحيح هو ب",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.643886923789978,
+            "t": 0.12379950284957886,
+            "r": 0.8695390224456787,
+            "b": 0.15265017747879028
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "19c30720-8ff7-43b4-87f3-24d38269e975"
+    },
+    {
+      "text": "كان المطلوب حساب الفائدة الآلية للمكبس، ما إجابتك؟\n\n[ ] 10\n\n[ ] 20\n\n[ ] 40\n\n[ ] 80",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.08412361145019531,
+            "t": 0.1591467261314392,
+            "r": 0.8964129686355591,
+            "b": 0.23456990718841553
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "276ed9b0-3775-4431-a80d-adb66716631b"
+    },
+    {
+      "text": "Summary : This illustration shows a U-shaped container filled with liquid, with two pistons of different areas placed on each side, demonstrating the principle of hydraulic systems and Pascal's law.\n\nillustration:\nScene Overview :\n  • The main subject is a U-shaped vessel containing a liquid (likely oil or water), with two vertical arms of different diameters.\n  • Each arm has a piston: the left piston is smaller and labeled with a downward force \"f\", the right piston is larger and labeled with an upward force \"F\".\n  • The liquid level is the same on both sides, indicating equilibrium.\n  • The vertical distance between the pistons is marked as \"h = 8 cm\".\n\nTechnical Details :\n  • The pistons are shown as solid disks fitting snugly in the arms of the vessel.\n  • The force \"f\" is applied downward on the smaller piston, while the force \"F\" is exerted upward on the larger piston.\n  • The height difference between the pistons is explicitly labeled as 8 cm.\n\nSpatial Relationships :\n  • The smaller piston (left) is at a higher position than the larger piston (right).\n  • The forces are applied in opposite directions: \"f\" downward, \"F\" upward.\n  • The liquid transmits pressure from one piston to the other through the U-shaped connection.\n\nAnalysis :\n  • The figure visually demonstrates Pascal's principle: a force applied to a confined fluid is transmitted undiminished throughout the fluid.\n  • The difference in piston areas and the labeled height suggest a setup for analyzing mechanical advantage or pressure transmission in hydraulic systems.\n  • The labeled height (8 cm) may be relevant for calculating pressure differences or force ratios.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.07153182476758957,
+            "t": 0.28881800174713135,
+            "r": 0.2898697555065155,
+            "b": 0.44959592819213867
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "785b55be-b6d9-49b0-9a11-bdee6864f9ff"
+    },
+    {
+      "text": "اختر: الشكل المقابل يوضح مكبس هيدروليكي به  \nكمية من زيت كثافته  $800 \\ kg/m^3$ ، فإذا كانت مساحة  \nمقطع مكبسه الصغير $10 \\ cm^2$ وتؤثر عليه قوة مقدارها  \n$180 \\ N$ ومساحة مقطع مكبسه الكبير $100 \\ cm^2$ ، فإن :  \n(علماً بأن : $g = 9.8 \\ m/s^2$ )  \nالقوة المؤثرة على المكبس الكبير تساوي ............",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.4330335259437561,
+            "t": 0.28045424818992615,
+            "r": 0.9263803362846375,
+            "b": 0.4653730094432831
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "b084f123-2822-4312-8366-7ee9d4c13268"
+    },
+    {
+      "text": "1.5 × 10³ N ![inline figure: clockwise arrow in circle]\n\n6.5 × 10³ N ![inline figure: upward arrow in circle]\n\n1.9 × 10³ N ![inline figure: downward arrow in circle]\n\n1.8 × 10³ N ![inline figure: rightward arrow in circle]",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.3645523190498352,
+            "t": 0.47697514295578003,
+            "r": 0.8508362174034119,
+            "b": 0.5471530556678772
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "133c53e8-d48c-463a-8f4f-2bcb3629d9eb"
+    },
+    {
+      "text": "(2) الفائدة الآلية للمكبس الهيدروليكى تساوى ............",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.4044106602668762,
+            "t": 0.5548108816146851,
+            "r": 0.8553575873374939,
+            "b": 0.582679033279419
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "e489b768-34c1-4482-8c87-b166ece65f28"
+    },
+    {
+      "text": "20 ⓙ",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.28061679005622864,
+            "t": 0.5885249376296997,
+            "r": 0.3471721112728119,
+            "b": 0.6138595342636108
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "627bfcad-f1bb-4f34-aee0-22f999d1a5b1"
+    },
+    {
+      "text": "15 ⏏️",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.44770991802215576,
+            "t": 0.5876149535179138,
+            "r": 0.5165328979492188,
+            "b": 0.6160822510719299
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "f1a4f32a-f295-42fb-bd6c-f7ef1fe4065d"
+    },
+    {
+      "text": "10 ب",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.6225871443748474,
+            "t": 0.589410662651062,
+            "r": 0.6911688446998596,
+            "b": 0.6173045635223389
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "5af9e661-2fc4-49cb-977a-a93eb770b7ec"
+    },
+    {
+      "text": "5 ⓘ",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.7711932063102722,
+            "t": 0.5907584428787231,
+            "r": 0.8282803893089294,
+            "b": 0.6161384582519531
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "ee841863-a47e-4104-ba39-7821508bd842"
+    },
+    {
+      "text": "الحل",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.8242658376693726,
+            "t": 0.6241511702537537,
+            "r": 0.9198484420776367,
+            "b": 0.6477153897285461
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "2850d6c7-ce59-48af-b352-29c4e37db2b8"
+    },
+    {
+      "text": "ρ (زيت): 800 kg/m³\n\na: 10 cm²",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.07772055268287659,
+            "t": 0.6569076180458069,
+            "r": 0.4026908278465271,
+            "b": 0.6969899535179138
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "5eac691d-f0db-4a55-aaf6-7078ce744bef"
+    },
+    {
+      "text": "$f = 180\\,\\mathrm{N}$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.41015300154685974,
+            "t": 0.6572234034538269,
+            "r": 0.5279242992401123,
+            "b": 0.6987243294715881
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "41fe1ec1-a099-4214-933b-29ed4cf9ebd9"
+    },
+    {
+      "text": "$A = 100\\ \\mathrm{cm}^2$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.5321691036224365,
+            "t": 0.6583843231201172,
+            "r": 0.6751009225845337,
+            "b": 0.698183536529541
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "7edb49a8-26e4-426a-ae7c-ad5fc8cf6e31"
+    },
+    {
+      "text": "Summary : This image displays a single measurement value for height.\n\nphoto:\nScene Overview :\n  • The image contains the text \"h = 8 cm\" centered on a light background.\n  • The text is enclosed within a dashed rectangular border.\nTechnical Details :\n  • The value \"h\" is defined as 8 centimeters (cm).\n  • No additional graphical elements, axes, or data points are present.\nSpatial Relationships :\n  • The text is horizontally centered within the dashed border.\nAnalysis :\n  • The image serves as a clear label or annotation indicating that the height (h) is 8 cm.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.6828882694244385,
+            "t": 0.6594025492668152,
+            "r": 0.7879406213760376,
+            "b": 0.6983407139778137
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "7194dc62-dc4f-43dc-8e52-c8a52ceaaee6"
+    },
+    {
+      "text": "g: 9.8 m/s²\n\nF: ?\n\nη: ?",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.07835634052753448,
+            "t": 0.7007466554641724,
+            "r": 0.366532564163208,
+            "b": 0.7365953922271729
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "e3784311-b857-4163-9ba3-9ebf1e46f2a4"
+    },
+    {
+      "text": "$∴ \\frac{f}{a} = \\frac{\\mathbf{F}}{\\mathbf{A}} + \\rho_{(\\text{زيت})}gh$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.07825183123350143,
+            "t": 0.7333258986473083,
+            "r": 0.2799225449562073,
+            "b": 0.7720497250556946
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "ceb6104d-162e-43ad-8dda-da9d80c7935b"
+    },
+    {
+      "text": "$ \\therefore \\frac{\\mathbf{F}}{A} = \\frac{f}{a} - \\rho_{(\\text{زيت})}gh $",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.46131545305252075,
+            "t": 0.7346733808517456,
+            "r": 0.660197913646698,
+            "b": 0.7724401950836182
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "44a66781-7d3c-4de9-8196-f85b391082ea"
+    },
+    {
+      "text": "$ \\therefore \\frac{\\textcolor{red}{\\mathbf{F}}}{100 \\times 10^{-4}} = \\frac{180}{10 \\times 10^{-4}} - (800 \\times 9.8 \\times 8 \\times 10^{-2}) $",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.07924102246761322,
+            "t": 0.7770821452140808,
+            "r": 0.5479336380958557,
+            "b": 0.8196213841438293
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "2d5b78b4-3a36-4a57-8cd5-1429e7383be5"
+    },
+    {
+      "text": "$F = 1.8 \\times 10^3\\,\\text{N}$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.6544241905212402,
+            "t": 0.7822892665863037,
+            "r": 0.8174664974212646,
+            "b": 0.8093523979187012
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "44038f01-41b8-4918-9aa6-5a7409f7768d"
+    },
+    {
+      "text": ": . الاختيار الصحيح هو ج",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.6456723809242249,
+            "t": 0.8135882019996643,
+            "r": 0.8686273694038391,
+            "b": 0.8431780934333801
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "f6e5f5e0-e9aa-4be0-a8ca-537637506711"
+    },
+    {
+      "text": "$\\eta = \\frac{\\mathrm{A}}{a} = \\frac{100}{10} = \\mathbf{10}$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.07240638881921768,
+            "t": 0.8430746793746948,
+            "r": 0.25988173484802246,
+            "b": 0.8849612474441528
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "d2236436-5f31-4ead-97bb-5b65dc91d92d"
+    },
+    {
+      "text": "$ (۲) $",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.8594427108764648,
+            "t": 0.854773998260498,
+            "r": 0.8964729309082031,
+            "b": 0.8813508749008179
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "37427ad6-1908-4115-9dad-fb1df85fa1d0"
+    },
+    {
+      "text": ": . الاختيار الصحيح هو  ب",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.645576000213623,
+            "t": 0.8867937922477722,
+            "r": 0.8642435073852539,
+            "b": 0.9152352213859558
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "9c667f15-092b-40f9-934c-9d39b9ad8d93"
+    },
+    {
+      "text": "$1 \\cdot 7$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.08195625245571136,
+            "t": 0.9370200634002686,
+            "r": 0.12199065089225769,
+            "b": 0.9565427303314209
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "marginalia",
+      "chunk_id": "7a4a78c5-9886-44ad-8368-dff605af81c3"
+    }
+  ],
+  "result_path": null,
+  "image_was_downscaled": true,
+  "processed_image_size": {
+    "width": 713,
+    "height": 1024
+  }
+}

@@ -19,7 +19,8 @@ import {
   FileImage,
   Zap,
   Download,
-  RefreshCw
+  RefreshCw,
+  FileDown
 } from 'lucide-react';
 
 interface ProcessingStep {
@@ -60,6 +61,7 @@ interface ComparisonResult {
   detailed_analysis: string;
   processing_time: number;
   confidence_score: number;
+  common_words_count?: number; // Added for new UI
 }
 
 interface AdvancedReportProps {
@@ -158,6 +160,197 @@ const AdvancedReportDashboard: React.FC<AdvancedReportProps> = ({
     .filter(step => step.duration)
     .reduce((sum, step) => sum + (step.duration || 0), 0);
 
+  const exportToMarkdown = () => {
+    if (!comparisonResult) return;
+    
+    const markdown = `# تقرير المقارنة المتقدم
+**معرف الجلسة:** ${sessionId}
+**تاريخ التحليل:** ${new Date().toLocaleString('ar-SA')}
+
+## 🎯 التحليل الذكي بواسطة Gemini AI
+
+### 📝 ملخص التحليل
+${comparisonResult.summary}
+
+### 💡 التوصيات
+${comparisonResult.recommendation}
+
+### 🎯 درجة الثقة
+${Math.round(comparisonResult.confidence_score * 100)}%
+
+## 📊 نسبة التشابه النصي
+**${comparisonResult.similarity_percentage}%**
+
+### إحصائيات النص
+- أحرف النص القديم: ${oldImageResult?.character_count || 0}
+- أحرف النص الجديد: ${newImageResult?.character_count || 0}
+- كلمات مشتركة: ${comparisonResult.common_words_count || 0}
+
+## 🔍 الأسئلة والإضافات الجديدة
+
+### 📝 محتوى مُضاف (${comparisonResult.added_content.length})
+${comparisonResult.added_content.map(item => `- ${item}`).join('\n')}
+
+### ❓ أسئلة محدثة (${comparisonResult.questions_changes.length})
+${comparisonResult.questions_changes.map(item => `- ${item}`).join('\n')}
+
+### 🚨 تغييرات رئيسية تحتاج انتباه (${comparisonResult.major_differences.length})
+${comparisonResult.major_differences.map(item => `- ${item}`).join('\n')}
+
+## 📋 معلومات المعالجة
+- دقة الاستخراج: ${oldImageResult && newImageResult ? Math.round((oldImageResult.confidence + newImageResult.confidence) / 2 * 100) : 0}%
+- ثقة التحليل: ${Math.round(comparisonResult.confidence_score * 100)}%
+- وقت المعالجة: ${totalProcessingTime.toFixed(1)}s
+
+## 🔍 التحليل المفصل
+${comparisonResult.detailed_analysis}
+`;
+
+    const blob = new Blob([markdown], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `تقرير_المقارنة_${sessionId}_${new Date().toISOString().split('T')[0]}.md`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  const exportToHTML = () => {
+    if (!comparisonResult) return;
+    
+    const html = `<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقرير المقارنة المتقدم</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 40px; background-color: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h1 { color: #2563eb; border-bottom: 3px solid #2563eb; padding-bottom: 10px; }
+        h2 { color: #1e40af; margin-top: 30px; }
+        h3 { color: #1e3a8a; }
+        .highlight { background: #dbeafe; padding: 15px; border-radius: 8px; margin: 10px 0; }
+        .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0; }
+        .stat-card { background: #f8fafc; padding: 20px; border-radius: 8px; text-align: center; }
+        .stat-number { font-size: 2em; font-weight: bold; color: #059669; }
+        .changes-list { background: #fef3c7; padding: 15px; border-radius: 8px; margin: 10px 0; }
+        .changes-list ul { margin: 10px 0; }
+        .changes-list li { margin: 5px 0; }
+        .gemini-analysis { background: #dbeafe; padding: 20px; border-radius: 10px; border-left: 5px solid #2563eb; }
+        .similarity-box { background: #d1fae5; padding: 20px; border-radius: 10px; text-align: center; }
+        .similarity-number { font-size: 4em; font-weight: bold; color: #059669; }
+        .warning-box { background: #fed7d7; padding: 15px; border-radius: 8px; border-left: 5px solid #e53e3e; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 تقرير المقارنة المتقدم</h1>
+        <p><strong>معرف الجلسة:</strong> ${sessionId}</p>
+        <p><strong>تاريخ التحليل:</strong> ${new Date().toLocaleString('ar-SA')}</p>
+        
+        <div class="gemini-analysis">
+            <h2>🧠 التحليل الذكي بواسطة Gemini AI</h2>
+            <div class="highlight">
+                <h3>📝 ملخص التحليل</h3>
+                <p>${comparisonResult.summary}</p>
+            </div>
+            <div class="highlight">
+                <h3>💡 التوصيات</h3>
+                <p>${comparisonResult.recommendation}</p>
+            </div>
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="stat-number">${Math.round(comparisonResult.confidence_score * 100)}%</div>
+                    <div>درجة الثقة</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${comparisonResult.processing_time.toFixed(1)}s</div>
+                    <div>وقت التحليل</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="similarity-box">
+            <h2>📊 نسبة التشابه النصي</h2>
+            <div class="similarity-number">${comparisonResult.similarity_percentage}%</div>
+            <p>Landing AI → Gemini</p>
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="stat-number">${oldImageResult?.character_count || 0}</div>
+                    <div>أحرف النص القديم</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${newImageResult?.character_count || 0}</div>
+                    <div>أحرف النص الجديد</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${comparisonResult.common_words_count || 0}</div>
+                    <div>كلمات مشتركة</div>
+                </div>
+            </div>
+        </div>
+        
+        <h2>🔍 الأسئلة والإضافات الجديدة</h2>
+        
+        <div class="changes-list">
+            <h3>📝 محتوى مُضاف (${comparisonResult.added_content.length})</h3>
+            <ul>
+                ${comparisonResult.added_content.map(item => `<li>${item}</li>`).join('')}
+            </ul>
+        </div>
+        
+        <div class="changes-list">
+            <h3>❓ أسئلة محدثة (${comparisonResult.questions_changes.length})</h3>
+            <ul>
+                ${comparisonResult.questions_changes.map(item => `<li>${item}</li>`).join('')}
+            </ul>
+        </div>
+        
+        <div class="warning-box">
+            <h3>🚨 تغييرات رئيسية تحتاج انتباه (${comparisonResult.major_differences.length})</h3>
+            <ul>
+                ${comparisonResult.major_differences.map(item => `<li><strong>${item}</strong></li>`).join('')}
+            </ul>
+        </div>
+        
+        <h2>📋 معلومات المعالجة</h2>
+        <div class="stat-grid">
+            <div class="stat-card">
+                <div class="stat-number">${oldImageResult && newImageResult ? Math.round((oldImageResult.confidence + newImageResult.confidence) / 2 * 100) : 0}%</div>
+                <div>دقة الاستخراج</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">${Math.round(comparisonResult.confidence_score * 100)}%</div>
+                <div>ثقة التحليل</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">${totalProcessingTime.toFixed(1)}s</div>
+                <div>وقت المعالجة</div>
+            </div>
+        </div>
+        
+        <h2>🔍 التحليل المفصل</h2>
+        <div class="highlight">
+            <pre style="white-space: pre-wrap; font-family: monospace; font-size: 0.9em;">${comparisonResult.detailed_analysis}</pre>
+        </div>
+    </div>
+</body>
+</html>`;
+
+    const blob = new Blob([html], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `تقرير_المقارنة_${sessionId}_${new Date().toISOString().split('T')[0]}.html`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <div className="w-full max-w-7xl mx-auto p-6 space-y-6" dir="rtl">
       {/* Header */}
@@ -172,6 +365,18 @@ const AdvancedReportDashboard: React.FC<AdvancedReportProps> = ({
               <RefreshCw className="w-4 h-4 mr-2" />
               إعادة المحاولة
             </Button>
+          )}
+          {comparisonResult && (
+            <>
+              <Button variant="outline" onClick={exportToMarkdown}>
+                <FileDown className="w-4 h-4 mr-2" />
+                تصدير MD
+              </Button>
+              <Button variant="outline" onClick={exportToHTML}>
+                <FileDown className="w-4 h-4 mr-2" />
+                تصدير HTML
+              </Button>
+            </>
           )}
           {onDownloadReport && comparisonResult && (
             <Button onClick={onDownloadReport}>
@@ -244,29 +449,174 @@ const AdvancedReportDashboard: React.FC<AdvancedReportProps> = ({
 
         {/* Overview Tab */}
         <TabsContent value="overview" className="space-y-4">
+          {/* Gemini Analysis - Top Priority */}
+          {comparisonResult && (
+            <Card className="border-2 border-blue-200 bg-blue-50">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-blue-800">
+                  <Brain className="w-6 h-6" />
+                  🎯 التحليل الذكي بواسطة Gemini AI
+                </CardTitle>
+                <CardDescription className="text-blue-700">
+                  التحليل الأساسي والتوصيات الذكية
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="bg-white p-4 rounded-lg border">
+                  <h4 className="font-semibold text-blue-800 mb-2">📝 ملخص التحليل</h4>
+                  <p className="text-gray-700 leading-relaxed">{comparisonResult.summary}</p>
+                </div>
+                
+                <div className="bg-white p-4 rounded-lg border">
+                  <h4 className="font-semibold text-blue-800 mb-2">💡 التوصيات</h4>
+                  <p className="text-gray-700 leading-relaxed">{comparisonResult.recommendation}</p>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="bg-white p-4 rounded-lg border">
+                    <h4 className="font-semibold text-blue-800 mb-2">🎯 درجة الثقة</h4>
+                    <div className="flex items-center gap-2">
+                      <div className="text-2xl font-bold text-blue-600">
+                        {Math.round(comparisonResult.confidence_score * 100)}%
+                      </div>
+                      <Progress value={comparisonResult.confidence_score * 100} className="flex-1" />
+                    </div>
+                  </div>
+                  
+                  <div className="bg-white p-4 rounded-lg border">
+                    <h4 className="font-semibold text-blue-800 mb-2">⏱️ وقت التحليل</h4>
+                    <div className="text-2xl font-bold text-blue-600">
+                      {comparisonResult.processing_time.toFixed(1)}s
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Similarity Percentage */}
+          <Card className="border-2 border-green-200 bg-green-50">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-green-800">
+                <TrendingUp className="w-6 h-6" />
+                📊 نسبة التشابه النصي
+              </CardTitle>
+              <CardDescription className="text-green-700">
+                Landing AI → Gemini
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="text-center">
+              <div className="text-6xl font-bold text-green-600 mb-4">
+                {comparisonResult ? `${comparisonResult.similarity_percentage}%` : '--'}
+              </div>
+              <Progress 
+                value={comparisonResult?.similarity_percentage || 0} 
+                className="mb-4 h-4" 
+              />
+              <div className="grid grid-cols-3 gap-4 text-sm">
+                <div>
+                  <div className="font-semibold text-gray-700">
+                    {oldImageResult?.character_count || 0}
+                  </div>
+                  <div className="text-gray-500">أحرف النص القديم</div>
+                </div>
+                <div>
+                  <div className="font-semibold text-gray-700">
+                    {newImageResult?.character_count || 0}
+                  </div>
+                  <div className="text-gray-500">أحرف النص الجديد</div>
+                </div>
+                <div>
+                  <div className="font-semibold text-gray-700">
+                    {comparisonResult?.common_words_count || 0}
+                  </div>
+                  <div className="text-gray-500">كلمات مشتركة</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Questions and Additions Box */}
+          {comparisonResult && (
+            <Card className="border-2 border-orange-200 bg-orange-50">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-orange-800">
+                  <AlertCircle className="w-6 h-6" />
+                  🔍 الأسئلة والإضافات الجديدة
+                </CardTitle>
+                <CardDescription className="text-orange-700">
+                  التحديثات والتغييرات المهمة
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="bg-white p-4 rounded-lg border">
+                    <h4 className="font-semibold text-green-700 mb-2 flex items-center gap-2">
+                      <span className="text-2xl">{comparisonResult.added_content.length}</span>
+                      📝 محتوى مُضاف
+                    </h4>
+                    <ul className="text-sm space-y-1 max-h-32 overflow-y-auto">
+                      {comparisonResult.added_content.length > 0 ? (
+                        comparisonResult.added_content.map((item, idx) => (
+                          <li key={idx} className="text-green-600 flex items-start gap-2">
+                            <span className="text-green-500">•</span>
+                            <span>{item}</span>
+                          </li>
+                        ))
+                      ) : (
+                        <li className="text-gray-500 italic">لا توجد إضافات جديدة</li>
+                      )}
+                    </ul>
+                  </div>
+                  
+                  <div className="bg-white p-4 rounded-lg border">
+                    <h4 className="font-semibold text-blue-700 mb-2 flex items-center gap-2">
+                      <span className="text-2xl">{comparisonResult.questions_changes.length}</span>
+                      ❓ أسئلة محدثة
+                    </h4>
+                    <ul className="text-sm space-y-1 max-h-32 overflow-y-auto">
+                      {comparisonResult.questions_changes.length > 0 ? (
+                        comparisonResult.questions_changes.map((item, idx) => (
+                          <li key={idx} className="text-blue-600 flex items-start gap-2">
+                            <span className="text-blue-500">•</span>
+                            <span>{item}</span>
+                          </li>
+                        ))
+                      ) : (
+                        <li className="text-gray-500 italic">لا توجد تحديثات في الأسئلة</li>
+                      )}
+                    </ul>
+                  </div>
+                </div>
+                
+                <div className="bg-white p-4 rounded-lg border">
+                  <h4 className="font-semibold text-red-700 mb-2 flex items-center gap-2">
+                    <span className="text-2xl">{comparisonResult.major_differences.length}</span>
+                    🚨 تغييرات رئيسية تحتاج انتباه
+                  </h4>
+                  <ul className="text-sm space-y-1 max-h-32 overflow-y-auto">
+                    {comparisonResult.major_differences.length > 0 ? (
+                      comparisonResult.major_differences.map((item, idx) => (
+                        <li key={idx} className="text-red-600 flex items-start gap-2">
+                          <span className="text-red-500">⚠</span>
+                          <span className="font-medium">{item}</span>
+                        </li>
+                      ))
+                    ) : (
+                      <li className="text-gray-500 italic">لا توجد تغييرات رئيسية</li>
+                    )}
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Processing Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <Card>
               <CardHeader className="pb-2">
                 <CardTitle className="text-lg flex items-center gap-2">
-                  <TrendingUp className="w-5 h-5" />
-                  نسبة التشابه
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-3xl font-bold text-blue-600">
-                  {comparisonResult ? `${comparisonResult.similarity_percentage}%` : '--'}
-                </div>
-                <Progress 
-                  value={comparisonResult?.similarity_percentage || 0} 
-                  className="mt-2" 
-                />
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader className="pb-2">
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <BarChart3 className="w-5 h-5" />
+                  <Eye className="w-5 h-5" />
                   دقة الاستخراج
                 </CardTitle>
               </CardHeader>
@@ -284,12 +634,27 @@ const AdvancedReportDashboard: React.FC<AdvancedReportProps> = ({
             <Card>
               <CardHeader className="pb-2">
                 <CardTitle className="text-lg flex items-center gap-2">
+                  <BarChart3 className="w-5 h-5" />
+                  ثقة التحليل
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-3xl font-bold text-purple-600">
+                  {comparisonResult ? `${Math.round(comparisonResult.confidence_score * 100)}%` : '--'}
+                </div>
+                <p className="text-sm text-gray-600 mt-1">🎯 دقة Gemini AI</p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader className="pb-2">
+                <CardTitle className="text-lg flex items-center gap-2">
                   <Clock className="w-5 h-5" />
                   وقت المعالجة
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-3xl font-bold text-purple-600">
+                <div className="text-3xl font-bold text-blue-600">
                   {totalProcessingTime > 0 ? `${totalProcessingTime.toFixed(1)}s` : '--'}
                 </div>
                 <p className="text-sm text-gray-600 mt-1">إجمالي الوقت</p>
@@ -297,35 +662,102 @@ const AdvancedReportDashboard: React.FC<AdvancedReportProps> = ({
             </Card>
           </div>
 
-          {comparisonResult && (
-            <Card>
-              <CardHeader>
-                <CardTitle>ملخص المقارنة</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-700 leading-relaxed">{comparisonResult.summary}</p>
-                <Separator className="my-4" />
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* Visual Analysis Section */}
+          <Card className="border-2 border-gray-200 bg-gray-50">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-gray-800">
+                <Eye className="w-6 h-6" />
+                👁️ التحليل البصري
+              </CardTitle>
+              <CardDescription className="text-gray-700">
+                تحليل الصور والعناصر البصرية
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-white p-4 rounded-lg border">
+                  <h4 className="font-semibold text-gray-800 mb-2">📸 الصورة القديمة</h4>
+                  {oldImageResult ? (
+                    <div className="space-y-2">
+                      <div className="flex justify-between">
+                        <span className="text-sm">دقة الاستخراج:</span>
+                        <Badge variant="outline">{Math.round(oldImageResult.confidence * 100)}%</Badge>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-sm">عدد الكلمات:</span>
+                        <span className="text-sm font-mono">{oldImageResult.word_count}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-sm">الأبعاد:</span>
+                        <span className="text-sm font-mono">
+                          {oldImageResult.image_info?.width} × {oldImageResult.image_info?.height}
+                        </span>
+                      </div>
+                    </div>
+                  ) : (
+                    <p className="text-gray-500 text-sm">لا توجد بيانات متاحة</p>
+                  )}
+                </div>
+                
+                <div className="bg-white p-4 rounded-lg border">
+                  <h4 className="font-semibold text-gray-800 mb-2">📸 الصورة الجديدة</h4>
+                  {newImageResult ? (
+                    <div className="space-y-2">
+                      <div className="flex justify-between">
+                        <span className="text-sm">دقة الاستخراج:</span>
+                        <Badge variant="outline">{Math.round(newImageResult.confidence * 100)}%</Badge>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-sm">عدد الكلمات:</span>
+                        <span className="text-sm font-mono">{newImageResult.word_count}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-sm">الأبعاد:</span>
+                        <span className="text-sm font-mono">
+                          {newImageResult.image_info?.width} × {newImageResult.image_info?.height}
+                        </span>
+                      </div>
+                    </div>
+                  ) : (
+                    <p className="text-gray-500 text-sm">لا توجد بيانات متاحة</p>
+                  )}
+                </div>
+              </div>
+              
+              <div className="bg-white p-4 rounded-lg border">
+                <h4 className="font-semibold text-gray-800 mb-2">📊 مقارنة بصرية</h4>
+                <div className="grid grid-cols-3 gap-4 text-center">
                   <div>
-                    <h4 className="font-semibold text-green-700 mb-2">المحتوى المضاف</h4>
-                    <ul className="text-sm space-y-1">
-                      {comparisonResult.added_content.slice(0, 3).map((item, idx) => (
-                        <li key={idx} className="text-green-600">• {item}</li>
-                      ))}
-                    </ul>
+                    <div className="text-lg font-bold text-blue-600">
+                      {oldImageResult && newImageResult 
+                        ? Math.abs(oldImageResult.word_count - newImageResult.word_count)
+                        : 0
+                      }
+                    </div>
+                    <div className="text-xs text-gray-600">فرق عدد الكلمات</div>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-red-700 mb-2">المحتوى المحذوف</h4>
-                    <ul className="text-sm space-y-1">
-                      {comparisonResult.removed_content.slice(0, 3).map((item, idx) => (
-                        <li key={idx} className="text-red-600">• {item}</li>
-                      ))}
-                    </ul>
+                    <div className="text-lg font-bold text-purple-600">
+                      {oldImageResult && newImageResult 
+                        ? Math.abs(oldImageResult.character_count - newImageResult.character_count)
+                        : 0
+                      }
+                    </div>
+                    <div className="text-xs text-gray-600">فرق عدد الأحرف</div>
+                  </div>
+                  <div>
+                    <div className="text-lg font-bold text-green-600">
+                      {oldImageResult && newImageResult 
+                        ? Math.round(((oldImageResult.confidence + newImageResult.confidence) / 2) * 100)
+                        : 0
+                      }%
+                    </div>
+                    <div className="text-xs text-gray-600">متوسط الدقة</div>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
-          )}
+              </div>
+            </CardContent>
+          </Card>
         </TabsContent>
 
         {/* OCR Tab */}

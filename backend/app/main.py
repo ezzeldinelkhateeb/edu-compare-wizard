@@ -15,7 +15,7 @@ from datetime import datetime
 import json
 import math
 from fastapi.staticfiles import StaticFiles
-from app.api.endpoints import compare, advanced_processing
+from app.api.endpoints import compare, advanced_processing, smart_batch
 from app.api.endpoints.ultra_fast_compare import router as ultra_fast_compare_router
 from app.core.config import settings
 
@@ -92,9 +92,14 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:3000",
         "http://localhost:5173",
+        "http://localhost:5174",
+        "http://localhost:5175",
+        "http://localhost:5176",
         "http://localhost:8080",
         "http://localhost:8081",
         "http://127.0.0.1:5173",
+        "http://127.0.0.1:5174",
+        "http://127.0.0.1:5175",
         "http://127.0.0.1:3000"
     ],
     allow_credentials=True,
@@ -203,6 +208,8 @@ from app.api.endpoints.websocket import router as websocket_router
 from app.api.endpoints.health import router as health_router
 from app.api.endpoints.advanced_processing import router as advanced_processing_router
 from app.api.endpoints.ultra_fast_compare import router as ultra_fast_compare_router
+from app.api.endpoints.multilingual_comparison import router as multilingual_router
+from app.api.endpoints.smart_batch import router as smart_batch_router
 
 app.include_router(upload_router, prefix=settings.API_V1_STR, tags=["upload"])
 app.include_router(compare_router, prefix=settings.API_V1_STR, tags=["comparison"])
@@ -210,6 +217,8 @@ app.include_router(websocket_router, prefix=settings.API_V1_STR, tags=["websocke
 app.include_router(health_router, prefix=settings.API_V1_STR, tags=["health"])
 app.include_router(ultra_fast_compare_router, prefix=settings.API_V1_STR, tags=["ultra-fast"])
 app.include_router(advanced_processing_router, prefix=settings.API_V1_STR, tags=["advanced-processing"])
+app.include_router(multilingual_router, prefix=f"{settings.API_V1_STR}/multilingual", tags=["multilingual"])
+app.include_router(smart_batch_router, prefix=f"{settings.API_V1_STR}/smart-batch", tags=["smart-batch"])
 
 if __name__ == "__main__":
     import uvicorn
