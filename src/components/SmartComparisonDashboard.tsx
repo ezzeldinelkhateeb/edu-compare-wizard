@@ -136,12 +136,37 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
   // derive processedStats to support both backend schemas
   const processedStats = useMemo(() => {
     const s = results?.stats || {};
+    console.log('📊 تحديث processedStats:', s);
+    
+    // حساب الإحصائيات المحسنة
+    const totalProcessingTime = s.total_processing_time ?? s.total_duration ?? 0;
+    const similarities = results?.results?.map(getOverallSimilarity) || [];
+    const averageSimilarity = similarities.length
+      ? (similarities.reduce((a, b) => a + b, 0) / similarities.length) * 100
+      : 0;
+    
+    const savingsPercentage = smartBatchService.calculateSavingsPercentage({
+      total_pairs: s.total_pairs ?? 0,
+      stage_1_filtered: s.stage_1_filtered ?? s.visually_identical ?? 0,
+      stage_2_processed: s.stage_2_processed ?? 0,
+      stage_3_analyzed: s.stage_3_analyzed ?? s.fully_analyzed ?? 0,
+      total_cost_saved: 0,
+      total_processing_time: totalProcessingTime,
+      average_similarity: averageSimilarity,
+      efficiency_score: 0,
+      cost_savings_percentage: 0,
+    } as any);
+    
     return {
       total_pairs: s.total_pairs ?? 0,
       stage_1_filtered: s.stage_1_filtered ?? s.visually_identical ?? 0,
-      stage_2_processed: s.stage_2_processed ?? 0, // لا يوجد بديل واضح
+      stage_2_processed: s.stage_2_processed ?? 0,
       stage_3_analyzed: s.stage_3_analyzed ?? s.fully_analyzed ?? 0,
-      total_processing_time: s.total_processing_time ?? s.total_duration ?? 0,
+      failed: s.failed ?? 0,
+      total_processing_time: totalProcessingTime,
+      savings_percentage: savingsPercentage,
+      average_similarity: averageSimilarity,
+      processing_speed: totalProcessingTime > 0 ? (s.total_pairs ?? 0) / (totalProcessingTime / 60) : 0
     };
   }, [results]);
 
@@ -256,16 +281,22 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
           status: result.status,
           message: result.message,
           stats: result.stats,
-          resultsCount: result.results?.length || 0
+          resultsCount: result.results?.length || 0,
+          timestamp: new Date().toISOString()
         });
         
         setResults(result);
         
+        // تحديث حالة المعالجة
         if (result.status === 'مكتمل' || result.status === 'فشل') {
           setIsProcessing(false);
           if (result.status === 'مكتمل') {
             toast.success('اكتملت المعالجة الذكية بنجاح! 🎉');
+          } else if (result.status === 'فشل') {
+            toast.error('فشلت المعالجة! ❌');
           }
+        } else if (result.status === 'جاري المعالجة') {
+          setIsProcessing(true);
         }
       });
       
@@ -423,6 +454,55 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
             </Card>
           )}
 
+          {/* عرض النتائج التفصيلية إذا كانت متوفرة */}
+          {results?.results && results.results.length > 0 && (
+            <Card className="mb-8 border-2 border-gray-200 bg-gray-50">
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-lg font-bold text-gray-800 flex items-center gap-2">
+                    <FileText className="w-5 h-5" />
+                    النتائج التفصيلية
+                  </h3>
+                  <Badge className="bg-gray-600 text-white">
+                    {results.results.length} نتيجة
+                  </Badge>
+                </div>
+                
+                <div className="space-y-3 max-h-64 overflow-y-auto">
+                  {results.results.map((result: any, index: number) => (
+                    <div key={index} className="bg-white p-3 rounded-lg border">
+                      <div className="flex items-center justify-between">
+                        <div className="flex-1">
+                          <div className="font-medium text-gray-800">
+                            {result.filename || `ملف ${index + 1}`}
+                          </div>
+                          <div className="text-sm text-gray-600">
+                            الحالة: {result.status} | التشابه البصري: {((result.visual_score || 0) * 100).toFixed(1)}%
+                            {result.stages_completed && result.stages_completed.length > 0 && (
+                              <span className="mr-2"> | المراحل: {result.stages_completed.join(', ')}</span>
+                            )}
+                          </div>
+                          {result.error && (
+                            <div className="text-xs text-red-600 mt-1">
+                              خطأ: {result.error}
+                            </div>
+                          )}
+                        </div>
+                        <div className="text-right">
+                          <span 
+                            className={`ml-2 px-2 py-1 rounded-full text-xs font-medium ${result.status === 'فشل' ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'}`}
+                          >
+                            {result.status}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
           {/* مراحل المعالجة */}
           <div className="grid md:grid-cols-3 gap-6 mb-8">
             <Card className="border-2 border-green-200 bg-green-50">
@@ -435,7 +515,7 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
                   مجانية - سريعة - دقيقة 100%
                 </p>
                 <Badge className="bg-green-100 text-green-800">
-                  {processedStats.stage_1_filtered || 0} ملف تم فلترته
+                  {processedStats.stage_1_filtered} ملف تم فلترته
                 </Badge>
               </CardContent>
             </Card>
@@ -450,7 +530,7 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
                   LandingAI - سريع - دقة عالية
                 </p>
                 <Badge className="bg-orange-100 text-orange-800">
-                  {processedStats.stage_2_processed || 0} ملف معالج
+                  {processedStats.stage_2_processed} ملف معالج
                 </Badge>
               </CardContent>
             </Card>
@@ -465,7 +545,7 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
                   Gemini AI - تحليل عميق - تقارير مفصلة
                 </p>
                 <Badge className="bg-purple-100 text-purple-800">
-                  {processedStats.stage_3_analyzed || 0} ملف محلل
+                  {processedStats.stage_3_analyzed} ملف محلل
                 </Badge>
               </CardContent>
             </Card>
@@ -496,18 +576,24 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
                   <div>
                     <div className="flex justify-between text-sm text-gray-600 mb-2">
                       <span>التقدم الإجمالي</span>
-                      <span>{results?.stats?.total_pairs ? 
-                        `${results.stats.stage_1_filtered + results.stats.stage_2_processed + results.stats.stage_3_analyzed}/${results.stats.total_pairs}` : 
+                      <span>{processedStats.total_pairs > 0 ? 
+                        `${processedStats.stage_1_filtered + processedStats.stage_2_processed + processedStats.stage_3_analyzed + processedStats.failed}/${processedStats.total_pairs}` : 
                         '0/0'
                       }</span>
                     </div>
                     <Progress 
-                      value={results?.stats?.total_pairs ? 
-                        ((results.stats.stage_1_filtered + results.stats.stage_2_processed + results.stats.stage_3_analyzed) / results.stats.total_pairs) * 100 
+                      value={processedStats.total_pairs > 0 ? 
+                        ((processedStats.stage_1_filtered + processedStats.stage_2_processed + processedStats.stage_3_analyzed + processedStats.failed) / processedStats.total_pairs) * 100 
                         : 0
                       } 
                       className="h-3" 
                     />
+                    <div className="flex justify-between text-xs text-gray-500 mt-1">
+                      <span>تطابق بصري: {processedStats.stage_1_filtered}</span>
+                      <span>استخراج نص: {processedStats.stage_2_processed}</span>
+                      <span>تحليل عميق: {processedStats.stage_3_analyzed}</span>
+                      <span>فشل: {processedStats.failed}</span>
+                    </div>
                   </div>
                   
                   {/* الملف الحالي */}
@@ -520,25 +606,63 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
                     </div>
                   )}
                   
+                  {/* معلومات إضافية */}
+                  {results?.stats && (
+                    <div className="bg-blue-50 p-3 rounded-lg border border-blue-200">
+                      <div className="grid grid-cols-2 gap-4 text-sm">
+                        <div>
+                          <span className="font-medium text-blue-800">الملف الحالي:</span>
+                          <span className="text-blue-600 mr-2">
+                            {results.stats.current_file || 'غير محدد'}
+                          </span>
+                        </div>
+                        <div>
+                          <span className="font-medium text-blue-800">الوقت المنقضي:</span>
+                          <span className="text-blue-600 mr-2">
+                            {smartBatchService.formatProcessingTime(results.stats.total_processing_time || 0)}
+                          </span>
+                        </div>
+                        <div>
+                          <span className="font-medium text-blue-800">نسبة التوفير:</span>
+                          <span className="text-blue-600 mr-2">
+                            {processedStats.savings_percentage.toFixed(1)}%
+                          </span>
+                        </div>
+                        <div>
+                          <span className="font-medium text-blue-800">سرعة المعالجة:</span>
+                          <span className="text-blue-600 mr-2">
+                            {processedStats.processing_speed.toFixed(1)} ملف/دقيقة
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  
                   {/* إحصائيات سريعة */}
-                  <div className="grid grid-cols-3 gap-4">
+                  <div className="grid grid-cols-4 gap-4">
                     <div className="text-center">
                       <div className="text-2xl font-bold text-green-600">
-                        {processedStats.stage_1_filtered || 0}
+                        {processedStats.stage_1_filtered}
                       </div>
                       <div className="text-sm text-gray-600">تطابق بصري</div>
                     </div>
                     <div className="text-center">
                       <div className="text-2xl font-bold text-orange-600">
-                        {processedStats.stage_2_processed || 0}
+                        {processedStats.stage_2_processed}
                       </div>
                       <div className="text-sm text-gray-600">استخراج نص</div>
                     </div>
                     <div className="text-center">
                       <div className="text-2xl font-bold text-purple-600">
-                        {processedStats.stage_3_analyzed || 0}
+                        {processedStats.stage_3_analyzed}
                       </div>
                       <div className="text-sm text-gray-600">تحليل عميق</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-red-600">
+                        {processedStats.failed}
+                      </div>
+                      <div className="text-sm text-gray-600">فشل</div>
                     </div>
                   </div>
                 </div>
@@ -547,13 +671,13 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
           )}
 
           {/* إحصائيات التوفير */}
-          {processedStats && (
+          {processedStats && processedStats.total_pairs > 0 && (
             <div className="grid md:grid-cols-4 gap-4 mb-8">
               <Card className="bg-gradient-to-r from-green-400 to-green-600 text-white">
                 <CardContent className="p-4 text-center">
                   <DollarSign className="w-8 h-8 mx-auto mb-2" />
                   <div className="text-2xl font-bold">
-                    {((processedStats?.savings_percentage ?? 0).toFixed(1))}%
+                    {((processedStats.savings_percentage).toFixed(1))}%
                   </div>
                   <div className="text-sm opacity-90">توفير في التكلفة</div>
                 </CardContent>
@@ -563,7 +687,7 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
                 <CardContent className="p-4 text-center">
                   <Timer className="w-8 h-8 mx-auto mb-2" />
                   <div className="text-2xl font-bold">
-                    {smartBatchService.formatProcessingTime(processedStats?.total_processing_time ?? 0)}
+                    {smartBatchService.formatProcessingTime(processedStats.total_processing_time)}
                   </div>
                   <div className="text-sm opacity-90">وقت المعالجة</div>
                 </CardContent>
@@ -573,7 +697,7 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
                 <CardContent className="p-4 text-center">
                   <Target className="w-8 h-8 mx-auto mb-2" />
                   <div className="text-2xl font-bold">
-                    {((processedStats?.average_similarity ?? 0).toFixed(1))}%
+                    {((processedStats.average_similarity).toFixed(1))}%
                   </div>
                   <div className="text-sm opacity-90">متوسط التشابه</div>
                 </CardContent>
@@ -583,7 +707,7 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
                 <CardContent className="p-4 text-center">
                   <Activity className="w-8 h-8 mx-auto mb-2" />
                   <div className="text-2xl font-bold">
-                    {((processedStats?.processing_speed ?? 0).toFixed(1))}
+                    {((processedStats.processing_speed).toFixed(1))}
                   </div>
                   <div className="text-sm opacity-90">ملف/دقيقة</div>
                 </CardContent>
