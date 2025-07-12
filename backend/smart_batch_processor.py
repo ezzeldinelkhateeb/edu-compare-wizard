@@ -325,6 +325,11 @@ class SmartBatchProcessor:
             final_score = gemini_json.get("similarity_percentage", 82.5)
             summary_of_changes = gemini_json.get("summary", "فشل تحليل الملخص.")
             
+            # طباعة تفاصيل النتيجة
+            print(f"🎯 النتيجة النهائية: {final_score}%")
+            print(f"📝 الملخص: {summary_of_changes}")
+            print(f"🔧 وضع الخدمة: {'Mock' if self.gemini_service.mock_mode else 'Real'}")
+            
             result['stages_completed'].append('التحليل العميق')
             result['ai_analysis'] = {
                 'similarity_percentage': final_score,

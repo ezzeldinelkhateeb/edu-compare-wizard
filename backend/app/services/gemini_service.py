@@ -61,8 +61,10 @@ class GeminiService:
         self.top_p = float(os.getenv("GEMINI_TOP_P", "0.8"))
         self.top_k = int(os.getenv("GEMINI_TOP_K", "40"))
         
-        if not self.api_key:
-            logger.warning("⚠️ GEMINI_API_KEY غير موجود - سيتم استخدام المحاكاة")
+        logger.info(f"🔑 Gemini API Key: {self.api_key[:10]}..." if self.api_key else "❌ لا يوجد Gemini API Key")
+        
+        if not self.api_key or self.api_key == "your-gemini-api-key-here":
+            logger.warning("⚠️ GEMINI_API_KEY غير موجود أو غير صحيح - سيتم استخدام المحاكاة")
             self.mock_mode = True
             self.client = None
         else:
@@ -80,8 +82,18 @@ class GeminiService:
                     generation_config=generation_config
                 )
                 
-                self.mock_mode = False
-                logger.info("✅ تم تكوين Gemini AI Service مع API حقيقي")
+                # اختبار الاتصال
+                try:
+                    test_response = asyncio.run(self._test_connection())
+                    if test_response:
+                        self.mock_mode = False
+                        logger.info("✅ تم تكوين Gemini AI Service مع API حقيقي")
+                    else:
+                        self.mock_mode = True
+                        logger.warning("⚠️ فشل اختبار الاتصال بـ Gemini - سيتم استخدام المحاكاة")
+                except Exception as test_error:
+                    logger.error(f"❌ خطأ في اختبار الاتصال بـ Gemini: {test_error}")
+                    self.mock_mode = True
                 
             except Exception as e:
                 logger.error(f"❌ خطأ في تكوين Gemini: {e}")
@@ -423,9 +435,30 @@ class GeminiService:
             modified_content=["تحسين في الشرح"] if enhanced_similarity < 90 else [],
             summary=summary,
             recommendation=recommendation,
-            detailed_analysis="تحليل تفصيلي مع خوارزمية محسنة: تم استخدام عدة مقاييس لحساب التشابه بدقة أكبر",
-            processing_time=0,
-            confidence_score=0.95 if enhanced_similarity >= 90 else 0.85
+            detailed_analysis=f"""# تحليل مقارنة النصوص - وضع المحاكاة
+
+## نسبة التشابه: {enhanced_similarity:.1f}%
+
+### التغييرات المكتشفة:
+{chr(10).join([f"- {change}" for change in mock_changes])}
+
+### تحليل مفصل:
+- النص القديم: {len(old_text)} حرف
+- النص الجديد: {len(new_text)} حرف
+- الفرق في الطول: {abs(len(new_text) - len(old_text))} حرف
+
+### التوصية:
+{recommendation}
+
+---
+*تم إنشاء هذا التحليل في وضع المحاكاة لأغراض الاختبار*""",
+            processing_time=2.0,
+            confidence_score=0.95 if enhanced_similarity >= 90 else 0.85,
+            old_text_length=len(old_text),
+            new_text_length=len(new_text),
+            common_words_count=len(set(old_text.split()) & set(new_text.split())),
+            unique_old_words=len(set(old_text.split()) - set(new_text.split())),
+            unique_new_words=len(set(new_text.split()) - set(old_text.split()))
         )
     
     async def _fallback_comparison(
@@ -679,6 +712,18 @@ class GeminiService:
         normalized = re.sub(r'\s+', ' ', normalized)
         # تحويل للأحرف الصغيرة (للنصوص الإنجليزية)
         return normalized.strip().lower()
+    
+    async def _test_connection(self) -> bool:
+        """اختبار الاتصال بـ Gemini"""
+        try:
+            test_prompt = "مرحباً، هذا اختبار اتصال. أجب بـ 'تم الاتصال بنجاح' فقط."
+            response = await asyncio.to_thread(
+                self.client.generate_content, test_prompt
+            )
+            return response.text is not None and len(response.text) > 0
+        except Exception as e:
+            logger.error(f"❌ فشل اختبار الاتصال بـ Gemini: {e}")
+            return False
 
 
 # إنشاء instance واحد للخدمة

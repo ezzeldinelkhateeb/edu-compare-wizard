@@ -481,12 +481,22 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
                             {result.stages_completed && result.stages_completed.length > 0 && (
                               <span className="mr-2"> | المراحل: {result.stages_completed.join(', ')}</span>
                             )}
+                            {result.ai_analysis && (
+                              <span className="mr-2"> | التشابه النهائي: {result.ai_analysis.similarity_percentage?.toFixed(1) || 0}%</span>
+                            )}
                           </div>
-                          {result.error && (
-                            <div className="text-xs text-red-600 mt-1">
-                              خطأ: {result.error}
-                            </div>
-                          )}
+                                                      {result.error && (
+                              <div className="text-xs text-red-600 mt-1">
+                                خطأ: {result.error}
+                              </div>
+                            )}
+                            {result.ai_analysis && result.ai_analysis.summary && (
+                              <div className="text-xs text-blue-600 mt-1">
+                                ملخص: {result.ai_analysis.summary.length > 100 ? 
+                                  result.ai_analysis.summary.substring(0, 100) + '...' : 
+                                  result.ai_analysis.summary}
+                              </div>
+                            )}
                         </div>
                         <div className="text-right">
                           <span 
