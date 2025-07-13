@@ -73,3 +73,37 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+
+# Git Pull & Push Instructions
+
+## تحديث الكود من GitHub (Pull)
+1. افتح التيرمنال في مجلد المشروع الرئيسي.
+2. تأكد أنه لا توجد تعديلات محلية مهمة أو قم بحفظها (commit/stash).
+3. نفذ:
+   ```powershell
+   git pull --tags origin main
+   ```
+
+## رفع تعديلاتك إلى GitHub (Push)
+1. بعد تعديل الملفات، أضف التعديلات:
+   ```powershell
+   git add .
+   ```
+2. ثم سجل رسالة التعديل:
+   ```powershell
+   git commit -m "شرح مختصر للتعديل"
+   ```
+3. ثم ادفع التعديلات إلى الريبو:
+   ```powershell
+   git push origin main
+   ```
+
+## ملاحظات:
+- إذا ظهرت مشاكل تعارض (conflict)، استخدم أدوات VS Code أو أوامر git لحلها.
+- إذا ظهرت رسالة عن وجود تعديلات محلية غير محفوظة، استخدم:
+   ```powershell
+   git stash
+   git pull --tags origin main
+   git stash pop
+   ```
+- إذا ظهرت رسالة "cannot lock ref"، أعد تشغيل VS Code أو الجهاز، أو احذف ملف lock يدويًا من مجلد .git.
