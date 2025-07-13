@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Upload, FileText, BarChart3, Download, BookOpen, Zap, Shield, Globe, Brain, Rocket } from 'lucide-react';
-import UploadSection from '@/components/UploadSection';
+import UploadSection, { ProcessingSettings } from '@/components/UploadSection';
 import SmartComparisonDashboard from '@/components/SmartComparisonDashboard';
 import GeminiConnectionTest from '@/components/GeminiConnectionTest';
 import { useToast } from '@/hooks/use-toast';
@@ -10,20 +10,23 @@ import { useToast } from '@/hooks/use-toast';
 const Index = () => {
   const [currentStep, setCurrentStep] = useState<'upload' | 'smart'>('upload');
   const [uploadedFiles, setUploadedFiles] = useState<{old: File[], new: File[]} | null>(null);
+  const [processingSettings, setProcessingSettings] = useState<ProcessingSettings | null>(null);
   const { toast } = useToast();
 
-  const handleFilesUploaded = (files: {old: File[], new: File[]}) => {
+  const handleFilesUploaded = (files: {old: File[], new: File[]}, settings: ProcessingSettings) => {
     console.log('📁 تم رفع الملفات:', {
       oldFiles: files.old.map(f => f.name),
-      newFiles: files.new.map(f => f.name)
+      newFiles: files.new.map(f => f.name),
+      settings: settings
     });
     
     setUploadedFiles(files);
+    setProcessingSettings(settings);
     setCurrentStep('smart');
     
     toast({
       title: "تم رفع الملفات",
-      description: "جاري بدء عملية المقارنة الذكية...",
+      description: `جاري بدء المقارنة باستخدام ${settings.processingMode === 'gemini_only' ? 'Gemini فقط' : 'LandingAI + Gemini'}...`,
       duration: 3000
     });
   };
@@ -222,6 +225,7 @@ const Index = () => {
       {currentStep === 'smart' && (
         <SmartComparisonDashboard 
           files={uploadedFiles}
+          processingSettings={processingSettings}
           onBack={() => setCurrentStep('upload')} 
         />
       )}

@@ -2,17 +2,31 @@
 import React, { useState, useCallback } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Upload, FileText, FolderOpen, AlertCircle, CheckCircle2, Zap, Folder } from 'lucide-react';
+import { Upload, FileText, FolderOpen, AlertCircle, CheckCircle2, Zap, Folder, Settings, Brain, Cpu, Eye } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { Switch } from '@/components/ui/switch';
+import { Label } from '@/components/ui/label';
+import { Slider } from '@/components/ui/slider';
+
+export interface ProcessingSettings {
+  processingMode: 'gemini_only' | 'landingai_gemini';
+  visualThreshold: number;
+}
 
 interface UploadSectionProps {
-  onFilesUploaded: (files: {old: File[], new: File[]}) => void;
+  onFilesUploaded: (files: {old: File[], new: File[]}, settings: ProcessingSettings) => void;
 }
 
 const UploadSection: React.FC<UploadSectionProps> = ({ onFilesUploaded }) => {
   const [dragActive, setDragActive] = useState<'old' | 'new' | null>(null);
   const [oldFiles, setOldFiles] = useState<File[]>([]);
   const [newFiles, setNewFiles] = useState<File[]>([]);
+  
+  // إعدادات المعالجة
+  const [processingMode, setProcessingMode] = useState<'gemini_only' | 'landingai_gemini'>('landingai_gemini');
+  const [visualThreshold, setVisualThreshold] = useState<number>(85);
+  const [showAdvancedSettings, setShowAdvancedSettings] = useState<boolean>(false);
+  
   const { toast } = useToast();
 
   const handleDrag = useCallback((e: React.DragEvent, type: 'old' | 'new') => {
@@ -112,7 +126,12 @@ const UploadSection: React.FC<UploadSectionProps> = ({ onFilesUploaded }) => {
       return;
     }
 
-    onFilesUploaded({ old: oldFiles, new: newFiles });
+    const settings: ProcessingSettings = {
+      processingMode,
+      visualThreshold
+    };
+
+    onFilesUploaded({ old: oldFiles, new: newFiles }, settings);
   };
 
   const DropZone = ({ type, files, title }: { type: 'old' | 'new', files: File[], title: string }) => (
@@ -167,7 +186,7 @@ const UploadSection: React.FC<UploadSectionProps> = ({ onFilesUploaded }) => {
             <input
               type="file"
               multiple
-              // @ts-ignore - webkitdirectory is not in standard HTML input types
+              // @ts-expect-error - webkitdirectory is not in standard HTML input types
               webkitdirectory=""
               directory=""
               onChange={(e) => handleFolderInput(e, type)}
@@ -229,6 +248,110 @@ const UploadSection: React.FC<UploadSectionProps> = ({ onFilesUploaded }) => {
         <DropZone type="old" files={oldFiles} title="المنهج القديم" />
         <DropZone type="new" files={newFiles} title="المنهج الجديد" />
       </div>
+
+      {/* إعدادات المعالجة */}
+      <Card className="mb-8">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Settings className="w-5 h-5" />
+            إعدادات المعالجة
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setShowAdvancedSettings(!showAdvancedSettings)}
+              className="mr-auto"
+            >
+              {showAdvancedSettings ? 'إخفاء' : 'عرض'} الإعدادات المتقدمة
+            </Button>
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-6">
+            {/* خيار طريقة المعالجة */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
+                  {processingMode === 'gemini_only' ? (
+                    <Brain className="w-5 h-5 text-purple-600" />
+                  ) : (
+                    <Cpu className="w-5 h-5 text-blue-600" />
+                  )}
+                  <Label htmlFor="processing-mode" className="text-base font-medium">
+                    طريقة المعالجة
+                  </Label>
+                </div>
+                <div className="text-sm text-gray-600">
+                  {processingMode === 'gemini_only' 
+                    ? 'Gemini فقط - أسرع وأقل تكلفة' 
+                    : 'LandingAI + Gemini - دقة أعلى'}
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-sm text-gray-500">LandingAI + Gemini</span>
+                <Switch
+                  id="processing-mode"
+                  checked={processingMode === 'gemini_only'}
+                  onCheckedChange={(checked) => 
+                    setProcessingMode(checked ? 'gemini_only' : 'landingai_gemini')
+                  }
+                />
+                <span className="text-sm text-gray-500">Gemini فقط</span>
+              </div>
+            </div>
+
+            {/* شرح الطريقة المختارة */}
+            <div className="p-4 rounded-lg bg-gray-50 border">
+              <div className="flex items-center gap-2 mb-2">
+                {processingMode === 'gemini_only' ? (
+                  <>
+                    <Brain className="w-4 h-4 text-purple-600" />
+                    <span className="font-medium text-purple-700">وضع Gemini فقط</span>
+                  </>
+                ) : (
+                  <>
+                    <Cpu className="w-4 h-4 text-blue-600" />
+                    <span className="font-medium text-blue-700">وضع LandingAI + Gemini</span>
+                  </>
+                )}
+              </div>
+              <p className="text-sm text-gray-600">
+                {processingMode === 'gemini_only' 
+                  ? 'يستخدم Gemini Vision مباشرة لاستخراج النص من الصور والمقارنة في خطوة واحدة. أسرع ولكن قد يكون أقل دقة مع النصوص المعقدة.'
+                  : 'يستخدم LandingAI لاستخراج النص بدقة عالية، ثم Gemini للمقارنة والتحليل. أبطأ ولكن أكثر دقة مع النصوص المعقدة.'}
+              </p>
+            </div>
+
+            {/* الإعدادات المتقدمة */}
+            {showAdvancedSettings && (
+              <div className="space-y-4 pt-4 border-t">
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <Eye className="w-4 h-4 text-gray-600" />
+                    <Label className="text-sm font-medium">
+                      عتبة المقارنة البصرية: {visualThreshold}%
+                    </Label>
+                  </div>
+                  <Slider
+                    value={[visualThreshold]}
+                    onValueChange={(value) => setVisualThreshold(value[0])}
+                    max={100}
+                    min={50}
+                    step={5}
+                    className="w-full"
+                  />
+                  <div className="flex justify-between text-xs text-gray-500">
+                    <span>50% - حساسية عالية</span>
+                    <span>100% - حساسية منخفضة</span>
+                  </div>
+                  <p className="text-xs text-gray-600">
+                    إذا كان التشابه البصري أعلى من هذه العتبة، سيتم اعتبار الصورتين متطابقتين بصرياً وتوفير تكلفة المعالجة النصية.
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+        </CardContent>
+      </Card>
 
       {/* إحصائيات سريعة */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">

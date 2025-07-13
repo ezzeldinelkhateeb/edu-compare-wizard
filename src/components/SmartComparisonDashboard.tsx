@@ -22,6 +22,7 @@ import {
   ArrowLeft,
   CheckCircle,
   AlertTriangle,
+  AlertCircle,
   Clock,
   Zap,
   Search,
@@ -50,15 +51,50 @@ import SmartBatchService, {
   SmartBatchFileResult,
   SmartBatchStats
 } from '@/services/smartBatchService';
+import { ProcessingSettings } from '@/components/UploadSection';
+
+// Extended interfaces for better type safety
+interface ExtendedSmartBatchStats {
+  total_pairs: number;
+  stage_1_filtered: number;
+  stage_2_processed: number;
+  stage_3_analyzed: number;
+  total_cost_saved: number;
+  total_processing_time: number;
+  average_similarity: number;
+  efficiency_score: number;
+  cost_savings_percentage: number;
+  savings_percentage?: number;
+  processing_speed?: number;
+}
+
+interface ExtendedSmartBatchFileResult extends SmartBatchFileResult {
+  summary?: string;
+  old_text?: string;
+  new_text?: string;
+}
+
+interface SystemInfo {
+  system_name?: string;
+  version?: string;
+  features?: string[];
+  pipeline_stages?: Array<{stage: number; name: string; cost: string; description: string}>;
+  expected_savings?: string;
+  supported_formats?: string[];
+  max_concurrent_workers?: number;
+  active_sessions?: number;
+}
 
 interface SmartComparisonDashboardProps {
   files?: {old: File[], new: File[]} | null;
+  processingSettings?: ProcessingSettings | null;
   onBack: () => void;
 }
 
-const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ files, onBack }) => {
+const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ files, processingSettings, onBack }) => {
   console.log('🚀 SmartComparisonDashboard تم تحميله:', { 
     files: files ? `${files.old.length} + ${files.new.length} ملفات` : 'لا توجد ملفات',
+    processingSettings,
     timestamp: new Date().toISOString()
   });
   
@@ -66,29 +102,32 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
   const [isProcessing, setIsProcessing] = useState(false);
   const [currentSession, setCurrentSession] = useState<string | null>(null);
   const [results, setResults] = useState<SmartBatchResult | null>(null);
-  const [systemInfo, setSystemInfo] = useState<{
-    system_name?: string;
-    version?: string;
-    features?: string[];
-    pipeline_stages?: Array<{stage: number; name: string; cost: string; description: string}>;
-    expected_savings?: string;
-    supported_formats?: string[];
-    max_concurrent_workers?: number;
-    active_sessions?: number;
-  } | null>(null);
+  const [systemInfo, setSystemInfo] = useState<SystemInfo | null>(null);
   
-  // إعدادات المعالجة
+  // إعدادات المعالجة - استخدام الإعدادات المرسلة من UploadSection
   const [oldDirectory, setOldDirectory] = useState('../test/2024');
   const [newDirectory, setNewDirectory] = useState('../test/2025');
   const [maxWorkers, setMaxWorkers] = useState(4);
   const [visualThreshold, setVisualThreshold] = useState(0.95);
+  const [processingMode, setProcessingMode] = useState<'gemini_only' | 'landingai_gemini'>(
+    processingSettings?.processingMode || 'landingai_gemini'
+  );
   
   // فلاتر وبحث
   const [searchTerm, setSearchTerm] = useState('');
   const [stageFilter, setStageFilter] = useState<'all' | '1' | '2' | '3'>('all');
-  const [selectedFile, setSelectedFile] = useState<SmartBatchFileResult | null>(null);
+  const [selectedFile, setSelectedFile] = useState<ExtendedSmartBatchFileResult | null>(null);
 
   const smartBatchService = SmartBatchService.getInstance();
+
+  // تحديث الإعدادات عند تغيير processingSettings
+  useEffect(() => {
+    if (processingSettings) {
+      setProcessingMode(processingSettings.processingMode);
+      setVisualThreshold(processingSettings.visualThreshold / 100); // تحويل من 0-100 إلى 0-1
+      console.log('🔧 تم تحديث إعدادات المعالجة:', processingSettings);
+    }
+  }, [processingSettings]);
 
   // تحميل معلومات النظام عند بدء التشغيل
   useEffect(() => {
@@ -107,53 +146,165 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
     return () => {
       smartBatchService.cleanup();
     };
-  }, []);
+  }, [smartBatchService]);
 
   // بدء المعالجة التلقائية عند وجود ملفات
   useEffect(() => {
     // التأكد من وجود ملفات وأن المعالجة لم تبدأ بعد
     if (files && files.old.length > 0 && files.new.length > 0 && !isProcessing && !results && !currentSession) {
       console.log('🚀 بدء المعالجة التلقائية للملفات المرفوعة');
+      console.log('🔧 إعدادات المعالجة:', {
+        processingMode,
+        visualThreshold,
+        maxWorkers
+      });
+      
       // تأخير بسيط لإعطاء الواجهة فرصة للرسم قبل بدء العملية المكلفة
       const timer = setTimeout(() => {
-        handleStartProcessing();
+        // Define handleStartProcessing inline to avoid declaration order issues
+        const startProcessing = async () => {
+          try {
+            console.log('🚀 بدء المعالجة الذكية...');
+            setIsProcessing(true);
+            
+            let sessionId: string;
+            
+            // إذا تم تمرير ملفات من واجهة الرفع، استخدمها
+            if (files && files.old.length > 0 && files.new.length > 0) {
+              console.log('📁 استخدام الملفات المرفوعة:', {
+                oldFiles: files.old.map(f => f.name),
+                newFiles: files.new.map(f => f.name),
+                processingMode,
+                visualThreshold
+              });
+              
+              // استخدام الملفات المرفوعة مباشرة مع إعدادات المعالجة
+              const response = await smartBatchService.startBatchProcessWithFiles(files.old, files.new, {
+                max_workers: maxWorkers,
+                visual_threshold: visualThreshold,
+                processing_mode: processingMode // إضافة وضع المعالجة
+              });
+              sessionId = response.session_id;
+              setCurrentSession(sessionId);
+              
+              console.log('✅ تم بدء المعالجة بنجاح:', {
+                sessionId: response.session_id,
+                response
+              });
+              
+              const modeText = processingMode === 'gemini_only' ? 'Gemini فقط' : 'LandingAI + Gemini';
+              toast.success(`تم بدء معالجة ${files.old.length + files.new.length} ملف بوضع ${modeText}! 🚀`);
+            } else {
+              // استخدام المجلدات (الطريقة القديمة)
+              const request: SmartBatchRequest = {
+                old_directory: oldDirectory,
+                new_directory: newDirectory,
+                max_workers: maxWorkers,
+                visual_threshold: visualThreshold,
+                processing_mode: processingMode // إضافة وضع المعالجة
+              };
+              
+              const response = await smartBatchService.startBatchProcess(request);
+              sessionId = response.session_id;
+              setCurrentSession(sessionId);
+            }
+            
+            // بدء مراقبة التقدم
+            console.log('🔍 بدء مراقبة التقدم للجلسة:', sessionId);
+            
+            // تحديث فوري للحالة لمنع تجمد الواجهة
+            const initialFileCount = files ? files.old.length : 2; // افتراض عدد الملفات إذا لم تكن متاحة
+            setResults({
+              session_id: sessionId,
+              status: 'جاري المعالجة',
+              message: 'تم بدء المعالجة الذكية...',
+              results: [],
+              stats: {
+                total_pairs: initialFileCount,
+                stage_1_filtered: 0,
+                stage_2_processed: 0,
+                stage_3_analyzed: 0,
+                total_cost_saved: 0,
+                total_processing_time: 0,
+                average_similarity: 0,
+                efficiency_score: 0,
+                cost_savings_percentage: 0
+              }
+            });
+            
+            smartBatchService.startStatusPolling(sessionId, (result) => {
+              console.log('🔄 تحديث النتائج في SmartComparisonDashboard:', {
+                status: result.status,
+                message: result.message,
+                stats: result.stats,
+                resultsCount: result.results?.length || 0,
+                timestamp: new Date().toISOString()
+              });
+              
+              // تحديث النتائج فورياً لتحديث الواجهة
+              setResults(result);
+              
+              if (result.status === 'مكتمل' || result.status === 'فشل') {
+                setIsProcessing(false);
+                if (result.status === 'مكتمل') {
+                  console.log('✅ اكتملت المعالجة بنجاح!');
+                  // التحقق من وجود نتائج فعلية
+                  if (result.results && result.results.length > 0) {
+                    toast.success('اكتملت المعالجة الذكية بنجاح! 🎉');
+                  } else {
+                    toast.warning('اكتملت المعالجة لكن لم يتم العثور على ملفات للمقارنة. تأكد من أن الملفات مرتبة بنفس الترتيب.');
+                  }
+                } else {
+                  console.log('❌ فشلت المعالجة');
+                  toast.error('فشلت المعالجة الذكية');
+                }
+              }
+            });
+            
+          } catch (error) {
+            setIsProcessing(false);
+            console.error('❌ فشل في بدء المعالجة:', error);
+            toast.error(`فشل في بدء المعالجة: ${error}`);
+          }
+        };
+        
+        startProcessing();
       }, 500);
       
       return () => clearTimeout(timer);
     }
-  }, [files, isProcessing, results, currentSession]);
+  }, [files, isProcessing, results, currentSession, maxWorkers, visualThreshold, processingMode, oldDirectory, newDirectory, smartBatchService]);
 
   // helper normalizer functions
-  const getOverallSimilarity = (res: any) => {
+  const getOverallSimilarity = (res: SmartBatchFileResult): number => {
     if (typeof res?.overall_similarity === 'number') return res.overall_similarity;
     if (res?.ai_analysis && typeof res.ai_analysis.similarity_percentage === 'number') {
       return res.ai_analysis.similarity_percentage / 100;
     }
-    if (typeof res?.final_score === 'number') return res.final_score / 100;
     return 0;
   };
-  const getVisualSimilarity = (res: any) => {
+  
+  const getVisualSimilarity = (res: SmartBatchFileResult): number | undefined => {
     if (typeof res?.visual_similarity === 'number') return res.visual_similarity;
-    if (typeof res?.visual_score === 'number') return res.visual_score;
     return undefined;
   };
 
-  // derive processedStats to support both backend schemas
-  const processedStats = useMemo(() => {
-    const s = results?.stats || {};
-    return {
-      total_pairs: s.total_pairs ?? 0,
-      stage_1_filtered: s.stage_1_filtered ?? s.visually_identical ?? 0,
-      stage_2_processed: s.stage_2_processed ?? 0, // لا يوجد بديل واضح
-      stage_3_analyzed: s.stage_3_analyzed ?? s.fully_analyzed ?? 0,
-      total_processing_time: s.total_processing_time ?? s.total_duration ?? 0,
-    };
-  }, [results]);
-
+  // derive enhancedStats directly from results to avoid type issues
   const enhancedStats = useMemo(() => {
-    if (!processedStats || processedStats.total_pairs === 0) return null;
+    const s = (results?.stats || {}) as {
+      total_pairs?: number;
+      stage_1_filtered?: number;
+      stage_2_processed?: number;
+      stage_3_analyzed?: number;
+      total_processing_time?: number;
+    };
+    const total_pairs = s.total_pairs ?? 0;
+    const stage_1_filtered = s.stage_1_filtered ?? 0;
+    const stage_2_processed = s.stage_2_processed ?? 0;
+    const stage_3_analyzed = s.stage_3_analyzed ?? 0;
+    const total_processing_time = s.total_processing_time ?? 0;
 
-    const totalProcessingTime = processedStats.total_processing_time;
+    if (total_pairs === 0) return null;
 
     // احسب متوسط التشابه من النتائج إن وجد
     const similarities = results?.results?.map(getOverallSimilarity) || [];
@@ -162,35 +313,42 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
       : 0;
 
     const savingsPercentage = smartBatchService.calculateSavingsPercentage({
-      total_pairs: processedStats.total_pairs,
-      stage_1_filtered: processedStats.stage_1_filtered,
-      stage_2_processed: processedStats.stage_2_processed,
-      stage_3_analyzed: processedStats.stage_3_analyzed,
+      total_pairs,
+      stage_1_filtered,
+      stage_2_processed,
+      stage_3_analyzed,
       total_cost_saved: 0,
-      total_processing_time: totalProcessingTime,
+      total_processing_time,
       average_similarity: averageSimilarity,
       efficiency_score: 0,
       cost_savings_percentage: 0,
-    } as any);
+    } as SmartBatchStats);
 
     return {
-      ...processedStats,
+      total_pairs,
+      stage_1_filtered,
+      stage_2_processed,
+      stage_3_analyzed,
+      total_cost_saved: 0,
+      total_processing_time,
       average_similarity: averageSimilarity,
+      efficiency_score: 0,
+      cost_savings_percentage: 0,
       savings_percentage: savingsPercentage,
       processing_speed:
-        totalProcessingTime > 0
-          ? processedStats.total_pairs / (totalProcessingTime / 60)
+        total_processing_time > 0
+          ? total_pairs / (total_processing_time / 60)
           : 0,
-    };
-  }, [processedStats, results]);
+    } as ExtendedSmartBatchStats;
+  }, [results, smartBatchService]);
 
   // transform backend results to a common shape for rendering
   const normalizedResults = useMemo(() => {
     if (!results?.results) return [];
-    return results.results.map((r: any) => ({
+    return results.results.map((r: SmartBatchFileResult): ExtendedSmartBatchFileResult => ({
       ...r,
-      old_file: r.old_file ?? r.filename ?? 'غير معروف',
-      new_file: r.new_file ?? r.filename ?? 'غير معروف',
+      old_file: r.old_file ?? 'غير معروف',
+      new_file: r.new_file ?? 'غير معروف',
       overall_similarity: getOverallSimilarity(r),
       visual_similarity: getVisualSimilarity(r),
       cost_saved: r.cost_saved ?? (r.status === 'تطابق بصري عالي' ? 100 : r.status === 'تم التحليل الكامل' ? 33.3 : 0),
@@ -224,7 +382,7 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
   }, [normalizedResults, stageFilter, searchTerm]);
 
   // بدء المعالجة الذكية
-  const handleStartProcessing = async () => {
+  const handleStartProcessing = useCallback(async () => {
     try {
       console.log('🚀 بدء المعالجة الذكية...');
       setIsProcessing(true);
@@ -241,7 +399,8 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
         // استخدام الملفات المرفوعة مباشرة
         const response = await smartBatchService.startBatchProcessWithFiles(files.old, files.new, {
           max_workers: maxWorkers,
-          visual_threshold: visualThreshold
+          visual_threshold: visualThreshold,
+          processing_mode: processingMode // إضافة وضع المعالجة
         });
         sessionId = response.session_id;
         setCurrentSession(sessionId);
@@ -251,14 +410,16 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
           response
         });
         
-        toast.success(`تم بدء معالجة ${files.old.length + files.new.length} ملف بالنظام الذكي! 🚀`);
+        const modeText = processingMode === 'gemini_only' ? 'Gemini فقط' : 'LandingAI + Gemini';
+        toast.success(`تم بدء معالجة ${files.old.length + files.new.length} ملف بوضع ${modeText}! 🚀`);
       } else {
         // استخدام المجلدات (الطريقة القديمة)
         const request: SmartBatchRequest = {
           old_directory: oldDirectory,
           new_directory: newDirectory,
           max_workers: maxWorkers,
-          visual_threshold: visualThreshold
+          visual_threshold: visualThreshold,
+          processing_mode: processingMode // إضافة وضع المعالجة
         };
         
         const response = await smartBatchService.startBatchProcess(request);
@@ -268,6 +429,26 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
       
       // بدء مراقبة التقدم
       console.log('🔍 بدء مراقبة التقدم للجلسة:', sessionId);
+      
+      // تحديث فوري للحالة لمنع تجمد الواجهة
+      const initialFileCount = files ? files.old.length : 2; // افتراض عدد الملفات إذا لم تكن متاحة
+      setResults({
+        session_id: sessionId,
+        status: 'جاري المعالجة',
+        message: 'تم بدء المعالجة الذكية...',
+        results: [],
+        stats: {
+          total_pairs: initialFileCount,
+          stage_1_filtered: 0,
+          stage_2_processed: 0,
+          stage_3_analyzed: 0,
+          total_cost_saved: 0,
+          total_processing_time: 0,
+          average_similarity: 0,
+          efficiency_score: 0,
+          cost_savings_percentage: 0
+        }
+      });
       
       smartBatchService.startStatusPolling(sessionId, (result) => {
         console.log('🔄 تحديث النتائج في SmartComparisonDashboard:', {
@@ -297,7 +478,7 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
       console.error('❌ فشل في بدء المعالجة:', error);
       toast.error(`فشل في بدء المعالجة: ${error}`);
     }
-  };
+  }, [files, maxWorkers, visualThreshold, processingMode, oldDirectory, newDirectory, smartBatchService]);
 
   // إيقاف المعالجة
   const handleStopProcessing = () => {
@@ -327,7 +508,7 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
         smartBatchService.stopStatusPolling(currentSession);
       }
     };
-  }, [currentSession]);
+  }, [currentSession, smartBatchService]);
 
   // رندر مرحلة المعالجة
   const renderProcessingStage = () => (
@@ -454,6 +635,36 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
                       </Button>
                     </div>
                   )}
+                  
+                  {!isProcessing && results && (!results.results || results.results.length === 0) && (
+                    <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 text-center">
+                      <div className="flex items-center justify-center gap-2 mb-4">
+                        <AlertCircle className="w-6 h-6 text-yellow-600" />
+                        <h3 className="text-lg font-semibold text-yellow-800">لا توجد ملفات للمقارنة</h3>
+                      </div>
+                      <p className="text-yellow-700 mb-4">
+                        النظام يقارن الملفات بالترتيب (الملف الأول من المجلد القديم مع الملف الأول من المجلد الجديد، وهكذا).
+                        تأكد من أن الملفات مرتبة بنفس الترتيب المطلوب في كلا المجلدين.
+                      </p>
+                      <div className="flex justify-center gap-4">
+                        <Button 
+                          onClick={onBack}
+                          variant="outline"
+                          className="border-yellow-300 text-yellow-700 hover:bg-yellow-100"
+                        >
+                          <ArrowLeft className="w-4 h-4 ml-2" />
+                          العودة لإعادة ترتيب الملفات
+                        </Button>
+                        <Button 
+                          onClick={handleRestart}
+                          className="bg-yellow-600 hover:bg-yellow-700 text-white"
+                        >
+                          <RotateCcw className="w-4 h-4 ml-2" />
+                          إعادة المحاولة
+                        </Button>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </CardContent>
             </Card>
@@ -471,7 +682,7 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
                   مجانية - سريعة - دقيقة 100%
                 </p>
                 <Badge className="bg-green-100 text-green-800">
-                  {processedStats.stage_1_filtered || 0} ملف تم فلترته
+                  {enhancedStats?.stage_1_filtered || 0} ملف تم فلترته
                 </Badge>
               </CardContent>
             </Card>
@@ -483,10 +694,12 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
                   المرحلة 2: استخراج النص
                 </h3>
                 <p className="text-sm text-orange-700 mb-4">
-                  LandingAI - سريع - دقة عالية
+                  {processingMode === 'gemini_only' 
+                    ? 'Gemini Vision - مباشر - سريع' 
+                    : 'LandingAI - سريع - دقة عالية'}
                 </p>
                 <Badge className="bg-orange-100 text-orange-800">
-                  {processedStats.stage_2_processed || 0} ملف معالج
+                  {enhancedStats?.stage_2_processed || 0} ملف معالج
                 </Badge>
               </CardContent>
             </Card>
@@ -498,10 +711,12 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
                   المرحلة 3: التحليل الذكي
                 </h3>
                 <p className="text-sm text-purple-700 mb-4">
-                  Gemini AI - تحليل عميق - تقارير مفصلة
+                  {processingMode === 'gemini_only' 
+                    ? 'Gemini Vision - تحليل مدمج - فوري' 
+                    : 'Gemini AI - تحليل عميق - تقارير مفصلة'}
                 </p>
                 <Badge className="bg-purple-100 text-purple-800">
-                  {processedStats.stage_3_analyzed || 0} ملف محلل
+                  {enhancedStats?.stage_3_analyzed || 0} ملف محلل
                 </Badge>
               </CardContent>
             </Card>
@@ -530,51 +745,72 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
                 <div className="space-y-4">
                   {/* شريط التقدم */}
                   <div>
-                    <div className="flex justify-between text-sm text-gray-600 mb-2">
-                      <span>التقدم الإجمالي</span>
-                      <span>{results?.stats?.total_pairs ? 
-                        `${results.stats.stage_1_filtered + results.stats.stage_2_processed + results.stats.stage_3_analyzed}/${results.stats.total_pairs}` : 
-                        '0/0'
-                      }</span>
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="text-sm font-medium text-blue-700">
+                        {results?.message || 'جاري المعالجة...'}
+                      </span>
+                      <span className="text-sm text-blue-600">
+                        {enhancedStats?.total_pairs ? 
+                          `${enhancedStats.stage_1_filtered + enhancedStats.stage_3_analyzed}/${enhancedStats.total_pairs}` : 
+                          '0/0'}
+                      </span>
                     </div>
                     <Progress 
-                      value={results?.stats?.total_pairs ? 
-                        ((results.stats.stage_1_filtered + results.stats.stage_2_processed + results.stats.stage_3_analyzed) / results.stats.total_pairs) * 100 
-                        : 0
-                      } 
+                      value={enhancedStats?.total_pairs ? 
+                        ((enhancedStats.stage_1_filtered + enhancedStats.stage_3_analyzed) / enhancedStats.total_pairs) * 100 : 
+                        0} 
                       className="h-3" 
                     />
                   </div>
                   
-                  {/* الملف الحالي */}
-                  {results?.message && (
-                    <div className="bg-white p-3 rounded-lg border">
-                      <div className="flex items-center gap-2 text-sm text-gray-700">
-                        <Clock className="w-4 h-4" />
-                        <span>{results.message}</span>
-                      </div>
-                    </div>
-                  )}
-                  
                   {/* إحصائيات سريعة */}
-                  <div className="grid grid-cols-3 gap-4">
-                    <div className="text-center">
+                  <div className="grid grid-cols-3 gap-4 text-center">
+                    <div className="bg-green-50 p-3 rounded-lg">
                       <div className="text-2xl font-bold text-green-600">
-                        {processedStats.stage_1_filtered || 0}
+                        {enhancedStats?.stage_1_filtered || 0}
                       </div>
-                      <div className="text-sm text-gray-600">تطابق بصري</div>
+                      <div className="text-xs text-green-700">تطابق بصري</div>
                     </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-orange-600">
-                        {processedStats.stage_2_processed || 0}
-                      </div>
-                      <div className="text-sm text-gray-600">استخراج نص</div>
-                    </div>
-                    <div className="text-center">
+                    <div className="bg-purple-50 p-3 rounded-lg">
                       <div className="text-2xl font-bold text-purple-600">
-                        {processedStats.stage_3_analyzed || 0}
+                        {enhancedStats?.stage_3_analyzed || 0}
                       </div>
-                      <div className="text-sm text-gray-600">تحليل عميق</div>
+                      <div className="text-xs text-purple-700">تحليل عميق</div>
+                    </div>
+                    <div className="bg-blue-50 p-3 rounded-lg">
+                      <div className="text-2xl font-bold text-blue-600">
+                        {enhancedStats?.total_pairs || 0}
+                      </div>
+                      <div className="text-xs text-blue-700">إجمالي الملفات</div>
+                    </div>
+                  </div>
+                  
+                  {/* معلومات الوضع الحالي */}
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <h4 className="font-medium text-gray-700 mb-2">الوضع الحالي</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span>وضع المعالجة:</span>
+                        <span className="font-medium">
+                          {processingMode === 'gemini_only' ? 'Gemini فقط' : 'LandingAI + Gemini'}
+                        </span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>عتبة التشابه البصري:</span>
+                        <span className="font-medium">{(visualThreshold * 100).toFixed(0)}%</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>المعالجات المتوازية:</span>
+                        <span className="font-medium">{maxWorkers}</span>
+                      </div>
+                      {enhancedStats?.savings_percentage && (
+                        <div className="flex justify-between">
+                          <span>نسبة التوفير:</span>
+                          <span className="font-medium text-green-600">
+                            {enhancedStats.savings_percentage.toFixed(1)}%
+                          </span>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -583,13 +819,13 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
           )}
 
           {/* إحصائيات التوفير */}
-          {processedStats && (
+          {enhancedStats && (
             <div className="grid md:grid-cols-4 gap-4 mb-8">
               <Card className="bg-gradient-to-r from-green-400 to-green-600 text-white">
                 <CardContent className="p-4 text-center">
                   <DollarSign className="w-8 h-8 mx-auto mb-2" />
                   <div className="text-2xl font-bold">
-                    {((processedStats?.savings_percentage ?? 0).toFixed(1))}%
+                    {((enhancedStats?.savings_percentage ?? 0).toFixed(1))}%
                   </div>
                   <div className="text-sm opacity-90">توفير في التكلفة</div>
                 </CardContent>
@@ -599,7 +835,7 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
                 <CardContent className="p-4 text-center">
                   <Timer className="w-8 h-8 mx-auto mb-2" />
                   <div className="text-2xl font-bold">
-                    {smartBatchService.formatProcessingTime(processedStats?.total_processing_time ?? 0)}
+                    {smartBatchService.formatProcessingTime(enhancedStats?.total_processing_time ?? 0)}
                   </div>
                   <div className="text-sm opacity-90">وقت المعالجة</div>
                 </CardContent>
@@ -609,7 +845,7 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
                 <CardContent className="p-4 text-center">
                   <Target className="w-8 h-8 mx-auto mb-2" />
                   <div className="text-2xl font-bold">
-                    {((processedStats?.average_similarity ?? 0).toFixed(1))}%
+                    {((enhancedStats?.average_similarity ?? 0).toFixed(1))}%
                   </div>
                   <div className="text-sm opacity-90">متوسط التشابه</div>
                 </CardContent>
@@ -619,7 +855,7 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
                 <CardContent className="p-4 text-center">
                   <Activity className="w-8 h-8 mx-auto mb-2" />
                   <div className="text-2xl font-bold">
-                    {((processedStats?.processing_speed ?? 0).toFixed(1))}
+                    {((enhancedStats?.processing_speed ?? 0).toFixed(1))}
                   </div>
                   <div className="text-sm opacity-90">ملف/دقيقة</div>
                 </CardContent>
@@ -793,8 +1029,8 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
     );
   }
 
-  // إذا كان النظام يعالج أو لا توجد نتائج
-  if (isProcessing || !results) {
+  // إذا كان النظام يعالج أو لا توجد نتائج أو النتائج فارغة
+  if (isProcessing || !results || !results.results || results.results.length === 0) {
     return renderProcessingStage();
   }
 
@@ -815,7 +1051,7 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
                 تقرير المقارنة الذكية
               </h1>
               <p className="text-gray-600">
-                تم تحليل {processedStats?.total_pairs ?? 0} زوج من الملفات بتوفير {processedStats?.savings_percentage?.toFixed(1) ?? '0'}% في التكلفة
+                تم تحليل {enhancedStats?.total_pairs ?? 0} زوج من الملفات بتوفير {enhancedStats?.savings_percentage?.toFixed(1) ?? '0'}% في التكلفة
               </p>
             </div>
           </div>
@@ -829,33 +1065,33 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
         </div>
 
         {/* إحصائيات سريعة */}
-        {processedStats && (
+        {enhancedStats && (
           <div className="grid md:grid-cols-5 gap-4 mb-8">
             <Card className="bg-gradient-to-r from-green-400 to-green-600 text-white">
               <CardContent className="p-4 text-center">
                 <DollarSign className="w-6 h-6 mx-auto mb-2" />
-                <div className="text-xl font-bold">{processedStats?.savings_percentage?.toFixed(1) ?? '0'}%</div>
+                <div className="text-xl font-bold">{enhancedStats?.savings_percentage?.toFixed(1) ?? '0'}%</div>
                 <div className="text-xs opacity-90">توفير التكلفة</div>
               </CardContent>
             </Card>
             <Card className="bg-gradient-to-r from-blue-400 to-blue-600 text-white">
               <CardContent className="p-4 text-center">
                 <Timer className="w-6 h-6 mx-auto mb-2" />
-                <div className="text-xl font-bold">{processedStats?.processing_speed?.toFixed(1) ?? '0'}</div>
+                <div className="text-xl font-bold">{enhancedStats?.processing_speed?.toFixed(1) ?? '0'}</div>
                 <div className="text-xs opacity-90">ملف/دقيقة</div>
               </CardContent>
             </Card>
             <Card className="bg-gradient-to-r from-purple-400 to-purple-600 text-white">
               <CardContent className="p-4 text-center">
                 <Target className="w-6 h-6 mx-auto mb-2" />
-                <div className="text-xl font-bold">{processedStats?.average_similarity?.toFixed(1) ?? '0'}%</div>
+                <div className="text-xl font-bold">{enhancedStats?.average_similarity?.toFixed(1) ?? '0'}%</div>
                 <div className="text-xs opacity-90">متوسط التشابه</div>
               </CardContent>
             </Card>
             <Card className="bg-gradient-to-r from-orange-400 to-orange-600 text-white">
               <CardContent className="p-4 text-center">
                 <Layers className="w-6 h-6 mx-auto mb-2" />
-                <div className="text-xl font-bold">{processedStats?.total_pairs ?? 0}</div>
+                <div className="text-xl font-bold">{enhancedStats?.total_pairs ?? 0}</div>
                 <div className="text-xs opacity-90">إجمالي الملفات</div>
               </CardContent>
             </Card>
@@ -863,7 +1099,7 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
               <CardContent className="p-4 text-center">
                 <Clock className="w-6 h-6 mx-auto mb-2" />
                 <div className="text-xl font-bold">
-                  {smartBatchService.formatProcessingTime(processedStats?.total_processing_time ?? 0)}
+                  {smartBatchService.formatProcessingTime(enhancedStats?.total_processing_time ?? 0)}
                 </div>
                 <div className="text-xs opacity-90">وقت المعالجة</div>
               </CardContent>
@@ -901,7 +1137,7 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
                   onClick={() => setStageFilter('1')}
                   className="text-green-600"
                 >
-                  مرحلة 1 ({processedStats?.stage_1_filtered ?? 0})
+                  مرحلة 1 ({enhancedStats?.stage_1_filtered ?? 0})
                 </Button>
                 <Button
                   variant={stageFilter === '2' ? 'default' : 'outline'}
@@ -909,7 +1145,7 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
                   onClick={() => setStageFilter('2')}
                   className="text-orange-600"
                 >
-                  مرحلة 2 ({processedStats?.stage_2_processed ?? 0})
+                  مرحلة 2 ({enhancedStats?.stage_2_processed ?? 0})
                 </Button>
                 <Button
                   variant={stageFilter === '3' ? 'default' : 'outline'}
@@ -917,7 +1153,7 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
                   onClick={() => setStageFilter('3')}
                   className="text-purple-600"
                 >
-                  مرحلة 3 ({processedStats?.stage_3_analyzed ?? 0})
+                  مرحلة 3 ({enhancedStats?.stage_3_analyzed ?? 0})
                 </Button>
               </div>
             </div>
@@ -1074,18 +1310,18 @@ const SmartComparisonDashboard: React.FC<SmartComparisonDashboardProps> = ({ fil
                   <div className="text-center py-8">
                     <Zap className="w-16 h-16 mx-auto mb-4 text-orange-600" />
                     <h3 className="text-lg font-bold mb-2">استخراج النص</h3>
-                    {(selectedFile.text_extraction || (selectedFile as any).old_text) ? (
+                    {(selectedFile.text_extraction || (selectedFile as ExtendedSmartBatchFileResult).old_text) ? (
                       <div className="text-left space-y-4">
                         <div>
                           <h4 className="font-bold mb-2">النص القديم:</h4>
                           <div className="bg-gray-50 p-4 rounded text-sm max-h-40 overflow-y-auto">
-                            {selectedFile.text_extraction?.old_text || (selectedFile as any).old_text || 'لا يوجد نص'}
+                            {selectedFile.text_extraction?.old_text || (selectedFile as ExtendedSmartBatchFileResult).old_text || 'لا يوجد نص'}
                           </div>
                         </div>
                         <div>
                           <h4 className="font-bold mb-2">النص الجديد:</h4>
                           <div className="bg-gray-50 p-4 rounded text-sm max-h-40 overflow-y-auto">
-                            {selectedFile.text_extraction?.new_text || (selectedFile as any).new_text || 'لا يوجد نص'}
+                            {selectedFile.text_extraction?.new_text || (selectedFile as ExtendedSmartBatchFileResult).new_text || 'لا يوجد نص'}
                           </div>
                         </div>
                       </div>

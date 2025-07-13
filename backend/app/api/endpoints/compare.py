@@ -1152,7 +1152,11 @@ async def fallback_ocr_extraction(session_id: str):
         )
 
 @router.post("/compare/full-comparison/{session_id}")
-async def full_comparison(session_id: str):
+async def full_comparison(
+    session_id: str,
+    processing_mode: str = "landingai_gemini",
+    visual_threshold: float = 85.0
+):
     """
     إجراء مقارنة كاملة للصور في الجلسة
     Perform full comparison of images in session
@@ -1171,80 +1175,170 @@ async def full_comparison(session_id: str):
         # استيراد الخدمات
         from app.services.landing_ai_service import landing_ai_service
         from app.services.gemini_service import gemini_service
+        from app.services.gemini_vision_service import gemini_vision_service
         from app.services.visual_comparison_service import enhanced_visual_comparison_service
         
-        # 1. استخراج النص من الصور مع معالجة محسنة للأخطاء
-        old_result = None
-        new_result = None
+        logger.info(f"🔧 إعدادات المعالجة: {processing_mode}, عتبة بصرية: {visual_threshold}%")
         
-        try:
-            logger.info("📝 استخراج النص من الصورة القديمة...")
-            old_result = await landing_ai_service.extract_from_file(old_image_path)
-            if old_result.success:
-                logger.info(f"✅ نجح استخراج النص من الصورة القديمة: {len(old_result.markdown_content)} حرف")
-            else:
-                logger.warning(f"⚠️ فشل في استخراج النص من الصورة القديمة: {old_result.error_message}")
-        except Exception as e:
-            logger.error(f"❌ خطأ في استخراج النص من الصورة القديمة: {e}")
-            # إنشاء نتيجة فاشلة
-            from app.services.landing_ai_service import LandingAIExtractionResult
-            old_result = LandingAIExtractionResult(
-                file_path=old_image_path,
-                file_name=os.path.basename(old_image_path),
-                processing_time=0,
-                success=False,
-                error_message=str(e)
-            )
-        
-        try:
-            logger.info("📝 استخراج النص من الصورة الجديدة...")
-            new_result = await landing_ai_service.extract_from_file(new_image_path)
-            if new_result.success:
-                logger.info(f"✅ نجح استخراج النص من الصورة الجديدة: {len(new_result.markdown_content)} حرف")
-            else:
-                logger.warning(f"⚠️ فشل في استخراج النص من الصورة الجديدة: {new_result.error_message}")
-        except Exception as e:
-            logger.error(f"❌ خطأ في استخراج النص من الصورة الجديدة: {e}")
-            # إنشاء نتيجة فاشلة
-            from app.services.landing_ai_service import LandingAIExtractionResult
-            new_result = LandingAIExtractionResult(
-                file_path=new_image_path,
-                file_name=os.path.basename(new_image_path),
-                processing_time=0,
-                success=False,
-                error_message=str(e)
-            )
-        
-        # 2. المقارنة النصية باستخدام Gemini مع معالجة أفضل للأخطاء
-        comparison_result = None
-        if old_result and new_result and old_result.success and new_result.success:
-            try:
-                logger.info("🤖 تحليل المقارنة النصية باستخدام Gemini...")
-                comparison_result = await gemini_service.compare_texts(
-                    old_result.markdown_content, 
-                    new_result.markdown_content
-                )
-                logger.info("✅ تمت المقارنة النصية بنجاح")
-            except Exception as e:
-                logger.error(f"❌ فشل في المقارنة النصية: {e}")
-                comparison_result = None
-        else:
-            logger.warning("⚠️ فشل في استخراج النص، تخطي المقارنة النصية")
-        
-        # 3. المقارنة البصرية مع معالجة أفضل للأخطاء
+        # 1. المقارنة البصرية السريعة أولاً
         visual_result = None
         try:
-            logger.info("👁️ إجراء المقارنة البصرية...")
+            logger.info("👁️ إجراء المقارنة البصرية السريعة...")
             visual_result = await enhanced_visual_comparison_service.compare_images(
                 old_image_path, new_image_path
             )
             if visual_result:
-                logger.info(f"✅ تمت المقارنة البصرية بنجاح: {visual_result.similarity_score:.1f}% تطابق")
+                logger.info(f"✅ تمت المقارنة البصرية: {visual_result.similarity_score:.1f}% تطابق")
+                
+                # إذا كان التشابه البصري أعلى من العتبة، توفير المعالجة النصية
+                if visual_result.similarity_score >= visual_threshold:
+                    logger.info(f"🎯 التشابه البصري ({visual_result.similarity_score:.1f}%) أعلى من العتبة ({visual_threshold}%) - توفير المعالجة النصية")
+                    
+                    # إنشاء نتائج افتراضية للتطابق البصري
+                    comparison_result = {
+                        "similarity_percentage": visual_result.similarity_score,
+                        "summary": f"الصورتان متطابقتان بصرياً بنسبة {visual_result.similarity_score:.1f}%. لا توجد تغييرات جوهرية في المحتوى.",
+                        "recommendation": "التغييرات بصرية فقط ولا تؤثر على المحتوى التعليمي",
+                        "major_differences": [],
+                        "content_changes": ["تحسينات في التصميم أو التنسيق"],
+                        "processing_time": 0.1,
+                        "service_used": "visual_comparison_only"
+                    }
+                    
+                    # تحديث حالة الجلسة
+                    session["status"] = "completed"
+                    session["completed_at"] = datetime.now().isoformat()
+                    
+                    return {
+                        "session_id": session_id,
+                        "status": "completed",
+                        "processing_mode": processing_mode,
+                        "visual_threshold": visual_threshold,
+                        "visual_comparison_result": clean_json_values(visual_result.__dict__),
+                        "comparison_result": comparison_result,
+                        "api_calls_saved": 2 if processing_mode == "landingai_gemini" else 1,
+                        "summary": {
+                            "text_extraction_success": False,
+                            "text_comparison_success": False,
+                            "visual_comparison_success": True,
+                            "overall_success": True,
+                            "cost_optimization": f"تم توفير {2 if processing_mode == 'landingai_gemini' else 1} استدعاء API"
+                        }
+                    }
             else:
                 logger.warning("⚠️ فشل في المقارنة البصرية")
         except Exception as e:
             logger.error(f"❌ خطأ في المقارنة البصرية: {e}")
             visual_result = None
+        
+        # 2. المعالجة النصية بناءً على الوضع المختار
+        old_result = None
+        new_result = None
+        comparison_result = None
+        
+        if processing_mode == "gemini_only":
+            logger.info("🧠 وضع Gemini فقط - المقارنة المباشرة")
+            try:
+                direct_comparison = await gemini_vision_service.compare_images_directly(
+                    old_image_path, new_image_path
+                )
+                
+                if direct_comparison["success"]:
+                    logger.info("✅ تمت المقارنة المباشرة بنجاح")
+                    comparison_result = direct_comparison["comparison_result"]
+                    
+                    # إنشاء نتائج وهمية للنصوص المستخرجة
+                    old_result = type('MockResult', (), {
+                        'success': True,
+                        'markdown_content': direct_comparison["old_text"],
+                        'confidence_score': 0.9,
+                        'processing_time': direct_comparison["processing_time"] / 2,
+                        'error_message': None
+                    })()
+                    
+                    new_result = type('MockResult', (), {
+                        'success': True,
+                        'markdown_content': direct_comparison["new_text"],
+                        'confidence_score': 0.9,
+                        'processing_time': direct_comparison["processing_time"] / 2,
+                        'error_message': None
+                    })()
+                    
+                else:
+                    logger.error("❌ فشل في المقارنة المباشرة")
+                    
+            except Exception as e:
+                logger.error(f"❌ خطأ في المقارنة المباشرة: {e}")
+        
+        else:  # landingai_gemini mode
+            logger.info("🔧 وضع LandingAI + Gemini - المعالجة التقليدية")
+            
+            # استخراج النص باستخدام LandingAI
+            try:
+                logger.info("📝 استخراج النص من الصورة القديمة...")
+                old_result = await landing_ai_service.extract_from_file(old_image_path)
+                if old_result.success:
+                    logger.info(f"✅ نجح استخراج النص من الصورة القديمة: {len(old_result.markdown_content)} حرف")
+                else:
+                    logger.warning(f"⚠️ فشل في استخراج النص من الصورة القديمة: {old_result.error_message}")
+            except Exception as e:
+                logger.error(f"❌ خطأ في استخراج النص من الصورة القديمة: {e}")
+                from app.services.landing_ai_service import LandingAIExtractionResult
+                old_result = LandingAIExtractionResult(
+                    file_path=old_image_path,
+                    file_name=os.path.basename(old_image_path),
+                    processing_time=0,
+                    success=False,
+                    error_message=str(e)
+                )
+            
+            try:
+                logger.info("📝 استخراج النص من الصورة الجديدة...")
+                new_result = await landing_ai_service.extract_from_file(new_image_path)
+                if new_result.success:
+                    logger.info(f"✅ نجح استخراج النص من الصورة الجديدة: {len(new_result.markdown_content)} حرف")
+                else:
+                    logger.warning(f"⚠️ فشل في استخراج النص من الصورة الجديدة: {new_result.error_message}")
+            except Exception as e:
+                logger.error(f"❌ خطأ في استخراج النص من الصورة الجديدة: {e}")
+                from app.services.landing_ai_service import LandingAIExtractionResult
+                new_result = LandingAIExtractionResult(
+                    file_path=new_image_path,
+                    file_name=os.path.basename(new_image_path),
+                    processing_time=0,
+                    success=False,
+                    error_message=str(e)
+                )
+            
+            # المقارنة النصية باستخدام Gemini
+            if old_result and new_result and old_result.success and new_result.success:
+                try:
+                    logger.info("🤖 تحليل المقارنة النصية باستخدام Gemini...")
+                    comparison_result = await gemini_service.compare_texts(
+                        old_result.markdown_content, 
+                        new_result.markdown_content
+                    )
+                    logger.info("✅ تمت المقارنة النصية بنجاح")
+                except Exception as e:
+                    logger.error(f"❌ فشل في المقارنة النصية: {e}")
+                    comparison_result = None
+            else:
+                logger.warning("⚠️ فشل في استخراج النص، تخطي المقارنة النصية")
+        
+        # 3. المقارنة البصرية (إذا لم تتم بعد)
+        if visual_result is None:
+            try:
+                logger.info("👁️ إجراء المقارنة البصرية...")
+                visual_result = await enhanced_visual_comparison_service.compare_images(
+                    old_image_path, new_image_path
+                )
+                if visual_result:
+                    logger.info(f"✅ تمت المقارنة البصرية بنجاح: {visual_result.similarity_score:.1f}% تطابق")
+                else:
+                    logger.warning("⚠️ فشل في المقارنة البصرية")
+            except Exception as e:
+                logger.error(f"❌ خطأ في المقارنة البصرية: {e}")
+                visual_result = None
         
         # 4. التحقق من LandingAI
         landing_ai_verification = {
@@ -1291,6 +1385,8 @@ async def full_comparison(session_id: str):
         response_data = {
             "session_id": session_id,
             "status": session_status,
+            "processing_mode": processing_mode,
+            "visual_threshold": visual_threshold,
             "old_image_result": {
                 "success": old_result.success if old_result else False,
                 "text": old_result.markdown_content if old_result and old_result.success else "",

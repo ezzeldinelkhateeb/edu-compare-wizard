@@ -1,0 +1,181 @@
+{
+  "markdown": "3\nالفصل <!-- text, from page 0 (l=0.850,t=0.046,r=0.929,b=0.090), with ID 98117cbd-96ad-4ab6-a983-346e7a8aaf1f -->\n\nاختبر نفسك؟ 18 <!-- text, from page 0 (l=0.329,t=0.092,r=0.661,b=0.141), with ID 70a075d5-3a4a-4403-87c1-742830a57b95 -->\n\nlogo:  \nSummary : This is a rectangular red logo or label with white Arabic text reading \"مجاب عنها\".\n\nScene Overview :  \n  • Main subject is a red, rounded rectangle with white Arabic text.  \n  • The text reads \"مجاب عنها\", which translates to \"Answered\" or \"Answered for it\".  \n  • The background is a pale yellow or off-white.\n\nTechnical Details :  \n  • No additional graphic elements, icons, or logos present.  \n  • The text is centered and uses a bold, sans-serif Arabic font.  \n  • No scale bar or reference objects for size.\n\nSpatial Relationships :  \n  • The label is slightly rotated counterclockwise.  \n  • The text is horizontally centered within the red shape.\n\nAnalysis :  \n  • The design is simple and direct, likely used as a status badge or indicator to show that a question or issue has been addressed. <!-- figure, from page 0 (l=0.067,t=0.103,r=0.168,b=0.142), with ID 7fb761b4-c713-4c23-a875-5c6f5761c98b -->\n\nاختر الإجابة الصحيحة من بين البديلات المعطاة :\n\nإذا كانت النسبة بين نصفي قطري المكبسين في المكبس الهيدروليكي ١ : ٥ ، فإن النسبة بين الضغط أسفل المكبس الصغير مباشرة إلى الضغط أسفل المكبس الكبير مباشرة عند اتزان المكبسين في مستوى أفقي واحد تساوي ...................\n\n(بيـن مـاز / المهـا)\n\n١\nـــ\n١\n\n١\nـــ\n٢٥\n\n٥\nـــ\n١\n\n١\nـــ\n٥ <!-- text, from page 0 (l=0.063,t=0.140,r=0.944,b=0.279), with ID 53677d64-1a00-4cec-bf60-91526fe501dc -->\n\nالفائدة الآلية للمكبس الهيدروليكي ٦ <!-- text, from page 0 (l=0.561,t=0.302,r=0.932,b=0.339), with ID 798075bd-400c-4a62-8bcc-06c03f603680 -->\n\n* يمكن الاستفادة من القوة المؤثرة على المكبس الكبير (F) في كثير من الآلات، وتعين الفائدة الآلية (M) عند استقرار المكبسين من العلاقة : <!-- text, from page 0 (l=0.065,t=0.344,r=0.934,b=0.398), with ID 46546051-7a8e-48f8-954a-3f8568771694 -->\n\n$\\eta = \\frac{A}{a} = \\frac{R^2}{r^2} = \\frac{y_1}{y_2}$ <!-- text, from page 0 (l=0.069,t=0.383,r=0.261,b=0.440), with ID c9bf41c7-0238-45a1-a294-26c448a3eacd -->\n\nحيث : (A) مساحة مقطع المكبس الكبير، (a) مساحة مقطع المكبس الصغير، (R) نصف قطر المكبس الكبير، (r) نصف قطر المكبس الصغير، (y₁) إزاحة المكبس الصغير لأسفل، (y₂) إزاحة المكبس الكبير لأعلى.\n\n* إذا كان المكبسان في مستوى أفقي واحد عند الاتزان، تكون : <!-- text, from page 0 (l=0.090,t=0.447,r=0.936,b=0.547), with ID c570d61a-ded1-409d-ac9b-7d93ab86d8e4 -->\n\nSummary : This figure presents two graphical representations related to the efficiency (η) of a system, showing the relationships between force (F) and force (f), and between displacements (y₂ and y₁), along with their respective slopes and mathematical expressions.\n\nline plots:\n# First Graph : Relationship between Forces F and f\nTitle & Axes :\n  • No explicit title, but context is the relationship between two forces F (vertical axis) and f (horizontal axis).\n  • X-axis: f; Y-axis: F.\n  • Both axes start at the origin; positive linear trend.\n  • Slope is labeled as η (eta), with the formula slope = ΔF / Δf = η.\nData Points :\n  • No explicit data points; a straight line with positive slope is shown.\nDesign Encodings :\n  • Red solid line for the relationship.\n  • Dashed red lines indicate a rise/run triangle for slope calculation.\nDistribution & Trends :\n  • Linear, positive slope.\nAnalysis :\n  • The graph demonstrates that as f increases, F increases linearly, and the slope of the line represents the efficiency η.\n\n# Second Graph : Relationship between Displacements y₂ and y₁\nTitle & Axes :\n  • No explicit title, but context is the relationship between the displacements of a large and small piston (y₂ and y₁).\n  • X-axis: y₁; Y-axis: y₂.\n  • Both axes start at the origin; positive linear trend.\n  • Slope is labeled as 1/η, with the formula slope = Δy₂ / Δy₁ = 1/η.\nData Points :\n  • No explicit data points; a straight line with positive slope is shown.\nDesign Encodings :\n  • Red solid line for the relationship.\nDistribution & Trends :\n  • Linear, positive slope.\nAnalysis :\n  • The graph shows that as y₁ increases, y₂ increases linearly, and the slope of the line is the reciprocal of the efficiency (1/η).\n\nAnalysis :\n  • Both graphs illustrate linear relationships between the respective variables, with the slopes directly related to the efficiency η or its reciprocal. The first graph uses force variables, while the second uses displacement variables, both emphasizing the proportionality and the role of efficiency in the system. <!-- figure, from page 0 (l=0.060,t=0.550,r=0.934,b=0.881), with ID 3155b67e-b1db-4f4f-9880-a43f4f06c926 -->\n\n$6 \\cdot 10$ <!-- marginalia, from page 0 (l=0.870,t=0.935,r=0.927,b=0.964), with ID 237ca356-78cf-4ace-b32a-7ad8eae6a9af -->",
+  "chunks": [
+    {
+      "text": "3\nالفصل",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.849736213684082,
+            "t": 0.045819178223609924,
+            "r": 0.9290122985839844,
+            "b": 0.08988207578659058
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "98117cbd-96ad-4ab6-a983-346e7a8aaf1f"
+    },
+    {
+      "text": "اختبر نفسك؟ 18",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.32925766706466675,
+            "t": 0.09248032420873642,
+            "r": 0.6612550020217896,
+            "b": 0.1408112645149231
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "70a075d5-3a4a-4403-87c1-742830a57b95"
+    },
+    {
+      "text": "logo:  \nSummary : This is a rectangular red logo or label with white Arabic text reading \"مجاب عنها\".\n\nScene Overview :  \n  • Main subject is a red, rounded rectangle with white Arabic text.  \n  • The text reads \"مجاب عنها\", which translates to \"Answered\" or \"Answered for it\".  \n  • The background is a pale yellow or off-white.\n\nTechnical Details :  \n  • No additional graphic elements, icons, or logos present.  \n  • The text is centered and uses a bold, sans-serif Arabic font.  \n  • No scale bar or reference objects for size.\n\nSpatial Relationships :  \n  • The label is slightly rotated counterclockwise.  \n  • The text is horizontally centered within the red shape.\n\nAnalysis :  \n  • The design is simple and direct, likely used as a status badge or indicator to show that a question or issue has been addressed.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.06652150303125381,
+            "t": 0.10289113223552704,
+            "r": 0.16789114475250244,
+            "b": 0.1420460045337677
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "7fb761b4-c713-4c23-a875-5c6f5761c98b"
+    },
+    {
+      "text": "اختر الإجابة الصحيحة من بين البديلات المعطاة :\n\nإذا كانت النسبة بين نصفي قطري المكبسين في المكبس الهيدروليكي ١ : ٥ ، فإن النسبة بين الضغط أسفل المكبس الصغير مباشرة إلى الضغط أسفل المكبس الكبير مباشرة عند اتزان المكبسين في مستوى أفقي واحد تساوي ...................\n\n(بيـن مـاز / المهـا)\n\n١\nـــ\n١\n\n١\nـــ\n٢٥\n\n٥\nـــ\n١\n\n١\nـــ\n٥",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.06267639994621277,
+            "t": 0.1400061696767807,
+            "r": 0.9438618421554565,
+            "b": 0.27899855375289917
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "53677d64-1a00-4cec-bf60-91526fe501dc"
+    },
+    {
+      "text": "الفائدة الآلية للمكبس الهيدروليكي ٦",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.5605813264846802,
+            "t": 0.30164217948913574,
+            "r": 0.9322395324707031,
+            "b": 0.3389131426811218
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "798075bd-400c-4a62-8bcc-06c03f603680"
+    },
+    {
+      "text": "* يمكن الاستفادة من القوة المؤثرة على المكبس الكبير (F) في كثير من الآلات، وتعين الفائدة الآلية (M) عند استقرار المكبسين من العلاقة :",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.06536859273910522,
+            "t": 0.3439389169216156,
+            "r": 0.9338740706443787,
+            "b": 0.39818432927131653
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "46546051-7a8e-48f8-954a-3f8568771694"
+    },
+    {
+      "text": "$\\eta = \\frac{A}{a} = \\frac{R^2}{r^2} = \\frac{y_1}{y_2}$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.0694318562746048,
+            "t": 0.3825998902320862,
+            "r": 0.2611704468727112,
+            "b": 0.4403459429740906
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "c9bf41c7-0238-45a1-a294-26c448a3eacd"
+    },
+    {
+      "text": "حيث : (A) مساحة مقطع المكبس الكبير، (a) مساحة مقطع المكبس الصغير، (R) نصف قطر المكبس الكبير، (r) نصف قطر المكبس الصغير، (y₁) إزاحة المكبس الصغير لأسفل، (y₂) إزاحة المكبس الكبير لأعلى.\n\n* إذا كان المكبسان في مستوى أفقي واحد عند الاتزان، تكون :",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.08990433812141418,
+            "t": 0.4472880959510803,
+            "r": 0.935741662979126,
+            "b": 0.5472360253334045
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "c570d61a-ded1-409d-ac9b-7d93ab86d8e4"
+    },
+    {
+      "text": "Summary : This figure presents two graphical representations related to the efficiency (η) of a system, showing the relationships between force (F) and force (f), and between displacements (y₂ and y₁), along with their respective slopes and mathematical expressions.\n\nline plots:\n# First Graph : Relationship between Forces F and f\nTitle & Axes :\n  • No explicit title, but context is the relationship between two forces F (vertical axis) and f (horizontal axis).\n  • X-axis: f; Y-axis: F.\n  • Both axes start at the origin; positive linear trend.\n  • Slope is labeled as η (eta), with the formula slope = ΔF / Δf = η.\nData Points :\n  • No explicit data points; a straight line with positive slope is shown.\nDesign Encodings :\n  • Red solid line for the relationship.\n  • Dashed red lines indicate a rise/run triangle for slope calculation.\nDistribution & Trends :\n  • Linear, positive slope.\nAnalysis :\n  • The graph demonstrates that as f increases, F increases linearly, and the slope of the line represents the efficiency η.\n\n# Second Graph : Relationship between Displacements y₂ and y₁\nTitle & Axes :\n  • No explicit title, but context is the relationship between the displacements of a large and small piston (y₂ and y₁).\n  • X-axis: y₁; Y-axis: y₂.\n  • Both axes start at the origin; positive linear trend.\n  • Slope is labeled as 1/η, with the formula slope = Δy₂ / Δy₁ = 1/η.\nData Points :\n  • No explicit data points; a straight line with positive slope is shown.\nDesign Encodings :\n  • Red solid line for the relationship.\nDistribution & Trends :\n  • Linear, positive slope.\nAnalysis :\n  • The graph shows that as y₁ increases, y₂ increases linearly, and the slope of the line is the reciprocal of the efficiency (1/η).\n\nAnalysis :\n  • Both graphs illustrate linear relationships between the respective variables, with the slopes directly related to the efficiency η or its reciprocal. The first graph uses force variables, while the second uses displacement variables, both emphasizing the proportionality and the role of efficiency in the system.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.05973106622695923,
+            "t": 0.5504990220069885,
+            "r": 0.9340279698371887,
+            "b": 0.8810408711433411
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "3155b67e-b1db-4f4f-9880-a43f4f06c926"
+    },
+    {
+      "text": "$6 \\cdot 10$",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.8702477812767029,
+            "t": 0.9347381591796875,
+            "r": 0.9268046021461487,
+            "b": 0.9635438919067383
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "marginalia",
+      "chunk_id": "237ca356-78cf-4ace-b32a-7ad8eae6a9af"
+    }
+  ],
+  "result_path": null,
+  "image_was_downscaled": true,
+  "processed_image_size": {
+    "width": 710,
+    "height": 1024
+  }
+}

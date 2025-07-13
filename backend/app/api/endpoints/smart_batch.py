@@ -30,6 +30,7 @@ class BatchProcessRequest(BaseModel):
     new_directory: str
     max_workers: int = 4
     visual_threshold: float = 0.95
+    processing_mode: str = "landingai_gemini"  # "gemini_only" or "landingai_gemini"
 
 # نموذج الاستجابة
 class BatchProcessResponse(BaseModel):
@@ -115,6 +116,7 @@ async def start_batch_process_files(
     new_files: List[UploadFile] = File(...),
     max_workers: int = Form(4),
     visual_threshold: float = Form(0.95),
+    processing_mode: str = Form("landingai_gemini"),
     background_tasks: BackgroundTasks = None
 ):
     """بدء المعالجة الجماعية الذكية بملفات مرفوعة"""
@@ -124,6 +126,7 @@ async def start_batch_process_files(
     print(f"   - ملفات جديدة: {len(new_files)}")
     print(f"   - عدد المعالجات: {max_workers}")
     print(f"   - عتبة التشابه: {visual_threshold}")
+    print(f"   - وضع المعالجة: {processing_mode}")
     
     # التحقق من وجود ملفات
     if not old_files or not new_files:
@@ -183,16 +186,15 @@ async def start_batch_process_files(
             old_directory=old_dir,
             new_directory=new_dir,
             max_workers=max_workers,
-            visual_threshold=visual_threshold
+            visual_threshold=visual_threshold,
+            processing_mode=processing_mode
         )
         
-        # بدء المعالجة في الخلفية
-        background_tasks.add_task(
-            run_batch_processing_with_cleanup,
-            session_id,
-            request,
-            temp_dir
-        )
+        # بدء المعالجة في الخلفية باستخدام BackgroundTasks
+        def sync_run():
+            import asyncio
+            asyncio.run(run_batch_processing_with_cleanup(session_id, request, temp_dir))
+        background_tasks.add_task(sync_run)
         
         print(f"✅ تم بدء المعالجة في الخلفية للجلسة: {session_id}")
         
@@ -215,28 +217,18 @@ async def start_batch_process_files(
 
 async def run_batch_processing(session_id: str, request: BatchProcessRequest):
     """تشغيل المعالجة الجماعية في الخلفية"""
-    
     try:
-        # تحديث الحالة
-        batch_sessions[session_id]["status"] = "جاري المعالجة"
-        
-        # دالة تحديث الحالة
+        # دالة لتحديث الحالة
         def update_status(status_data):
-            batch_sessions[session_id].update({
-                "status": status_data.get("status", "جاري المعالجة"),
-                "progress": status_data.get("progress", 0),
-                "current_file": status_data.get("current_file"),
-                "message": status_data.get("message", ""),
-                "stats": status_data.get("stats", {}),
-                "results": status_data.get("results", [])
-            })
+            batch_sessions[session_id].update(status_data)
         
-        # إنشاء المعالج الذكي مع دالة تحديث الحالة
+        # إنشاء المعالج الذكي
         processor = SmartBatchProcessor(
             old_dir=request.old_directory,
             new_dir=request.new_directory,
             max_workers=request.max_workers,
             visual_threshold=request.visual_threshold,
+            processing_mode=request.processing_mode,  # إضافة وضع المعالجة
             session_id=session_id,
             status_callback=update_status
         )
@@ -244,44 +236,38 @@ async def run_batch_processing(session_id: str, request: BatchProcessRequest):
         # تشغيل المعالجة
         processor.run_batch_processing()
         
-        # حفظ النتائج النهائية
+        # تحديث النتائج النهائية
         batch_sessions[session_id].update({
             "status": "مكتمل",
             "results": processor.results,
             "stats": processor.stats,
-            "progress": 100
+            "message": "تمت المعالجة بنجاح"
         })
         
+        print(f"✅ اكتملت المعالجة للجلسة: {session_id}")
+        
     except Exception as e:
+        print(f"❌ خطأ في معالجة الجلسة {session_id}: {e}")
         batch_sessions[session_id].update({
             "status": "فشل",
-            "error": str(e)
+            "error": str(e),
+            "message": f"فشل في المعالجة: {e}"
         })
 
 async def run_batch_processing_with_cleanup(session_id: str, request: BatchProcessRequest, temp_dir: str):
-    """تشغيل المعالجة الجماعية مع تنظيف المجلدات المؤقتة"""
-    
+    """تشغيل المعالجة الجماعية مع تنظيف الملفات المؤقتة"""
     try:
-        # تحديث الحالة
-        batch_sessions[session_id]["status"] = "جاري المعالجة"
-        
-        # دالة تحديث الحالة
+        # دالة لتحديث الحالة
         def update_status(status_data):
-            batch_sessions[session_id].update({
-                "status": status_data.get("status", "جاري المعالجة"),
-                "progress": status_data.get("progress", 0),
-                "current_file": status_data.get("current_file"),
-                "message": status_data.get("message", ""),
-                "stats": status_data.get("stats", {}),
-                "results": status_data.get("results", [])
-            })
+            batch_sessions[session_id].update(status_data)
         
-        # إنشاء المعالج الذكي مع دالة تحديث الحالة
+        # إنشاء المعالج الذكي
         processor = SmartBatchProcessor(
             old_dir=request.old_directory,
             new_dir=request.new_directory,
             max_workers=request.max_workers,
             visual_threshold=request.visual_threshold,
+            processing_mode=request.processing_mode,  # إضافة وضع المعالجة
             session_id=session_id,
             status_callback=update_status
         )
@@ -289,25 +275,31 @@ async def run_batch_processing_with_cleanup(session_id: str, request: BatchProce
         # تشغيل المعالجة
         processor.run_batch_processing()
         
-        # حفظ النتائج النهائية
+        # تحديث النتائج النهائية
         batch_sessions[session_id].update({
             "status": "مكتمل",
             "results": processor.results,
             "stats": processor.stats,
-            "progress": 100
+            "message": "تمت المعالجة بنجاح"
         })
         
+        print(f"✅ اكتملت المعالجة للجلسة: {session_id}")
+        
     except Exception as e:
+        print(f"❌ خطأ في معالجة الجلسة {session_id}: {e}")
         batch_sessions[session_id].update({
             "status": "فشل",
-            "error": str(e)
+            "error": str(e),
+            "message": f"فشل في المعالجة: {e}"
         })
     finally:
-        # تنظيف المجلد المؤقت
+        # تنظيف الملفات المؤقتة
         try:
-            shutil.rmtree(temp_dir, ignore_errors=True)
-        except:
-            pass  # تجاهل أخطاء التنظيف
+            if os.path.exists(temp_dir):
+                shutil.rmtree(temp_dir)
+                print(f"🧹 تم حذف المجلد المؤقت: {temp_dir}")
+        except Exception as cleanup_error:
+            print(f"⚠️ خطأ في تنظيف المجلد المؤقت: {cleanup_error}")
 
 @router.get("/batch-status/{session_id}", response_model=BatchProcessResult)
 async def get_batch_status(session_id: str):

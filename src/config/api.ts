@@ -1,7 +1,7 @@
 // تكوين API
 export const API_CONFIG = {
   // عنوان الخادم - يمكن تغييره حسب البيئة
-  BASE_URL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8001',
+  BASE_URL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000',
   
   // نقاط النهاية
   ENDPOINTS: {

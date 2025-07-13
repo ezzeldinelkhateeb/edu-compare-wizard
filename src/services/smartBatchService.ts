@@ -10,6 +10,7 @@ export interface SmartBatchRequest {
   new_directory: string;
   max_workers?: number;
   visual_threshold?: number;
+  processing_mode?: 'gemini_only' | 'landingai_gemini';
 }
 
 export interface SmartBatchResponse {
@@ -100,7 +101,8 @@ class SmartBatchService {
           old_directory: request.old_directory,
           new_directory: request.new_directory,
           max_workers: request.max_workers || 4,
-          visual_threshold: request.visual_threshold || 0.95
+          visual_threshold: request.visual_threshold || 0.95,
+          processing_mode: request.processing_mode || 'landingai_gemini'
         }),
       });
 
@@ -133,6 +135,7 @@ class SmartBatchService {
     options: {
       max_workers?: number;
       visual_threshold?: number;
+      processing_mode?: 'gemini_only' | 'landingai_gemini';
     } = {}
   ): Promise<SmartBatchResponse> {
     try {
@@ -160,6 +163,7 @@ class SmartBatchService {
       // إضافة الإعدادات
       formData.append('max_workers', (options.max_workers || 4).toString());
       formData.append('visual_threshold', (options.visual_threshold || 0.95).toString());
+      formData.append('processing_mode', options.processing_mode || 'landingai_gemini');
 
       console.log('📤 إرسال الطلب للباك إند...');
       const response = await fetch(`${this.baseUrl}/start-batch-process-files`, {
