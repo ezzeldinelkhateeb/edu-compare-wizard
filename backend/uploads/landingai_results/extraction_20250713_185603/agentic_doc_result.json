@@ -1,0 +1,79 @@
+{
+  "markdown": "- 📝 معلومات إثرائية\n- • التطبق المتقاطع : ينتج من الترسيب في اتجاهات مائلة غير متوازية.\n- • علامات النيم : عبارة عن تموجات صغيرة من الرمل تنتج من تأثير التيارات الهوائية والمائية.\n- • التدرج الطبقي : ينتج من ترتيب الرواسب داخل الطبقة الواحدة حسب حجم الحبيبات من الخشن في الأسفل إلى الناعم في الأعلى.\n- • التشققات الطينية : تنتج عندما يجف الطين المبلل ويتكمش بفعل زيادة الحرارة. <!-- text, from page 0 (l=0.050,t=0.062,r=0.932,b=0.206), with ID 4428fd66-5d0e-4a19-a287-f54dc79c609b -->\n\nSummary : This educational illustration explains the concept of secondary geological (tectonic) structures, their causes, and the three main types, with supporting photographs and bilingual labels.\n\nphoto and diagram:\n# Overview :\n• The image is a textbook-style educational figure about \"Secondary Structures (التركيـب الجيولوجية الثانوية (التكتونية))\".\n• It contains a descriptive text in Arabic, a bilingual title, and three labeled photographs of geological features.\n\n# Main Content :\n• The text defines secondary geological structures as large fractures, faults, and folds that deform the Earth's crust, especially in mountainous and desert regions.\n• It explains that these structures are called \"tectonic\" because they result from internal forces within the Earth, leading to phenomena such as earthquakes, sea and ocean transgressions/regressions, and continental drift.\n\n# Key Types of Secondary Geological Structures :\n• A central label in Arabic (\"أهم التراكيب الجيولوجية الثانوية\") translates to \"The most important secondary geological structures\".\n• Three circular photographs are shown, each with an Arabic and English label:\n   - Left: \"الفواصل\" (Joints) — shows rock layers with visible jointing/fractures.\n   - Center: \"الفوالق\" (Faults) — shows rock strata with clear displacement.\n   - Right: \"الطيات\" (Folds) — shows folded rock layers.\n\n# Spatial Relationships :\n• The three types are presented side-by-side in a horizontal arrangement, each with a connecting line to the central label.\n\n# Analysis :\n• The figure visually distinguishes the three main types of secondary geological structures (joints, faults, folds) using both text and photographic examples, aiding in conceptual understanding. The bilingual labels support accessibility for both Arabic and English readers. <!-- figure, from page 0 (l=0.052,t=0.219,r=0.930,b=0.682), with ID 7cf39aa5-5f63-4306-bccc-9612705d4996 -->\n\n- ١ اختر الإجابة الصحيحة من بين الإجابات المعطاة:\n- (١) تشقق التربة الزراعية لعدم الري لفترة طويلة يكون تركيب ..........\n  - ⃝ من التراكيب الأولية\n  - ⃝ من التراكيب الثانوية\n  - ⃝ يحدث بفعل قوى داخلية\n  - ⃝ يحدث بفعل قوى تكتونية\n- (٢) تعرض الصخور للضغط أو الشد الناتج عن حرارة شديدة من باطن الأرض يكون ..........\n  - ⃝ تدرج طبقي\n  - ⃝ تبلن مقاطع\n  - ⃝ تشققات طبيعية\n  - ⃝ تشوهات صخرية <!-- text, from page 0 (l=0.045,t=0.717,r=0.926,b=0.926), with ID b6691b7b-3db8-41fc-9d22-0c676c0de4c0 -->\n\nזן <!-- marginalia, from page 0 (l=0.879,t=0.939,r=0.915,b=0.957), with ID 755e1f26-8b30-4c61-aed1-47ac42e33c62 -->",
+  "chunks": [
+    {
+      "text": "- 📝 معلومات إثرائية\n- • التطبق المتقاطع : ينتج من الترسيب في اتجاهات مائلة غير متوازية.\n- • علامات النيم : عبارة عن تموجات صغيرة من الرمل تنتج من تأثير التيارات الهوائية والمائية.\n- • التدرج الطبقي : ينتج من ترتيب الرواسب داخل الطبقة الواحدة حسب حجم الحبيبات من الخشن في الأسفل إلى الناعم في الأعلى.\n- • التشققات الطينية : تنتج عندما يجف الطين المبلل ويتكمش بفعل زيادة الحرارة.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.04991710186004639,
+            "t": 0.0618772953748703,
+            "r": 0.9324696063995361,
+            "b": 0.2061387151479721
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "4428fd66-5d0e-4a19-a287-f54dc79c609b"
+    },
+    {
+      "text": "Summary : This educational illustration explains the concept of secondary geological (tectonic) structures, their causes, and the three main types, with supporting photographs and bilingual labels.\n\nphoto and diagram:\n# Overview :\n• The image is a textbook-style educational figure about \"Secondary Structures (التركيـب الجيولوجية الثانوية (التكتونية))\".\n• It contains a descriptive text in Arabic, a bilingual title, and three labeled photographs of geological features.\n\n# Main Content :\n• The text defines secondary geological structures as large fractures, faults, and folds that deform the Earth's crust, especially in mountainous and desert regions.\n• It explains that these structures are called \"tectonic\" because they result from internal forces within the Earth, leading to phenomena such as earthquakes, sea and ocean transgressions/regressions, and continental drift.\n\n# Key Types of Secondary Geological Structures :\n• A central label in Arabic (\"أهم التراكيب الجيولوجية الثانوية\") translates to \"The most important secondary geological structures\".\n• Three circular photographs are shown, each with an Arabic and English label:\n   - Left: \"الفواصل\" (Joints) — shows rock layers with visible jointing/fractures.\n   - Center: \"الفوالق\" (Faults) — shows rock strata with clear displacement.\n   - Right: \"الطيات\" (Folds) — shows folded rock layers.\n\n# Spatial Relationships :\n• The three types are presented side-by-side in a horizontal arrangement, each with a connecting line to the central label.\n\n# Analysis :\n• The figure visually distinguishes the three main types of secondary geological structures (joints, faults, folds) using both text and photographic examples, aiding in conceptual understanding. The bilingual labels support accessibility for both Arabic and English readers.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.05171409249305725,
+            "t": 0.2190934270620346,
+            "r": 0.9300905466079712,
+            "b": 0.6818082928657532
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "7cf39aa5-5f63-4306-bccc-9612705d4996"
+    },
+    {
+      "text": "- ١ اختر الإجابة الصحيحة من بين الإجابات المعطاة:\n- (١) تشقق التربة الزراعية لعدم الري لفترة طويلة يكون تركيب ..........\n  - ⃝ من التراكيب الأولية\n  - ⃝ من التراكيب الثانوية\n  - ⃝ يحدث بفعل قوى داخلية\n  - ⃝ يحدث بفعل قوى تكتونية\n- (٢) تعرض الصخور للضغط أو الشد الناتج عن حرارة شديدة من باطن الأرض يكون ..........\n  - ⃝ تدرج طبقي\n  - ⃝ تبلن مقاطع\n  - ⃝ تشققات طبيعية\n  - ⃝ تشوهات صخرية",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.045363008975982666,
+            "t": 0.7171424627304077,
+            "r": 0.9260545372962952,
+            "b": 0.9258321523666382
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "b6691b7b-3db8-41fc-9d22-0c676c0de4c0"
+    },
+    {
+      "text": "זן",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.8791588544845581,
+            "t": 0.9392051696777344,
+            "r": 0.9149081707000732,
+            "b": 0.9568662643432617
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "marginalia",
+      "chunk_id": "755e1f26-8b30-4c61-aed1-47ac42e33c62"
+    }
+  ],
+  "result_path": null,
+  "image_was_downscaled": true,
+  "processed_image_size": {
+    "width": 694,
+    "height": 1024
+  }
+}

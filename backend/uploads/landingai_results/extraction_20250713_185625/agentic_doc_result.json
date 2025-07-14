@@ -1,0 +1,96 @@
+{
+  "markdown": "أنواع الطبقات :\n\nأكثر أنواع الطبقات انتشاراً وشيوعاً في صخور القشرة الأرضية، هي : <!-- text, from page 0 (l=0.364,t=0.097,r=0.931,b=0.160), with ID ac480aa4-ae9a-4d1b-ac17-2c7dc91e9147 -->\n\nSummary : This figure illustrates the structure and characteristics of \"anticline folds\" (الطيات المحدبة) in geology, showing both a 3D block diagram and a cross-sectional view, with Arabic labels and explanatory notes.\n\nillustration:\n# 3D Block Diagram (Left) :\n  • Shows a block of layered rock strata bent upwards into an arch shape.\n  • Layers are color-coded to distinguish different strata.\n  • Key labels:\n    – \"محور\" (axis): Dashed line along the crest of the fold.\n    – \"مستوى محوري\" (axial plane): Vertical plane dividing the fold symmetrically.\n    – \"جناح (جانب)\" (limb/side): The flanks of the fold on either side of the axis.\n\n# Cross-Sectional View (Right) :\n  • Depicts a vertical slice through the fold, highlighting the arching of the layers.\n  • Key labels:\n    – \"محور\" (axis): Line at the crest of the fold.\n    – \"مستوى محوري\" (axial plane): Vertical dividing plane.\n    – \"جناح (جانب)\" (limb/side): Sides of the fold.\n\n# Explanatory Notes (Top Right) :\n  • Title: \"الطيات المحدبة\" (Anticline Folds).\n  • Bulleted points:\n    – \"الطبقات منحنية لأعلى.\" (Layers are bent upwards.)\n    – \"أقدم الطبقات توجد في المركز.\" (The oldest layers are found at the center.)\n    – \"يتقارب الجناحان من أعلى.\" (The limbs converge at the top.)\n\n# Analysis :\n  • The diagrams clarify that anticline folds are characterized by upward-arching layers, with the oldest rocks at the core and limbs dipping away from the axis.\n  • The axial plane divides the fold symmetrically, and the limbs are mirror images on either side.\n  • The visual distinction between 3D and cross-sectional views aids in understanding the spatial geometry of anticlines. <!-- figure, from page 0 (l=0.087,t=0.170,r=0.927,b=0.504), with ID 40f797b3-c889-46cc-8822-43f59728c557 -->\n\nSummary : This figure illustrates the structure and characteristics of synclinal folds (الطيات المقعرة) in geology, showing both a 3D block diagram and a cross-sectional view, with Arabic annotations describing the orientation and arrangement of rock layers.\n\nillustration:\n# 3D Block Diagram :\n  • Depicts a synclinal fold with multiple colored layers bent downward.\n  • The central layers are the youngest, located at the core of the fold.\n  • Labels include: \"محور\" (axis), \"مستوى محوري\" (axial plane), and \"جناح (جانب)\" (limb/side).\n  • The limbs converge downward toward the axis.\n\n# Cross-Sectional View :\n  • Shows a vertical slice through the fold, highlighting the downward curvature.\n  • The axial plane and axis are marked, as well as the limbs.\n  • The youngest layers are at the center, with older layers outward.\n\n# Annotations & Explanatory Text :\n  • Title: \"الطيات المقعرة\" (Synclinal Folds).\n  • Bulleted points:\n    • \"الطبقات منحنية لأسفل.\" (Layers are bent downward.)\n    • \"أحدث الطبقات توجد في المركز.\" (The youngest layers are in the center.)\n    • \"يقترب الجناحان من أسفل.\" (The limbs converge downward.)\n\nAnalysis :\n  • The diagrams clearly show that in synclinal folds, rock layers dip toward the fold axis, with the youngest strata at the core.\n  • The 3D and cross-sectional views together clarify the spatial relationships and geometry of synclines, emphasizing the downward curvature and central positioning of the youngest layers. <!-- figure, from page 0 (l=0.088,t=0.531,r=0.929,b=0.867), with ID 2f4b66aa-480c-489f-9a9c-189bb565bf19 -->\n\n۲۳ <!-- marginalia, from page 0 (l=0.085,t=0.933,r=0.123,b=0.956), with ID 0df7bdf6-e2f3-4c0b-9296-2fa060f0a179 -->\n\nCallum <!-- marginalia, from page 0 (l=0.039,t=0.039,r=0.065,b=0.113), with ID 3a271e12-951e-4e2d-901c-8270a10d3d57 -->",
+  "chunks": [
+    {
+      "text": "أنواع الطبقات :\n\nأكثر أنواع الطبقات انتشاراً وشيوعاً في صخور القشرة الأرضية، هي :",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.36366939544677734,
+            "t": 0.09736035764217377,
+            "r": 0.9308567047119141,
+            "b": 0.16049985587596893
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "text",
+      "chunk_id": "ac480aa4-ae9a-4d1b-ac17-2c7dc91e9147"
+    },
+    {
+      "text": "Summary : This figure illustrates the structure and characteristics of \"anticline folds\" (الطيات المحدبة) in geology, showing both a 3D block diagram and a cross-sectional view, with Arabic labels and explanatory notes.\n\nillustration:\n# 3D Block Diagram (Left) :\n  • Shows a block of layered rock strata bent upwards into an arch shape.\n  • Layers are color-coded to distinguish different strata.\n  • Key labels:\n    – \"محور\" (axis): Dashed line along the crest of the fold.\n    – \"مستوى محوري\" (axial plane): Vertical plane dividing the fold symmetrically.\n    – \"جناح (جانب)\" (limb/side): The flanks of the fold on either side of the axis.\n\n# Cross-Sectional View (Right) :\n  • Depicts a vertical slice through the fold, highlighting the arching of the layers.\n  • Key labels:\n    – \"محور\" (axis): Line at the crest of the fold.\n    – \"مستوى محوري\" (axial plane): Vertical dividing plane.\n    – \"جناح (جانب)\" (limb/side): Sides of the fold.\n\n# Explanatory Notes (Top Right) :\n  • Title: \"الطيات المحدبة\" (Anticline Folds).\n  • Bulleted points:\n    – \"الطبقات منحنية لأعلى.\" (Layers are bent upwards.)\n    – \"أقدم الطبقات توجد في المركز.\" (The oldest layers are found at the center.)\n    – \"يتقارب الجناحان من أعلى.\" (The limbs converge at the top.)\n\n# Analysis :\n  • The diagrams clarify that anticline folds are characterized by upward-arching layers, with the oldest rocks at the core and limbs dipping away from the axis.\n  • The axial plane divides the fold symmetrically, and the limbs are mirror images on either side.\n  • The visual distinction between 3D and cross-sectional views aids in understanding the spatial geometry of anticlines.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.08746960759162903,
+            "t": 0.17037981748580933,
+            "r": 0.9272541999816895,
+            "b": 0.5037997961044312
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "40f797b3-c889-46cc-8822-43f59728c557"
+    },
+    {
+      "text": "Summary : This figure illustrates the structure and characteristics of synclinal folds (الطيات المقعرة) in geology, showing both a 3D block diagram and a cross-sectional view, with Arabic annotations describing the orientation and arrangement of rock layers.\n\nillustration:\n# 3D Block Diagram :\n  • Depicts a synclinal fold with multiple colored layers bent downward.\n  • The central layers are the youngest, located at the core of the fold.\n  • Labels include: \"محور\" (axis), \"مستوى محوري\" (axial plane), and \"جناح (جانب)\" (limb/side).\n  • The limbs converge downward toward the axis.\n\n# Cross-Sectional View :\n  • Shows a vertical slice through the fold, highlighting the downward curvature.\n  • The axial plane and axis are marked, as well as the limbs.\n  • The youngest layers are at the center, with older layers outward.\n\n# Annotations & Explanatory Text :\n  • Title: \"الطيات المقعرة\" (Synclinal Folds).\n  • Bulleted points:\n    • \"الطبقات منحنية لأسفل.\" (Layers are bent downward.)\n    • \"أحدث الطبقات توجد في المركز.\" (The youngest layers are in the center.)\n    • \"يقترب الجناحان من أسفل.\" (The limbs converge downward.)\n\nAnalysis :\n  • The diagrams clearly show that in synclinal folds, rock layers dip toward the fold axis, with the youngest strata at the core.\n  • The 3D and cross-sectional views together clarify the spatial relationships and geometry of synclines, emphasizing the downward curvature and central positioning of the youngest layers.",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.08779022097587585,
+            "t": 0.53080815076828,
+            "r": 0.9288556575775146,
+            "b": 0.8668634295463562
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "figure",
+      "chunk_id": "2f4b66aa-480c-489f-9a9c-189bb565bf19"
+    },
+    {
+      "text": "۲۳",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.08498711884021759,
+            "t": 0.9331915974617004,
+            "r": 0.12294386327266693,
+            "b": 0.9555519223213196
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "marginalia",
+      "chunk_id": "0df7bdf6-e2f3-4c0b-9296-2fa060f0a179"
+    },
+    {
+      "text": "Callum",
+      "grounding": [
+        {
+          "page": 0,
+          "box": {
+            "l": 0.038627877831459045,
+            "t": 0.0391162671148777,
+            "r": 0.06517595797777176,
+            "b": 0.11346456408500671
+          },
+          "image_path": null
+        }
+      ],
+      "chunk_type": "marginalia",
+      "chunk_id": "3a271e12-951e-4e2d-901c-8270a10d3d57"
+    }
+  ],
+  "result_path": null,
+  "image_was_downscaled": true,
+  "processed_image_size": {
+    "width": 718,
+    "height": 1024
+  }
+}
